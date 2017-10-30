@@ -15,7 +15,7 @@ export function GETHISTORY(data){
     })
 }
 ```
-这个函数实现的功能是，从远程url服务器上获取数据，通过Promise进行解耦，于是其他地方就能也通过Promise来获取GETHISTORY函数返回的结果。  
+这个函数实现的功能是，从远程url服务器上获取数据，通过`Promise`进行解耦，于是其他地方就能也通过`Promise`来获取`GETHISTORY`函数返回的结果。  
 看代码：  
 ```
 //main.vue
