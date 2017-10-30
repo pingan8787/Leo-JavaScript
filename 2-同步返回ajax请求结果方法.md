@@ -28,4 +28,7 @@ GETHISTORY(historyData).then((data)=>{
     console.log(data);//可以获取ajax请求的值result
 })
 ```
-小弟初学，还不是很懂，忘各位指点。感谢！
+小弟初学，还不是很懂，忘各位指点。感谢！  
+Promise学习网址：
+1.[ES6 - Promise 对象](https://segmentfault.com/a/1190000011742644)
+2.[阮一峰-ES6系列 Promise对象](http://es6.ruanyifeng.com/#docs/promise)
