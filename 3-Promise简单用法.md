@@ -128,7 +128,7 @@ Promise.all(promises).then(function (posts) {
 ```
 上面代码中，promises是包含6个 Promise 实例的数组，只有这6个实例的状态都变成`fulfilled`，或者其中有一个变为`rejected`，才会调用`Promise.all`方法后面的回调函数。   
 
-案例2
+案例2 
 ```
 const databasePromise = connectDatabase();
 
