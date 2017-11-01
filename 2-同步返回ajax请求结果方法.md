@@ -15,7 +15,7 @@ export function GETHISTORY(data){
     })
 }
 ```
-这个函数实现的功能是，从远程url服务器上获取数据，通过Promise进行解耦，于是其他地方就能也通过Promise来获取GETHISTORY函数返回的结果。  
+这个函数实现的功能是，从远程url服务器上获取数据，通过`Promise`进行解耦，于是其他地方就能也通过`Promise`来获取`GETHISTORY`函数返回的结果。  
 看代码：  
 ```
 //main.vue
@@ -28,4 +28,7 @@ GETHISTORY(historyData).then((data)=>{
     console.log(data);//可以获取ajax请求的值result
 })
 ```
-小弟初学，还不是很懂，忘各位指点。感谢！
+小弟初学，还不是很懂，忘各位指点。感谢！  
+Promise学习网址：  
+1.[ES6 - Promise 对象](https://segmentfault.com/a/1190000011742644)  
+2.[阮一峰-ES6系列 Promise对象](http://es6.ruanyifeng.com/#docs/promise)  
