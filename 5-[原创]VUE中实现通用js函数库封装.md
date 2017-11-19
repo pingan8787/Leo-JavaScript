@@ -5,26 +5,26 @@
 ### 2、代码实现
 #### a.安装axios： 
 ```
-//安装axios
+// 安装axios
 npm install axios
 ```
 #### b.引入axios： 
 ```
-//引入axios
+// 引入axios
 // .src\main.js
 import axios from 'axios'
-
-Vue.prototype.$ajax = axios; //将axios设置到全局上
+// 将axios设置到全局上
+Vue.prototype.$ajax = axios; 
 ```
 #### c.文件创建：  
 ```
-创建接口文件：.\src\assets\js\api.js  
-创建组件文件：  .\src\components\tools.vue
+创建接口文件： .\src\assets\js\api.js  
+创建组件文件： .\src\components\tools.vue
 ```
 #### d.编辑api.js
 这边由于`api.js`中会封装很多方法在里面，所有使用export单独暴露方法。
 ```
-//api.js
+// api.js
 export function GETTREND(data){
     let url = 'http://www.testurl.com';
     data.that.$ajax({  //由于在api.js中读取不到组件中的this,即vue实例,所以需要手动传入,这里已经先封装到data中
@@ -37,7 +37,7 @@ export function GETTREND(data){
 ```
 #### e.编辑tools.js
 ```
-//tools.js
+// tools.js
 import { GETTREND } from '../../assets/js/api.js';//引入文件
 export default {
     data(){
