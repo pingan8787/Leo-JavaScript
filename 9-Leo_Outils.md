@@ -85,8 +85,19 @@ a.toLocaleString() ;          // "2017/8/16 上午9:46:54"
 主要就是JSON类型和字符串的转换：  
 ```
 // 参数 data => 需要转换的内容
-JSON.stringify(data)   // JSON对象 => 字符串
-JSON.parse(data)       // 字符串 => JSON对象
+JSON.stringify(data)          // JSON对象 => 字符串
+JSON.parse(data)              // 字符串 => JSON对象
+```
+
+### 6、数组排序
+使用 `sort()` 方法。   
+```
+var a= [ 'banana' , ' chree' , 'apple']; 
+var b = [ 4,3,11,22];
+a.sort();                     //按字母表排序
+b.sort(function( a,b ){       // b = [3,4,11,22]  
+     return a -b ;            // b-a 相反
+})
 ```
 
 ###  持续更新中···
