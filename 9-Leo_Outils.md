@@ -1,5 +1,6 @@
 ### 一、介绍
 慢慢将自己积累的常用业务代码整理起来，以后经验丰富再回头修改完善，而且平常也会用得到。
+还有一些是常用的API整理。
 
 ### 二、代码部分
 此部分暂时部分顺序。
@@ -70,5 +71,22 @@ export function setNumberToInt(data, type) {
 }
 ```
 
+### 4、本地时间转换
+就是官方API而已：
+```
+let a = new Date();
+a ;                           // Wed Aug 16 2017 09:46:54 GMT+0800 (中国标准时间)
+a.toLocaleDateString() ;      // "2017/8/16"
+a.toLocaleTimeString() ;      // "上午9:46:54"
+a.toLocaleString() ;          // "2017/8/16 上午9:46:54"
+```
+
+### 5、序列化对象
+主要就是JSON类型和字符串的转换：  
+```
+// 参数 data => 需要转换的内容
+JSON.stringify(data)   // JSON对象 => 字符串
+JSON.parse(data)       // 字符串 => JSON对象
+```
 
 ###  持续更新中···
