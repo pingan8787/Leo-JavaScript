@@ -111,5 +111,15 @@ Math.min.apply(null,[3,2,5,7]);
 let d = new Date( 2017 , 12 , 01 )
 ```
 
+### 9、获取并设置滚动条距顶部的距离
+```
+export function getScroll(){
+    return (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+}
+export function setScroll(value){
+    window.scrollTo(0,value);
+    return value;
+}
+```
 
 ###  持续更新中···
