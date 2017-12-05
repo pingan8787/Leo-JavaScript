@@ -122,4 +122,13 @@ export function setScroll(value){
 }
 ```
 
+### 10、判断一个对象是否是空对象
+```
+let c = {}
+if(JSON.stringfy(c) == '{}'){
+    console.log('这是空对象')
+}
+```
+
+
 ###  持续更新中···
