@@ -138,4 +138,23 @@ let new_arr = [...new Set(arr)];
 console.log(new_arr)  // [1,2,3,4,5,6]
 ```
 
+### 12、获取某天0点0分0秒到第二天0点0分0秒
+这是项目业务中用到的，用在查询数据库用户列表中所有今天注册用户的列表，也可以用在查询某一天，或某个时间段的内容。  
+```
+let today = '2017-12-07';
+const zeroTime = new Date(today)
+zeroTime.setHours(0)
+zeroTime.setMinutes(0)
+zeroTime.setSeconds(0)
+
+const nextDayZeroTime = new Date(today)
+nextDayZeroTime.setDate(nextDayZeroTime.getDate() + 1)
+nextDayZeroTime.setHours(0)
+nextDayZeroTime.setMinutes(0)
+nextDayZeroTime.setSeconds(0)
+   
+console.log(zeroTime)              // Thu Dec 07 2017 00:00:00 GMT+0800 (中国标准时间)
+console.log(nextDayZeroTime)       // Fri Dec 08 2017 00:00:00 GMT+0800 (中国标准时间)
+```
+
 ###  持续更新中···
