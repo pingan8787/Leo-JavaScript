@@ -157,4 +157,15 @@ console.log(zeroTime)              // Thu Dec 07 2017 00:00:00 GMT+0800 (中国�
 console.log(nextDayZeroTime)       // Fri Dec 08 2017 00:00:00 GMT+0800 (中国标准时间)
 ```
 
+### 13、判断是否是邮箱地址
+```
+function isEmail(str) {
+    return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(str);
+}
+isEmail('aa.bb.cc');     // false
+isEmail('aa@bb.cc');     // true
+isEmail('aa.bb@cc');     // false
+```
+
+
 ###  持续更新中···
