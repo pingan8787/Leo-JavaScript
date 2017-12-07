@@ -130,5 +130,12 @@ if(JSON.stringfy(c) == '{}'){
 }
 ```
 
+### 11、简单数组去重
+这是 `ES6` 的新特性。  
+```
+let arr = [1,2,2,3,4,1,2,5,6,5];
+let new_arr = [...new Set(arr)];
+console.log(new_arr)  // [1,2,3,4,5,6]
+```
 
 ###  持续更新中···
