@@ -131,11 +131,18 @@ if(JSON.stringfy(c) == '{}'){
 ```
 
 ### 11、简单数组去重
-这是 `ES6` 的新特性。  
+这是 `ES6` 的新特性。   
+仅去重： 
 ```
 let arr = [1,2,2,3,4,1,2,5,6,5];
-let new_arr = [...new Set(arr)];
-console.log(new_arr)  // [1,2,3,4,5,6]
+let new_arr1 = new Set(arr);       // {Set} {1,2,3,4,5,6}
+let new_arr2 = [...new Set(arr)];  // {Array} [1,2,3,4,5,6]
+```
+去重加排序   
+```
+let new_arr4 = [...new Set(arr1)].sort(function(a,b){return a-b});    // {Array} [1,2,3,4,5,6]
+// 或者写成：let new_arr4 = Array.from(new Set(newArr)).sort(function(a,b){return a-b})
+let new_arr5 = [...new Set(arr1)].sort(function(a,b){return b-a});    // {Array} [6,5,4,3,2,1]
 ```
 
 ### 12、获取某天0点0分0秒到第二天0点0分0秒
