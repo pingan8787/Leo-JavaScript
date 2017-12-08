@@ -239,5 +239,33 @@ function digitUppercase(n) {
 };
 ```
 
+### 18、回到页面顶端
+方法一：用 `<a href="#"></a>`  
+方法二：
+```
+function backtop(){
+    window.scrollTo(0,0)
+}
+```
+
+### 19、ES7/8新特性
+#### Array.prototype.includes()方法
+`includes()` 的作用，是查找一个值在不在数组里，若在，则返回 `true` ，反之返回 `false` 。 基本用法：  
+```
+['a', 'b', 'c'].includes('a')         // true
+['a', 'b', 'c'].includes('d')         // false
+```
+`Array.prototype.includes()` 方法接收两个参数：要搜索的值和搜索的开始索引。  
+当第二个参数被传入时，该方法会从索引处开始往后搜索（默认索引值为0）。若搜索值在数组中存在则返回 `true` ，否则返回 `false` 。 且看下面示例：    
+```
+['a', 'b', 'c', 'd'].includes('b')     // true
+['a', 'b', 'c', 'd'].includes('b', 1)  // true
+['a', 'b', 'c', 'd'].includes('b', 2)  // false
+```
+那么，我们会联想到ES6里数组的另一个方法indexOf，下面的示例代码是等效的：  
+```
+['a', 'b', 'c'].includes('a')          //true
+['a', 'b', 'c'].indexOf('a') > -1      //true
+```
 
 ###  持续更新中···
