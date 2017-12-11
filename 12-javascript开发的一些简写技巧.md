@@ -163,3 +163,89 @@ function volume(l, w, h) {
 volume = (l, w = 3, h = 4 ) => (l * w * h);
 volume(2) //output: 24
 ```
+
+#### 7、模板字符串
+```
+//  未简写
+const welcome = 'You have logged in as ' + first + ' ' + last + '.'
+const db = 'http://' + host + ':' + port + '/' + database;
+
+//  简写：
+const welcome = `You have logged in as ${first} ${last}`;
+const db = `http://${host}:${port}/${database}`;
+```
+
+#### 8、解构赋值
+解构赋值是一种表达式，用于从数组或对象中快速提取属性值，并赋给定义的变量。
+```
+//  未简写
+const observable = require('mobx/observable');
+const action = require('mobx/action');
+const runInAction = require('mobx/runInAction');
+const store = this.props.store;
+const form = this.props.form;
+const loading = this.props.loading;
+const errors = this.props.errors;
+const entity = this.props.entity;
+
+//  简写：
+import { observable, action, runInAction } from 'mobx';
+const { store, form, loading, errors, entity } = this.props;
+
+//  甚至可以指定自己的变量名：
+const { store, form, loading, errors, entity:contact } = this.props;
+```
+
+#### 9、展开运算符
+使用展开运算符可以替换某些数组函数。
+```
+//  未简写
+// joining arrays
+const odd = [1, 3, 5];
+const nums = [2 ,4 , 6].concat(odd);
+// cloning arrays
+const arr = [1, 2, 3, 4];
+const arr2 = arr.slice()
+
+//  简写：
+// joining arrays
+const odd = [1, 3, 5 ];
+const nums = [2 ,4 , 6, ...odd];
+console.log(nums); // [ 2, 4, 6, 1, 3, 5 ]
+// cloning arrays
+const arr = [1, 2, 3, 4];
+const arr2 = [...arr];
+```
+和 `concat()` 功能不同的是，用户可以使用扩展运算符在任何一个数组中插入另一个数组。
+```
+const odd = [1, 3, 5 ];
+const nums = [2, ...odd, 4 , 6];
+```
+也可以将展开运算符和 ES6 解构符号结合使用：
+```
+const { a, b, ...z } = { a: 1, b: 2, c: 3, d: 4 };
+console.log(a)    // 1
+console.log(b)    // 2
+console.log(z)    // { c: 3, d: 4 }
+```
+
+#### 10、强制参数
+默认情况下，如果不向函数参数传值，那么 JavaScript 会将函数参数设置为未定义。其它一些语言则会发出警告或错误。  
+要执行参数分配，可以使用if语句抛出未定义的错误，或者可以利用“强制参数”。
+```
+//  未简写
+function foo(bar) {
+  if(bar === undefined) {
+    throw new Error('Missing parameter!');
+  }
+  return bar;
+}
+
+//  简写：
+mandatory = () => {
+  throw new Error('Missing parameter!');
+}
+foo = (bar = mandatory( )) => {
+  return bar;
+}
+```
