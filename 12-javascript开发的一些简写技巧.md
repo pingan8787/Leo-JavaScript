@@ -70,3 +70,96 @@ const leo = `leo is good boy
         end!
     `
 ```
+
+### 高级
+#### 1、变量赋值
+当将一个变量的值赋给另一个变量时，首先需要确保原值不是 null、未定义的或空值。  
+可以通过编写一个包含多个条件的判断语句来实现：  
+```
+//  未简写
+if (a1 !== null || a1 !== undefined || a1 !== '') {
+     let a2 = a1;
+}
+
+//  简写：
+const a2 = a1 || 'new'
+```
+
+#### 2、默认值赋值
+如果预期参数是 null 或未定义，则不需要写六行代码来分配默认值。  
+我们可以只使用一个简短的逻辑运算符，只用一行代码就能完成相同的操作。
+```
+//  未简写
+let dbHost;
+if (process.env.DB_HOST) {
+  dbHost = process.env.DB_HOST;
+} else {
+  dbHost = 'localhost';
+}
+
+//  简写：
+const dbHost = process.env.DB_HOST || 'localhost';
+```
+
+#### 3、对象属性
+如果属性名与 key 名相同，则可以使用简写。   
+```
+//  未简写
+const obj = { x:x, y:y };
+
+//  简写：
+const obj = { x, y };
+```
+
+#### 4、箭头函数
+```
+//  未简写
+function sayHello(name) {
+  console.log('Hello', name);
+}
+ 
+setTimeout(function() {
+  console.log('Loaded')
+}, 2000);
+ 
+list.forEach(function(item) {
+  console.log(item);
+});
+
+//  简写：
+sayHello = name => console.log('Hello', name);
+setTimeout(() => console.log('Loaded'), 2000);
+list.forEach(item => console.log(item));
+```
+
+#### 5、隐式返回值
+只有一个语句的箭头函数，可以隐式返回结果（函数必须省略括号（{ }），以便省略返回关键字）。  
+要返回多行语句（例如对象文本），需要使用（）而不是{ }来包裹函数体。这样可以确保代码以单个语句的形式进行求值。
+```
+//  未简写
+function calcCircumference(diameter) {
+  return Math.PI * diameter
+}
+
+//  简写：
+calcCircumference = diameter => (
+  Math.PI * diameter;
+)
+```
+
+#### 6、默认参数值
+可以使用 if 语句来定义函数参数的默认值。ES6 中规定了可以在函数声明中定义默认值。
+```
+//  未简写
+function volume(l, w, h) {
+  if (w === undefined)
+    w = 3;
+  if (h === undefined)
+    h = 4;
+  return l * w * h;
+}
+
+//  简写：
+volume = (l, w = 3, h = 4 ) => (l * w * h);
+volume(2) //output: 24
+```
