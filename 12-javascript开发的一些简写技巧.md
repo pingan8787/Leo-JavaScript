@@ -249,3 +249,40 @@ foo = (bar = mandatory( )) => {
   return bar;
 }
 ```
+
+
+#### 11、Array.find
+如果你曾经编写过普通 `JavaScript` 中的 `find` 函数，那么你可能使用了 `for` 循环。  
+在 `ES6` 中，介绍了一种名为 `find()` 的新数组函数，可以实现 `for` 循环的简写。
+```
+//  未简写
+const pets = [
+  { type: 'Dog', name: 'Max'},
+  { type: 'Cat', name: 'Karl'},
+  { type: 'Dog', name: 'Tommy'},
+]
+function findDog(name) {
+  for(let i = 0; i<pets.length; ++i) {
+    if(pets[i].type === 'Dog' && pets[i].name === name) {
+      return pets[i];
+    }
+  }
+}
+
+//  简写：
+pet = pets.find(pet => pet.type ==='Dog' && pet.name === 'Tommy');
+console.log(pet); // { type: 'Dog', name: 'Tommy' }
+```
+
+#### 12、双位操作符
+位操作符是 JavaScript 初级教程的基本知识点，但是我们却不常使用位操作符。  
+因为在不处理二进制的情况下，没有人愿意使用 `1` 和 `0`。
+但是双位操作符却有一个很实用的案例。你可以使用双位操作符来替代 `Math.floor()`。
+双否定位操作符的优势在于它执行相同的操作运行速度更快。
+```
+//  未简写
+Math.floor(4.9) === 4  //true
+
+//  简写：
+~~4.9 === 4  //true
+```
