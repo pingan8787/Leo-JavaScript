@@ -316,5 +316,44 @@ console.log(20.15^0);          // -> 20
 console.log((-20.15)^0);       // -> -20
 console.log(3000000000.15^0);  // -> -1294967296 🙁
 ```
+#### 6、number<<0
+`<<` (左移) 操作符会将第一个操作数向左移动指定的位数。向左被移出的位被丢弃，右侧用 0 补充。
+``` 
+console.log(20.15 < < 0);      // -> 20
+console.log((-20.15) < < 0);   //-20
+console.log(3000000000.15 << 0);  // -> -1294967296 🙁
+```
+
+### 21、舍入舍去取整
+#### 1、四舍五入 Math.round(number)
+Math.round() 是 Math 对象中的一个方法，将数值四舍五入为最接近的整数。
+```
+console.log(Math.round(20.1));   // -> 20
+console.log(Math.round(20.5));   // -> 21
+console.log(Math.round(20.9));   // -> 21
+console.log(Math.round(-20.1));  // -> -20
+console.log(Math.round(-20.5));  // -> -20 注意这里是-20而不是-21
+console.log(Math.round(-20.9));  // -> -21
+```
+#### 2、向下取整 Math.floor(number)
+Math.floor()这个方法取向下最接近的整数。
+```
+console.log(Math.floor(20.1));   // -> 20
+console.log(Math.floor(20.5));   // -> 20
+console.log(Math.floor(20.9));   // -> 20
+console.log(Math.floor(-20.1));  // -> -21
+console.log(Math.floor(-20.5));  // -> -21
+console.log(Math.floor(-20.9));  // -> -21
+```
+#### 3、向上取整 Math.ceil(number)
+Math.ceil()这个方法取向上最接近的整数。
+```
+console.log(Math.ceil(20.1));   // -> 21
+console.log(Math.ceil(20.5));   // -> 21
+console.log(Math.ceil(20.9));   // -> 21
+console.log(Math.ceil(-20.1));  // -> -20
+console.log(Math.ceil(-20.5));  // -> -20
+console.log(Math.ceil(-20.9));  // -> -20
+```
 
 ###  持续更新中···
