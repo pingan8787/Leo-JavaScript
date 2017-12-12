@@ -268,4 +268,53 @@ function backtop(){
 ['a', 'b', 'c'].indexOf('a') > -1      //true
 ```
 
+
+### 20、常用的直接取整方法
+#### 1、parseInt()  
+直接取整就是舍去小数部分。
+```
+arseInt("2015nov"),    //2015
+parseInt(""),          //NaN
+parseInt("0xA"),       //10(十六进制)
+parseInt(20.15),       //20
+parseInt(-20.15),      //-20
+parseInt("070");       //56(八进制数)
+```
+#### 2、Math.trunc()  
+Math.trunc() 方法会将数字的小数部分去掉，只保留整数部分。IE不支持。
+```
+Math.trunc(13.37)      // 13
+Math.trunc(42.84)      // 42
+Math.trunc(0.123)      //  0
+Math.trunc(-0.123)     // -0
+Math.trunc("-1.123")   // -1
+Math.trunc(NaN)        // NaN
+Math.trunc("foo")      // NaN
+Math.trunc()           // NaN
+```
+#### 3、~~number
+双波浪线 `~~ `操作符也被称为 `“双按位非”` 操作符。常可代替 `Math.trunc()` 的更快的方法。  
+```
+console.log(~~47.11)   // -> 47
+console.log(~~1.9999)  // -> 1
+console.log(~~3)       // -> 3
+console.log(~~[])      // -> 0
+console.log(~~NaN)     // -> 0
+console.log(~~null)    // -> 0
+```
+#### 4、number|0
+`|` (按位或) 对每一对比特位执行或（OR）操作。
+```
+console.log(20.15|0);          // -> 20
+console.log((-20.15)|0);       // -> -20
+console.log(3000000000.15|0);  // -> -1294967296 🙁
+```
+#### 5、number^0
+`^` (按位异或)，对每一对比特位执行异或（XOR）操作。
+```
+console.log(20.15^0);          // -> 20
+console.log((-20.15)^0);       // -> -20
+console.log(3000000000.15^0);  // -> -1294967296 🙁
+```
+
 ###  持续更新中···
