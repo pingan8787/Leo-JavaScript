@@ -51,4 +51,36 @@ Vue 的日期选择器等input框如果绑定一个函数，这个函数里面�
 ### 7.favicon.icon 问题
 直接放在项目根目录，在 `index.html` 中直接用这个路径即可，这是最简单粗暴好用的方法。
 
+### 8.同级组件之间传递数据
+同级组件之间传递数据
+```
+参考http://blog.csdn.net/wang_meiwei/article/details/75948844
+// 公共中央事件总线 eventBus.js
+import Vue from 'Vue'
+export default new Vue
+```
+
+```
+// 子组件1
+import BUS from '../../assets/js/eventBus.js'
+<span @click="test">测试点击</span>
+methods:{
+    test(){
+        let that = this;
+        BUS.$emit('newEventName','你好这是传递的数据')
+    }
+}
+```
+
+```
+//  子组件2
+import BUS from '../../assets/js/eventBus.js'
+mounted(){
+    let that = this;
+    BUS.$on('newEventName',(data)=>{
+        console.log(data)
+    })
+}
+```
+
 ### 慢慢更新整理....
