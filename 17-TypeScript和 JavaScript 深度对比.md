@@ -3,7 +3,7 @@
 `TypeScript` 和 `JavaScript` 是目前项目开发中较为流行的两种脚本语言，我们已经熟知 `TypeScript` 是 `JavaScript` 的一个超集，但是 `TypeScript` 与 `JavaScript` 之间又有什么样的区别呢？在选择开发语言时，又该如何抉择呢？  
 本文将会深入对比这两种语言，讨论两种语言之间的关联和差异，并概述两种语言各自的优势。  
  
-## 1、JavaScript和的概要介绍
+## 1、JavaScript和TypeScript的概要介绍
 
 ### JavaScript
 `JavaScript` 是一种轻量级的解释性脚本语言，可嵌入到 HTML 页面中，在浏览器端执行，能够实现浏览器端丰富的交互功能，为用户带来流畅多样的用户体验。  
