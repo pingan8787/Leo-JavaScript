@@ -1,7 +1,8 @@
->[原文地址](https://www.cnblogs.com/powertoolsteam/p/`TypeScript`-vs-`JavaScript`.html)
-![js和ts](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/17-1.png?raw=true "js和ts")
+>[原文地址](https://www.cnblogs.com/powertoolsteam/p/`TypeScript`-vs-`JavaScript`.html)  
+
+![js和ts](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/17-1.png?raw=true "js和ts")  
 `TypeScript` 和 `JavaScript` 是目前项目开发中较为流行的两种脚本语言，我们已经熟知 `TypeScript` 是 `JavaScript` 的一个超集，但是 `TypeScript` 与 `JavaScript` 之间又有什么样的区别呢？在选择开发语言时，又该如何抉择呢？  
-本文将会深入对比这两种语言，讨论两种语言之间的关联和差异，并概述两种语言各自的优势。  
+本文将会深入对比这两种语言，讨论两种语言之间的关联和差异，并概述两种语言各自的优势。    
  
 ## 1、JavaScript和TypeScript的概要介绍
 
