@@ -10,31 +10,31 @@
 `JavaScript` 是一种轻量级的解释性脚本语言，可嵌入到 HTML 页面中，在浏览器端执行，能够实现浏览器端丰富的交互功能，为用户带来流畅多样的用户体验。  
 `JavaScript` 是基于对象和事件驱动的，无需特定的语言环境，只需在支持的浏览器上就能运行。  
 `JavaScript` 语言具有以下特点：  
-*`JavaScript` 是一种脚本编写语言，无需编译，只要嵌入 HTML 代码中，就能由浏览器逐行加载解释执行。
-*`JavaScript` 是一种基于对象的语言，可以创建对象同时使用现有对象。但是 `JavaScript` 并不支持其它面向对象语言所具有的继承和重载功能。
-*`JavaScript` 的语法简单，使用的变量为弱类型。
-*`JavaScript` 语言较为安全，仅在浏览器端执行，不会访问本地硬盘数据。
-*`JavaScript` 语言具有动态性。`JavaScript` 是事件驱动的，只根据用户的操作做出相应的反应处理。
-*`JavaScript` 只依赖于浏览器，与操作系统的因素无关。因此 `JavaScript` 是一种跨平台的语言。
-*`JavaScript` 兼容性较好，能够与其他技术（如 XML，REST API 等）一起使用。
+* `JavaScript` 是一种脚本编写语言，无需编译，只要嵌入 HTML 代码中，就能由浏览器逐行加载解释执行。  
+* `JavaScript` 是一种基于对象的语言，可以创建对象同时使用现有对象。但是 `JavaScript` 并不支持其它面向对象语言所具有的继承和重载功能。  
+* `JavaScript` 的语法简单，使用的变量为弱类型。  
+* `JavaScript` 语言较为安全，仅在浏览器端执行，不会访问本地硬盘数据。  
+* `JavaScript` 语言具有动态性。`JavaScript` 是事件驱动的，只根据用户的操作做出相应的反应处理。  
+* `JavaScript` 只依赖于浏览器，与操作系统的因素无关。因此 `JavaScript` 是一种跨平台的语言。  
+* `JavaScript` 兼容性较好，能够与其他技术（如 XML，REST API 等）一起使用。  
 
 ### TypeScript
 `TypeScript` 是 Microsoft 开发和维护的一种面向对象的编程语言。它是 `JavaScript` 的超集，包含了 `JavaScript` 的所有元素，可以载入 `JavaScript` 代码运行，并扩展了 `JavaScript` 的语法。  
 `TypeScript` 具有以下特点：
-*`TypeScript` 是 Microsoft 推出的开源语言，使用 Apache 授权协议
-*`TypeScript` 增加了静态类型、类、模块、接口和类型注解
-*`TypeScript` 可用于开发大型的应用
-`TypeScript` 易学易于理解
+* `TypeScript` 是 Microsoft 推出的开源语言，使用 Apache 授权协议   
+* `TypeScript` 增加了静态类型、类、模块、接口和类型注解  
+* `TypeScript` 可用于开发大型的应用  
+*`TypeScript` 易学易于理解  
  
 ### 2、JavaScript和TypeScript的主要差异
 `TypeScript` 可以使用 `JavaScript` 中的所有代码和编码概念，`TypeScript` 是为了使 `JavaScript` 的开发变得更加容易而创建的。例如，`TypeScript` 使用类型和接口等概念来描述正在使用的数据，这使开发人员能够快速检测错误并调试应用程序  
-*`TypeScript` 从核心语言方面和类概念的模塑方面对 `JavaScript` 对象模型进行扩展。
-*`JavaScript` 代码可以在无需任何修改的情况下与 `TypeScript` 一同工作，同时可以使用编译器将 `TypeScript` 代码转换为 `JavaScript`。
-*`TypeScript` 通过类型注解提供编译时的静态类型检查。
-*`TypeScript` 中的数据要求带有明确的类型，`JavaScript`不要求。
-*`TypeScript` 为函数提供了缺省参数值。
-*`TypeScript` 引入了 `JavaScript` 中没有的“类”概念。
-*`TypeScript` 中引入了模块的概念，可以把声明、数据、函数和类封装在模块中。
+* `TypeScript` 从核心语言方面和类概念的模塑方面对 `JavaScript` 对象模型进行扩展。  
+* `JavaScript` 代码可以在无需任何修改的情况下与 `TypeScript` 一同工作，同时可以使用编译器将 `TypeScript` 代码转换为 `JavaScript`。  
+* `TypeScript` 通过类型注解提供编译时的静态类型检查。  
+* `TypeScript` 中的数据要求带有明确的类型，`JavaScript`不要求。  
+* `TypeScript` 为函数提供了缺省参数值。  
+* `TypeScript` 引入了 `JavaScript` 中没有的“类”概念。  
+* `TypeScript` 中引入了模块的概念，可以把声明、数据、函数和类封装在模块中。  
  
 ### TypeScript的优势
 下面列举 `TypeScript` 相比于 `JavaScript` 的显著优势：  
