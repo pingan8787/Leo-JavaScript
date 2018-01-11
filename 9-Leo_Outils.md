@@ -1,12 +1,7 @@
-### 一、介绍
 慢慢将自己积累的常用业务代码整理起来，以后经验丰富再回头修改完善，而且平常也会用得到。
 还有一些是常用的API整理。
 
-### 二、代码部分
-此部分暂时部分顺序。
-
-
-#### 1、金额转换
+## 1、金额转换
 将类似 `12345` 元转换成 `1.23万` 元：
 ```
 // 参数 ： num => 需要转换的金额
@@ -21,7 +16,7 @@ export function num2string(num) {
 }
 ```
 
-### 2、获取第N天的日期
+## 2、获取第N天的日期
 输入需要从今天往前推 `N` 天，即可获取那一天的时间，格式如 `2017-11-11`。  
 如果需要修改时间 `连接符` 直接在代码修改。
 ```
@@ -54,7 +49,7 @@ export function getBeforeDate(num) {
 let time = new Date(getBeforeDate(7));  // 返回七天前的时间对象。
 ```
 
-### 3、转换数字为整十整百
+## 3、转换数字为整十整百
 实现效果如：  
 传入 `'down'` 参数，返回格式如： `123.456 => 100` ；  
 传入 `'up'` 参数，返回格式如： `123.456 => 200` ；  
@@ -71,7 +66,7 @@ export function setNumberToInt(data, type) {
 }
 ```
 
-### 4、本地时间转换
+## 4、本地时间转换
 就是官方API而已：
 ```
 let a = new Date();
@@ -81,7 +76,7 @@ a.toLocaleTimeString() ;      // "上午9:46:54"
 a.toLocaleString() ;          // "2017/8/16 上午9:46:54"
 ```
 
-### 5、序列化对象
+## 5、序列化对象
 主要就是JSON类型和字符串的转换：  
 ```
 // 参数 data => 需要转换的内容
@@ -89,7 +84,7 @@ JSON.stringify(data)          // JSON对象 => 字符串
 JSON.parse(data)              // 字符串 => JSON对象
 ```
 
-### 6、数组排序
+## 6、数组排序
 使用 `sort()` 方法。   
 ```
 var a= [ 'banana' , ' chree' , 'apple']; 
@@ -100,18 +95,18 @@ b.sort(function( a,b ){       // b = [3,4,11,22]
 })
 ```
 
-### 7、简单求一个纯数字数组中最大最小值
+## 7、简单求一个纯数字数组中最大最小值
 ```
 Math.max.apply(null,[3,2,5,7]);
 Math.min.apply(null,[3,2,5,7]);
 ```
 
-### 8、获取某一天0点0分0秒
+## 8、获取某一天0点0分0秒
 ```
 let d = new Date( 2017 , 12 , 01 )
 ```
 
-### 9、获取并设置滚动条距顶部的距离
+## 9、获取并设置滚动条距顶部的距离
 ```
 export function getScroll(){
     return (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
@@ -122,7 +117,7 @@ export function setScroll(value){
 }
 ```
 
-### 10、判断一个对象是否是空对象
+## 10、判断一个对象是否是空对象
 ```
 let c = {}
 if(JSON.stringfy(c) == '{}'){
@@ -130,7 +125,7 @@ if(JSON.stringfy(c) == '{}'){
 }
 ```
 
-### 11、简单数组去重
+## 11、简单数组去重
 这是 `ES6` 的新特性。   
 仅去重： 
 ```
@@ -145,7 +140,7 @@ let new_arr4 = [...new Set(arr1)].sort(function(a,b){return a-b});    // {Array}
 let new_arr5 = [...new Set(arr1)].sort(function(a,b){return b-a});    // {Array} [6,5,4,3,2,1]
 ```
 
-### 12、获取某天0点0分0秒到第二天0点0分0秒
+## 12、获取某天0点0分0秒到第二天0点0分0秒
 这是项目业务中用到的，用在查询数据库用户列表中所有今天注册用户的列表，也可以用在查询某一天，或某个时间段的内容。  
 ```
 let today = '2017-12-07';
@@ -164,7 +159,7 @@ console.log(zeroTime)              // Thu Dec 07 2017 00:00:00 GMT+0800 (中国�
 console.log(nextDayZeroTime)       // Fri Dec 08 2017 00:00:00 GMT+0800 (中国标准时间)
 ```
 
-### 13、判断是否是邮箱地址
+## 13、判断是否是邮箱地址
 参数：{String} str  
 返回：{Boolean}  
 ```
@@ -176,7 +171,7 @@ isEmail('aa@bb.cc');     // true
 isEmail('aa.bb@cc');     // false
 ```
 
-### 14、判断是否为身份证号
+## 14、判断是否为身份证号
 参数：{String|Number} str  
 返回：{Boolean}  
 ```
@@ -185,7 +180,7 @@ function isIdCard(str) {
 }
 ```
 
-### 15、判断是否为手机号
+## 15、判断是否为手机号
 参数：{String|Number} str  
 返回：{Boolean}  
 ```
@@ -194,7 +189,7 @@ function isPhoneNum(str) {
 }
 ```
 
-### 16、判断是否为URL地址
+## 16、判断是否为URL地址
 参数：{String} str  
 返回：{Boolean}  
 ```
@@ -203,7 +198,7 @@ function isUrl(str) {
 }
 ```
 
-### 17、现金转大写
+## 17、现金转大写
 参数：{Number} str  
 返回：{String}  
 ```
@@ -239,7 +234,7 @@ function digitUppercase(n) {
 };
 ```
 
-### 18、回到页面顶端
+## 18、回到页面顶端
 方法一：用 `<a href="#"></a>`  
 方法二：
 ```
@@ -248,8 +243,8 @@ function backtop(){
 }
 ```
 
-### 19、ES7/8新特性
-#### Array.prototype.includes()方法
+## 19、ES7/8新特性
+## Array.prototype.includes()方法
 `includes()` 的作用，是查找一个值在不在数组里，若在，则返回 `true` ，反之返回 `false` 。 基本用法：  
 ```
 ['a', 'b', 'c'].includes('a')         // true
@@ -269,8 +264,8 @@ function backtop(){
 ```
 
 
-### 20、常用的直接取整方法
-#### 1、parseInt()  
+## 20、常用的直接取整方法
+## 1、parseInt()  
 直接取整就是舍去小数部分。
 ```
 arseInt("2015nov"),    //2015
@@ -280,7 +275,7 @@ parseInt(20.15),       //20
 parseInt(-20.15),      //-20
 parseInt("070");       //56(八进制数)
 ```
-#### 2、Math.trunc()  
+## 2、Math.trunc()  
 Math.trunc() 方法会将数字的小数部分去掉，只保留整数部分。IE不支持。
 ```
 Math.trunc(13.37)      // 13
@@ -292,7 +287,7 @@ Math.trunc(NaN)        // NaN
 Math.trunc("foo")      // NaN
 Math.trunc()           // NaN
 ```
-#### 3、~~number
+## 3、~~number
 双波浪线 `~~ `操作符也被称为 `“双按位非”` 操作符。常可代替 `Math.trunc()` 的更快的方法。  
 ```
 console.log(~~47.11)   // -> 47
@@ -302,21 +297,21 @@ console.log(~~[])      // -> 0
 console.log(~~NaN)     // -> 0
 console.log(~~null)    // -> 0
 ```
-#### 4、number|0
+## 4、number|0
 `|` (按位或) 对每一对比特位执行或（OR）操作。
 ```
 console.log(20.15|0);           // -> 20
 console.log((-20.15)|0);        // -> -20
 console.log(3000000000.15|0);   // -> -1294967296
 ```
-#### 5、number^0
+## 5、number^0
 `^` (按位异或)，对每一对比特位执行异或（XOR）操作。
 ```
 console.log(20.15^0);           // -> 20
 console.log((-20.15)^0);        // -> -20
 console.log(3000000000.15^0);   // -> -1294967296
 ```
-#### 6、number<<0
+## 6、number<<0
 `<<` (左移) 操作符会将第一个操作数向左移动指定的位数。向左被移出的位被丢弃，右侧用 0 补充。
 ``` 
 console.log(20.15 < < 0);       // -> 20
@@ -324,8 +319,8 @@ console.log((-20.15) < < 0);    //-20
 console.log(3000000000.15<<0);  // -> -1294967296
 ```
 
-### 21、舍入舍去取整
-#### 1、四舍五入 Math.round(number)
+## 21、舍入舍去取整
+### a、四舍五入 Math.round(number)
 Math.round() 是 Math 对象中的一个方法，将数值四舍五入为最接近的整数。
 ```
 console.log(Math.round(20.1));   // -> 20
@@ -335,7 +330,7 @@ console.log(Math.round(-20.1));  // -> -20
 console.log(Math.round(-20.5));  // -> -20 注意这里是-20而不是-21
 console.log(Math.round(-20.9));  // -> -21
 ```
-#### 2、向下取整 Math.floor(number)
+### b、向下取整 Math.floor(number)
 Math.floor()这个方法取向下最接近的整数。
 ```
 console.log(Math.floor(20.1));   // -> 20
@@ -345,7 +340,7 @@ console.log(Math.floor(-20.1));  // -> -21
 console.log(Math.floor(-20.5));  // -> -21
 console.log(Math.floor(-20.9));  // -> -21
 ```
-#### 3、向上取整 Math.ceil(number)
+### c、向上取整 Math.ceil(number)
 Math.ceil()这个方法取向上最接近的整数。
 ```
 console.log(Math.ceil(20.1));   // -> 21
@@ -356,4 +351,34 @@ console.log(Math.ceil(-20.5));  // -> -20
 console.log(Math.ceil(-20.9));  // -> -20
 ```
 
-###  持续更新中···
+## 22、for..in 和 for..of
+1-推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
+2-for...in循环出的是key，for...of循环出的是value
+3-注意，for...of是ES6新引入的特性。修复了ES5引入的for...in的不足
+4-for...of不能循环普通的对象，需要通过和Object.keys()搭配使用
+
+## 23、jquery等库引入失败
+原因有可能是jquery内部对全局的错误判断导致，就像我在用 `Electron` 开发桌面应用时引入 `jquery` 就遇到这样的问题，解决方法是这样写：  
+```
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+```
+
+## 24、多个ajax请求会出现异步情况，可以使用async/await解决
+```
+async function fun1 (){
+    let data1 = await fun2()
+    $.get(.....)  // ajax请求
+}
+async function fun2 (){
+    let result;
+    await $.get(url,(data)=>{    // ajax请求
+        result = Promise.resolve(data)
+    })
+    retrun result
+}
+```
+
+##  持续更新中···
+
+
