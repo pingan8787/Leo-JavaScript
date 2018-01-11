@@ -14,7 +14,7 @@
     </body>
     
     <script type="text/javascript">
-        var wsServer = "ws://***.**.**.**:****";
+        var wsServer = "ws://***.**.**.**:****";  // 这里填写WebSocket地址和端口号
         var websocket = new WebSocket(wsServer);
         websocket.onopen = function (evt) {
             console.log(evt)
