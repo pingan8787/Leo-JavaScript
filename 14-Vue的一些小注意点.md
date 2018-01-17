@@ -83,4 +83,23 @@ mounted(){
 }
 ```
 
+### 9、关于Vue中修改数组的值后，视图无法更新的问题
+> 具体参考 [vue中修改了数据但视图无法更新的情况](https://www.jianshu.com/p/9990226a892e)  
+
+出现这个问题的原因很简单，因为Vue无法观测到数组具体索引设置数值的情况。具体：
+如通过 `v-for` 遍历数组，并使用如 `arr[0].xx = xx` 更改数据，则vue无法观测。  
+* 1、使用Vue包装的数组操作函数去操作数组，数据变动后，Vue会观测到：   
+  通常方法有： `push()`、 `pop()`、 `shift()`、 `unshift()`、 `splice()`、 `sort()`、 `reverse()`。  
+  Vue2.x还添加一个观测方法： `Vue.set( items , index , newValues)`。  
+  还有 `filter()` , `concat()` , `slice()`。  
+
+* 2、Vue不能观测的情况：  
+  当你利用索引直接设置一个项时，`vm.items[indexOfItem] = newValue`     
+  当你修改数组的长度时，例如： `vm.items.length = newLength`    
+
+解决办法:   
+```
+Vue.set(this.gc,0,{name:'lisi',age:22}) //这样就能被vue监控到，更新视图 
+```
+
 ### 慢慢更新整理....
