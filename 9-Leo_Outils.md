@@ -379,6 +379,47 @@ async function fun2 (){
 }
 ```
 
+## 25、WebSocket测试代码
+这是我拿来测试WebSocket接口的代码。  
+```
+<html>
+    <head>
+        <title>socket测试</title>
+        <meta charset="utf-8">
+    </head>
+    <style>
+        #ci{border:1px solid blue;}
+    </style>
+    <body>
+        <div id="ci"></div>
+    </body>
+    
+    <script type="text/javascript">
+        var wsServer = "ws://103.24.81.80:57634";
+        var websocket = new WebSocket(wsServer);
+        websocket.onopen = function (evt) {
+            console.log(evt)
+            console.log("开始连接.");
+        };
+
+        websocket.onclose = function (evt) {
+            console.log(evt)
+            console.log("连接关闭");
+        };
+
+        websocket.onmessage = function (evt) {
+            console.log(evt)
+            console.log('接收数据: ' + evt.data);
+        };
+
+        websocket.onerror = function (evt, e) {
+            console.log(evt)
+            console.log('连接错误: ' + evt.data);
+        };
+    </script>
+</html>
+```
+
 ##  持续更新中···
 
 
