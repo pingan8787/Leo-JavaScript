@@ -420,6 +420,64 @@ async function fun2 (){
 </html>
 ```
 
+## 26、创建对象的三种方法
+第一种方式，字面量  
+```
+var o1 = {name: "o1"}
+```
+第二种方式，通过构造函数  
+```
+var o2 = new Object({name: "o2"})
+var M = function(name){ this.name = name }
+var o3 = new M("o3")
+```
+第三种方式，Object.create  
+```
+var  p = {name: "p"}
+var o4 = Object.create(p)
+```
+新创建的对o4的原型就是p，同时o4也拥有了属性name
+
+## 27、JS实现继承的几种方式
+借用构造函数实现继承
+```
+function Parent1(){
+    this.name = "parent1"
+}
+function Child1(){
+    Parent1.call(this);
+    this.type = "child1";
+}
+```
+缺点：Child1无法继承Parent1的原型对象，并没有真正的实现继承（部分继承）。  
+
+借用原型链实现继承
+```
+function Parent2(){
+    this.name = "parent2";
+    this.play = [1,2,3];
+}
+function Child2(){
+    this.type = "child2";
+}
+Child2.prototype = new Parent2();
+```
+缺点：原型对象的属性是共享的。   
+
+组合式继承
+```
+function Parent3(){
+    this.name = "parent3";
+    this.play = [1,2,3];
+}
+function Child3(){
+    Parent3.call(this);
+    this.type = "child3";
+}
+Child3.prototype = Object.create(Parent3.prototype);
+Child3.prototype.constructor = Child3;
+```
+
 ##  持续更新中···
 
 
