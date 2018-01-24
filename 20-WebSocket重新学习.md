@@ -300,24 +300,50 @@ Jackson, "Talking to Yourself for Fun and Profit", 2010,
 3. **代理服务器** 将协议升级请求转发到 **邪恶服务器**。
 4. **邪恶服务器** 同意连接，**代理服务器** 将响应转发给 **攻击者**。
 
-由于 upgrade 的实现上有缺陷，代理服务器 以为之前转发的是普通的HTTP消息。因此，当协议服务器 同意连接，代理服务器 以为本次会话已经结束。
-攻击步骤二：
+由于 **upgrade** 的实现上有缺陷，**代理服务器** 以为之前转发的是普通的HTTP消息。因此，当**协议服务器** 同意连接，**代理服务器** 以为本次会话已经结束。  
 
-攻击者 在之前建立的连接上，通过WebSocket的接口向 邪恶服务器 发送数据，且数据是精心构造的HTTP格式的文本。其中包含了 正义资源 的地址，以及一个伪造的host（指向正义服务器）。（见后面报文）
-请求到达 代理服务器 。虽然复用了之前的TCP连接，但 代理服务器 以为是新的HTTP请求。
-代理服务器 向 邪恶服务器 请求 邪恶资源。
-邪恶服务器 返回 邪恶资源。代理服务器 缓存住 邪恶资源（url是对的，但host是 正义服务器 的地址）。
+攻击步骤二：  
+1. `攻击者` 在之前建立的连接上，通过WebSocket的接口向` 邪恶服务器` 发送数据，且数据是精心构造的HTTP格式的文本。其中包含了 `义资源` 的地址，以及一个伪造的host（指向`正义服务器`）。（见后面报文）
+2. 请求到达 `代理服务器` 。虽然复用了之前的TCP连接，但 `代理服务器` 以为是新的HTTP请求。
+3. `代理服务器` 向 `邪恶服务`器` 请求 `邪恶资源`。
+4. `邪恶服务器` 返回 `邪恶资源`。`代理服务器 `缓存住 `邪恶资源`（url是对的，但host是` 正义服务器` 的地址）。
 
-到这里，受害者可以登场了：
+到这里，受害者可以登场了：  
 
-受害者 通过 代理服务器 访问 正义服务器 的 正义资源。
-代理服务器 检查该资源的url、host，发现本地有一份缓存（伪造的）。
-代理服务器 将 邪恶资源 返回给 受害者。
-受害者 卒。
+1. 受害者 通过 代理服务器 访问 正义服务器 的 正义资源。
+2. 代理服务器 检查该资源的url、host，发现本地有一份缓存（伪造的）。
+3. 代理服务器 将 邪恶资源 返回给 受害者。
+4. 受害者 卒。
 
 附：前面提到的精心构造的“HTTP请求报文”。
+```
 Client → Server:
 POST /path/of/attackers/choice HTTP/1.1 Host: host-of-attackers-choice.com Sec-WebSocket-Key: <connection-key>
 Server → Client:
 HTTP/1.1 200 OK
 Sec-WebSocket-Accept: <connection-key>
+```
+
+## 2、当前解决方案
+最初的提案是对数据进行加密处理。基于安全、效率的考虑，最终采用了折中的方案：对数据载荷进行掩码处理。  
+需要注意的是，这里只是限制了浏览器对数据载荷进行掩码处理，但是坏人完全可以实现自己的WebSocket客户端、服务端，不按规则来，攻击可以照常进行。  
+但是对浏览器加上这个限制后，可以大大增加攻击的难度，以及攻击的影响范围。如果没有这个限制，只需要在网上放个钓鱼网站骗人去访问，一下子就可以在短时间内展开大范围的攻击。  
+
+# 十、写在后面
+WebSocket可写的东西还挺多，比如WebSocket扩展。客户端、服务端之间是如何协商、使用扩展的。WebSocket扩展可以给协议本身增加很多能力和想象空间，比如数据的压缩、加密，以及多路复用等。
+篇幅所限，这里先不展开，感兴趣的同学可以留言交流。文章如有错漏，敬请指出。
+
+# 十一、相关链接
+[RFC6455：websocket规范](https://tools.ietf.org/html/rfc6455)
+[规范：数据帧掩码细节](https://tools.ietf.org/html/rfc6455#section-5.3)
+[规范：数据帧格式](https://tools.ietf.org/html/rfc6455#section-5.1)
+[server-example](https://github.com/websockets/ws#server-example)
+[编写websocket服务器](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers)
+[对网络基础设施的攻击（数据掩码操作所要预防的事情）](https://tools.ietf.org/html/rfc6455#section-10.3)
+[Talking to Yourself for Fun and Profit（含有攻击描述）](https://link.juejin.im/?target=http%3A%2F%2Fw2spconf.com%2F2011%2Fpapers%2Fwebsocket.pdf)
+[What is Sec-WebSocket-Key for?](https://stackoverflow.com/questions/18265128/what-is-sec-websocket-key-for)
+[10.3.  Attacks On Infrastructure (Masking)](https://tools.ietf.org/html/rfc6455#section-10.3)
+[Talking to Yourself for Fun and Profit](https://tools.ietf.org/html/rfc6455#section-10.3)
+[Why are WebSockets masked?](https://stackoverflow.com/questions/33250207/why-are-websockets-masked)
+[How does websocket frame masking protect against cache poisoning?](https://security.stackexchange.com/questions/36930/how-does-websocket-frame-masking-protect-against-cache-poisoning)
+[What is the mask in a WebSocket frame?](https://stackoverflow.com/questions/14174184/what-is-the-mask-in-a-websocket-frame)
