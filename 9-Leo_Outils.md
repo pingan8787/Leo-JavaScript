@@ -478,6 +478,44 @@ Child3.prototype = Object.create(Parent3.prototype);
 Child3.prototype.constructor = Child3;
 ```
 
+## 28、随机码生成（toString详解）
+```
+let randomWord = function(count){
+    return Math.random().toString(count).substring(2);
+}
+randomWord(10)    // "5307688618548219"
+randomWord(14)    // "1dd66dc107054c"
+randomWord(36)    // "qxaw88x85u"
+```
+
+## 29、Number对象的5个方法介绍
+```
+num.toString(n)         // 把数字转换为字符串，使用指定的基数。  n可选，2~36 若写2 则转换成二进制，默认10
+let a = 16;
+a.toString(2);          // 10000
+a.toString(36);         // g
+
+num.toLocaleString();   // 把一个 Number 对象转换为本地格式的字符串。
+let b = 123456789;
+b.toLocaleString();     // 123,456,789
+
+num.toFixed(n);         // n必填 0~20 把Number四舍五入为n位小数的数字。
+let c = 123.456 ;
+c.toFixed(2) ;          // 123.46
+
+num.toExponential(n);   // n必填 0~20 方法可把对象的值转换成指数计数法。
+let d = 1234.5;
+d. toExponential (3);   //  1.300e+1
+
+num. toPrecision(n);    // n必填 1~21 作为被转换为指数计数法的最小位数， 方法可在对象的值超出指定位数时将其转换为指数计数法。
+let e = 123456;
+e.toPrecision(3);       //  1.23e+5
+e1.toPrecision(7);      //  123456.0
+
+num.valueOf();          // 将str类型数字转换成number类型数字
+let f = '123456';            
+f.valueOf();            // 123456
+```
+
+
 ##  持续更新中···
-
-
