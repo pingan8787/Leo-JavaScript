@@ -11,8 +11,8 @@
 
 ### 2、VueJS
 * [4-基于Vue配置axios](https://github.com/pingan8787/Leo-JavaScript/blob/master/4-%E5%9F%BA%E4%BA%8EVue%E9%85%8D%E7%BD%AEaxios.md)  
-* [5-* [原创]VUE中实现通用js函数库封装](https://github.com/pingan8787/Leo-JavaScript/blob/master/5-%5B%E5%8E%9F%E5%88%9B%5DVUE%E4%B8%AD%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8js%E5%87%BD%E6%95%B0%E5%BA%93%E5%B0%81%E8%A3%85.md)  
-* [7-* [原创]缩小Vuejs打包体积方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/7-%5B%E5%8E%9F%E5%88%9B%5D%E7%BC%A9%E5%B0%8FVuejs%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E6%96%B9%E6%B3%95.md)  
+* [5-[原创]VUE中实现通用js函数库封装](https://github.com/pingan8787/Leo-JavaScript/blob/master/5-%5B%E5%8E%9F%E5%88%9B%5DVUE%E4%B8%AD%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8js%E5%87%BD%E6%95%B0%E5%BA%93%E5%B0%81%E8%A3%85.md)  
+* [7-[原创]缩小Vuejs打包体积方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/7-%5B%E5%8E%9F%E5%88%9B%5D%E7%BC%A9%E5%B0%8FVuejs%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E6%96%B9%E6%B3%95.md)  
 * [8-vue-cli2的webpack配置分析](https://github.com/pingan8787/Leo-JavaScript/blob/master/8-vue-cli2%E7%9A%84webpack%E9%85%8D%E7%BD%AE%E5%88%86%E6%9E%90.md)  
 * [14-Vue的一些小注意点](https://github.com/pingan8787/Leo-JavaScript/blob/master/14-Vue%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%B3%A8%E6%84%8F%E7%82%B9.md)  
 
