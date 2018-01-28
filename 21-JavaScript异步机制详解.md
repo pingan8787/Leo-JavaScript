@@ -144,10 +144,10 @@ click
 click
 ```
 
-## 五、参考文章
-[JavaScript：彻底理解同步、异步和事件循环(Event Loop)](https://segmentfault.com/a/1190000004322358)
-[从setTimeout说事件循环模型](http://www.alloyteam.com/2015/10/turning-to-javascript-series-from-settimeout-said-the-event-loop-model/)
-[JavaScript单线程和异步机制](https://github.com/pramper/Blog/issues/4)
-[JavaScript的单线程机制](https://github.com/huangtengfei/blog/issues/15)
-[JavaScript单线程异步的背后——事件循环机制](https://zhuanlan.zhihu.com/p/27035708)
-[JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+## 五、参考文章  
+[JavaScript：彻底理解同步、异步和事件循环(Event Loop)](https://segmentfault.com/a/1190000004322358)  
+[从setTimeout说事件循环模型](http://www.alloyteam.com/2015/10/turning-to-javascript-series-from-settimeout-said-the-event-loop-model/)  
+[JavaScript单线程和异步机制](https://github.com/pramper/Blog/issues/4)  
+[JavaScript的单线程机制](https://github.com/huangtengfei/blog/issues/15)  
+[JavaScript单线程异步的背后——事件循环机制](https://zhuanlan.zhihu.com/p/27035708)  
+[JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)  
