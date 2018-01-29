@@ -31,4 +31,6 @@ JS编程实践
 ![JS编程实践](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word8.png?raw=true)
 
 xmind源文件已经上传到github，喜欢的就给个Star吧！（^_^）github.com/lidaguang19…  
-作者：小小程序猿（^_^）出处：www.cnblogs.com/lidgblogs/欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。
+作者：小小程序猿（^_^）  
+出处：www.cnblogs.com/lidgblogs/  
+欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。
