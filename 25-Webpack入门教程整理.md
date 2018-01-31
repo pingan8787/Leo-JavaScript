@@ -35,7 +35,25 @@ module.exports = {
 ## 3、loader
 `loader` 作用是将所有文件类型转换成webpack能处理的有效模块，然后就可以通过webpack将文件打包。  
 本质上，webpack loader将所有类型文件转换成应用程序的依赖图可以直接引用的模块。  
-** 特殊 ** 只有webpack支持 `import` 导入任何类型模块，如 `.css`,`.vue` 等文件。  
++ 特殊 + 只有webpack支持 `import` 导入任何类型模块，如 `.css`,`.vue` 等文件。  
 `webpack` 配置 `loader`的两个目标：  
   * 1.识别需要对应 `loader` 处理的文件。(使用`test`属性)  
   * 2.转换文件使其能够添加到依赖图并最终添加到 `bunlde` 中。(使用`use`属性)
+
+```javascript
+// webpack.config.js
+const path = require('path');
+const config = {
+  entry: './path/to/my/entry/file.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'my-first-webpack.bundle.js'
+  },
+  module: {
+    rules: [
+      { test: /\.txt$/, use: 'raw-loader' }
+    ]
+  }
+}
+module.exports = config;
+```
