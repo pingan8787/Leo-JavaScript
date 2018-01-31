@@ -95,7 +95,6 @@ module.exports = config;
 webpack的 `entry` 属性不仅可以配置单个入口，还可以配置多个入口：
 
 ## 1、单个入口(简写)配置
-### 通常语法 
 用法：`entry: string|Array<string>`  
 简单使用 ：  
 ```javascript
@@ -114,6 +113,7 @@ const config = {
 ```
 若向 `entry` 传入 `[文件路径(file path)数组]`，将创建 `多个主入口`，常常用在需要同时注入多个文件，并将它们的依赖导向(graph)到一个`chunk`时。  
 
+## 2、多个入口(简写)配置
 ### 对象语法
 用法：`entry: {[entryChunkName: string]: string|Array<string>}`  
 ```javascript
@@ -145,3 +145,18 @@ const config = {
 // 为了支持提供更佳 vendor 分离能力的 DllPlugin，考虑移除该场景。
 ```
 
+#### (2)多页面应用程序
+```javascript
+// webpack.config.js
+const config = {
+  entry: {
+    pageOne: './src/pageOne/index.js',
+    pageTwo: './src/pageTwo/index.js',
+    pageThree: './src/pageThree/index.js'
+  }
+};
+// 这样告诉 webpack 需要 3 个独立分离的依赖图
+// 使用 CommonsChunkPlugin 为每个页面间的应用程序共享代码创建 bundle。
+// 由于入口起点增多，多页应用能够复用入口起点之间的大量代码/模块，从而可以极大地从这些技术中受益。
+// 根据经验：每个 HTML 文档只使用一个入口起点。 
+```
