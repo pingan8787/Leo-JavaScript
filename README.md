@@ -15,13 +15,22 @@
 * [7-[原创]缩小Vuejs打包体积方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/7-%5B%E5%8E%9F%E5%88%9B%5D%E7%BC%A9%E5%B0%8FVuejs%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E6%96%B9%E6%B3%95.md)  
 * [8-vue-cli2的webpack配置分析](https://github.com/pingan8787/Leo-JavaScript/blob/master/8-vue-cli2%E7%9A%84webpack%E9%85%8D%E7%BD%AE%E5%88%86%E6%9E%90.md)  
 * [14-Vue的一些小注意点](https://github.com/pingan8787/Leo-JavaScript/blob/master/14-Vue%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%B3%A8%E6%84%8F%E7%82%B9.md)  
+* [24-Vue折腾记-给Axios做个挺靠谱的封装（报错,鉴权,跳转,拦截,提示）](https://github.com/pingan8787/Leo-JavaScript/blob/master/24-Vue%E6%8A%98%E8%85%BE%E8%AE%B0-%E7%BB%99Axios%E5%81%9A%E4%B8%AA%E6%8C%BA%E9%9D%A0%E8%B0%B1%E7%9A%84%E5%B0%81%E8%A3%85%EF%BC%88%E6%8A%A5%E9%94%99%2C%E9%89%B4%E6%9D%83%2C%E8%B7%B3%E8%BD%AC%2C%E6%8B%A6%E6%88%AA%2C%E6%8F%90%E7%A4%BA%EF%BC%89.md)
 
 ### 3、ES6/ES7/ES8...
 * [3-Promise简单用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/3-Promise%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95.md)  
 * [13-ES7和ES8的一点新东西](https://github.com/pingan8787/Leo-JavaScript/blob/master/13-ES7%E5%92%8CES8%E7%9A%84%E4%B8%80%E7%82%B9%E6%96%B0%E4%B8%9C%E8%A5%BF.md)  
 * [19-ES6的7个实用技巧](https://github.com/pingan8787/Leo-JavaScript/blob/master/19-ES6%E7%9A%847%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7.md)  
 
-### 4、细节知识点
+### 4、Webpack
+* [25-Webpack入门教程整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/25-Webpack%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
+* [26-Webpack常用配置整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/26-Webpack%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
+
+### 5、WebSocket
+* [18-websocket常用demo](https://github.com/pingan8787/Leo-JavaScript/blob/master/18-websocket%E5%B8%B8%E7%94%A8demo.md)  
+* [20-WebSocket重新学习](https://github.com/pingan8787/Leo-JavaScript/blob/master/20-WebSocket%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0.md)  
+
+### 6、细节知识点
 * [6-关于js的作用域和声明提前](https://github.com/pingan8787/Leo-JavaScript/blob/master/6-%E5%85%B3%E4%BA%8Ejs%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%A3%B0%E6%98%8E%E6%8F%90%E5%89%8D.md)  
 * [10-知识点整理1](https://github.com/pingan8787/Leo-JavaScript/blob/master/10-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%861.md)  
 * [11-20个超级常用的正则表达式](https://github.com/pingan8787/Leo-JavaScript/blob/master/11-20%E4%B8%AA%E8%B6%85%E7%BA%A7%E5%B8%B8%E7%94%A8%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md)  
@@ -29,8 +38,5 @@
 * [17-TypeScript和 JavaScript 深度对比](https://github.com/pingan8787/Leo-JavaScript/blob/master/17-TypeScript%E5%92%8C%20JavaScript%20%E6%B7%B1%E5%BA%A6%E5%AF%B9%E6%AF%94.md)  
 * [21-JavaScript异步机制详解](https://github.com/pingan8787/Leo-JavaScript/blob/master/21-JavaScript%E5%BC%82%E6%AD%A5%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3.md)  
 * [22-JavaScript中有趣的区分同步和异步Ajax](https://github.com/pingan8787/Leo-JavaScript/blob/master/22-JavaScript%E4%B8%AD%E6%9C%89%E8%B6%A3%E7%9A%84%E5%8C%BA%E5%88%86%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5Ajax.md)  
-
-### 5、WebSocket
-* [18-websocket常用demo](https://github.com/pingan8787/Leo-JavaScript/blob/master/18-websocket%E5%B8%B8%E7%94%A8demo.md)  
-* [20-WebSocket重新学习](https://github.com/pingan8787/Leo-JavaScript/blob/master/20-WebSocket%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0.md)  
+* [23-JavaScript八张思维导图](https://github.com/pingan8787/Leo-JavaScript/blob/master/23-JavaScript%E5%85%AB%E5%BC%A0%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.md)
 
