@@ -7,28 +7,28 @@
 本系列文章主要参照了Nicholas C. Zakas 的两本著作：《JavaScript高级程序设计（第3版）》及《编写可维护的JavaScript》  
 
 JS基本概念  
-![JS基本概念](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word1.png?raw=true)
+![JS基本概念](http://p3nqtyvgo.bkt.clouddn.com/js_word1.png)
 
 JS操作符  
-![JS操作符](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word2.png?raw=true)
+![JS操作符](http://p3nqtyvgo.bkt.clouddn.com/js_word2.png)
 
 JS基本语句  
-![JS基本语句](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word3.png?raw=true)
+![JS基本语句](http://p3nqtyvgo.bkt.clouddn.com/js_word3.png)
 
 JS数组用法  
-![JS数组用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word4.png?raw=true)
+![JS数组用法](http://p3nqtyvgo.bkt.clouddn.com/js_word4.png)
 
 Date用法  
-![Date用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word5.png?raw=true)
+![Date用法](http://p3nqtyvgo.bkt.clouddn.com/js_word5.png)
 
 JS字符串用法  
-![JS字符串用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word6.png?raw=true)
+![JS字符串用法](http://p3nqtyvgo.bkt.clouddn.com/js_word6.png)
 
 JS编程风格  
-![JS编程风格](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word7.png?raw=true)
+![JS编程风格](http://p3nqtyvgo.bkt.clouddn.com/js_word7.png)
 
 JS编程实践  
-![JS编程实践](https://github.com/pingan8787/Leo-JavaScript/blob/master/Images/js_word8.png?raw=true)
+![JS编程实践](http://p3nqtyvgo.bkt.clouddn.com/js_word8.png)
 
 xmind源文件已经上传到github，喜欢的就给个Star吧！（^_^）github.com/lidaguang19…  
 作者：小小程序猿（^_^）  
