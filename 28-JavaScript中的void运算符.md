@@ -1,7 +1,10 @@
 这里主要介绍下`void运算符`和`逗号运算符`，小知识点也需要记住：   
 
 ## 1、void 运算符
-> [MDN介绍](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void)
+> 查看原文 [MDN介绍](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void)
+> 这个运算符能向期望一个表达式的值是`undefined`的地方插入会产生副作用的表达式。
+> void 运算符通常只用于获取 `undefined` 的原始值，一般使用`void(0)`（等同于`void0`）。在上述情况中，也可以使用全局变量`undefined` 来代替（假定其仍是默认值）。
+
 
 在MDN上的定义是：`void运算符`对给定的表达式进行求值，然后返回`undefined`。  
 使用它来实现立即执行的函数表达式（`IIFE`），如下：  
