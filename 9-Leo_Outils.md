@@ -517,5 +517,44 @@ let f = '123456';
 f.valueOf();            // 123456
 ```
 
+## 30、for循环和语句命名
+为`for循环`命名，然后在`for循环`中的`continue`或`break`能控制指定名称的`for循环`，操作如下：    
+```
+loop1: // 标记 "loop1"
+for (let i = 0; i < 3; i++) { // "loop1"
+   loop2: // 标记 "loop2"
+   for (let j = 0; j < 3; j++) { // "loop2"
+      if (i === 1) {
+         continue loop1; // 继续外层的 "loop1" 循环
+         // break loop1; // 中止外层的 "loop1" 循环
+      }
+      console.log(`i = ${i}, j = ${j}`);
+   }
+}
+/* 
+ * # 输出
+ * i = 0, j = 0
+ * i = 0, j = 1
+ * i = 0, j = 2
+ * i = 2, j = 0
+ * i = 2, j = 1
+ * i = 2, j = 2
+ */
+```
+另外，给语句块命名后，可以在`break`之后使用新命名。  
+```
+foo: {
+  console.log('one');
+  break foo;
+  console.log('这句打印不会被执行');
+}
+console.log('two');
+
+/*
+ * # 输出
+ * one
+ * two
+ */
+ ```
 
 ##  持续更新中···
