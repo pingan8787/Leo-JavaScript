@@ -1,4 +1,4 @@
-这里主要介绍下`void运算符`和`逗号运算符`，小知识点也需要记住：   
+这里主要介绍下`void运算符`，小知识点也需要记住：   
 
 ## 1、void 运算符
 > 查看原文 [MDN介绍](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void)
@@ -33,7 +33,7 @@ const w2 = (function foo(){
 ```js
 void async function (){
     try{
-        const res = await fetch('air.ghost.io);
+        const res = await fetch('air.ghost.io');
         const text = await res.text();
         console.log(text);
     } catch(e){
@@ -45,7 +45,7 @@ void async function (){
 
 (async ()=>{
     try{
-        const res = await fetch('air.ghost.io);
+        const res = await fetch('air.ghost.io');
         const text = await res.text();
         console.log(text);
     } catch(e){
