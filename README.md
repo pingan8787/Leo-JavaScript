@@ -8,6 +8,7 @@
 * [★ 9-常用业务模块代码整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/9-Leo_Outils.md)  
 * [12-javascript开发的一些简写技巧](https://github.com/pingan8787/Leo-JavaScript/blob/master/12-javascript%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%86%99%E6%8A%80%E5%B7%A7.md)  
 * [15-精心收集的48个JavaScript片段，简单理解](https://github.com/pingan8787/Leo-JavaScript/blob/master/15-%E7%B2%BE%E5%BF%83%E6%94%B6%E9%9B%86%E7%9A%8448%E4%B8%AAJavaScript%E7%89%87%E6%AE%B5%EF%BC%8C%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3.md)  
+* [29-关于随机数的一些总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/29-%E5%85%B3%E4%BA%8E%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93.md)
 
 ### 2、VueJS
 * [4-基于Vue配置axios](https://github.com/pingan8787/Leo-JavaScript/blob/master/4-%E5%9F%BA%E4%BA%8EVue%E9%85%8D%E7%BD%AEaxios.md)  
