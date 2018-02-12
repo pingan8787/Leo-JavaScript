@@ -5,6 +5,7 @@
 |---|---
 |E-mail|pingan8787@qq.com
 |博客|www.pingan8787.com
+|微信|pingan8787
 ****
 
 ## 目录
