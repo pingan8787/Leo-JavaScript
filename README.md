@@ -13,7 +13,7 @@
 ### 1、JS业务逻辑实现
 * [1-JavaScript实现页面防抖](https://github.com/pingan8787/Leo-JavaScript/blob/master/1-JavaScript%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E9%98%B2%E6%8A%96.md)  
 * [2-同步返回ajax请求结果方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/2-%E5%90%8C%E6%AD%A5%E8%BF%94%E5%9B%9Eajax%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%9C%E6%96%B9%E6%B3%95.md)  
-* [★ 9-常用业务模块代码整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/9-Leo_Outils.md)  
+* [★ 9-常用业务模块代码整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/9-%E5%B8%B8%E7%94%A8%E4%B8%9A%E5%8A%A1%E6%A8%A1%E5%9D%97%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86.md)  
 * [12-javascript开发的一些简写技巧](https://github.com/pingan8787/Leo-JavaScript/blob/master/12-javascript%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%86%99%E6%8A%80%E5%B7%A7.md)  
 * [15-精心收集的48个JavaScript片段，简单理解](https://github.com/pingan8787/Leo-JavaScript/blob/master/15-%E7%B2%BE%E5%BF%83%E6%94%B6%E9%9B%86%E7%9A%8448%E4%B8%AAJavaScript%E7%89%87%E6%AE%B5%EF%BC%8C%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3.md)  
 * [29-关于随机数的一些总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/29-%E5%85%B3%E4%BA%8E%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93.md)
