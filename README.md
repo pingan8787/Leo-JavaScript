@@ -30,6 +30,7 @@
 * [3-Promise简单用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/3-Promise%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95.md)  
 * [13-ES7和ES8的一点新东西](https://github.com/pingan8787/Leo-JavaScript/blob/master/13-ES7%E5%92%8CES8%E7%9A%84%E4%B8%80%E7%82%B9%E6%96%B0%E4%B8%9C%E8%A5%BF.md)  
 * [19-ES6的7个实用技巧](https://github.com/pingan8787/Leo-JavaScript/blob/master/19-ES6%E7%9A%847%E4%B8%AA%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7.md)  
+* [★ 31-ES6这些就够了](https://github.com/pingan8787/Leo-JavaScript/blob/master/31-ES6%E8%BF%99%E4%BA%9B%E5%B0%B1%E5%A4%9F%E4%BA%86.md)
 
 ### 4、Webpack
 * [25-Webpack入门教程整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/25-Webpack%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
