@@ -11,7 +11,7 @@ function foo(){
  
 foo();
 ```
-下面是IIFE形式的函数调用：   
+下面是`IIFE`形式的函数调用：   
 ```js
 (function foo(){
   var a = 10;
@@ -87,7 +87,7 @@ foo.doOtherThing();
 var foo1 = myModule();
 foo1.doSomeThing();
 ```
-如果需要一个单例模式的模块，那么可以利用IIFE：   
+如果需要一个单例模式的模块，那么可以利用`IIFE`：   
 ```js
 var myModule = (function module(){
   var someThing = "123";
@@ -112,7 +112,7 @@ myModule.doOtherThing();
 ```
 
 ## 6.小结
-IIFE的目的是为了隔离作用域，防止污染全局命名空间。  
+`IIFE`的目的是为了隔离作用域，防止污染全局命名空间。  
 ES6以后也许有更好的访问控制手段（模块？类？），有待研究。  
 
 ### 引用
