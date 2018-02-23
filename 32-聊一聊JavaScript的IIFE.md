@@ -116,5 +116,6 @@ IIFE的目的是为了隔离作用域，防止污染全局命名空间。
 ES6以后也许有更好的访问控制手段（模块？类？），有待研究。  
 
 ### 引用
-> 1 Ben Alman, “Immediately-Invoked Function Expression (IIFE)“.
-> 2 Kyle Simpson, You Don’t Know JS:Scope & Clouses (, 2014).
+> 1 Ben Alman, “Immediately-Invoked Function Expression (IIFE)”.   
+> 2 Kyle Simpson, You Don’t Know JS:Scope & Clouses (, 2014).   
+ 
