@@ -39,7 +39,7 @@ JS只有全局作用域`（global scope）`、函数作用域`（function scope�
 * 列表 2:IIFE写法二
 ```js
 (functionfoo(){  
-    vara=10;  
+    var a=10;  
     console.log(a);  
 }());  
 ```
