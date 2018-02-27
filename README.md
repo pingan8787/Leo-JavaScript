@@ -56,3 +56,4 @@
 ### 7、其他
 * [★ 27-Markdowm语法整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/27-Markdowm%E8%AF%AD%E6%B3%95%E6%95%B4%E7%90%86.md)
 * [2017-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/2017-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md)
+* [2018-全年计划](https://github.com/pingan8787/Leo-JavaScript/blob/master/2018-%E5%85%A8%E5%B9%B4%E8%AE%A1%E5%88%92.md)
