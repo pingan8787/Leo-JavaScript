@@ -22,7 +22,7 @@
 
 # 用法及封装
 * 用法
-```
+```js
 // 服务层 , import默认会找该目录下index.js的文件,这个可能有小伙伴不知道
 // 可以去了解npm的引入和es6引入的理论概念
 import axiosPlugin from "./server"; 
@@ -30,7 +30,7 @@ Vue.use(axiosPlugin);
 ```
 
 * 对axios的封装(AXIOS:index.js)
-```
+```js
 import axios from "axios";
 import qs from "qs";
 import { Message } from "element-ui";
@@ -158,7 +158,7 @@ export default {
 ```
 
 * 路由钩子的调整(Router:index.js)
-```
+```js
 import Vue from "vue";
 import Router from "vue-router";
 import layout from "@/components/layout/layout";
@@ -237,8 +237,7 @@ router.beforeEach((to, from, next) => {
 export default router;
 ```
 axios可配置的一些选项,其他的具体看官网说明哈。  
-```
-
+```js
 export default {
   // 请求地址
   url: "/user",
