@@ -57,7 +57,7 @@ export default new Router({
 [官方文档](https://router.vuejs.org/zh-cn/advanced/lazy-loading.html)
 在 `vue-router` 的模块引入，将默认的 `import .. from ..` 引入方式，修改为一步。如下：
 ```js
-const Foo = () => import('/Foo.vue)
+const Foo = () => import('/Foo.vue')
 ``` 
 然后在 `配置路由` 中，和之前一样使用：
 ```js
