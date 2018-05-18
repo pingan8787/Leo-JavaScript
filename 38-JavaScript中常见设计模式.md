@@ -14,7 +14,7 @@
 * 中介者模式
 * 装饰者模式
 * 状态模式
-* 适配者模式
+* [适配者模式](#14)
 
 ### 各设计模式关键词
 看完了上述设计模式后，把它们的关键词特点罗列出来，以后提到某种设计模式，进而联想相应的关键词和例子，从而心中有数。   
@@ -431,7 +431,7 @@ setCommand(button1, updateCommand)
 3. 打开空调、打开电脑
 
 我们把任务划分为 3 类，效果图如下：  
-![任务划分](https://camo.githubusercontent.com/a44e97b789bd6e25d1aa13b15b12239c0566b015/687474703a2f2f6f71687473637573302e626b742e636c6f7564646e2e636f6d2f39633837636538333535313566336439623630613836613066323838393764392e6a70672d343030)
+![任务划分](https://camo.githubusercontent.com/a44e97b789bd6e25d1aa13b15b12239c0566b015/687474703a2f2f6f71687473637573302e626b742e636c6f7564646e2e636f6d2f39633837636538333535313566336439623630613836613066323838393764392e6a70672d343030)  
 接着看看结合了命令模式和组合模式的具体实现：    
 ```js
 const MacroCommand = function() {
@@ -549,8 +549,698 @@ folder.scan()
 
 ***
 
+## 8.模板方法模式
+> 定义：在继承的基础上，在父类中定义好执行的算法。  
+### 泡茶和泡咖啡
+来对比下泡茶和泡咖啡过程中的异同  
+|步骤 |	泡茶 | 泡咖啡|
+|-|-|-|
+|1 |烧开水 | 烧开水|
+|2 |浸泡茶叶 | 冲泡咖啡|
+|3 |倒入杯子 | 倒入杯子|
+|4 |加柠檬 | 加糖|
 
+可以清晰地看出仅仅在步骤 2 和 4 上有细微的差别，下面着手实现：  
+```js
+const Drinks = function() {}
 
+Drinks.prototype.firstStep = function() {
+  console.log('烧开水')
+}
+
+Drinks.prototype.secondStep = function() {}
+
+Drinks.prototype.thirdStep = function() {
+  console.log('倒入杯子')
+}
+
+Drinks.prototype.fourthStep = function() {}
+
+Drinks.prototype.init = function() { // 模板方法模式核心：在父类上定义好执行算法
+  this.firstStep()
+  this.secondStep()
+  this.thirdStep()
+  this.fourthStep()
+}
+
+const Tea = function() {}
+
+Tea.prototype = new Drinks
+
+Tea.prototype.secondStep = function() {
+  console.log('浸泡茶叶')
+}
+
+Tea.prototype.fourthStep = function() {
+  console.log('加柠檬')
+}
+
+const Coffee = function() {}
+
+Coffee.prototype = new Drinks
+
+Coffee.prototype.secondStep = function() {
+  console.log('冲泡咖啡')
+}
+
+Coffee.prototype.fourthStep = function() {
+  console.log('加糖')
+}
+
+const tea = new Tea()
+tea.init()
+
+// 烧开水
+// 浸泡茶叶
+// 倒入杯子
+// 加柠檬
+
+const coffee = new Coffee()
+coffee.init()
+
+// 烧开水
+// 冲泡咖啡
+// 倒入杯子
+// 加糖
+```
+
+### 钩子
+假如客人不想加佐料(糖、柠檬)怎么办，这时可以引人钩子来实现之，实现逻辑如下：  
+```js
+// ...
+
+Drinks.prototype.ifNeedFlavour = function() { // 加上钩子
+  return true
+}
+
+Drinks.prototype.init = function() { // 模板方法模式核心：在父类上定义好执行算法
+  this.firstStep()
+  this.secondStep()
+  this.thirdStep()
+  if (this.ifNeedFlavour()) { // 默认是 true，也就是要加调料
+    this.fourthStep()
+  }
+}
+
+// ...
+const Coffee = function() {}
+
+Coffee.prototype = new Drinks()
+// ...
+
+Coffee.prototype.ifNeedFlavour = function() {
+  return window.confirm('是否需要佐料吗？') // 弹框选择是否佐料
+}
+```
+
+***
+
+## 9.享元模式  
+享元模式是一种优化程序性能的模式，本质为减少对象创建的个数。  
+
+以下情况可以使用享元模式：  
+* 有大量相似的对象，占用了大量内存  
+* 对象中大部分状态可以抽离为外部状态  
+
+### demo
+某商家有 50 种男款内衣和 50 种款女款内衣，要展示它们  
+
+方案一：造 50 个塑料男模和 50 个塑料女模，让他们穿上展示，代码如下：  
+```js
+const Model = function(gender, underwear) {
+  this.gender = gender
+  this.underwear = underwear
+}
+
+Model.prototype.takephoto = function() {
+  console.log(`${this.gender}穿着${this.underwear}`)
+}
+
+for (let i = 1; i < 51; i++) {
+  const maleModel = new Model('male', `第${i}款衣服`)
+  maleModel.takephoto()
+}
+
+for (let i = 1; i < 51; i++) {
+  const female = new Model('female', `第${i}款衣服`)
+  female.takephoto()
+}
+```
+
+方案二：造 1 个塑料男模特 1 个塑料女模特，分别试穿 50 款内衣  
+```js
+const Model = function(gender) {
+  this.gender = gender
+}
+
+Model.prototype.takephoto = function() {
+  console.log(`${this.sex}穿着${this.underwear}`)
+}
+
+const maleModel = new Model('male')
+const femaleModel = new Model('female')
+
+for (let i = 1; i < 51; i++) {
+  maleModel.underwear = `第${i}款衣服`
+  maleModel.takephoto()
+}
+
+for (let i = 1; i < 51; i++) {
+  femaleModel.underwear = `第${i}款衣服`
+  femaleModel.takephoto()
+}
+```
+对比发现：方案一创建了 100 个对象，方案二只创建了 2 个对象，在该 demo 中，gender(性别) 是内部对象，underwear(穿着) 是外部对象。  
+
+当然在方案二的 demo 中，还可以进一步改善：  
+
+* 一开始就通过构造函数显示地创建实例，可用工场模式将其升级成可控生成
+* 在实例上手动添加 underwear 不是很优雅，可以在外部单独在写个 manager 函数
+```js
+const Model = function(gender) {
+  this.gender = gender
+}
+
+Model.prototype.takephoto = function() {
+  console.log(`${this.gender}穿着${this.underwear}`)
+}
+
+const modelFactory = (function() { // 优化第一点
+  const modelGender = {}
+  return {
+    createModel: function(gender) {
+      if (modelGender[gender]) {
+        return modelGender[gender]
+      }
+      return modelGender[gender] = new Model(gender)
+    }
+  }
+}())
+
+const modelManager = (function() {
+  const modelObj = {}
+  return {
+    add: function(gender, i) {
+      modelObj[i] = {
+        underwear: `第${i}款衣服`
+      }
+      return modelFactory.createModel(gender)
+    },
+    copy: function(model, i) { // 优化第二点
+      model.underwear = modelObj[i].underwear
+    }
+  }
+}())
+
+for (let i = 1; i < 51; i++) {
+  const maleModel = modelManager.add('male', i)
+  modelManager.copy(maleModel, i)
+  maleModel.takephoto()
+}
+
+for (let i = 1; i < 51; i++) {
+  const femaleModel = modelManager.add('female', i)
+  modelManager.copy(femaleModel, i)
+  femaleModel.takephoto()
+}
+```
+
+***
+
+## 10.职责链模式
+职责链模式：类似多米诺骨牌，通过请求第一个条件，会持续执行后续的条件，直到返回结果为止。   
+![职责链模式](https://camo.githubusercontent.com/cb2073f5e9c165843754e0b5984652c3291e88a6/687474703a2f2f6f71687473637573302e626b742e636c6f7564646e2e636f6d2f63626338633130626261653230326263643234336636623037303464653362612e6a70672d333030)   
+重要性：4 星，在项目中能对 if-else 语句进行优化   
+### 场景 demo
+场景：某电商针对已付过定金的用户有优惠政策，在正式购买后，已经支付过 500 元定金的用户会收到 100 元的优惠券，200 元定金的用户可以收到 50 元优惠券，没有支付过定金的用户只能正常购买。   
+```js
+// orderType: 表示订单类型，1：500 元定金用户；2：200 元定金用户；3：普通购买用户
+// pay：表示用户是否已经支付定金，true: 已支付；false：未支付
+// stock: 表示当前用于普通购买的手机库存数量，已支付过定金的用户不受此限制
+
+const order = function( orderType, pay, stock ) {
+  if ( orderType === 1 ) {
+    if ( pay === true ) {
+      console.log('500 元定金预购，得到 100 元优惠券')
+    } else {
+      if (stock > 0) {
+        console.log('普通购买，无优惠券')
+      } else {
+        console.log('库存不够，无法购买')
+      }
+    }
+  } else if ( orderType === 2 ) {
+    if ( pay === true ) {
+      console.log('200 元定金预购，得到 50 元优惠券')
+    } else {
+      if (stock > 0) {
+        console.log('普通购买，无优惠券')
+      } else {
+        console.log('库存不够，无法购买')
+      }
+    }
+  } else if ( orderType === 3 ) {
+    if (stock > 0) {
+        console.log('普通购买，无优惠券')
+    } else {
+      console.log('库存不够，无法购买')
+    }
+  }
+}
+
+order( 3, true, 500 ) // 普通购买，无优惠券
+```
+
+下面用职责链模式改造代码：  
+```js
+const order500 = function(orderType, pay, stock) {
+  if ( orderType === 1 && pay === true ) {
+    console.log('500 元定金预购，得到 100 元优惠券')
+  } else {
+    order200(orderType, pay, stock)
+  }
+}
+
+const order200 = function(orderType, pay, stock) {
+  if ( orderType === 2 && pay === true ) {
+    console.log('200 元定金预购，得到 50 元优惠券')
+  } else {
+    orderCommon(orderType, pay, stock)
+  }
+}
+
+const orderCommon = function(orderType, pay, stock) {
+  if (orderType === 3 && stock > 0) {
+    console.log('普通购买，无优惠券')
+  } else {
+    console.log('库存不够，无法购买')
+  }
+}
+
+order500( 3, true, 500 ) // 普通购买，无优惠券
+```
+
+改造后可以发现代码相对清晰了，但是链路代码和业务代码依然耦合在一起，进一步优化：  
+```js
+// 业务代码
+const order500 = function(orderType, pay, stock) {
+  if ( orderType === 1 && pay === true ) {
+    console.log('500 元定金预购，得到 100 元优惠券')
+  } else {
+    return 'nextSuccess'
+  }
+}
+
+const order200 = function(orderType, pay, stock) {
+  if ( orderType === 2 && pay === true ) {
+    console.log('200 元定金预购，得到 50 元优惠券')
+  } else {
+    return 'nextSuccess'
+  }
+}
+
+const orderCommon = function(orderType, pay, stock) {
+  if (orderType === 3 && stock > 0) {
+    console.log('普通购买，无优惠券')
+  } else {
+    console.log('库存不够，无法购买')
+  }
+}
+
+// 链路代码
+const chain = function(fn) {
+  this.fn = fn
+  this.sucessor = null
+}
+
+chain.prototype.setNext = function(sucessor) {
+  this.sucessor = sucessor
+}
+
+chain.prototype.init = function() {
+  const result = this.fn.apply(this, arguments)
+  if (result === 'nextSuccess') {
+    this.sucessor.init.apply(this.sucessor, arguments)
+  }
+}
+
+const order500New = new chain(order500)
+const order200New = new chain(order200)
+const orderCommonNew = new chain(orderCommon)
+
+order500New.setNext(order200New)
+order200New.setNext(orderCommonNew)
+
+order500New.init( 3, true, 500 ) // 普通购买，无优惠券
+```
+
+重构后，链路代码和业务代码彻底地分离。假如未来需要新增 order300，那只需新增与其相关的函数而不必改动原有业务代码。  
+另外结合 AOP 还能简化上述链路代码：  
+```js
+// 业务代码
+const order500 = function(orderType, pay, stock) {
+  if ( orderType === 1 && pay === true ) {
+    console.log('500 元定金预购，得到 100 元优惠券')
+  } else {
+    return 'nextSuccess'
+  }
+}
+
+const order200 = function(orderType, pay, stock) {
+  if ( orderType === 2 && pay === true ) {
+    console.log('200 元定金预购，得到 50 元优惠券')
+  } else {
+    return 'nextSuccess'
+  }
+}
+
+const orderCommon = function(orderType, pay, stock) {
+  if (orderType === 3 && stock > 0) {
+    console.log('普通购买，无优惠券')
+  } else {
+    console.log('库存不够，无法购买')
+  }
+}
+
+// 链路代码
+Function.prototype.after = function(fn) {
+  const self = this
+  return function() {
+    const result = self.apply(self, arguments)
+    if (result === 'nextSuccess') {
+      return fn.apply(self, arguments) // 这里 return 别忘记了~
+    }
+  }
+}
+
+const order = order500.after(order200).after(orderCommon)
+
+order( 3, true, 500 ) // 普通购买，无优惠券
+```
+职责链模式比较重要，项目中能用到它的地方会有很多，用上它能解耦 1 个请求对象和 n 个目标对象的关系。   
+
+*** 
+
+## 11.中介者模式
+中介者模式：对象和对象之间借助第三方中介者进行通信。  
+![中介者模式](https://camo.githubusercontent.com/8411d6ad7b3c4e4f4fa3a14115f33428f5e4ab0f/687474703a2f2f6f71687473637573302e626b742e636c6f7564646e2e636f6d2f61653039353866383539393039373863343862336136616132636137366561312e6a70672d343030)  
+### 场景 demo  
+一场测试结束后，公布结果：告知解答出题目的人挑战成功，否则挑战失败。    
+```js
+const player = function(name) {
+  this.name = name
+  playerMiddle.add(name)
+}
+
+player.prototype.win = function() {
+  playerMiddle.win(this.name)
+}
+
+player.prototype.lose = function() {
+  playerMiddle.lose(this.name)
+}
+
+const playerMiddle = (function() { // 将就用下这个 demo，这个函数当成中介者
+  const players = []
+  const winArr = []
+  const loseArr = []
+  return {
+    add: function(name) {
+      players.push(name)
+    },
+    win: function(name) {
+      winArr.push(name)
+      if (winArr.length + loseArr.length === players.length) {
+        this.show()
+      }
+    },
+    lose: function(name) {
+      loseArr.push(name)
+      if (winArr.length + loseArr.length === players.length) {
+        this.show()
+      }
+    },
+    show: function() {
+      for (let winner of winArr) {
+        console.log(winner + '挑战成功;')
+      }
+      for (let loser of loseArr) {
+        console.log(loser + '挑战失败;')
+      }
+    },
+  }
+}())
+
+const a = new player('A 选手')
+const b = new player('B 选手')
+const c = new player('C 选手')
+
+a.win()
+b.win()
+c.lose()
+
+// A 选手挑战成功;
+// B 选手挑战成功;
+// C 选手挑战失败;
+```
+在这段代码中 A、B、C 之间没有直接发生关系，而是通过另外的 playerMiddle 对象建立链接，姑且将之当成是中介者模式了。  
+
+***
+
+## 12.装饰者模式
+装饰器模式：动态地给函数赋能。  
+
+### JavaScript 的装饰者模式
+生活中的例子：天气冷了，就添加衣服来保暖；天气热了，就将外套脱下；这个例子很形象地含盖了装饰器的神韵，随着天气的冷暖变化，衣服可以动态的穿上脱下。  
+```js
+let wear = function() {
+  console.log('穿上第一件衣服')
+}
+
+const _wear1 = wear
+
+wear = function() {
+  _wear1()
+  console.log('穿上第二件衣服')
+}
+
+const _wear2 = wear
+
+wear = function() {
+  _wear2()
+  console.log('穿上第三件衣服')
+}
+
+wear()
+
+// 穿上第一件衣服
+// 穿上第二件衣服
+// 穿上第三件衣服
+```
+
+这种方式有以下缺点：1：临时变量会变得越来越多；2：this 指向有时会出错  
+### AOP 装饰函数
+```js
+// 前置代码
+Function.prototype.before = function(fn) {
+  const self = this
+  return function() {
+    fn.apply(this, arguments)
+    return self.apply(this, arguments)
+  }
+}
+
+// 后置代码
+Function.prototype.after = function(fn) {
+  const self = this
+  return function() {
+    self.apply(this, arguments)
+    return fn.apply(this, arguments)
+  }
+}
+```
+用后置代码来实验下上面穿衣服的 demo，  
+```js
+const wear1 = function() {
+  console.log('穿上第一件衣服')
+}
+
+const wear2 = function() {
+  console.log('穿上第二件衣服')
+}
+
+const wear3 = function() {
+  console.log('穿上第三件衣服')
+}
+
+const wear = wear1.after(wear2).after(wear3)
+wear()
+
+// 穿上第一件衣服
+// 穿上第二件衣服
+// 穿上第三件衣服
+```
+
+但这样子有时会污染原生函数，可以做点通变  
+```js
+const after = function(fn, afterFn) {
+  return function() {
+    fn.apply(this, arguments)
+    afterFn.apply(this, arguments)
+  }
+}
+
+const wear = after(after(wear1, wear2), wear3)
+wear()
+```
+
+***
+
+## 13.状态模式
+状态模式：将事物内部的每个状态分别封装成类，内部状态改变会产生不同行为。  
+
+优点：用对象代替字符串记录当前状态，状态易维护  
+缺点：需编写大量状态类对象  
+
+### 场景 demo
+某某牌电灯，按一下按钮打开弱光，按两下按钮打开强光，按三下按钮关闭灯光。  
+```js
+// 将状态封装成不同类
+const weakLight = function(light) {
+  this.light = light
+}
+
+weakLight.prototype.press = function() {
+  console.log('打开强光')
+  this.light.setState(this.light.strongLight)
+}
+
+const strongLight = function(light) {
+  this.light = light
+}
+
+strongLight.prototype.press = function() {
+  console.log('关灯')
+  this.light.setState(this.light.offLight)
+}
+
+const offLight = function(light) {
+  this.light = light
+}
+
+offLight.prototype.press = function() {
+  console.log('打开弱光')
+  this.light.setState(this.light.weakLight)
+}
+
+const Light = function() {
+  this.weakLight = new weakLight(this)
+  this.strongLight = new strongLight(this)
+  this.offLight = new offLight(this)
+  this.currentState = this.offLight          // 初始状态
+}
+
+Light.prototype.init = function() {
+  const btn = document.createElement('button')
+  btn.innerHTML = '按钮'
+  document.body.append(btn)
+  const self = this
+  btn.addEventListener('click', function() {
+    self.currentState.press()
+  })
+}
+
+Light.prototype.setState = function(state) { // 改变当前状态
+  this.currentState = state
+}
+
+const light = new Light()
+light.init()
+
+// 打开弱光
+// 打开强光
+// 关灯
+```
+
+### 非面向对象实现的状态模式
+借助于 JavaScript 的委托机制，可以像如下实现状态模式：  
+```js
+const obj = {
+  'weakLight': {
+    press: function() {
+      console.log('打开强光')
+      this.currentState = obj.strongLight
+    }
+  },
+  'strongLight': {
+    press: function() {
+      console.log('关灯')
+      this.currentState = obj.offLight
+    }
+  },
+  'offLight': {
+    press: function() {
+      console.log('打开弱光')
+      this.currentState = obj.weakLight
+    }
+  },
+}
+
+const Light = function() {
+  this.currentState = obj.offLight
+}
+
+Light.prototype.init = function() {
+  const btn = document.createElement('button')
+  btn.innerHTML = '按钮'
+  document.body.append(btn)
+  const self = this
+  btn.addEventListener('click', function() {
+    self.currentState.press.call(self) // 通过 call 完成委托
+  })
+}
+
+const light = new Light()
+light.init()
+```
+
+***
+
+## 14.适配者模式{#14}
+适配者模式：主要用于解决两个接口之间不匹配的问题。  
+### demo
+```js
+// 老接口
+const zhejiangCityOld = (function() {
+  return [
+    {
+      name: 'hangzhou',
+      id: 11,
+    },
+    {
+      name: 'jinhua',
+      id: 12
+    }
+  ]
+}())
+
+console.log(getZhejiangCityOld())
+
+// 新接口希望是下面形式
+{
+  hangzhou: 11,
+  jinhua: 12,
+}
+
+// 这时候就可采用适配者模式
+const const adaptor = (function(oldCity) {
+  const obj = {}
+  for (let city of zhejiangCityOld) {
+    obj[city.name] = city.id
+  }
+  return obj
+}())
+```
 
 
 > 原文地址 [JavaScript 中常见设计模式整理](https://juejin.im/post/5afe6430518825428630bc4d)
