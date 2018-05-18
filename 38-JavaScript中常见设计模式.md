@@ -152,6 +152,404 @@ calculateBonus(A, 10000) // 30000
 
 ***
 
+## 3.代理模式
+情景：小明追女生 A  
+* 非代理模式：小明 =花=> 女生A  
+* 代理模式：小明 =花=> 让女生A的好友B帮忙 =花=> 女生A  
+
+### 代理模式的特点  
+* 代理对象和本体对象具有一致的接口，对使用者友好  
+
+代理模式的种类有很多，在 JS 中最常用的为虚拟代理和缓存代理。  
+#### 虚拟代理实现图片预加载  
+下面这段代码运用代理模式来实现图片预加载，可以看到通过代理模式巧妙地将创建图片与预加载逻辑分离，并且在未来如果不需要预加载，只要改成请求本体代替请求代理对象就行。  
+```js
+const myImage = (function() {
+  const imgNode = document.createElement('img')
+  document.body.appendChild(imgNode)
+  return {
+    setSrc: function(src) {
+      imgNode.src = src
+    }
+  }
+})()
+
+const proxyImage = (function() {
+  const img = new Image()
+  img.onload = function() { // http 图片加载完毕后才会执行
+    myImage.setSrc(this.src)
+  }
+  return {
+    setSrc: function(src) {
+      myImage.setSrc('loading.jpg') // 本地 loading 图片
+      img.src = src
+    }
+  }
+})()
+
+proxyImage.setSrc('http://loaded.jpg')
+```
+
+缓存代理实现乘积计算  
+```js
+const mult = function() {
+  let a = 1
+  for (let i = 0, l; l = arguments[i++];) {
+    a = a * l
+  }
+  return a
+}
+
+const proxyMult = (function() {
+  const cache = {}
+  return function() {
+    const tag = Array.prototype.join.call(arguments, ',')
+    if (cache[tag]) {
+      return cache[tag]
+    }
+    cache[tag] = mult.apply(this, arguments)
+    return cache[tag]
+  }
+})()
+
+proxyMult(1, 2, 3, 4) // 24
+```
+
+### 小 tip
+在开发时候不要先去猜测是否需要使用代理模式，如果发现直接使用某个对象不方便时，再来优化不迟。  
+
+*** 
+
+## 4.迭代器模式
+> 定义：能访问到聚合对象的顺序与元素
+### 实现一个内部迭代器
+```js
+function each(arr, fn) {
+  for (let i = 0; i < arr.length; i++) {
+    fn(i, arr[i])
+  }
+}
+
+each([1, 2, 3], function(i, n) {
+  console.log(i) // 0 1 2
+  console.log(n) // 1 2 3
+})
+```
+可以看出内部迭代器在调用的时候非常简单，使用者不用关心迭代器内部实现的细节，但这也是内部迭代器的缺点。比如要比较两数组是否相等，只能在其回调函数中作文章了，代码如下：  
+```js
+const compare = function(arr1, arr2) {
+  each(arr1, function(i, n) {
+    if (arr2[i] !== n) {
+      console.log('两数组不等')
+      return
+    }
+  })
+  console.log('两数组相等')
+}
+
+const arr1 = [1, 2, 3]
+const arr2 = [1, 2, 3]
+compare(arr1, arr2) // 两数组相等
+```
+### 实现一个外部迭代器
+
+相较于内部迭代器，外部迭代器将遍历的权利转移到外部，因此在调用的时候拥有了更多的自由性，不过缺点是调用方式较复杂。  
+```js
+const iterator = function(arr) {
+  let current = 0
+  const next = function() {
+    current = current + 1
+  }
+  const done = function() {
+    return current >= arr.length
+  }
+  const value = function() {
+    return arr[current]
+  }
+  return {
+    next,
+    done,
+    value,
+  }
+}
+
+const arr1 = [1, 2 ,3]
+const arr2 = [1, 2, 3]
+const iterator1 = iterator(arr1)
+const iterator2 = iterator(arr2)
+
+const compare = function(iterator1, iterator2) {
+  while (!iterator1.done() && !iterator2.done()) {
+    if (iterator1.value() !== iterator2.value()) {
+      console.log('两数组不等')
+      return
+    }
+    iterator1.next() // 外部迭代器将遍历的权利转移到外部
+    iterator2.next()
+  }
+  console.log('两数组相等')
+}
+
+compare(iterator1, iterator2)
+```
+
+***
+
+## 5.发布订阅模式
+
+事件发布/订阅模式 (PubSub) 在异步编程中帮助我们完成更松的解耦，甚至在 MVC、MVVC 的架构中以及设计模式中也少不了发布-订阅模式的参与。  
+优点：在异步编程中实现更深的解耦  
+缺点：如果过多的使用发布订阅模式，会增加维护的难度  
+
+### 实现一个发布订阅模式
+```js
+var Event = function() {
+  this.obj = {}
+}
+
+Event.prototype.on = function(eventType, fn) {
+  if (!this.obj[eventType]) {
+    this.obj[eventType] = []
+  }
+  this.obj[eventType].push(fn)
+}
+
+Event.prototype.emit = function() {
+  var eventType = Array.prototype.shift.call(arguments)
+  var arr = this.obj[eventType]
+  for (let i = 0; i < arr.length; i++) {
+    arr[i].apply(arr[i], arguments)
+  }
+}
+
+var ev = new Event()
+
+ev.on('click', function(a) { // 订阅函数
+  console.log(a) // 1
+})
+
+ev.emit('click', 1)          // 发布函数
+```
+
+### 订阅函数逻辑一定要优先于发布函数吗
+考虑以下场景：  
+```js
+$.ajax('', () => {
+  // 异步订阅函数逻辑
+})
+
+// 在其他地方执行发布函数，此时并不能保证执行发布函数的时候，订阅函数已经执行
+```
+我们需要实现这样的逻辑：  
+```js
+var ev = new Event()
+ev.emit('click', 1)
+
+ev.on('click', function(a) {
+  console.log(a) // 1
+})
+```
+目标明确后，来着手实现它：  
+```js
+var Event = function() {
+  this.obj = {}
+  this.cacheList = []
+}
+
+Event.prototype.on = function(eventType, fn) {
+  if (!this.obj[eventType]) {
+    this.obj[eventType] = []
+  }
+  this.obj[eventType].push(fn)
+
+  for (let i = 0; i < this.cacheList.length; i++) {
+    this.cacheList[i]()
+  }
+}
+
+Event.prototype.emit = function() {
+  const arg = arguments
+  const that = this
+  function cache() {
+    var eventType = Array.prototype.shift.call(arg)
+    var arr = that.obj[eventType]
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].apply(arr[i], arg)
+    }
+  }
+  this.cacheList.push(cache)
+}
+``` 
+以上代码实现思路就是把原本在 `emit` 里触发的函数存到 `cacheList`，再转交到 `on` 中触发。从而实现了发布函数先于订阅函数执行。  
+
+***
+
+## 6.命令模式
+命令模式与策略模式有些类似，在 JavaScript 中它们都是隐式的。  
+重要性：较低  
+### JavaScript 中的命令模式  
+命令模式在 JavaScript 中也比较简单，下面代码中对按钮和命令进行了抽离，因此可以复杂项目中可以使用命令模式将界面的代码和功能的代码交付给不同的人去写。  
+```js
+const setCommand = function(button, command) {
+  button.onClick = function() {
+    command.excute()
+  }
+}
+
+// --------------------  上面的界面逻辑由A完成，下面的由B完成
+
+const menu = {
+  updateMenu: function() {
+    console.log('更新菜单')
+  },
+}
+
+const UpdateCommand = function(receive) {
+  return {
+    excute: receive.updateMenu,
+  }
+}
+
+const updateCommand = UpdateCommand(menu) // 创建命令
+
+const button1 = document.getElementById('button1')
+setCommand(button1, updateCommand)
+```
+
+***
+
+## 7.组合模式
+* 组合模式在对象间形成树形结构;  
+* 组合模式中基本对象和组合对象被一致对待;  
+* 无须关心对象有多少层，调用时只需在根部进行调用;  
+
+### demo1 —— 宏命令
+
+想象我们现在手上有个万能遥控器，当我们回家，按一下开关，下列事情将被执行:  
+1. 煮咖啡
+2. 打开电视、打开音响
+3. 打开空调、打开电脑
+
+我们把任务划分为 3 类，效果图如下：  
+![任务划分](https://camo.githubusercontent.com/a44e97b789bd6e25d1aa13b15b12239c0566b015/687474703a2f2f6f71687473637573302e626b742e636c6f7564646e2e636f6d2f39633837636538333535313566336439623630613836613066323838393764392e6a70672d343030)
+接着看看结合了命令模式和组合模式的具体实现：    
+```js
+const MacroCommand = function() {
+  return {
+    lists: [],
+    add: function(task) {
+      this.lists.push(task)
+    },
+    excute: function() { // ①：组合对象调用这里的 excute，
+      for (let i = 0; i < this.lists.length; i++) {
+        this.lists[i].excute()
+      }
+    },
+  }
+}
+
+const command1 = MacroCommand() // 基本对象
+
+command1.add({
+  excute: () => console.log('煮咖啡') // ②：基本对象调用这里的 excute，
+})
+
+const command2 = MacroCommand() // 组合对象
+
+command2.add({
+  excute: () => console.log('打开电视')
+})
+
+command2.add({
+  excute: () => console.log('打开音响')
+})
+
+const command3 = MacroCommand()
+
+command3.add({
+  excute: () => console.log('打开空调')
+})
+
+command3.add({
+  excute: () => console.log('打开电脑')
+})
+
+const macroCommand = MacroCommand()
+macroCommand.add(command1)
+macroCommand.add(command2)
+macroCommand.add(command3)
+
+macroCommand.excute()
+
+// 煮咖啡
+// 打开电视
+// 打开音响
+// 打开空调
+// 打开电脑
+```
+
+可以看出在组合模式中基本对象和组合对象被一致对待，所以要保证基本对象(叶对象)和组合对象具有一致方法。  
+
+### demo2 —— 扫描文件夹
+扫描文件夹时，文件夹下面可以为另一个文件夹也可以为文件，我们希望统一对待这些文件夹和文件，这种情形适合使用组合模式。  
+```js
+const Folder = function(folder) {
+  this.folder = folder
+  this.lists = []
+}
+
+Folder.prototype.add = function(resource) {
+  this.lists.push(resource)
+}
+
+Folder.prototype.scan = function() {
+  console.log('开始扫描文件夹：', this.folder)
+  for (let i = 0, folder; folder = this.lists[i++];) {
+    folder.scan()
+  }
+}
+
+const File = function(file) {
+  this.file = file
+}
+
+File.prototype.add = function() {
+  throw Error('文件下不能添加其它文件夹或文件')
+}
+
+File.prototype.scan = function() {
+  console.log('开始扫描文件：', this.file)
+}
+
+const folder = new Folder('根文件夹')
+const folder1 = new Folder('JS')
+const folder2 = new Folder('life')
+
+const file1 = new File('深入React技术栈.pdf')
+const file2 = new File('JavaScript权威指南.pdf')
+const file3 = new File('小王子.pdf')
+
+folder1.add(file1)
+folder1.add(file2)
+
+folder2.add(file3)
+
+folder.add(folder1)
+folder.add(folder2)
+
+folder.scan()
+
+// 开始扫描文件夹： 根文件夹
+// 开始扫描文件夹： JS
+// 开始扫描文件： 深入React技术栈.pdf
+// 开始扫描文件： JavaScript权威指南.pdf
+// 开始扫描文件夹： life
+// 开始扫描文件： 小王子.pdf
+```
+
+***
+
+
 
 
 
