@@ -25,6 +25,7 @@
 * [8-vue-cli2的webpack配置分析](https://github.com/pingan8787/Leo-JavaScript/blob/master/8-vue-cli2%E7%9A%84webpack%E9%85%8D%E7%BD%AE%E5%88%86%E6%9E%90.md)  
 * [14-Vue的一些小注意点](https://github.com/pingan8787/Leo-JavaScript/blob/master/14-Vue%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%B3%A8%E6%84%8F%E7%82%B9.md)  
 * [★ 24-Vue折腾记-给Axios做个挺靠谱的封装（报错,鉴权,跳转,拦截,提示）](https://github.com/pingan8787/Leo-JavaScript/blob/master/24-Vue%E6%8A%98%E8%85%BE%E8%AE%B0-%E7%BB%99Axios%E5%81%9A%E4%B8%AA%E6%8C%BA%E9%9D%A0%E8%B0%B1%E7%9A%84%E5%B0%81%E8%A3%85%EF%BC%88%E6%8A%A5%E9%94%99%2C%E9%89%B4%E6%9D%83%2C%E8%B7%B3%E8%BD%AC%2C%E6%8B%A6%E6%88%AA%2C%E6%8F%90%E7%A4%BA%EF%BC%89.md)
+* [40-解密Vue SSR](https://github.com/pingan8787/Leo-JavaScript/blob/master/40-%E8%A7%A3%E5%AF%86Vue%20SSR.md)
 
 ### 3、ES6/ES7/ES8...
 * [3-Promise简单用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/3-Promise%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95.md)  
