@@ -63,6 +63,8 @@
 * [42-JS高程中的垃圾回收机制与常见内存泄露的解决方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/42-JS%E9%AB%98%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)  
 * [43-手机端页面开发常见问题和解决](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/43-%E6%89%8B%E6%9C%BA%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3.md)
 * [44-前端本地文件操作和上传](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/44-%E5%89%8D%E7%AB%AF%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%92%8C%E4%B8%8A%E4%BC%A0.md)
+* [45-js中reduce的神奇用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/45-js%E4%B8%ADreduce%E7%9A%84%E7%A5%9E%E5%A5%87%E7%94%A8%E6%B3%95.md)
+* [46-在JavaScript中更好的使用数组](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/46-%E5%9C%A8JavaScript%E4%B8%AD%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84.md)
 
 ### 7、其他
 * [2017-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2017-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md)
