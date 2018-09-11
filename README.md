@@ -66,7 +66,10 @@
 * [45-js中reduce的神奇用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/45-js%E4%B8%ADreduce%E7%9A%84%E7%A5%9E%E5%A5%87%E7%94%A8%E6%B3%95.md)
 * [46-在JavaScript中更好的使用数组](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/46-%E5%9C%A8JavaScript%E4%B8%AD%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84.md)
 
-### 7、其他
+### 7、HTTP
+* [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
+
+### 8、其他
 * [2017-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2017-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md)
 * [2018-全年计划](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2018-%E5%85%A8%E5%B9%B4%E8%AE%A1%E5%88%92.md) 
 * [★ 27-Markdowm语法整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/27-Markdowm%E8%AF%AD%E6%B3%95%E6%95%B4%E7%90%86.md)
