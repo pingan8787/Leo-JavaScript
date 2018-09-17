@@ -1,3 +1,5 @@
+[原文](https://mp.weixin.qq.com/s/5tiAmJCLlPTQObMDY2ZgkA)
+
 看看面试题，只是为了查漏补缺，看看自己那些方面还不懂。切记不要以为背了面试题，就万事大吉了，最好是理解背后的原理，这样面试的时候才能侃侃而谈。不然，稍微有水平的面试官一看就能看出，是否有真才实学还是刚好背中了这道面试题（有空再把例子中代码补上）。
 
 ## 一、对于MVVM的理解？
@@ -199,7 +201,7 @@ const store = new Vuex.Store({
 ### 2、`v-if` 和 `v-show` 区别
 答：`v-if`按照条件是否渲染，`v-show`是`display`的`block`或`none`；
 
-### 3、`$route``和$router`的区别  
+### 3、`$route`和`$router` 区别  
 
 答：`$route`是 `路由信息对象`，包括`path`，`params`，`hash`，`query`，`fullPath`，`matched`，`name`等路由信息参数。而`$router`是 `路由实例` 对象包括了路由的跳转方法，钩子函数等。  
 
