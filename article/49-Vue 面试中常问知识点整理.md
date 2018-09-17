@@ -142,7 +142,8 @@ js实现简单的双向绑定：
 在`main.js`引入`store`，注入。新建了一个目录`store`，`… export` 。  
 
 场景有：单页应用中，组件之间的状态、音乐播放、登录状态、加入购物车。  
-![vue生命周期](http://p3nqtyvgo.bkt.clouddn.com/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpg)
+![vue生命周期](http://p3nqtyvgo.bkt.clouddn.com/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpg)   
+
 **state**：Vuex 使用单一状态树,即每个应用将仅仅包含一个`store` 实例，但单一状态树和模块化并不冲突。存放的数据状态，不可以直接修改里面的数据。
 
 **mutations**：`mutations`定义的方法动态修改`Vuex `的 `store` 中的状态或数据。
