@@ -67,6 +67,7 @@
 * [45-js中reduce的神奇用法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/45-js%E4%B8%ADreduce%E7%9A%84%E7%A5%9E%E5%A5%87%E7%94%A8%E6%B3%95.md)
 * [46-在JavaScript中更好的使用数组](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/46-%E5%9C%A8JavaScript%E4%B8%AD%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84.md)
 * [48-js获取元素高度和浏览器各种高度方法汇总](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/48-js获取元素高度和浏览器各种高度方法汇总.md)
+* [50-js中get和post的区别](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/50-js%E4%B8%ADget%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB.md)
 
 ### 7、HTTP
 * [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
