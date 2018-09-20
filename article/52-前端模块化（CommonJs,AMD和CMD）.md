@@ -93,7 +93,7 @@ var a = increment(1); //2
 仔细看上面的代码，您会注意到 `require` 是同步的。模块系统需要同步读取模块文件内容，并编译执行以得到模块接口。  
 然而， 这在浏览器端问题多多。  
 
-浏览器端，加载 JavaScript 最佳、最容易的方式是在 document 中插入<script>标签。但脚本标签天生异步，传统 CommonJS 模块在浏览器环境中无法正常加载。
+浏览器端，加载 JavaScript 最佳、最容易的方式是在 `document` 中插入`<script>`标签。但脚本标签天生异步，传统 `CommonJS `模块在浏览器环境中无法正常加载。
 
 解决思路之一是，开发一个服务器端组件，对模块代码作静态分析，将模块与它的依赖列表一起返回给浏览器端。 这很好使，但需要服务器安装额外的组件，并因此要调整一系列底层架构。
 
@@ -265,9 +265,9 @@ seajs.use(['myModule.js'], function(my){
 
 ## 参考
 这篇《前端模块化：CommonJs,AMD和CDM》主要是个人对以下文章的总结，感谢这些老司机们的分享。  
-[前端模块化](http://www.cnblogs.com/dolphinX/p/4381855.html)
-[详解JavaScript模块化开发](https://segmentfault.com/a/1190000000733959#articleHeader3)
-[Javascript模块化编程](http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html)
-[从 CommonJS 到 Sea.js](https://link.jianshu.com/?t=https://github.com/seajs/seajs/issues/269)
+[前端模块化](http://www.cnblogs.com/dolphinX/p/4381855.html)  
+[详解JavaScript模块化开发](https://segmentfault.com/a/1190000000733959#articleHeader3)   
+[Javascript模块化编程](http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html)   
+[从 CommonJS 到 Sea.js](https://link.jianshu.com/?t=https://github.com/seajs/seajs/issues/269)   
 
 打开[原文](https://www.jianshu.com/p/d67bc79976e6)
