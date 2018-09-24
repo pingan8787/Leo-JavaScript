@@ -5,7 +5,7 @@
 
 
 网页应用Ajax与服务器交互的抽象过程如下图：   
-![原理](https://images2015.cnblogs.com/blog/1018541/201612/1018541-20161202170336021-461606131.png)  
+![原理](http://p3nqtyvgo.bkt.clouddn.com/20180924_01.png)  
 
 
 ### 过程详解：
