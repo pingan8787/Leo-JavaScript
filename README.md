@@ -71,6 +71,7 @@
 * [54-ajax详解](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/54-ajax%E8%AF%A6%E8%A7%A3.md)
 * [55-JS中attribute和property区别](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/55-JS%E4%B8%ADattribute%E5%92%8Cproperty%E5%8C%BA%E5%88%AB.md)
 * [56-js中原型继承原理](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/56-js%E4%B8%AD%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%8E%9F%E7%90%86.md)
+* [58-详解HTML5data-自定义属性](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/58-%E8%AF%A6%E8%A7%A3HTML5data-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7.md)
 
 ### 7、HTTP
 * [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
