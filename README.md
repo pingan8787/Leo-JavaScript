@@ -74,6 +74,7 @@
 * [58-详解HTML5data-自定义属性](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/58-%E8%AF%A6%E8%A7%A3HTML5data-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7.md)
 * [59-前端HTML5几种存储方式的总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/59-%E5%89%8D%E7%AB%AFHTML5%E5%87%A0%E7%A7%8D%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%E7%9A%84%E6%80%BB%E7%BB%93.md)
 * [60-懒加载和预加载](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/60-%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD.md)
+* [61-JS中this的4种绑定规则](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/61-JS%E4%B8%ADthis%E7%9A%844%E7%A7%8D%E7%BB%91%E5%AE%9A%E8%A7%84%E5%88%99.md)
 
 ### 7、HTTP
 * [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
