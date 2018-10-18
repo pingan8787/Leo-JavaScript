@@ -32,6 +32,9 @@
             - [5.函数参数的解构赋值](#5函数参数的解构赋值)
             - [6.用途](#6用途)
         - [字符串的拓展](#字符串的拓展)
+            - [1.includes(),startsWith(),endsWith()](#1includesstartswithendswith)
+            - [2.repeat()](#2repeat)
+            - [3.padStart(),padEnd()](#3padstartpadend)
         - [正则的拓展](#正则的拓展)
         - [数值的拓展](#数值的拓展)
         - [函数的拓展](#函数的拓展)
@@ -54,7 +57,7 @@
 
 #### let 命令
 `let` 命令的用法和 `var` 相似，但是 `let` 只在所在代码块内有效。  
-基础用法： 
+**基础用法**： 
 ```js
 {
     let a = 1;
@@ -110,7 +113,7 @@ function f4 (a2){
 
 #### const 命令
 `const` 声明一个**只读**的**常量**。  
-基础用法：  
+**基础用法**：  
 ```js
 const PI = 3.1415926;
 console.log(PI);  // 3.1415926
@@ -140,7 +143,7 @@ let PI = 0;
 **解构赋值概念**：在ES6中，直接从数组和对象中取值，按照对应位置，赋值给变量的操作。
 
 #### 1.数组
-基础用法：  
+**基础用法**：  
 ```js
 // ES6 之前
 let a = 1;
@@ -191,7 +194,7 @@ let [a] = {};
 ```
 
 **指定解构的默认值**：
-基础用法：
+**基础用法**：
 ```js
 let [a = 1] = [];      // a => 1
 let [a, b = 2] = [a];  // a => 1 , b => 2
@@ -206,7 +209,7 @@ let [a = 1] = [null];      // a => null
 #### 2.对象的解构赋值
 与数组解构不同的是，对象解构**不需要严格按照顺序取值**，而只要按照**变量名**去取对应**属性名**的值，若取不到对应**属性名**的值，则为`undefined` 。
 
-基础用法：  
+**基础用法**：  
 ```js
 let {a, b} = {a:1, b:2};  // a => 1 , b => 2
 let {a, b} = {a:2, b:1};  // a => 2 , b => 1
@@ -250,7 +253,7 @@ let {a=1} = {a:null};   // a => null
 
 #### 3.字符串的解构赋值
 字符串的解构赋值中，字符串被转换成了一个**类似数组的对象**。
-基础用法：
+**基础用法**：
 ```js
 const [a, b, c, d, e] = 'hello';
 a // "h"
@@ -276,7 +279,7 @@ let { prop: y } = null;      // TypeError
 ```
 
 #### 5.函数参数的解构赋值
-基础用法： 
+**基础用法**： 
 ```js
 function fun ([a, b]){
     return a + b;
@@ -366,6 +369,69 @@ const {log, sin, cos} = require('math');
 ```
 
 ### 字符串的拓展
+#### 1.includes(),startsWith(),endsWith()
+在我们判断字符串是否包含另一个字符串时，ES6之前，我们只有`typeof`方法，ES6之后我们又多了三种方法：  
+* **includes()**:返回**布尔值**，表示**是否找到参数字符串**。
+* **startsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**头部**。
+* **endsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**尾部**。
+```js
+let a = 'hello leo';
+a.startsWith('leo');   // false
+a.endsWith('o');       // true
+a.includes('lo');      // true
+```
+并且这三个方法都支持第二个参数，表示起始搜索的位置。
+```js
+let a = 'hello leo';
+a.startsWith('leo',1);   // false
+a.endsWith('o',5);       // true
+a.includes('lo',6);      // false
+```
+`endsWith` 是针对前 `n` 个字符，而其他两个是针对从第`n`个位置直到结束。
+
+#### 2.repeat()
+`repeat`方法返回一个新字符串，表示将原字符串重复`n`次。  
+**基础用法**：
+```js
+'ab'.repeat(3);        // 'ababab'
+'ab'.repeat(0);        // ''
+```
+**特殊用法**:  
+* 参数为`小数`，则取整
+```js
+'ab'.repeat(2.3);      // 'abab'
+```
+* 参数为`负数`或`Infinity`，则报错
+```js
+'ab'.repeat(-1);       // RangeError
+'ab'.repeat(Infinity); // RangeError
+```
+* 参数为`0到-1的小数`或`NaN`，则取0
+```js
+'ab'.repeat(-0.5);     // ''
+'ab'.repeat(NaN);      // ''
+```
+* 参数为`字符串`，则转成`数字`
+```js
+'ab'.repeat('ab');     // ''
+'ab'.repeat('3');      // 'ababab'
+```
+
+#### 3.padStart(),padEnd()
+用于将字符串**头部**或**尾部**补全长度，`padStart()`为**头部补全**，`padEnd()`为**尾部补全**。  
+这两个方法接收**2个**参数，第一个指定**字符串最小长度**，第二个**用于补全的字符串**。
+**基础用法** ：
+```js
+'x'.padStart(5, 'ab') // 'ababx'
+'x'.padEnd(5, 'ab') // 'xabab'
+```
+**特殊用法**:
+* 原字符串长度，大于或等于指定最小长度，则返回原字符串。
+```js
+'xyzabc'.padStart(5, 'ab') // 'xyzabc'
+```
+
+
 ### 正则的拓展
 ### 数值的拓展
 ### 函数的拓展
