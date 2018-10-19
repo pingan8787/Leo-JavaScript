@@ -35,6 +35,7 @@
             - [1.includes(),startsWith(),endsWith()](#1includesstartswithendswith)
             - [2.repeat()](#2repeat)
             - [3.padStart(),padEnd()](#3padstartpadend)
+            - [4.模版字符串](#4模版字符串)
         - [正则的拓展](#正则的拓展)
         - [数值的拓展](#数值的拓展)
         - [函数的拓展](#函数的拓展)
@@ -422,15 +423,47 @@ a.includes('lo',6);      // false
 这两个方法接收**2个**参数，第一个指定**字符串最小长度**，第二个**用于补全的字符串**。
 **基础用法** ：
 ```js
-'x'.padStart(5, 'ab') // 'ababx'
-'x'.padEnd(5, 'ab') // 'xabab'
+'x'.padStart(5, 'ab');   // 'ababx'
+'x'.padEnd(5, 'ab');     // 'xabab'
 ```
 **特殊用法**:
 * 原字符串长度，大于或等于指定最小长度，则返回原字符串。
 ```js
-'xyzabc'.padStart(5, 'ab') // 'xyzabc'
+'xyzabc'.padStart(5, 'ab'); // 'xyzabc'
 ```
+* 用来补全的字符串长度和原字符串长度之和，超过指定最小长度，则截去超出部分的补全字符串。
+```js
+'ab'.padStart(5,'012345'); // "012ab"
+```
+* 省略第二个参数，则用`空格`补全。
+```js
+'x'.padStart(4);           // '    x'
+'x'.endStart(4);           // 'x    '
+```
+#### 4.模版字符串
+用于拼接字符串，ES6之前：
+```js
+let a = 'abc' + 
+    'def' + 
+    'ghi';
+```
+ES6之后：
+```js
+let a = `
+    abc
+    def
+    ghi
+`
+```
+**拼接变量**:
+在**反引号(\`)**中使用`${}`包裹变量或方法。
+```js
+// ES6之前
+let a = 'abc' + v1 + 'def';
 
+// ES6之后
+let a = `abc${v1}def`
+```
 
 ### 正则的拓展
 ### 数值的拓展
