@@ -6,7 +6,7 @@
 - [ ] ES8  
 - [ ] ES9  
 - [ ] 知识补充  
-> 最后更新 2018.10.18  
+> 最后更新 2018.10.21  
 > 也在思考，如何整理好这一份资料，让看的人，都各有收获。  
 
 # 一、介绍
@@ -44,6 +44,11 @@
             - [4.Math对象的拓展](#4math对象的拓展)
             - [5.指数运算符](#5指数运算符)
         - [函数的拓展](#函数的拓展)
+            - [1.参数默认值](#1参数默认值)
+            - [2.rest 参数](#2rest-参数)
+            - [3.name 属性](#3name-属性)
+            - [3.箭头函数](#3箭头函数)
+            - [4.双冒号运算符](#4双冒号运算符)
         - [对象的拓展](#对象的拓展)
     - [2. ES7](#2-es7)
     - [3. ES8](#3-es8)
@@ -723,12 +728,12 @@ Math.log2 = Math.log2 || function(x) {
 };
 ```
 * **双曲函数方法**:  
->`Math.sinh(x)` 返回x的**双曲正弦**（hyperbolic sine）
->`Math.cosh(x)` 返回x的**双曲余弦**（hyperbolic cosine）
->`Math.tanh(x)` 返回x的**双曲正切**（hyperbolic tangent）
->`Math.asinh(x)` 返回x的**反双曲正弦**（inverse hyperbolic sine）
->`Math.acosh(x)` 返回x的**反双曲余弦**（inverse hyperbolic cosine）
->`Math.atanh(x)` 返回x的**反双曲正切**（inverse hyperbolic tangent）
+>`Math.sinh(x)` 返回x的**双曲正弦**（hyperbolic sine）  
+>`Math.cosh(x)` 返回x的**双曲余弦**（hyperbolic cosine）  
+>`Math.tanh(x)` 返回x的**双曲正切**（hyperbolic tangent）  
+>`Math.asinh(x)` 返回x的**反双曲正弦**（inverse hyperbolic sine）  
+>`Math.acosh(x)` 返回x的**反双曲余弦**（inverse hyperbolic cosine）  
+>`Math.atanh(x)` 返回x的**反双曲正切**（inverse hyperbolic tangent）  
 
 #### 5.指数运算符
 新增的指数运算符(`**`):  
@@ -748,6 +753,223 @@ Math.pow(99, 99)
 ```
 
 ### 函数的拓展
+#### 1.参数默认值
+```js
+// ES6 之前
+function f(a, b){
+    b = b || 'leo';
+    console.log(a, b);
+}
+
+// ES6 之后
+function f(a, b='leo'){
+    console.log(a, b);
+}
+
+f('hi');          // hi leo
+f('hi', 'jack');  // hi jack
+f('hi', '');      // hi leo
+```
+**注意**:  
+* 参数变量是默认声明的，不能用`let`和`const`再次声明：    
+```js
+function f (a = 1){
+    let a = 2; // error
+}
+```
+* 使用参数默认值时，参数名不能相同：  
+```js
+function f (a, a, b){ ... };     // 不报错
+function f (a, a, b = 1){ ... }; // 报错
+```
+
+**与解构赋值默认值结合使用**：  
+```js
+function f ({a, b=1}){
+    console.log(a,b)
+};
+f({});         // undefined 1
+f({a:2});      // 2 1
+f({a:2, b:3}); // 2 3
+f();           // 报错
+
+function f ({a, b = 1} = {}){
+    console.log(a, b)
+}
+f();  // undefined 1
+```
+
+**尾参数定义默认值**:
+通常在为参数定义默认值，便于观察参数，并且非尾参数无法省略。 
+```js
+function f (a=1,b){
+    return [a, b];
+}
+f();    // [1, undefined]
+f(2);   // [2, undefined]
+f(,2);  // 报错
+
+f(undefined, 2);  // [1, 2]
+
+function f (a, b=1, c){
+    return [a, b, c];
+}
+f();        // [undefined, 1, undefined]
+f(1);       // [1,1,undefined]
+f(1, ,2);   // 报错
+f(1,undefined,2); // [1,1,2]
+```
+若给默认值传递参数，传入`undefined`会触发默认值，传入`null`不会触发。  
+```js
+function f (a = 1, b = 2){
+    console.log(a, b);
+}
+f(undefined, null); // 1 null
+```
+
+**函数的length属性**:  
+`length`属性将返回，没有指定默认值的参数数量，并且rest参数不计入`length`属性。    
+```js
+function f1 (a){...};
+function f2 (a=1){...};
+function f3 (a, b=2){...};
+function f4 (...a){...};
+function f5 (a,b,...c){...};
+
+f1.length; // 1
+f2.length; // 0
+f3.length; // 1
+f4.length; // 0
+f5.length; // 2
+```
+
+#### 2.rest 参数
+`rest`参数形式为（`...变量名`），其值为一个数组，用于获取函数多余参数。  
+```js
+function f (a, ...b){
+    console.log(a, b);
+}
+f(1,2,3,4); // 1 [2, 3, 4]
+```
+**注意**：  
+* `rest`参数只能放在最后一个，否则报错：  
+```js
+function f(a, ...b, c){...}; // 报错 
+```
+* 函数的`length`属性不包含`rest`参数。
+```js
+function f1 (a){...};
+function f2 (a,...b){...};
+f1(1);   // 1
+f2(1,2); // 1
+```
+
+#### 3.name 属性
+用于返回该函数的函数名。  
+```js
+function f (){...};
+f.name;    // f
+
+const f = function g(){...};
+f.name;    // g
+```
+
+#### 3.箭头函数
+使用“箭头”(`=>`)定义函数。  
+**基础使用**：   
+```js
+// 有1个参数
+let f = v => v;
+// 等同于
+let f = function (v){return v};
+
+// 有多个参数
+let f = (v, i) => {return v + i};
+// 等同于
+let f = function (v, i){return v + i};
+
+// 没参数
+let f = () => 1;
+// 等同于
+let f = function (){return 1};
+```
+
+**箭头函数与变量结构结合使用**：  
+```js
+// 正常函数写法
+function f (p) {
+    return p.a + ':' + p.b;
+}
+
+// 箭头函数写法
+let f = ({a, b}) => a + ':' + b;
+```
+
+**简化回调函数**：  
+```js
+// 正常函数写法
+[1, 2, 3].map(function (x){
+    return x * x;
+})
+
+
+// 箭头函数写法
+[1, 2, 3].map(x => x * x);
+```
+
+**箭头函数与rest参数结合**：  
+```js
+let f = (...n) => n;
+f(1, 2, 3); // [1, 2, 3]
+```
+
+**注意点**：   
+* 1.箭头函数内的`this`**总是**指向**定义时所在的对象**，而不是调用时。  
+* 2.箭头函数不能当做**构造函数**，即不能用`new`命令，否则报错。  
+* 3.箭头函数不存在`arguments`对象，即不能使用，可以使用`rest`参数代替。  
+* 4.箭头函数不能使用`yield`命令，即不能用作**Generator**函数。   
+
+**不适用场景**：  
+* 1.在定义函数方法，且该方法内部包含`this`。  
+```js
+const obj = {
+    a:9,
+    b: () => {
+        this.a --;
+    }
+}
+```
+上述`b`如果是**普通函数**，函数内部的`this`指向`obj`，但是如果是箭头函数，则`this`会指向**全局**，不是预期结果。  
+
+* 2.需要动态`this`时。  
+```js
+let b = document.getElementById('myID');
+b.addEventListener('click', ()=>{
+    this.classList.toggle('on');
+})
+```
+上诉按钮点击会报错，因为`b`监听的箭头函数中，`this`是全局对象，若改成**普通函数**，`this`就会指向被点击的按钮对象。  
+
+#### 4.双冒号运算符
+双冒号暂时是一个提案，用于解决一些不适用的场合，取代`call`、`apply`、`bind`调用。    
+双冒号运算符(`::`)的左边是一个**对象**，右边是一个**函数**。该运算符会自动将左边的对象，作为上下文环境(即`this`对象)，绑定到右边函数上。  
+```js
+f::b;
+// 等同于
+b.bind(f);
+
+f::b(...arguments);
+// 等同于
+b.apply(f, arguments);
+```
+若双冒号左边为空，右边是一个对象的方法，则等于将该方法绑定到该对象上。  
+```js
+let f = a::a.b;
+// 等同于
+let f = ::a.b;
+```
+
+
 ### 对象的拓展
 
 ## 2. ES7
