@@ -1,18 +1,18 @@
-**整理进度**：
-- [x] 介绍
-- [x] 目录
-- [ ] ES6
-- [ ] ES7
-- [ ] ES8
-- [ ] ES9
-- [ ] 知识补充
-> 最后更新 2018.10.18
-> 也在思考，如何整理好这一份资料，让看的人，都各有收获。
+**整理进度**：  
+- [x] 介绍  
+- [x] 目录  
+- [ ] ES6  
+- [ ] ES7  
+- [ ] ES8  
+- [ ] ES9  
+- [ ] 知识补充  
+> 最后更新 2018.10.18  
+> 也在思考，如何整理好这一份资料，让看的人，都各有收获。  
 
 # 一、介绍
-现如今网络上已经有各式各样关于 **ECMAScript** 规范的介绍和分析的文章，而我准备整理一份比较完善也比较精简便于快速入门的资料。
-这份资料的**ES6部分**将会参考阮一峰老师的 [ECMAScript6入门](http://es6.ruanyifeng.com/) ，精简和整理出快速实用的内容。
-另外**ES7/ES8/ES9**则会从网络参考和整理。
+现如今网络上已经有各式各样关于 **ECMAScript** 规范的介绍和分析的文章，而我准备整理一份比较完善也比较精简便于快速入门的资料。  
+这份资料的**ES6部分**将会参考阮一峰老师的 [ECMAScript6入门](http://es6.ruanyifeng.com/) ，精简和整理出快速实用的内容。  
+另外**ES7/ES8/ES9**则会从网络参考和整理。  
 
 # 二、目录
 <!-- TOC -->
@@ -38,6 +38,11 @@
             - [4.模版字符串](#4模版字符串)
         - [正则的拓展](#正则的拓展)
         - [数值的拓展](#数值的拓展)
+            - [1.Number.isFinite(), Number.isNaN()](#1numberisfinite-numberisnan)
+            - [2.Number.parseInt(), Number.parseFloat()](#2numberparseint-numberparsefloat)
+            - [3.Number.isInteger()](#3numberisinteger)
+            - [4.Math对象的拓展](#4math对象的拓展)
+            - [5.指数运算符](#5指数运算符)
         - [函数的拓展](#函数的拓展)
         - [对象的拓展](#对象的拓展)
     - [2. ES7](#2-es7)
@@ -58,7 +63,7 @@
 
 #### let 命令
 `let` 命令的用法和 `var` 相似，但是 `let` 只在所在代码块内有效。  
-**基础用法**： 
+**基础用法**：   
 ```js
 {
     let a = 1;
@@ -68,7 +73,7 @@
 
 并且 `let` 有以下特点：  
 
-* **不存在变量提升：**
+* **不存在变量提升：**  
 在ES6之前，我们 `var` 声明一个**变量**一个**函数**，都会伴随着变量提升的问题，导致实际开发过程经常出现一些逻辑上的疑惑，按照一般思维习惯，变量都是需要先声明后使用。
 ```js
 // var 
@@ -84,7 +89,7 @@ console.log(v2); // ReferenceError
 let v2 = 2;
 ```
 
-* **不允许重复声明：**
+* **不允许重复声明：**  
 `let` 和 `const` 在相同作用域下，都**不能重复声明同一变量**，并且**不能在函数内重新声明参数**。
 ```js
 // 1. 不能重复声明同一变量
@@ -120,19 +125,19 @@ const PI = 3.1415926;
 console.log(PI);  // 3.1415926
 
 ```
-**注意点**：  
-* `const` 声明后，无法修改值；
+**注意点**：    
+* `const` 声明后，无法修改值；  
 ```js
 const PI = 3.1415926;
 PI = 3; 
 // TypeError: Assignment to constant variable.
 ```
-* `const` 声明时，必须赋值；
+* `const` 声明时，必须赋值；  
 ```js
 const a ; 
 // SyntaxError: Missing initializer in const declaration.
 ```
-* `const` 声明的常量，`let` 不能重复声明；
+* `const` 声明的常量，`let` 不能重复声明；  
 ```js
 const PI = 3.1415926;
 let PI = 0;  
@@ -141,10 +146,10 @@ let PI = 0;
 
 
 ### 变量的解构赋值
-**解构赋值概念**：在ES6中，直接从数组和对象中取值，按照对应位置，赋值给变量的操作。
+**解构赋值概念**：在ES6中，直接从数组和对象中取值，按照对应位置，赋值给变量的操作。  
 
-#### 1.数组
-**基础用法**：  
+#### 1.数组  
+**基础用法**：    
 ```js
 // ES6 之前
 let a = 1;
@@ -154,7 +159,7 @@ let b = 2;
 let [a, b] = [1, 2];
 ```
 
-本质上，只要等号两边模式一致，左边变量即可获取右边对应位置的值，更多用法：
+本质上，只要等号两边模式一致，左边变量即可获取右边对应位置的值，更多用法：  
 
 ```js
 let [a, [[b], c]] = [1, [[2], 3]];
@@ -173,18 +178,18 @@ let [a, b, ..c.] = [1];
 console.log(a, b, c); // 1, undefined, []
 ```
 
-**注意点**：  
-* 如果解构不成功，变量的值就等于`undefined`。  
+**注意点**：    
+* 如果解构不成功，变量的值就等于`undefined`。    
 ```js
 let [a] = [];     // a => undefined
 let [a, b] = [1]; // a => 1 , b => undefined
 ```
-* 当左边模式多于右边，也可以解构成功。
+* 当左边模式多于右边，也可以解构成功。  
 ```js
 let [a, b] = [1, 2, 3];
 console.log(a, b); // 1, 2
 ```
-* 两边模式不同，报错。
+* 两边模式不同，报错。  
 ```js
 let [a] = 1;
 let [a] = false;
@@ -194,23 +199,23 @@ let [a] = null;
 let [a] = {};
 ```
 
-**指定解构的默认值**：
-**基础用法**：
+**指定解构的默认值**：  
+**基础用法**：  
 ```js
 let [a = 1] = [];      // a => 1
 let [a, b = 2] = [a];  // a => 1 , b => 2
 ```
-特殊情况：
+特殊情况：  
 ```js
 let [a = 1] = [undefined]; // a => 1
 let [a = 1] = [null];      // a => null
 ```
-右边模式对应的值，必须严格等于`undefined`，默认值才能生效，而`null`不严格等于`undefined`。
+右边模式对应的值，必须严格等于`undefined`，默认值才能生效，而`null`不严格等于`undefined`。  
 
 #### 2.对象的解构赋值
-与数组解构不同的是，对象解构**不需要严格按照顺序取值**，而只要按照**变量名**去取对应**属性名**的值，若取不到对应**属性名**的值，则为`undefined` 。
+与数组解构不同的是，对象解构**不需要严格按照顺序取值**，而只要按照**变量名**去取对应**属性名**的值，若取不到对应**属性名**的值，则为`undefined` 。  
 
-**基础用法**：  
+**基础用法**：    
 ```js
 let {a, b} = {a:1, b:2};  // a => 1 , b => 2
 let {a, b} = {a:2, b:1};  // a => 2 , b => 1
@@ -218,17 +223,17 @@ let {a} = {a:3, b:2, c:1};// a => 3
 let {a} = {b:2, c:1};     // a => undefined
 ```
 
-**注意点**：
+**注意点**：  
 * 若**变量名**和**属性名**不一致，则需要修改名称。
 ```js
 let {a:b} = {a:1, c:2}; 
 // error: a is not defined
 // b => 1
 ```
-对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。
-上面代码中，`a` 是匹配的模式，`b`才是变量。真正被赋值的是变量`b`，而不是模式`a`。
+对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变量。真正被赋值的是后者，而不是前者。  
+上面代码中，`a` 是匹配的模式，`b`才是变量。真正被赋值的是变量`b`，而不是模式`a`。  
 
-* 对象解构也支持**嵌套解构**。
+* 对象解构也支持**嵌套解构**。 
 ```js
 let obj = {
     a:[ 1, { b: 2}]
@@ -237,7 +242,7 @@ let {a, a: [c, {b}]} = obj;
 // a=>[1, {b: 2}], b => 2, c => 1
 ```
 
-**指定解构的默认值**：
+**指定解构的默认值**： 
 ```js
 let {a=1} = {};        // a => 1
 let {a, b=1} = {a:2};  // a => 2, b => 1
@@ -253,8 +258,8 @@ let {a=1} = {a:null};   // a => null
 ```
 
 #### 3.字符串的解构赋值
-字符串的解构赋值中，字符串被转换成了一个**类似数组的对象**。
-**基础用法**：
+字符串的解构赋值中，字符串被转换成了一个**类似数组的对象**。 
+**基础用法**： 
 ```js
 const [a, b, c, d, e] = 'hello';
 a // "h"
@@ -267,7 +272,7 @@ let {length:len} = 'hello';// len => 5
 ```
 
 #### 4.数值和布尔值的解构赋值
-解构赋值的规则是，**只要等号右边的值不是对象或数组，就先将其转为对象**。由于`undefined`和`null`**无法转为对象**，所以对它们进行解构赋值，都会报错。
+解构赋值的规则是，**只要等号右边的值不是对象或数组，就先将其转为对象**。由于`undefined`和`null`**无法转为对象**，所以对它们进行解构赋值，都会报错。 
 ```js
 // 数值和布尔值的包装对象都有toString属性
 let {toString: s} = 123;
@@ -280,14 +285,14 @@ let { prop: y } = null;      // TypeError
 ```
 
 #### 5.函数参数的解构赋值
-**基础用法**： 
+**基础用法**：  
 ```js
 function fun ([a, b]){
     return a + b;
 }
 fun ([1, 2]); // 3
 ```
-**指定默认值的解构**:
+**指定默认值的解构**: 
 ```js
 function fun ({a=0, b=0} = {}){
     return [a, b];
@@ -307,13 +312,13 @@ fun ();           // [0, 0]
 ```
 
 #### 6.用途
-* **交换变量的值**:
+* **交换变量的值**: 
 ```js
 let a = 1,b = 2;
 [a, b] = [b, a]; // a =>2 , b => 1 
 ```
 
-* **函数返回多个值**:
+* **函数返回多个值**: 
 ```js
 // 返回一个数组
 function f (){
@@ -328,8 +333,8 @@ function f (){
 let {a, b} = f();    // a=>1, b=>2
 ```
 
-* **快速对应参数**:
-快速的将一组参数与变量名对应。
+* **快速对应参数**: 
+快速的将一组参数与变量名对应。 
 ```js
 function f([a, b, c]) {...}
 f([1, 2, 3]);
@@ -338,7 +343,7 @@ function f({a, b, c}) {...}
 f({b:2, c:3, a:1});
 ```
 
-* **提取JSON数据**：
+* **提取JSON数据**： 
 ```js
 let json = {
     name : 'leo',
@@ -348,7 +353,7 @@ let {name, age} = json;
 console.log(name,age); // leo, 18
 ```
 
-* **遍历Map结构**:
+* **遍历Map结构**: 
 ```js
 const m = new Map();
 m.set('a':1);
@@ -362,8 +367,8 @@ for (let [k] of m){...}
 for (let [,k] of m){...}
 ```
 
-* **输入模块的指定方法**:
-用于**按需加载**模块中需要用到的方法。
+* **输入模块的指定方法**: 
+用于**按需加载**模块中需要用到的方法。 
 ```js
 const {log, sin, cos} = require('math');
 
@@ -371,83 +376,83 @@ const {log, sin, cos} = require('math');
 
 ### 字符串的拓展
 #### 1.includes(),startsWith(),endsWith()
-在我们判断字符串是否包含另一个字符串时，ES6之前，我们只有`typeof`方法，ES6之后我们又多了三种方法：  
-* **includes()**:返回**布尔值**，表示**是否找到参数字符串**。
-* **startsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**头部**。
-* **endsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**尾部**。
+在我们判断字符串是否包含另一个字符串时，ES6之前，我们只有`typeof`方法，ES6之后我们又多了三种方法：   
+* **includes()**:返回**布尔值**，表示**是否找到参数字符串**。 
+* **startsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**头部**。 
+* **endsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**尾部**。 
 ```js
 let a = 'hello leo';
 a.startsWith('leo');   // false
 a.endsWith('o');       // true
 a.includes('lo');      // true
 ```
-并且这三个方法都支持第二个参数，表示起始搜索的位置。
+并且这三个方法都支持第二个参数，表示起始搜索的位置。  
 ```js
 let a = 'hello leo';
 a.startsWith('leo',1);   // false
 a.endsWith('o',5);       // true
 a.includes('lo',6);      // false
 ```
-`endsWith` 是针对前 `n` 个字符，而其他两个是针对从第`n`个位置直到结束。
+`endsWith` 是针对前 `n` 个字符，而其他两个是针对从第`n`个位置直到结束。  
 
 #### 2.repeat()
-`repeat`方法返回一个新字符串，表示将原字符串重复`n`次。  
-**基础用法**：
+`repeat`方法返回一个新字符串，表示将原字符串重复`n`次。    
+**基础用法**：  
 ```js
 'ab'.repeat(3);        // 'ababab'
 'ab'.repeat(0);        // ''
 ```
-**特殊用法**:  
-* 参数为`小数`，则取整
+**特殊用法**:    
+* 参数为`小数`，则取整  
 ```js
 'ab'.repeat(2.3);      // 'abab'
 ```
-* 参数为`负数`或`Infinity`，则报错
+* 参数为`负数`或`Infinity`，则报错  
 ```js
 'ab'.repeat(-1);       // RangeError
 'ab'.repeat(Infinity); // RangeError
 ```
-* 参数为`0到-1的小数`或`NaN`，则取0
+* 参数为`0到-1的小数`或`NaN`，则取0  
 ```js
 'ab'.repeat(-0.5);     // ''
 'ab'.repeat(NaN);      // ''
 ```
-* 参数为`字符串`，则转成`数字`
+* 参数为`字符串`，则转成`数字`  
 ```js
 'ab'.repeat('ab');     // ''
 'ab'.repeat('3');      // 'ababab'
 ```
 
 #### 3.padStart(),padEnd()
-用于将字符串**头部**或**尾部**补全长度，`padStart()`为**头部补全**，`padEnd()`为**尾部补全**。  
-这两个方法接收**2个**参数，第一个指定**字符串最小长度**，第二个**用于补全的字符串**。
-**基础用法** ：
+用于将字符串**头部**或**尾部**补全长度，`padStart()`为**头部补全**，`padEnd()`为**尾部补全**。    
+这两个方法接收**2个**参数，第一个指定**字符串最小长度**，第二个**用于补全的字符串**。  
+**基础用法** ：  
 ```js
 'x'.padStart(5, 'ab');   // 'ababx'
 'x'.padEnd(5, 'ab');     // 'xabab'
 ```
-**特殊用法**:
-* 原字符串长度，大于或等于指定最小长度，则返回原字符串。
+**特殊用法**:  
+* 原字符串长度，大于或等于指定最小长度，则返回原字符串。  
 ```js
 'xyzabc'.padStart(5, 'ab'); // 'xyzabc'
 ```
-* 用来补全的字符串长度和原字符串长度之和，超过指定最小长度，则截去超出部分的补全字符串。
+* 用来补全的字符串长度和原字符串长度之和，超过指定最小长度，则截去超出部分的补全字符串。  
 ```js
 'ab'.padStart(5,'012345'); // "012ab"
 ```
-* 省略第二个参数，则用`空格`补全。
+* 省略第二个参数，则用`空格`补全。  
 ```js
 'x'.padStart(4);           // '    x'
 'x'.endStart(4);           // 'x    '
 ```
 #### 4.模版字符串
-用于拼接字符串，ES6之前：
+用于拼接字符串，ES6之前：  
 ```js
 let a = 'abc' + 
     'def' + 
     'ghi';
 ```
-ES6之后：
+ES6之后：  
 ```js
 let a = `
     abc
@@ -456,7 +461,7 @@ let a = `
 `
 ```
 **拼接变量**:
-在**反引号(\`)**中使用`${}`包裹变量或方法。
+在**反引号(\`)**中使用`${}`包裹变量或方法。  
 ```js
 // ES6之前
 let a = 'abc' + v1 + 'def';
@@ -466,7 +471,282 @@ let a = `abc${v1}def`
 ```
 
 ### 正则的拓展
+
 ### 数值的拓展
+#### 1.Number.isFinite(), Number.isNaN()
+`Number.isFinite()` 用于检查一个数值是否是有限的，即不是`Infinity`，若参数不是`Number`类型，则一律返回`false` 。    
+```js
+Number.isFinite(10);            // true
+Number.isFinite(0.5);           // true
+Number.isFinite(NaN);           // false
+Number.isFinite(Infinity);      // false
+Number.isFinite(-Infinity);     // false
+Number.isFinite('leo');         // false
+Number.isFinite('15');          // false
+Number.isFinite(true);          // false
+Number.isFinite(Math.random()); // true
+```
+
+`Number.isNaN()`用于检查是否是`NaN`，若参数不是`NaN`，则一律返回`false`。  
+```js
+Number.isNaN(NaN);      // true
+Number.isNaN(10);       // false
+Number.isNaN('10');     // false
+Number.isNaN(true);     // false
+Number.isNaN(5/NaN);    // true
+Number.isNaN('true' / 0);      // true
+Number.isNaN('true' / 'true'); // true
+```
+
+**区别**：  
+与传统全局的`isFinite()`和`isNaN()`方法的区别，传统的这两个方法，是先将参数转换成**数值**，再判断。    
+而ES6新增的这两个方法则只对**数值**有效，  `Number.isFinite()`对于**非数值**一律返回`false`,` Number.isNaN()`只有对于`NaN`才返回`true`，其他一律返回`false`。  
+```js
+isFinite(25);          // true
+isFinite("25");        // true
+Number.isFinite(25);   // true
+Number.isFinite("25"); // false
+
+isNaN(NaN);            // true
+isNaN("NaN");          // true
+Number.isNaN(NaN);     // true
+Number.isNaN("NaN");   // false
+```
+
+#### 2.Number.parseInt(), Number.parseFloat()
+这两个方法与全局方法`parseInt()`和`parseFloat()`一致，目的是逐步**减少全局性的方法**，让**语言更模块化**。    
+```js
+parseInt('12.34');     // 12
+parseFloat('123.45#'); // 123.45
+
+Number.parseInt('12.34');     // 12
+Number.parseFloat('123.45#'); // 123.45
+
+Number.parseInt === parseInt;     // true
+Number.parseFloat === parseFloat; // true
+```
+
+#### 3.Number.isInteger() 
+用来判断一个数值是否是整数，若参数不是数值，则返回`false`。    
+```js
+Number.isInteger(10);   // true
+Number.isInteger(10.0); // true
+Number.isInteger(10.1); // false
+```
+
+#### 4.Math对象的拓展
+ES6新增17个数学相关的**静态方法**，只能在**Math对象**上调用。  
+* **Math.trunc**:  
+用来去除小数的小数部分，**返回整数部分**。  
+若参数为**非数值**，则**先转为数值**。  
+若参数为**空值**或**无法截取整数的值**，则返回**NaN**。  
+```js
+// 正常使用
+Math.trunc(1.1);     // 1
+Math.trunc(1.9);     // 1
+Math.trunc(-1.1);    // -1
+Math.trunc(-1.9);    // -1
+Math.trunc(-0.1234); // -0
+
+// 参数为非数值
+Math.trunc('11.22'); // 11
+Math.trunc(true);    // 1
+Math.trunc(false);   // 0
+Math.trunc(null);    // 0
+
+// 参数为空和无法取整
+Math.trunc(NaN);       // NaN
+Math.trunc('leo');     // NaN
+Math.trunc();          // NaN
+Math.trunc(undefined); // NaN
+```
+**ES5实现**：   
+```js
+Math.trunc = Math.trunc || function(x){
+    return x < 0 ? Math.ceil(x) : Math.floor(x);
+}
+```
+
+* **Math.sign()**:  
+判断一个数是**正数**、**负数**还**是零**，对于非数值，会先转成**数值**。    
+返回值：   
+> 参数为正数， 返回 +1
+> 参数为负数， 返回 -1
+> 参数为0， 返回 0
+> 参数为-0， 返回 -0
+> 参数为其他值， 返回 NaN
+```js
+Math.sign(-1);   // -1
+Math.sign(1);    // +1
+Math.sign(0);    // 0
+Math.sign(-0);   // -0
+Math.sign(NaN);  // NaN
+
+Math.sign('');   // 0
+Math.sign(true); // +1
+Math.sign(false);// 0
+Math.sign(null); // 0
+Math.sign('9');  // +1
+Math.sign('leo');// NaN
+Math.sign();     // NaN
+Math.sign(undefined); // NaN
+```
+
+**ES5实现**  
+```js
+Math.sign = Math.sign || function (x){
+    x = +x;
+    if (x === 0 || isNaN(x)){
+        return x;
+    }
+    return x > 0 ? 1: -1;
+}
+```
+
+* **Math.cbrt()**:  
+用来计算一个数的立方根，若参数为非数值则先转成数值。
+```js
+Math.cbrt(-1); // -1
+Math.cbrt(0);  // 0
+Math.cbrt(1);  // 1
+Math.cbrt(2);  // 1.2599210498
+
+Math.cbrt('1');   // 1
+Math.cbrt('leo'); // NaN
+```
+**ES5实现**  
+```js
+Math.cbrt = Math.cbrt || function (x){
+    var a = Math.pow(Math.abs(x), 1/3);
+    return x < 0 ? -y : y;
+}
+```
+
+* **Math.clz32()**:  
+用于返回一个数的 32 位无符号整数形式有多少个前导 0。
+```js
+Math.clz32(0) // 32
+Math.clz32(1) // 31
+Math.clz32(1000) // 22
+Math.clz32(0b01000000000000000000000000000000) // 1
+Math.clz32(0b00100000000000000000000000000000) // 2
+```
+
+* **Math.imul()**:  
+用于返回两个数以 32 位带符号整数形式相乘的结果，返回的也是一个 32 位的带符号整数。   
+```js
+Math.imul(2, 4)   // 8
+Math.imul(-1, 8)  // -8
+Math.imul(-2, -2) // 4
+```
+
+* **Math.fround()**:  
+用来返回一个数的**2位单精度浮点数**形式。  
+```js
+Math.fround(0)   // 0
+Math.fround(1)   // 1
+Math.fround(2 ** 24 - 1)   // 16777215
+```
+
+* **Math.hypot()**:   
+用来返回所有参数的平方和的**平方根**。  
+```js
+Math.hypot(3, 4);        // 5
+Math.hypot(3, 4, 5);     // 7.0710678118654755
+Math.hypot();            // 0
+Math.hypot(NaN);         // NaN
+Math.hypot(3, 4, 'foo'); // NaN
+Math.hypot(3, 4, '5');   // 7.0710678118654755
+Math.hypot(-3);          // 3
+```
+
+* **Math.expm1()**:  
+用来返回` ex - 1`，即`Math.exp(x) - 1`。  
+```js
+Math.expm1(-1) // -0.6321205588285577
+Math.expm1(0)  // 0
+Math.expm1(1)  // 1.718281828459045
+```
+**ES5实现**  
+```js
+Math.expm1 = Math.expm1 || function(x) {
+  return Math.exp(x) - 1;
+};
+```
+
+* **Math.log1p()**:  
+用来返回`1 + x`的自然对数，即`Math.log(1 + x)`。如果x小于`-1`，返回`NaN`。  
+```js
+Math.log1p(1)  // 0.6931471805599453
+Math.log1p(0)  // 0
+Math.log1p(-1) // -Infinity
+Math.log1p(-2) // NaN
+```
+**ES5实现**  
+```js
+Math.log1p = Math.log1p || function(x) {
+  return Math.log(1 + x);
+};
+```
+
+* **Math.log10()**:  
+用来返回以 `10 `为底的`x的对数`。如果x小于 0，则返回 `NaN`。  
+```js
+Math.log10(2)      // 0.3010299956639812
+Math.log10(1)      // 0
+Math.log10(0)      // -Infinity
+Math.log10(-2)     // NaN
+Math.log10(100000) // 5
+```
+**ES5实现**  
+```js
+Math.log10 = Math.log10 || function(x) {
+  return Math.log(x) / Math.LN10;
+};
+```
+
+* **Math.log2()**:  
+用来返回以 `2` 为底的`x的对数`。如果`x`小于` 0`，则返回 `NaN`。   
+```js
+Math.log2(3)       // 1.584962500721156
+Math.log2(2)       // 1
+Math.log2(1)       // 0
+Math.log2(0)       // -Infinity
+Math.log2(-2)      // NaN
+Math.log2(1024)    // 10
+Math.log2(1 << 29) // 29
+```
+**ES5实现**  
+```js
+Math.log2 = Math.log2 || function(x) {
+  return Math.log(x) / Math.LN2;
+};
+```
+* **双曲函数方法**:  
+>`Math.sinh(x)` 返回x的**双曲正弦**（hyperbolic sine）
+>`Math.cosh(x)` 返回x的**双曲余弦**（hyperbolic cosine）
+>`Math.tanh(x)` 返回x的**双曲正切**（hyperbolic tangent）
+>`Math.asinh(x)` 返回x的**反双曲正弦**（inverse hyperbolic sine）
+>`Math.acosh(x)` 返回x的**反双曲余弦**（inverse hyperbolic cosine）
+>`Math.atanh(x)` 返回x的**反双曲正切**（inverse hyperbolic tangent）
+
+#### 5.指数运算符
+新增的指数运算符(`**`):  
+```js
+2 ** 2; // 4
+2 ** 3; // 8 
+
+2 ** 3 ** 2; // 相当于 2 ** (3 ** 2); 返回 512
+```
+指数运算符(`**`)与`Math.pow`的实现不相同，对于特别大的运算结果，两者会有细微的差异。
+```js
+Math.pow(99, 99)
+// 3.697296376497263e+197
+
+99 ** 99
+// 3.697296376497268e+197
+```
+
 ### 函数的拓展
 ### 对象的拓展
 
