@@ -63,6 +63,7 @@
     - [4. ES9](#4-es9)
     - [5. 知识补充](#5-知识补充)
         - [块级作用域](#块级作用域)
+        - [ES5/6对数组空位的处理](#es56对数组空位的处理)
 - [四、结语](#四结语)
 
 <!-- /TOC -->
@@ -1178,6 +1179,7 @@ for (let e of ['a', 'b'].keys()){
 // [2, 4, 3, 6, 4, 8] 
 ```
 
+
 ## 2. ES7
 
 ## 3. ES8
@@ -1219,6 +1221,59 @@ for (var i = 0; i< a.length; i++) {
 console.log(i); // 5
 ```
 循环结束后，变量 `i` 的值依然存在，造成变量的全局污染。
+
+### ES5/6对数组空位的处理
+
+数组的空位不是`undefined`，而是没有任何值，数组的`undefined`也是有值。  
+```js
+0 in [undefined,undefined,undefined] // true
+0 in [,,,] // false
+```
+**ES5对空位的处理**：  
+* `forEach()`, `filter()`, `reduce()`, `every()` 和`some()`都会跳过空位。  
+* `map()`会跳过空位，但会保留这个值。  
+* `join()`和`toString()`会将空位视为`undefined`，而`undefined`和`null`会被处理成空字符串。  
+```js
+[,'a'].forEach((x,i) => console.log(i)); // 1
+['a',,'b'].filter(x => true);      // ['a','b']
+[,'a'].every(x => x==='a');        // true
+[1,,2].reduce((x,y) => x+y);       // 3
+[,'a'].some(x => x !== 'a');       // false
+[,'a'].map(x => 1);                // [,1]
+[,'a',undefined,null].join('#');   // "#a##"
+[,'a',undefined,null].toString();  // ",a,,"
+```
+**ES6对空位的处理**：  
+将空位视为正常值，转成`undefined`。
+```js
+Array.from(['a',,'b']);// [ "a", undefined, "b" ]
+[...['a',,'b']];       // [ "a", undefined, "b" ]
+
+//copyWithin() 会连空位一起拷贝。  
+[,'a','b',,].copyWithin(2,0) // [,"a",,"a"]
+
+//fill()会将空位视为正常的数组位置。
+new Array(3).fill('a') // ["a","a","a"]
+
+//for...of循环也会遍历空位。
+let arr = [, ,];
+for (let i of arr) {
+  console.log(1);
+}  // 1 1
+```
+`entries()`、`keys()`、`values()`、`find()`和`findIndex()`会将空位处理成`undefined`。   
+```js
+[...[,'a'].entries()] // [[0,undefined], [1,"a"]]
+
+[...[,'a'].keys()] // [0,1]
+
+[...[,'a'].values()] // [undefined,"a"]
+
+[,'a'].find(x => true) // undefined
+
+[,'a'].findIndex(x => true) // 0
+```
+**由于空位的处理规则非常不统一，所以建议避免出现空位。**
 
 
 # 四、结语
