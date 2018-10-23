@@ -49,7 +49,7 @@
             - [3.name 属性](#3name-属性)
             - [4.箭头函数](#4箭头函数)
             - [5.双冒号运算符](#5双冒号运算符)
-        - [对象的拓展](#对象的拓展)
+        - [数组的拓展](#数组的拓展)
             - [1.拓展运算符](#1拓展运算符)
             - [2.Array.from()](#2arrayfrom)
             - [3.Array.of()](#3arrayof)
@@ -58,7 +58,14 @@
             - [6.entries(),keys(),values()](#6entrieskeysvalues)
             - [7.includes()](#7includes)
             - [8.flat(),flatMap()](#8flatflatmap)
+        - [对象的拓展](#对象的拓展)
+            - [1.属性的简洁表示](#1属性的简洁表示)
+            - [2.属性名表达式](#2属性名表达式)
+            - [3.Object.is()](#3objectis)
+            - [4.Object.assign()](#4objectassign)
     - [2. ES7](#2-es7)
+        - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
+        - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
     - [3. ES8](#3-es8)
     - [4. ES9](#4-es9)
     - [5. 知识补充](#5-知识补充)
@@ -978,7 +985,7 @@ let f = a::a.b;
 let f = ::a.b;
 ```
 
-### 对象的拓展
+### 数组的拓展
 #### 1.拓展运算符
 拓展运算符使用(`...`)，类似`rest`参数的逆运算，将数组转为用(`,`)分隔的参数序列。   
 ```js
@@ -1180,7 +1187,137 @@ for (let e of ['a', 'b'].keys()){
 ```
 
 
+### 对象的拓展
+#### 1.属性的简洁表示
+```js
+let a = 'a1';
+let b = { a };  // b => { a : 'a1' }
+// 等同于
+let b = { a : a };
+
+function f(a, b){
+    return {a, b}; 
+}
+// 等同于
+function f (a, b){
+    return {a:a ,b:b};
+}
+
+let a = {
+    fun () {
+        return 'leo';
+    }
+}
+// 等同于
+let a = {
+    fun : function(){
+        return 'leo';
+    }
+}
+```
+
+#### 2.属性名表达式
+`JavaScript`提供2种方法**定义对象的属性**。  
+```js
+// 方法1 标识符作为属性名
+a.f = true;
+
+// 方法2 字符串作为属性名
+a['f' + 'un'] = true;
+```
+延伸出来的还有：   
+```js
+let a = 'hi leo';
+let b = {
+    [a]: true,
+    ['a'+'bc']: 123,
+    ['my' + 'fun'] (){
+        return 'hi';
+    }
+};
+// b.a => undefined ; b.abc => 123 ; b.myfun() => 'hi'
+// b[a] => 'hi leo' ; b['abc'] => 123 ; b['myfun'] => 'hi'
+```
+**注意**：  
+属性名表达式不能与简介表示法同时使用，否则报错。   
+```js
+// 报错
+let a1 = 'aa';
+let a2 = 'bb';
+let b1 = {[a1]};
+
+// 正确
+let a1 = 'aa';
+let b1 = { [a1] : 'bb'};
+```
+
+#### 3.Object.is()
+`.Object.is()` 用于比较两个值是否严格相等，在ES5时候只要使用**相等运算符**(`==`)和**严格相等运算符**(`===`)就可以做比较，但是它们都有缺点，前者会**自动转换数据类型**，后者的`NaN`不等于自身，以及`+0`等于`-0`。   
+```js
+Object.is('a','a');   // true
+Object.is({}, {});    // false
+
+// ES5
++0 === -0 ;           // true
+NaN === NaN;          // false
+
+// ES6
+Object.is(+0,-0);     // false
+Object.is(NaN,NaN);   // true
+```
+
+#### 4.Object.assign()
+`Object.assign()`方法用于对象的合并，将原对象的所有可枚举属性复制到目标对象。  
+**基础用法**：  
+第一个参数是**目标对象**，后面参数都是**源对象**。  
+```js
+let a = {a:1};
+let b = {b:2};
+Object.assign(a,b);  // a=> {a:1,b:2}
+```
+**注意**：  
+* 若目标对象与源对象有同名属性，则后面属性会覆盖前面属性。  
+```js
+let a = {a:1, b:2};
+let b = {b:3, c:4};
+Object.assign(a, b); // a => {a:1, b:3, c:4}
+```
+* 若只有**一个**参数，则返回该参数。 
+```js
+let a = {a:1};
+Object.assign(a) === a;  // true
+```
+* 若参数**不是对象**，则先转成对象后返回。
+```js
+typeof Object.assign(2); // 'object'
+```
+* 由于`undefined`或`NaN`无法转成对象，所以做为参数会报错。   
+```js
+Object.assign(undefined) // 报错
+Object.assign(NaN);      // 报错
+```
+* `Object.assign()`实现的是浅拷贝。   
+
+`Object.assign()`拷贝得到的是这个对象的引用。这个对象的任何变化，都会反映到目标对象上面。
+```js
+let a = {a: {b:1}};
+let b = Object.assign({},a);
+a.a.b = 2;
+console.log(b.a.b);  // 2
+```
+* 将数组当做对象处理，键名为数组下标，键值为数组下标对应的值。
+```js
+Object.assign([1, 2, 3], [4, 5]); // [4, 5, 3]
+```
+
+
 ## 2. ES7
+### Object.keys()，Object.values()，Object.entries() 
+[对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
+
+### Object.getOwnPropertyDescriptors（）
+
+[对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
 
 ## 3. ES8
 
