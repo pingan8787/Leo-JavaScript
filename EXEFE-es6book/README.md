@@ -6,8 +6,11 @@
 - [ ] ES8  
 - [ ] ES9  
 - [ ] 知识补充  
-> 最后更新 2018.10.22  
 > 在思考，如何整理好这一份资料，让不同阶段的人，能有不同的收获。  
+
+**更新记录**：  
+...前面几天没有写记录。   
+* 2018.10.24 添加**ES6**章节《**Symbol**》和《**Set和Map数据结构**》的整理。  
 
 # 一、介绍
 现如今网络上已经有各式各样关于 **ECMAScript** 规范的介绍和分析的文章，而我准备整理一份比较完善也比较精简适合快速入门的资料，主要内容将涵盖**ES6**、**ES7**、**ES8**、**ES9**，如有异议欢迎指点。  
@@ -63,6 +66,14 @@
             - [2.属性名表达式](#2属性名表达式)
             - [3.Object.is()](#3objectis)
             - [4.Object.assign()](#4objectassign)
+        - [Symbol](#symbol)
+            - [1.介绍](#1介绍)
+            - [2.更多介绍](#2更多介绍)
+        - [Set和Map数据结构](#set和map数据结构)
+            - [1.Set](#1set)
+            - [2.Set的应用](#2set的应用)
+        - [3.Map](#3map)
+            - [4.Map与其他数据结构互相转换](#4map与其他数据结构互相转换)
     - [2. ES7](#2-es7)
         - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
         - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
@@ -1310,6 +1321,307 @@ console.log(b.a.b);  // 2
 Object.assign([1, 2, 3], [4, 5]); // [4, 5, 3]
 ```
 
+### Symbol
+#### 1.介绍
+ES6引入`Symbol`作为一种新的**原始数据类型**，表示**独一无二**的值，主要是为了**防止属性名冲突**。   
+ES6之后，JavaScript一共有其中数据类型：`Symbol`、`undefined`、`null`、`Boolean`、`String`、`Number`、`Object`。  
+简单实用：   
+```js
+let a = Symbol();
+typeof a; // "symbol"
+```
+**注意：**  
+* `Symbol`函数不能用`new`，会报错。由于`Symbol`是一个原始类型，不是对象，所以不能添加属性，它是类似于字符串的数据类型。   
+* `Symbol`都是不相等的，即使参数相同。   
+```js
+let a1 = Symbol();
+let a2 = Symbal();
+a1 === a2; // false 
+
+let a1 = Symbol('abc');
+let a2 = Symbal('abc');
+a1 === a2; // false 
+```
+* `Symbol`不能与其他类型的值计算，会报错。   
+```js
+let a = Symbol('hello');
+a + " world!";  // 报错
+`${a} world!`;  // 报错
+```
+
+#### 2.更多介绍
+详细介绍[参考阮一峰老师的ES6 Symbol介绍](http://es6.ruanyifeng.com/#docs/symbol)
+
+### Set和Map数据结构  
+#### 1.Set
+**介绍**:   
+`Set`数据结构类似数组，但所有成员的值**唯一**。  
+`Set`本身为一个构造函数，用来生成`Set`数据结构，使用`add`方法来添加新成员。      
+```js
+let a = new Set();
+[1,2,2,1,3,4,5,4,5].forEach(x=>a.add(x));
+for(let k of a){
+    console.log(k)
+};
+// 1 2 3 4 5
+```
+**基础使用**：  
+```js
+let a = new Set([1,2,3,3,4]);
+[...a]; // [1,2,3,4]
+a.size; // 4
+
+// 数组去重
+[...new Set([1,2,3,4,4,4])];// [1,2,3,4]
+```
+
+**注意**：   
+* 向`Set`中添加值的时候，不会类型转换，即`5`和`'5'`是不同的。   
+```js
+[...new Set([5,'5'])]; // [5, "5"]
+```
+
+**属性和方法**：   
+* 属性：  
+    * `Set.prototype.constructor`：构造函数，默认就是`Set`函数。   
+    * `Set.prototype.size`：返回`Set`实例的成员总数。  
+
+* 操作方法：  
+    * `add(value)`：添加某个值，返回 Set 结构本身。  
+    * `delete(value)`：删除某个值，返回一个布尔值，表示删除是否成功。  
+    * `has(value)`：返回一个布尔值，表示该值是否为Set的成员。  
+    * `clear()`：清除所有成员，没有返回值。  
+
+```js
+let a = new Set();
+a.add(1).add(2); // a => Set(2) {1, 2}
+a.has(2);        // true
+a.has(3);        // false
+a.delete(2);     // true  a => Set(1) {1}
+a.clear();       // a => Set(0) {}
+```
+**数组去重**：   
+```js
+let a = new Set([1,2,3,3,3,3]);
+```
+#### 2.Set的应用
+**数组去重**：  
+```js
+// 方法1
+[...new Set([1,2,3,4,4,4])]; // [1,2,3,4]
+// 方法2
+Array.from([1,2,3,4,4,4]);   // [1,2,3,4]
+```
+**遍历和过滤**：  
+```js
+let a = new Set([1,2,3,4]);
+
+// map 遍历操作
+let b = new Set([...a].map(x =>x*2));// b => Set(4) {2,4,6,8}
+
+// filter 过滤操作
+let c = new Set([...a].filter(x =>(x%2) == 0)); // b => Set(2) {2,4}
+```
+**获取并集、交集和差集**：   
+```js
+let a = new Set([1,2,3]);
+let b = new Set([4,3,2]);
+
+// 并集
+let c1 = new Set([...a, ...b]);  // Set {1,2,3,4}
+
+// 交集
+let c2 = new Set([...a].filter(x => b.has(x))); // set {2,3}
+
+// 差集
+let c3 = new Set([...a].filter(x => !b.has(x))); // set {1,4}
+```
+
+* 遍历方法：  
+    * `keys()`：返回**键名**的遍历器。  
+    * `values()`：返回**键值**的遍历器。  
+    * `entries()`：返回**键值对**的遍历器。  
+    * `forEach()`：使用回调函数遍历**每个成员**。  
+
+`Set`遍历顺序是**插入顺序**，当保存多个回调函数，只需按照顺序调用。但由于`Set`结构**没有键名只有键值**，所以`keys()`和`values()`是返回结果相同。  
+```js
+let a = new Set(['a','b','c']);
+for(let i of a.keys()){console.log(i)};   // 'a' 'b' 'c'
+for(let i of a.values()){console.log(i)}; // 'a' 'b' 'c'
+for(let i of a.entries()){console.log(i)}; 
+// ['a','a'] ['b','b'] ['c','c']
+```
+并且 还可以使用`for...of```直接遍历`Set`。  
+```js
+let a = new Set(['a','b','c']);
+for(let k of a){console.log(k)};   // 'a' 'b' 'c'
+```
+`forEach`与数组相同，对每个成员执行操作，且无返回值。  
+```js
+let a = new Set(['a','b','c']);
+a.forEach((v,k) => console.log(k + ' : ' + v));
+```
+
+
+### 3.Map
+由于传统的`JavaScript`对象只能用字符串当做键，给开发带来很大限制，ES6增加`Map`数据结构，使得**各种类型的值**(包括对象)都可以作为键。   
+`Map`结构提供了“**值—值**”的对应，是一种更完善的 Hash 结构实现。
+**基础使用**：  
+```js
+let a = new Map();
+let b = {name: 'leo' };
+a.set(b,'my name'); // 添加值
+a.get(b);           // 获取值
+a.size;      // 获取总数
+a.has(b);    // 查询是否存在
+a.delete(b); // 删除一个值
+a.clear();   // 清空所有成员 无返回
+```
+**注意**：  
+* 传入数组作为参数，**指定键值对的数组**。   
+```js
+let a = new Map([
+    ['name','leo'],
+    ['age',18]
+])
+```
+* 如果对同一个键**多次赋值**，后面的值将**覆盖前面的值**。   
+```js
+let a = new Map();
+a.set(1,'aaa').set(1,'bbb');
+a.get(1); // 'bbb'
+```
+* 如果读取一个未知的键，则返回`undefined`。  
+```js
+new Map().get('abcdef'); // undefined
+```
+* **同样的值**的两个实例，在 Map 结构中被视为两个键。   
+```js
+let a = new Map();
+let a1 = ['aaa'];
+let a2 = ['aaa'];
+a.set(a1,111).set(a2,222);
+a.get(a1); // 111
+a.get(a2); // 222
+```
+**遍历方法**：
+Map 的遍历顺序就是插入顺序。  
+* `keys()`：返回键名的遍历器。
+* `values()`：返回键值的遍历器。
+* `entries()`：返回所有成员的遍历器。
+* `forEach()`：遍历 Map 的所有成员。
+```js
+let a = new Map([
+    ['name','leo'],
+    ['age',18]
+])
+
+for (let i of a.keys()){...};
+for (let i of a.values()){...};
+for (let i of a.entries()){...};
+a.forEach((v,k,m)=>{
+    console.log(`key:${k},value:${v},map:${m}`)
+})
+```
+**将Map结构转成数组结构**：  
+```js
+let a = new Map([
+    ['name','leo'],
+    ['age',18]
+])
+
+let a1 = [...a.keys()];   // a1 => ["name", "age"]
+let a2 = [...a.values()]; // a2 =>  ["leo", 18]
+let a3 = [...a.entries()];// a3 => [['name','leo'], ['age',18]]
+```
+
+#### 4.Map与其他数据结构互相转换
+* Map 转 数组  
+```js
+let a = new Map().set(true,1).set({f:2},['abc']);
+[...a]; // [[true:1], [ {f:2},['abc'] ]]
+```
+* 数组 转 Map  
+```js
+let a = [ ['name','leo'], [1, 'hi' ]]
+let b = new Map(a);
+```
+* Map 转 对象
+如果所有 Map 的键都是字符串，它可以无损地转为对象。   
+如果有非字符串的键名，那么这个键名会被转成字符串，再作为对象的键名。   
+```js
+function fun(s) {
+  let obj = Object.create(null);
+  for (let [k,v] of s) {
+    obj[k] = v;
+  }
+  return obj;
+}
+
+const a = new Map().set('yes', true).set('no', false);
+fun(a)
+// { yes: true, no: false }
+```
+* 对象 转 Map   
+```js
+function fun(obj) {
+  let a = new Map();
+  for (let k of Object.keys(obj)) {
+    a.set(k, obj[k]);
+  }
+  return a;
+}
+
+fun({yes: true, no: false})
+// Map {"yes" => true, "no" => false}
+```
+
+* Map 转 JSON   
+**(1)Map键名都是字符串，转为对象JSON：**   
+```js
+function fun (s) {
+    let obj = Object.create(null);
+    for (let [k,v] of s) {
+        obj[k] = v;
+    }
+    return JSON.stringify(obj)
+}
+let a = new Map().set('yes', true).set('no', false);
+fun(a);
+// '{"yes":true,"no":false}'
+```
+**(2)Map键名有非字符串，转为数组JSON：**    
+```js
+function fun (map) {
+  return JSON.stringify([...map]);
+}
+
+let a = new Map().set(true, 7).set({foo: 3}, ['abc']);
+fun(a)
+// '[[true,7],[{"foo":3},["abc"]]]'
+```
+* JSON 转 Map  
+**(1)所有键名都是字符串：**   
+```js
+function fun (s) {
+  let strMap = new Map();
+  for (let k of Object.keys(s)) {
+    strMap.set(k, s[k]);
+  }
+  return strMap;
+  return JSON.parse(strMap);
+}
+fun('{"yes": true, "no": false}')
+// Map {'yes' => true, 'no' => false}
+```
+**(2)整个 JSON 就是一个数组，且每个数组成员本身，又是一个有两个成员的数组**:   
+```js
+function fun2(s) {
+  return new Map(JSON.parse(s));
+}
+fun2('[[true,7],[{"foo":3},["abc"]]]')
+// Map {true => 7, Object {foo: 3} => ['abc']}
+```
 
 ## 2. ES7
 ### Object.keys()，Object.values()，Object.entries() 
