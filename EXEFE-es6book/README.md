@@ -72,7 +72,7 @@
         - [Set和Map数据结构](#set和map数据结构)
             - [1.Set](#1set)
             - [2.Set的应用](#2set的应用)
-        - [3.Map](#3map)
+            - [3.Map](#3map)
             - [4.Map与其他数据结构互相转换](#4map与其他数据结构互相转换)
     - [2. ES7](#2-es7)
         - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
@@ -1463,7 +1463,7 @@ a.forEach((v,k) => console.log(k + ' : ' + v));
 ```
 
 
-### 3.Map
+#### 3.Map
 由于传统的`JavaScript`对象只能用字符串当做键，给开发带来很大限制，ES6增加`Map`数据结构，使得**各种类型的值**(包括对象)都可以作为键。   
 `Map`结构提供了“**值—值**”的对应，是一种更完善的 Hash 结构实现。
 **基础使用**：  
@@ -1726,3 +1726,5 @@ for (let i of arr) {
 
 
 # 四、结语
+
+[回到顶部](#一介绍)
