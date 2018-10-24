@@ -176,6 +176,7 @@ let PI = 0;
 // Uncaught SyntaxError: Identifier 'PI' has already been declared
 ```
 
+[⬆ 返回目录](#二目录)
 
 ### 变量的解构赋值
 **解构赋值概念**：在ES6中，直接从数组和对象中取值，按照对应位置，赋值给变量的操作。  
@@ -406,6 +407,9 @@ const {log, sin, cos} = require('math');
 
 ```
 
+[⬆ 返回目录](#二目录)
+
+
 ### 字符串的拓展
 #### 1.includes(),startsWith(),endsWith()
 在我们判断字符串是否包含另一个字符串时，ES6之前，我们只有`typeof`方法，ES6之后我们又多了三种方法：   
@@ -502,7 +506,13 @@ let a = 'abc' + v1 + 'def';
 let a = `abc${v1}def`
 ```
 
+[⬆ 返回目录](#二目录)
+
+
 ### 正则的拓展
+
+[⬆ 返回目录](#二目录)
+
 
 ### 数值的拓展
 #### 1.Number.isFinite(), Number.isNaN()
@@ -779,6 +789,10 @@ Math.pow(99, 99)
 // 3.697296376497268e+197
 ```
 
+
+[⬆ 返回目录](#二目录)
+
+
 ### 函数的拓展
 #### 1.参数默认值
 ```js
@@ -996,6 +1010,9 @@ let f = a::a.b;
 let f = ::a.b;
 ```
 
+[⬆ 返回目录](#二目录)
+
+
 ### 数组的拓展
 #### 1.拓展运算符
 拓展运算符使用(`...`)，类似`rest`参数的逆运算，将数组转为用(`,`)分隔的参数序列。   
@@ -1197,6 +1214,8 @@ for (let e of ['a', 'b'].keys()){
 // [2, 4, 3, 6, 4, 8] 
 ```
 
+[⬆ 返回目录](#二目录)
+
 
 ### 对象的拓展
 #### 1.属性的简洁表示
@@ -1321,6 +1340,9 @@ console.log(b.a.b);  // 2
 Object.assign([1, 2, 3], [4, 5]); // [4, 5, 3]
 ```
 
+[⬆ 返回目录](#二目录)
+
+
 ### Symbol
 #### 1.介绍
 ES6引入`Symbol`作为一种新的**原始数据类型**，表示**独一无二**的值，主要是为了**防止属性名冲突**。   
@@ -1351,6 +1373,10 @@ a + " world!";  // 报错
 
 #### 2.更多介绍
 详细介绍[参考阮一峰老师的ES6 Symbol介绍](http://es6.ruanyifeng.com/#docs/symbol)
+
+
+[⬆ 返回目录](#二目录)
+
 
 ### Set和Map数据结构  
 #### 1.Set
@@ -1623,17 +1649,26 @@ fun2('[[true,7],[{"foo":3},["abc"]]]')
 // Map {true => 7, Object {foo: 3} => ['abc']}
 ```
 
+[⬆ 返回目录](#二目录)
+
+
 ## 2. ES7
 ### Object.keys()，Object.values()，Object.entries() 
 [对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
+
+[⬆ 返回目录](#二目录)
 
 ### Object.getOwnPropertyDescriptors（）
 
 [对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
 
+[⬆ 返回目录](#二目录)
+
 ## 3. ES8
 
 ## 4. ES9
+
+[⬆ 返回目录](#二目录)
 
 ## 5. 知识补充
 ### 块级作用域
@@ -1670,6 +1705,10 @@ for (var i = 0; i< a.length; i++) {
 console.log(i); // 5
 ```
 循环结束后，变量 `i` 的值依然存在，造成变量的全局污染。
+
+
+[⬆ 返回目录](#二目录)
+
 
 ### ES5/6对数组空位的处理
 
