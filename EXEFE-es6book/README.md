@@ -10,7 +10,12 @@
 
 **更新记录**：  
 ...前面几天没有写记录。   
-* 2018.10.24 添加**ES6**章节《**Symbol**》和《**Set和Map数据结构**》的整理。  
+* 2018.10.24 添加**ES6**《**Symbol**》和《**Set和Map数据结构**》章节。  
+* 2018.10.25 添加**ES6**《**Proxy**》章节，还没整理完。  
+
+**未来规划**：
+* 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
+* 2.添加案例项目。  
 
 # 一、介绍
 现如今网络上已经有各式各样关于 **ECMAScript** 规范的介绍和分析的文章，而我准备整理一份比较完善也比较精简适合快速入门的资料，主要内容将涵盖**ES6**、**ES7**、**ES8**、**ES9**，如有异议欢迎指点。  
@@ -24,64 +29,66 @@
 - [二、目录](#二目录)
 - [三、正文](#三正文)
     - [1. ES6](#1-es6)
-        - [let 和 const命令](#let-和-const命令)
-            - [1.let 命令](#1let-命令)
-            - [2.const 命令](#2const-命令)
-        - [变量的解构赋值](#变量的解构赋值)
-            - [1.数组](#1数组)
-            - [2.对象的解构赋值](#2对象的解构赋值)
-            - [3.字符串的解构赋值](#3字符串的解构赋值)
-            - [4.数值和布尔值的解构赋值](#4数值和布尔值的解构赋值)
-            - [5.函数参数的解构赋值](#5函数参数的解构赋值)
-            - [6.用途](#6用途)
-        - [字符串的拓展](#字符串的拓展)
-            - [1.includes(),startsWith(),endsWith()](#1includesstartswithendswith)
-            - [2.repeat()](#2repeat)
-            - [3.padStart(),padEnd()](#3padstartpadend)
-            - [4.模版字符串](#4模版字符串)
-        - [正则的拓展](#正则的拓展)
-        - [数值的拓展](#数值的拓展)
-            - [1.Number.isFinite(), Number.isNaN()](#1numberisfinite-numberisnan)
-            - [2.Number.parseInt(), Number.parseFloat()](#2numberparseint-numberparsefloat)
-            - [3.Number.isInteger()](#3numberisinteger)
-            - [4.Math对象的拓展](#4math对象的拓展)
-            - [5.指数运算符](#5指数运算符)
-        - [函数的拓展](#函数的拓展)
-            - [1.参数默认值](#1参数默认值)
-            - [2.rest 参数](#2rest-参数)
-            - [3.name 属性](#3name-属性)
-            - [4.箭头函数](#4箭头函数)
-            - [5.双冒号运算符](#5双冒号运算符)
-        - [数组的拓展](#数组的拓展)
-            - [1.拓展运算符](#1拓展运算符)
-            - [2.Array.from()](#2arrayfrom)
-            - [3.Array.of()](#3arrayof)
-            - [4.find()和findIndex()](#4find和findindex)
-            - [5.fill()](#5fill)
-            - [6.entries(),keys(),values()](#6entrieskeysvalues)
-            - [7.includes()](#7includes)
-            - [8.flat(),flatMap()](#8flatflatmap)
-        - [对象的拓展](#对象的拓展)
-            - [1.属性的简洁表示](#1属性的简洁表示)
-            - [2.属性名表达式](#2属性名表达式)
-            - [3.Object.is()](#3objectis)
-            - [4.Object.assign()](#4objectassign)
-        - [Symbol](#symbol)
-            - [1.介绍](#1介绍)
-            - [2.更多介绍](#2更多介绍)
-        - [Set和Map数据结构](#set和map数据结构)
-            - [1.Set](#1set)
-            - [2.Set的应用](#2set的应用)
-            - [3.Map](#3map)
-            - [4.Map与其他数据结构互相转换](#4map与其他数据结构互相转换)
+        - [1.1 let 和 const命令](#11-let-和-const命令)
+            - [1.1.1 let 命令](#111-let-命令)
+            - [1.1.2 const 命令](#112-const-命令)
+        - [1.2 变量的解构赋值](#12-变量的解构赋值)
+            - [1.2.1 数组](#121-数组)
+            - [1.2.2 对象的解构赋值](#122-对象的解构赋值)
+            - [1.2.3 字符串的解构赋值](#123-字符串的解构赋值)
+            - [1.2.4 数值和布尔值的解构赋值](#124-数值和布尔值的解构赋值)
+            - [1.2.5 函数参数的解构赋值](#125-函数参数的解构赋值)
+            - [1.2.6 应用](#126-应用)
+        - [1.3 字符串的拓展](#13-字符串的拓展)
+            - [1.3.1 includes(),startsWith(),endsWith()](#131-includesstartswithendswith)
+            - [1.3.2 repeat()](#132-repeat)
+            - [1.3.3 padStart(),padEnd()](#133-padstartpadend)
+            - [1.3.4 模版字符串](#134-模版字符串)
+        - [1.4 正则的拓展](#14-正则的拓展)
+        - [1.5 数值的拓展](#15-数值的拓展)
+            - [1.5.1 Number.isFinite(), Number.isNaN()](#151-numberisfinite-numberisnan)
+            - [1.5.2 Number.parseInt(), Number.parseFloat()](#152-numberparseint-numberparsefloat)
+            - [1.5.3 Number.isInteger()](#153-numberisinteger)
+            - [1.5.4 Math对象的拓展](#154-math对象的拓展)
+            - [1.5.5 指数运算符](#155-指数运算符)
+        - [1.6 函数的拓展](#16-函数的拓展)
+            - [1.6.1 参数默认值](#161-参数默认值)
+            - [1.6.2 rest 参数](#162-rest-参数)
+            - [1.6.3 name 属性](#163-name-属性)
+            - [1.6.4 箭头函数](#164-箭头函数)
+            - [1.6.5 双冒号运算符](#165-双冒号运算符)
+        - [1.7 数组的拓展](#17-数组的拓展)
+            - [1.7.1 拓展运算符](#171-拓展运算符)
+            - [1.7.2 Array.from()](#172-arrayfrom)
+            - [1.7.3 Array.of()](#173-arrayof)
+            - [1.7.4 find()和findIndex()](#174-find和findindex)
+            - [1.7.5 fill()](#175-fill)
+            - [1.7.6 entries(),keys(),values()](#176-entrieskeysvalues)
+            - [1.7.7 includes()](#177-includes)
+            - [1.7.8 flat(),flatMap()](#178-flatflatmap)
+        - [1.8 对象的拓展](#18-对象的拓展)
+            - [1.8.1 属性的简洁表示](#181-属性的简洁表示)
+            - [1.8.2 属性名表达式](#182-属性名表达式)
+            - [1.8.3 Object.is()](#183-objectis)
+            - [1.8.4 Object.assign()](#184-objectassign)
+        - [1.9 Symbol](#19-symbol)
+            - [1.9.1 介绍](#191-介绍)
+            - [1.9.2 更多介绍](#192-更多介绍)
+        - [1.10 Set和Map数据结构](#110-set和map数据结构)
+            - [1.10.1 Set](#1101-set)
+            - [1.10.2 Set的应用](#1102-set的应用)
+            - [1.10.3 Map](#1103-map)
+            - [1.10.4 Map与其他数据结构互相转换](#1104-map与其他数据结构互相转换)
+        - [1.11 Proxy](#111-proxy)
+            - [1.11.1 基础使用](#1111-基础使用)
     - [2. ES7](#2-es7)
         - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
         - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
     - [3. ES8](#3-es8)
     - [4. ES9](#4-es9)
     - [5. 知识补充](#5-知识补充)
-        - [块级作用域](#块级作用域)
-        - [ES5/6对数组空位的处理](#es56对数组空位的处理)
+        - [5.1 块级作用域](#51-块级作用域)
+        - [5.2 ES5/6对数组空位的处理](#52-es56对数组空位的处理)
 - [四、结语](#四结语)
 
 <!-- /TOC -->
@@ -89,11 +96,11 @@
 # 三、正文
 ## 1. ES6
 
-### let 和 const命令
+### 1.1 let 和 const命令
 
 在ES6中，我们通常实用 `let` 表示**变量**，`const` 表示**常量**，并且 `let` 和 `const` 都是**块级作用域**，且在**当前作用域有效**不能重复声明。
 
-#### 1.let 命令
+#### 1.1.1 let 命令
 `let` 命令的用法和 `var` 相似，但是 `let` 只在所在代码块内有效。  
 **基础用法**：   
 ```js
@@ -149,7 +156,7 @@ function f4 (a2){
 }
 ```
 
-#### 2.const 命令
+#### 1.1.2 const 命令
 `const` 声明一个**只读**的**常量**。  
 **基础用法**：  
 ```js
@@ -178,10 +185,10 @@ let PI = 0;
 
 [⬆ 返回目录](#二目录)
 
-### 变量的解构赋值
+### 1.2 变量的解构赋值
 **解构赋值概念**：在ES6中，直接从数组和对象中取值，按照对应位置，赋值给变量的操作。  
 
-#### 1.数组  
+#### 1.2.1 数组  
 **基础用法**：    
 ```js
 // ES6 之前
@@ -245,7 +252,7 @@ let [a = 1] = [null];      // a => null
 ```
 右边模式对应的值，必须严格等于`undefined`，默认值才能生效，而`null`不严格等于`undefined`。  
 
-#### 2.对象的解构赋值
+#### 1.2.2 对象的解构赋值
 与数组解构不同的是，对象解构**不需要严格按照顺序取值**，而只要按照**变量名**去取对应**属性名**的值，若取不到对应**属性名**的值，则为`undefined` 。  
 
 **基础用法**：    
@@ -290,7 +297,7 @@ let {a=1} = {a:null};   // a => null
 // 导致默认值1不会生效。
 ```
 
-#### 3.字符串的解构赋值
+#### 1.2.3 字符串的解构赋值
 字符串的解构赋值中，字符串被转换成了一个**类似数组的对象**。 
 **基础用法**： 
 ```js
@@ -304,7 +311,7 @@ e // "o"
 let {length:len} = 'hello';// len => 5
 ```
 
-#### 4.数值和布尔值的解构赋值
+#### 1.2.4 数值和布尔值的解构赋值
 解构赋值的规则是，**只要等号右边的值不是对象或数组，就先将其转为对象**。由于`undefined`和`null`**无法转为对象**，所以对它们进行解构赋值，都会报错。 
 ```js
 // 数值和布尔值的包装对象都有toString属性
@@ -317,7 +324,7 @@ let { prop: x } = undefined; // TypeError
 let { prop: y } = null;      // TypeError
 ```
 
-#### 5.函数参数的解构赋值
+#### 1.2.5 函数参数的解构赋值
 **基础用法**：  
 ```js
 function fun ([a, b]){
@@ -344,7 +351,7 @@ fun ({});         // [undefined, undefined]
 fun ();           // [0, 0]
 ```
 
-#### 6.用途
+#### 1.2.6 应用
 * **交换变量的值**: 
 ```js
 let a = 1,b = 2;
@@ -410,8 +417,8 @@ const {log, sin, cos} = require('math');
 [⬆ 返回目录](#二目录)
 
 
-### 字符串的拓展
-#### 1.includes(),startsWith(),endsWith()
+### 1.3 字符串的拓展
+#### 1.3.1 includes(),startsWith(),endsWith()
 在我们判断字符串是否包含另一个字符串时，ES6之前，我们只有`typeof`方法，ES6之后我们又多了三种方法：   
 * **includes()**:返回**布尔值**，表示**是否找到参数字符串**。 
 * **startsWith()**:返回**布尔值**，表示参数字符串是否在原字符串的**头部**。 
@@ -431,7 +438,7 @@ a.includes('lo',6);      // false
 ```
 `endsWith` 是针对前 `n` 个字符，而其他两个是针对从第`n`个位置直到结束。  
 
-#### 2.repeat()
+#### 1.3.2 repeat()
 `repeat`方法返回一个新字符串，表示将原字符串重复`n`次。    
 **基础用法**：  
 ```js
@@ -459,7 +466,7 @@ a.includes('lo',6);      // false
 'ab'.repeat('3');      // 'ababab'
 ```
 
-#### 3.padStart(),padEnd()
+####1.3.3 padStart(),padEnd()
 用于将字符串**头部**或**尾部**补全长度，`padStart()`为**头部补全**，`padEnd()`为**尾部补全**。    
 这两个方法接收**2个**参数，第一个指定**字符串最小长度**，第二个**用于补全的字符串**。  
 **基础用法** ：  
@@ -481,7 +488,7 @@ a.includes('lo',6);      // false
 'x'.padStart(4);           // '    x'
 'x'.endStart(4);           // 'x    '
 ```
-#### 4.模版字符串
+#### 1.3.4 模版字符串
 用于拼接字符串，ES6之前：  
 ```js
 let a = 'abc' + 
@@ -509,13 +516,13 @@ let a = `abc${v1}def`
 [⬆ 返回目录](#二目录)
 
 
-### 正则的拓展
+### 1.4 正则的拓展
 
 [⬆ 返回目录](#二目录)
 
 
-### 数值的拓展
-#### 1.Number.isFinite(), Number.isNaN()
+### 1.5 数值的拓展
+#### 1.5.1 Number.isFinite(), Number.isNaN()
 `Number.isFinite()` 用于检查一个数值是否是有限的，即不是`Infinity`，若参数不是`Number`类型，则一律返回`false` 。    
 ```js
 Number.isFinite(10);            // true
@@ -555,7 +562,7 @@ Number.isNaN(NaN);     // true
 Number.isNaN("NaN");   // false
 ```
 
-#### 2.Number.parseInt(), Number.parseFloat()
+#### 1.5.2 Number.parseInt(), Number.parseFloat()
 这两个方法与全局方法`parseInt()`和`parseFloat()`一致，目的是逐步**减少全局性的方法**，让**语言更模块化**。    
 ```js
 parseInt('12.34');     // 12
@@ -568,7 +575,7 @@ Number.parseInt === parseInt;     // true
 Number.parseFloat === parseFloat; // true
 ```
 
-#### 3.Number.isInteger() 
+#### 1.5.3 Number.isInteger() 
 用来判断一个数值是否是整数，若参数不是数值，则返回`false`。    
 ```js
 Number.isInteger(10);   // true
@@ -576,7 +583,7 @@ Number.isInteger(10.0); // true
 Number.isInteger(10.1); // false
 ```
 
-#### 4.Math对象的拓展
+#### 1.5.4 Math对象的拓展
 ES6新增17个数学相关的**静态方法**，只能在**Math对象**上调用。  
 * **Math.trunc**:  
 用来去除小数的小数部分，**返回整数部分**。  
@@ -772,7 +779,7 @@ Math.log2 = Math.log2 || function(x) {
     * `Math.acosh(x)` 返回x的**反双曲余弦**（inverse hyperbolic cosine）  
     * `Math.atanh(x)` 返回x的**反双曲正切**（inverse hyperbolic tangent）  
 
-#### 5.指数运算符
+#### 1.5.5 指数运算符
 新增的指数运算符(`**`):  
 ```js
 2 ** 2; // 4
@@ -793,8 +800,8 @@ Math.pow(99, 99)
 [⬆ 返回目录](#二目录)
 
 
-### 函数的拓展
-#### 1.参数默认值
+### 1.6 函数的拓展
+#### 1.6.1 参数默认值
 ```js
 // ES6 之前
 function f(a, b){
@@ -884,7 +891,7 @@ f4.length; // 0
 f5.length; // 2
 ```
 
-#### 2.rest 参数
+#### 1.6.2 rest 参数
 `rest`参数形式为（`...变量名`），其值为一个数组，用于获取函数多余参数。  
 ```js
 function f (a, ...b){
@@ -905,7 +912,7 @@ f1(1);   // 1
 f2(1,2); // 1
 ```
 
-#### 3.name 属性
+#### 1.6.3 name 属性
 用于返回该函数的函数名。  
 ```js
 function f (){...};
@@ -915,7 +922,7 @@ const f = function g(){...};
 f.name;    // g
 ```
 
-#### 4.箭头函数
+#### 1.6.4 箭头函数
 使用“箭头”(`=>`)定义函数。  
 **基础使用**：   
 ```js
@@ -991,7 +998,7 @@ b.addEventListener('click', ()=>{
 ```
 上诉按钮点击会报错，因为`b`监听的箭头函数中，`this`是全局对象，若改成**普通函数**，`this`就会指向被点击的按钮对象。  
 
-#### 5.双冒号运算符
+#### 1.6.5 双冒号运算符
 双冒号暂时是一个提案，用于解决一些不适用的场合，取代`call`、`apply`、`bind`调用。    
 双冒号运算符(`::`)的左边是一个**对象**，右边是一个**函数**。该运算符会自动将左边的对象，作为上下文环境(即`this`对象)，绑定到右边函数上。  
 ```js
@@ -1013,8 +1020,8 @@ let f = ::a.b;
 [⬆ 返回目录](#二目录)
 
 
-### 数组的拓展
-#### 1.拓展运算符
+### 1.7 数组的拓展
+#### 1.7.1 拓展运算符
 拓展运算符使用(`...`)，类似`rest`参数的逆运算，将数组转为用(`,`)分隔的参数序列。   
 ```js
 console.log(...[1, 2, 3]);   // 1 2 3 
@@ -1102,7 +1109,7 @@ let [a, ...b] = ["abc"];
 // a => "abc"  b => []
 ```
 
-#### 2.Array.from()
+#### 1.7.2 Array.from()
 将 **类数组对象** 和 **可遍历的对象**，转换成真正的数组。  
 ```js
 // 类数组对象
@@ -1120,7 +1127,7 @@ let c = Array.from([1,2,3]).map(x => x * x);
 let d = Array.from([1,2,3].map(x => x * x));
 ```
 
-#### 3.Array.of()
+#### 1.7.3 Array.of()
 将一组数值，转换成**数组**，弥补`Array`方法参数不同导致的差异。   
 ```js
 Array.of(1,2,3);    // [1,2,3]
@@ -1131,7 +1138,7 @@ Array(2);      // [,] 1个参数时，为指定数组长度
 Array(1,2,3);  // [1,2,3] 多于2个参数，组成新数组
 ```
 
-#### 4.find()和findIndex()
+#### 1.7.4 find()和findIndex()
 `find()`方法用于找出第一个符合条件的数组成员，参数为一个回调函数，所有成员依次执行该回调函数，返回第一个返回值为`true`的成员，如果没有一个符合则返回`undefined`。  
 ```js
 [1,2,3,4,5].find( a => a < 3 ); // 1
@@ -1149,7 +1156,7 @@ Array(1,2,3);  // [1,2,3] 多于2个参数，组成新数组
 }); // 2
 ```
 
-#### 5.fill()
+#### 1.7.5 fill()
 用于用指定值**填充**一个数组，通常用来**初始化空数组**，并抹去数组中已有的元素。   
 ```js
 new Array(3).fill('a');   // ['a','a','a']
@@ -1160,7 +1167,7 @@ new Array(3).fill('a');   // ['a','a','a']
 [1,2,3].fill('a',1,2);
 ```
 
-#### 6.entries(),keys(),values()
+#### 1.7.6 entries(),keys(),values()
 主要用于遍历数组，`entries()`对键值对遍历，`keys()`对键名遍历，`values()`对键值遍历。   
 ```js
 for (let i of ['a', 'b'].keys()){
@@ -1182,7 +1189,7 @@ for (let e of ['a', 'b'].keys()){
 // 1 'b'
 ```
 
-#### 7.includes()
+#### 1.7.7 includes()
 用于表示数组是否包含给定的值，与字符串的`includes`方法类似。   
 ```js
 [1,2,3].includes(2);     // true
@@ -1197,7 +1204,7 @@ for (let e of ['a', 'b'].keys()){
 [1,2,3].includes(3,-4);   // true
 ```
 
-#### 8.flat(),flatMap()
+#### 1.7.8 flat(),flatMap()
 `flat()`用于将数组一维化，返回一个新数组，不影响原数组。   
 默认一次只一维化一层数组，若需多层，则传入一个整数参数指定层数。   
 若要一维化所有层的数组，则传入`Infinity`作为参数。  
@@ -1216,8 +1223,8 @@ for (let e of ['a', 'b'].keys()){
 [⬆ 返回目录](#二目录)
 
 
-### 对象的拓展
-#### 1.属性的简洁表示
+### 1.8 对象的拓展
+#### 1.8.1 属性的简洁表示
 ```js
 let a = 'a1';
 let b = { a };  // b => { a : 'a1' }
@@ -1245,7 +1252,7 @@ let a = {
 }
 ```
 
-#### 2.属性名表达式
+#### 1.8.2 属性名表达式
 `JavaScript`提供2种方法**定义对象的属性**。  
 ```js
 // 方法1 标识符作为属性名
@@ -1280,7 +1287,7 @@ let a1 = 'aa';
 let b1 = { [a1] : 'bb'};
 ```
 
-#### 3.Object.is()
+#### 1.8.3 Object.is()
 `.Object.is()` 用于比较两个值是否严格相等，在ES5时候只要使用**相等运算符**(`==`)和**严格相等运算符**(`===`)就可以做比较，但是它们都有缺点，前者会**自动转换数据类型**，后者的`NaN`不等于自身，以及`+0`等于`-0`。   
 ```js
 Object.is('a','a');   // true
@@ -1295,7 +1302,7 @@ Object.is(+0,-0);     // false
 Object.is(NaN,NaN);   // true
 ```
 
-#### 4.Object.assign()
+#### 1.8.4 Object.assign()
 `Object.assign()`方法用于对象的合并，将原对象的所有可枚举属性复制到目标对象。  
 **基础用法**：  
 第一个参数是**目标对象**，后面参数都是**源对象**。  
@@ -1342,8 +1349,8 @@ Object.assign([1, 2, 3], [4, 5]); // [4, 5, 3]
 [⬆ 返回目录](#二目录)
 
 
-### Symbol
-#### 1.介绍
+### 1.9 Symbol
+#### 1.9.1 介绍
 ES6引入`Symbol`作为一种新的**原始数据类型**，表示**独一无二**的值，主要是为了**防止属性名冲突**。   
 ES6之后，JavaScript一共有其中数据类型：`Symbol`、`undefined`、`null`、`Boolean`、`String`、`Number`、`Object`。  
 简单实用：   
@@ -1370,15 +1377,15 @@ a + " world!";  // 报错
 `${a} world!`;  // 报错
 ```
 
-#### 2.更多介绍
+#### 1.9.2 更多介绍
 详细介绍[参考阮一峰老师的ES6 Symbol介绍](http://es6.ruanyifeng.com/#docs/symbol)
 
 
 [⬆ 返回目录](#二目录)
 
 
-### Set和Map数据结构  
-#### 1.Set
+### 1.10 Set和Map数据结构  
+#### 1.10.1 Set
 **介绍**:   
 `Set`数据结构类似数组，但所有成员的值**唯一**。  
 `Set`本身为一个构造函数，用来生成`Set`数据结构，使用`add`方法来添加新成员。      
@@ -1429,7 +1436,7 @@ a.clear();       // a => Set(0) {}
 ```js
 let a = new Set([1,2,3,3,3,3]);
 ```
-#### 2.Set的应用
+#### 1.10.2 Set的应用
 **数组去重**：  
 ```js
 // 方法1
@@ -1488,7 +1495,7 @@ a.forEach((v,k) => console.log(k + ' : ' + v));
 ```
 
 
-#### 3.Map
+#### 1.10.3 Map
 由于传统的`JavaScript`对象只能用字符串当做键，给开发带来很大限制，ES6增加`Map`数据结构，使得**各种类型的值**(包括对象)都可以作为键。   
 `Map`结构提供了“**值—值**”的对应，是一种更完善的 Hash 结构实现。
 **基础使用**：  
@@ -1560,7 +1567,7 @@ let a2 = [...a.values()]; // a2 =>  ["leo", 18]
 let a3 = [...a.entries()];// a3 => [['name','leo'], ['age',18]]
 ```
 
-#### 4.Map与其他数据结构互相转换
+#### 1.10.4 Map与其他数据结构互相转换
 * Map 转 数组  
 ```js
 let a = new Map().set(true,1).set({f:2},['abc']);
@@ -1651,6 +1658,89 @@ fun2('[[true,7],[{"foo":3},["abc"]]]')
 [⬆ 返回目录](#二目录)
 
 
+### 1.11 Proxy
+`proxy` 用于修改某些操作的**默认行为**，可以理解为一种拦截外界对目标对象访问的一种机制，从而对外界的访问进行过滤和修改，即代理某些操作，也称“**代理器**”。   
+#### 1.11.1 基础使用  
+`proxy`实例化需要传入两个参数，`target`参数表示所要拦截的目标对象，`handler`参数也是一个对象，用来定制拦截行为。   
+```js
+let p = new Proxy(target, handler);
+
+let a = new Proxy({}, {
+    get: function (target, handler){
+        return 'leo';
+    }
+})
+a.name; // leo
+a.age;  // leo
+a.abcd; // leo
+```
+上述`a`实例中，在第二个参数中定义了`get`方法，来拦截外界访问，并且`get`方法接收两个参数，分别是**目标对象**和**所要访问的属性**，所以不管外部访问对象中任何属性都会执行`get`方法返回`leo`。   
+**注意**：   
+* 只能使用`Proxy`实例的对象才能使用这些操作。  
+* 如果`handler`没有设置拦截，则直接返回原对象。  
+```js
+let target = {};
+let handler = {};
+let p = new Proxy(target, handler);
+p.a = 'leo'; 
+target.a;  // 'leo'
+```
+**同个拦截器函数，设置多个拦截操作**：  
+```js
+let p = new Proxy(function(a, b){
+    return a + b;
+},{
+    get:function(){
+        return 'get方法';
+    },
+    apply:function(){
+        return 'apply方法';
+    }
+})
+```
+
+**`Proxy`支持的13种拦截操作**：   
+具体每个操作的介绍，下面会介绍。   
+* `get(target, propKey, receiver)`：
+拦截对象属性的读取，比如proxy.foo和proxy['foo']。
+
+* `set(target, propKey, value, receiver)`：
+拦截对象属性的设置，比如proxy.foo = v或proxy['foo'] = v，返回一个布尔值。
+
+* `has(target, propKey)`：
+拦截propKey in proxy的操作，返回一个布尔值。
+
+* `deleteProperty(target, propKey)`：
+拦截delete proxy[propKey]的操作，返回一个布尔值。
+
+* `ownKeys(target)`：
+拦截Object.getOwnPropertyNames(proxy)、Object.getOwnPropertySymbols(proxy)、Object.keys(proxy)、for...in循环，返回一个数组。该方法返回目标对象所有自身的属性的属性名，而Object.keys()的返回结果仅包括目标对象自身的可遍历属性。
+
+* `getOwnPropertyDescriptor(target, propKey)`：
+拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象。
+
+* `defineProperty(target, propKey, propDesc)`：
+拦截Object.defineProperty(proxy, propKey, propDesc）、Object.defineProperties(proxy, propDescs)，返回一个布尔值。
+
+* `preventExtensions(target)`：
+拦截Object.preventExtensions(proxy)，返回一个布尔值。
+
+* `getPrototypeOf(target)`：
+拦截Object.getPrototypeOf(proxy)，返回一个对象。
+
+* `isExtensible(target)`：
+拦截Object.isExtensible(proxy)，返回一个布尔值。
+
+* `setPrototypeOf(target, proto)`：
+拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。
+
+* `apply(target, object, args)`：
+拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
+
+* `construct(target, args)`：
+拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
+
+
 ## 2. ES7
 ### Object.keys()，Object.values()，Object.entries() 
 [对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
@@ -1670,7 +1760,7 @@ fun2('[[true,7],[{"foo":3},["abc"]]]')
 [⬆ 返回目录](#二目录)
 
 ## 5. 知识补充
-### 块级作用域
+### 5.1 块级作用域
 
 通常指一个**函数内部**，或者一个**代码块内部**。  
 比如：  
@@ -1709,7 +1799,7 @@ console.log(i); // 5
 [⬆ 返回目录](#二目录)
 
 
-### ES5/6对数组空位的处理
+### 5.2 ES5/6对数组空位的处理
 
 数组的空位不是`undefined`，而是没有任何值，数组的`undefined`也是有值。  
 ```js
