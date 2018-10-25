@@ -612,11 +612,11 @@ Math.trunc = Math.trunc || function(x){
 * **Math.sign()**:  
 判断一个数是**正数**、**负数**还**是零**，对于非数值，会先转成**数值**。    
 返回值：   
-> 参数为正数， 返回 +1
-> 参数为负数， 返回 -1
-> 参数为0， 返回 0
-> 参数为-0， 返回 -0
-> 参数为其他值， 返回 NaN
+    * 参数为正数， 返回 +1
+    * 参数为负数， 返回 -1
+    * 参数为0， 返回 0
+    * 参数为-0， 返回 -0
+    * 参数为其他值， 返回 NaN
 ```js
 Math.sign(-1);   // -1
 Math.sign(1);    // +1
@@ -646,7 +646,7 @@ Math.sign = Math.sign || function (x){
 ```
 
 * **Math.cbrt()**:  
-用来计算一个数的立方根，若参数为非数值则先转成数值。
+用来计算一个数的立方根，若参数为非数值则先转成数值。   
 ```js
 Math.cbrt(-1); // -1
 Math.cbrt(0);  // 0
@@ -665,7 +665,7 @@ Math.cbrt = Math.cbrt || function (x){
 ```
 
 * **Math.clz32()**:  
-用于返回一个数的 32 位无符号整数形式有多少个前导 0。
+用于返回一个数的 32 位无符号整数形式有多少个前导 0。    
 ```js
 Math.clz32(0) // 32
 Math.clz32(1) // 31
@@ -675,7 +675,7 @@ Math.clz32(0b00100000000000000000000000000000) // 2
 ```
 
 * **Math.imul()**:  
-用于返回两个数以 32 位带符号整数形式相乘的结果，返回的也是一个 32 位的带符号整数。   
+用于返回两个数以 32 位带符号整数形式相乘的结果，返回的也是一个 32 位的带符号整数。    
 ```js
 Math.imul(2, 4)   // 8
 Math.imul(-1, 8)  // -8
@@ -765,12 +765,12 @@ Math.log2 = Math.log2 || function(x) {
 };
 ```
 * **双曲函数方法**:  
->`Math.sinh(x)` 返回x的**双曲正弦**（hyperbolic sine）  
->`Math.cosh(x)` 返回x的**双曲余弦**（hyperbolic cosine）  
->`Math.tanh(x)` 返回x的**双曲正切**（hyperbolic tangent）  
->`Math.asinh(x)` 返回x的**反双曲正弦**（inverse hyperbolic sine）  
->`Math.acosh(x)` 返回x的**反双曲余弦**（inverse hyperbolic cosine）  
->`Math.atanh(x)` 返回x的**反双曲正切**（inverse hyperbolic tangent）  
+    * `Math.sinh(x)` 返回x的**双曲正弦**（hyperbolic sine）  
+    * `Math.cosh(x)` 返回x的**双曲余弦**（hyperbolic cosine）  
+    * `Math.tanh(x)` 返回x的**双曲正切**（hyperbolic tangent）  
+    * `Math.asinh(x)` 返回x的**反双曲正弦**（inverse hyperbolic sine）  
+    * `Math.acosh(x)` 返回x的**反双曲余弦**（inverse hyperbolic cosine）  
+    * `Math.atanh(x)` 返回x的**反双曲正切**（inverse hyperbolic tangent）  
 
 #### 5.指数运算符
 新增的指数运算符(`**`):  
@@ -1089,7 +1089,6 @@ let a5 = [...a1, ...a2, ...a3];
 a4[0] === a1[0]; // true
 a5[0] === a1[0]; // true
 ```
-
 * **(3)与解构赋值结合**：  
 与解构赋值结合生成数组，但是使用拓展运算符需要放到参数最后一个，否则报错。   
 ```js
