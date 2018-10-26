@@ -81,6 +81,7 @@
             - [1.10.4 Map与其他数据结构互相转换](#1104-map与其他数据结构互相转换)
         - [1.11 Proxy](#111-proxy)
             - [1.11.1 基础使用](#1111-基础使用)
+            - [1.11.2 Proxy实例的13种方法](#1112-proxy实例的13种方法)
     - [2. ES7](#2-es7)
         - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
         - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
@@ -1739,6 +1740,103 @@ let p = new Proxy(function(a, b){
 
 * `construct(target, args)`：
 拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
+
+#### 1.11.2 Proxy实例的13种方法
+**1. get():**    
+`get()`方法用于拦截某个属性的**读取操作**，三个参数依次是“**目标对象**”、“**属性名**”和“**proxy实例本身（可选）**”。  
+```js
+let a = { name:'leo '};
+let p = new Proxy(a, {
+    get :function(target, property){
+        if(property in a){
+            return a[property];
+        }else{
+            throw new ReferenceError(`
+                Property ${property} does not exist.
+            `)
+        }
+    }
+})
+p.name; // "leo"
+p.age;  // Uncaught ReferenceError: Property age does not exist.
+```
+
+**2. set():**   
+`set()`方法用于拦截某个属性的**赋值操作**，四个参数依次是“**目标对象**”，“**属性名**”，“**属性值**”和“**Proxy实例本身（可选）**”。
+```js
+let a = {
+    set:function(obj, prop, val){
+        if(prop === 'count'){
+            if(!Number.isInteger(val)){
+                throw new TypeError('The count is not an integer');
+            }
+            if(val > 100) {
+                throw new RangeError('The count seems invalid');
+            }
+        }
+        obj[prop] = val; // 满足条件 保存count所有属性
+    }
+}
+let p = new Proxy({}, a);
+p.count = 100;
+p.count;        // 100
+p.count = 'aaa';// 报错 TypeError
+p.count = 200;  // 报错 RangeError
+```
+
+**3. apply():**  
+`apply()`用来拦截函数的调用，`call`和`apply`操作，三个参数依次是“**目标对象**”，“**目标对象的上下文**”和“**目标对象的参数数组**”。
+```js
+let a = function(){return 'leo'};
+let b = {
+    apply:function(){
+        return 'I am the proxy!';
+    }
+}
+let c = new Proxy(a,b);
+c(); // 'I am the proxy!'
+```
+
+**4. has():**  
+`has()`方法用来拦截`HasProperty`操作，即**判断对象是否具有某个属性**时，这个方法会生效。典型的操作就是`in`运算符。  
+两个参数依次是“**目标对象**”和“**需查询的属性名**”。  
+```js
+let a = {
+    has(target, key){
+        if(key[0] === '_'){return false}
+        return key in target;
+    }
+}
+let b = { _prop:'leo', prop:'robin'};
+let c = new Proxy(b,a);
+'_prop' in c;   // false
+```
+
+**5. construct():**  
+`construct()`用于拦截`new`命令，三个参数依次是“**目标对象**”，“**构造函数的参数对象**”和“**new命令作用的构造函数（可选）**”，而且`construct()`必须返回的是对象，否则报错。   
+```js
+let p = new Proxy(function(){}, {
+    construct: function (target, args){
+        return {value:atgs[0] * 100}
+    }
+})
+let a = new p(1);
+a.value; // 100
+```
+**6. deleteProperty():**  
+`deleteProperty()`方法用于拦截**delete操作**，如果这个方法抛出错误或者返回false，当前属性就无法被delete命令删除。
+
+
+**7. defineProperty():**  
+`defineProperty()`方法拦截了**Object.defineProperty**操作。  
+
+
+**8. getOwnPropertyDescriptor():**  
+**9. getPrototypeOf():**  
+**10. isExtensible():**  
+**11. ownKeys():**  
+**12. preventExtensions():**  
+**13. setPrototypeOf():**  
 
 
 ## 2. ES7
