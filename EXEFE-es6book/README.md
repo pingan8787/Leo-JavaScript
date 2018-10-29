@@ -96,6 +96,9 @@
             - [1.12.4 Promise.prototype.catch()](#1124-promiseprototypecatch)
             - [1.12.5 Promise.prototype.finally()](#1125-promiseprototypefinally)
             - [1.12.6 Promise.all()](#1126-promiseall)
+            - [1.12.7 Promise.race()](#1127-promiserace)
+            - [1.12.8 Promise.resolve()](#1128-promiseresolve)
+            - [1.12.9 Promise.reject()](#1129-promisereject)
         - [1.13 Iterator和 for...of循环](#113-iterator和-forof循环)
         - [1.14 Generator函数和应用](#114-generator函数和应用)
         - [1.15 Class语法和继承](#115-class语法和继承)
@@ -1913,7 +1916,7 @@ function createWebService(url){
 主要用途：**解决异步编程带来的回调地狱问题**。   
 把`Promise`简单理解一个容器，存放着某个未来才会结束的事件（通常是一个异步操作）的结果。通过`Promise`对象来获取异步操作消息，处理各种异步操作。   
 
-**Promise对象2特点**：  
+**`Promise`对象2特点**：  
 * **对象的状态不受外界影响**。
 > `Promise`对象代表一个异步操作，有三种状态：**pending（进行中）**、**fulfilled（已成功）**和**rejected（已失败）**。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是`Promise`这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。
 
@@ -2220,15 +2223,64 @@ Promise.all([p1, p2])
 // Error: 报错了
 ```
 
+#### 1.12.7 Promise.race()
+与`Promise.all`方法类似，也是将多个`Promise`实例包装成一个新的`Promise`实例。   
+```js
+const p = Promise.race([p1, p2, p3]);
+```
+与`Promise.all`方法区别在于，`Promise.race`方法是`p1`, `p2`, `p3`中只要一个参数先改变状态，就会把这个参数的返回值传给`p`的回调函数。  
 
+#### 1.12.8 Promise.resolve()
+将现有对象转换成 `Promise` 对象。   
+```js
+const p = Promise.resolve($.ajax('/whatever.json'));
+```
+
+#### 1.12.9 Promise.reject()
+返回一个`rejected`状态的`Promise`实例。  
+```js
+const p = Promise.reject('出错了');
+// 等同于
+const p = new Promise((resolve, reject) => reject('出错了'))
+
+p.then(null, function (s) {
+  console.log(s)
+});
+// 出错了
+```
+注意，`Promise.reject()`方法的参数，会原封不动地作为`reject`的理由，变成后续方法的参数。这一点与`Promise.resolve`方法不一致。   
+```js
+const thenable = {
+  then(resolve, reject) {
+    reject('出错了');
+  }
+};
+
+Promise.reject(thenable)
+.catch(e => {
+  console.log(e === thenable)
+})
+// true
+```
+
+
+[⬆ 返回目录](#二目录)
 
 ### 1.13 Iterator和 for...of循环
 
+[⬆ 返回目录](#二目录)
+
 ### 1.14 Generator函数和应用
+
+[⬆ 返回目录](#二目录)
 
 ### 1.15 Class语法和继承
 
+[⬆ 返回目录](#二目录)
+
 ### 1.16 Module语法和加载实现
+
+[⬆ 返回目录](#二目录)
 
 
 ## 2. ES7
