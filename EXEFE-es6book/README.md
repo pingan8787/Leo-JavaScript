@@ -89,10 +89,23 @@
             - [1.11.1 基础使用](#1111-基础使用)
             - [1.11.2 取消Proxy实例](#1112-取消proxy实例)
             - [1.11.3 实现 Web服务的客户端](#1113-实现-web服务的客户端)
+        - [1.12 Promise对象](#112-promise对象)
+            - [1.12.1 概念](#1121-概念)
+            - [1.12.2 基本使用](#1122-基本使用)
+            - [1.12.3 Promise.prototype.then()](#1123-promiseprototypethen)
+            - [1.12.4 Promise.prototype.catch()](#1124-promiseprototypecatch)
+            - [1.12.5 Promise.prototype.finally()](#1125-promiseprototypefinally)
+            - [1.12.6 Promise.all()](#1126-promiseall)
+        - [1.13 Iterator和 for...of循环](#113-iterator和-forof循环)
+        - [1.14 Generator函数和应用](#114-generator函数和应用)
+        - [1.15 Class语法和继承](#115-class语法和继承)
+        - [1.16 Module语法和加载实现](#116-module语法和加载实现)
     - [2. ES7](#2-es7)
         - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
         - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
     - [3. ES8](#3-es8)
+        - [3.1 async函数](#31-async函数)
+        - [3.2 Promise.prototype.finally()](#32-promiseprototypefinally)
     - [4. ES9](#4-es9)
         - [4.1 正则表达式 s 修饰符](#41-正则表达式-s-修饰符)
     - [5. 知识补充](#5-知识补充)
@@ -1895,6 +1908,329 @@ function createWebService(url){
 }
 ```
 
+### 1.12 Promise对象
+#### 1.12.1 概念
+主要用途：**解决异步编程带来的回调地狱问题**。   
+把`Promise`简单理解一个容器，存放着某个未来才会结束的事件（通常是一个异步操作）的结果。通过`Promise`对象来获取异步操作消息，处理各种异步操作。   
+
+**Promise对象2特点**：  
+* **对象的状态不受外界影响**。
+> `Promise`对象代表一个异步操作，有三种状态：**pending（进行中）**、**fulfilled（已成功）**和**rejected（已失败）**。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是`Promise`这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。
+
+* **一旦状态改变，就不会再变，任何时候都可以得到这个结果**。  
+> Promise对象的状态改变，只有两种可能：从**pending**变为**fulfilled**和从**pending**变为**rejected**。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果，这时就称为 **resolved**（已定型）。如果改变已经发生了，你再对**Promise**对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。      
+
+注意，为了行文方便，本章后面的`resolve`d统一只指`fulfilled`状态，不包含`rejected`状态。
+
+**`Promise`缺点**   
+* **无法取消**Promise，一旦新建它就会立即执行，无法中途取消。  
+* 如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
+* 当处于pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+
+#### 1.12.2 基本使用
+`Promise`为一个构造函数，需要用`new`来实例化。   
+```js
+let p = new Promise(function (resolve, reject){
+   if(/*异步操作成功*/){
+       resolve(value);
+   } else {
+       reject(error);
+   }
+})
+```
+`Promise`接收一个函数作为参数，该函数两个参数`resolve`和`reject`，有JS引擎提供。   
+* `resolve`作用是将`Promise`的状态从pending变成resolved，在异步操作成功时调用，返回异步操作的结果，作为参数传递出去。    
+* `reject`作用是将`Promise`的状态从pending变成rejected，在异步操作失败时报错，作为参数传递出去。   
+
+`Promise`实例生成以后，可以用`then`方法分别指定`resolved`状态和`rejected`状态的回调函数。   
+```js
+p.then(function(val){
+    // success...
+},function(err){
+    // error...
+})
+```
+
+**几个例子来理解** ： 
+* 当一段时间过后，`Promise`状态便成为`resolved`触发`then`方法绑定的回调函数。  
+```js
+function timeout (s){
+    return new Promise((resolve, reject){
+        setTimeout(result,ms, 'done');
+    })
+}
+timeout(100).then(val => {
+    console.log(val);
+})
+```
+
+* `Promise`新建后立刻执行。 
+```js 
+let p = new Promise(function(resolve, reject){
+    console.log(1);
+    resolve();
+})
+p.then(()=>{
+    console.log(2);
+})
+console.log(3);
+// 1
+// 2
+// 3 
+```
+
+**异步加载图片**：  
+```js
+function f(url){
+    return new Promise(function(resolve, reject){
+        const img = new Image ();
+        img.onload = function(){
+            resolve(img);
+        }
+        img.onerror = function(){
+            reject(new Error(
+                'Could not load image at ' + url
+            ));
+        }
+        img.src = url;
+    })
+}
+```
+
+**`resolve`函数和`reject`函数的参数为`resolve`函数或`reject`函数**：  
+`p1`的状态决定了`p2`的状态，所以`p2`要等待`p1`的结果再执行回调函数。  
+```js
+const p1 = new Promise(function (resolve, reject) {
+  setTimeout(() => reject(new Error('fail')), 3000)
+})
+
+const p2 = new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(p1), 1000)
+})
+
+p2
+  .then(result => console.log(result))
+  .catch(error => console.log(error))
+// Error: fail
+```
+
+**调用`resolve`或`reject`不会结束`Promise`参数函数的执行，除了`return`**:     
+```js
+new Promise((resolve, reject){
+    resolve(1);
+    console.log(2);
+}).then(r => {
+    console.log(3);
+})
+// 2
+// 1
+
+new Promise((resolve, reject){
+    return resolve(1);
+    console.log(2);
+})
+// 1
+```
+
+#### 1.12.3 Promise.prototype.then()
+作用是为`Promise`添加状态改变时的回调函数，`then`方法的第一个参数是`resolved`状态的回调函数，第二个参数（可选）是`rejected`状态的回调函数。   
+`then`方法返回一个新`Promise`实例，与原来`Promise`实例不同，因此可以使用链式写法，上一个`then`的结果作为下一个`then`的参数。  
+```js
+getJSON("/posts.json").then(function(json) {
+  return json.post;
+}).then(function(post) {
+  // ...
+});
+```
+
+#### 1.12.4 Promise.prototype.catch()
+`Promise.prototype.catch`方法是`.then(null, rejection)`的别名，用于指定发生错误时的回调函数。   
+```js
+getJSON('/posts.json').then(function(posts) {
+  // ...
+}).catch(function(error) {
+  // 处理 getJSON 和 前一个回调函数运行时发生的错误
+  console.log('发生错误！', error);
+});
+```
+如果 `Promise` 状态已经变成`resolved`，再抛出错误是无效的。   
+```js
+const p = new Promise(function(resolve, reject) {
+  resolve('ok');
+  throw new Error('test');
+});
+p
+  .then(function(value) { console.log(value) })
+  .catch(function(error) { console.log(error) });
+// ok
+```
+当`promise`抛出一个错误，就被`catch`方法指定的回调函数捕获，下面三种写法相同。   
+```js
+// 写法一
+const p = new Promise(function(resolve, reject) {
+  throw new Error('test');
+});
+p.catch(function(error) {
+  console.log(error);
+});
+// Error: test
+
+// 写法二
+const p = new Promise(function(resolve, reject) {
+  try {
+    throw new Error('test');
+  } catch(e) {
+    reject(e);
+  }
+});
+p.catch(function(error) {
+  console.log(error);
+});
+
+// 写法三
+const p = new Promise(function(resolve, reject) {
+  reject(new Error('test'));
+});
+p.catch(function(error) {
+  console.log(error);
+});
+```
+一般来说，不要在`then`方法里面定义` Reject` 状态的回调函数（即`then`的第二个参数），总是使用`catch`方法。    
+```js
+// bad
+promise
+  .then(function(data) {
+    // success
+  }, function(err) {
+    // error
+  });
+
+// good
+promise
+  .then(function(data) { //cb
+    // success
+  })
+  .catch(function(err) {
+    // error
+  });
+```
+
+#### 1.12.5 Promise.prototype.finally()
+`finally`方法用于指定不管 `Promise` 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。   
+```js
+promise
+.then(result => {···})
+.catch(error => {···})
+.finally(() => {···});
+```
+`finally`不接收任何参数，与状态无关，本质上是`then`方法的特例。   
+```js
+promise
+.finally(() => {
+  // 语句
+});
+
+// 等同于
+promise
+.then(
+  result => {
+    // 语句
+    return result;
+  },
+  error => {
+    // 语句
+    throw error;
+  }
+);
+```
+上面代码中，如果不使用`finally`方法，同样的语句需要为成功和失败两种情况各写一次。有了`finally`方法，则只需要写一次。   
+`finally`方法总是会返回原来的值。   
+```js
+// resolve 的值是 undefined
+Promise.resolve(2).then(() => {}, () => {})
+
+// resolve 的值是 2
+Promise.resolve(2).finally(() => {})
+
+// reject 的值是 undefined
+Promise.reject(3).then(() => {}, () => {})
+
+// reject 的值是 3
+Promise.reject(3).finally(() => {})
+```
+
+#### 1.12.6 Promise.all() 
+用于将多个 `Promise` 实例，包装成一个新的 `Promise` 实例，参数可以不是数组，但必须是Iterator接口，且返回的每个成员都是`Promise`实例。  
+```js
+const p = Promise.all([p1, p2, p3]);
+```
+`p`的状态由`p1`、`p2`、`p3`决定，分成**两种**情况。  
+1. 只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。  
+2. 只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected，此时第一个被reject的实例的返回值，会传递给p的回调函数。   
+
+```js
+// 生成一个Promise对象的数组
+const promises = [2, 3, 5, 7, 11, 13].map(function (id) {
+  return getJSON('/post/' + id + ".json");
+});
+
+Promise.all(promises).then(function (posts) {
+  // ...
+}).catch(function(reason){
+  // ...
+});
+```
+上面代码中，`promises`是包含 6 个 Promise 实例的数组，只有这 6 个实例的状态都变成`fulfilled`，或者其中有一个变为`rejected`，才会调用`Promise.all`方法后面的回调函数。    
+
+**注意**：如果`Promise`的参数中定义了`catch`方法，则`rejected`后不会触发`Promise.all()`的`catch`方法，因为参数中的`catch`方法执行完后也会变成`resolved`，当`Promise.all()`方法参数的实例都是`resolved`时就会调用`Promise.all()`的`then`方法。   
+```js
+const p1 = new Promise((resolve, reject) => {
+  resolve('hello');
+})
+.then(result => result)
+.catch(e => e);
+
+const p2 = new Promise((resolve, reject) => {
+  throw new Error('报错了');
+})
+.then(result => result)
+.catch(e => e);
+
+Promise.all([p1, p2])
+.then(result => console.log(result))
+.catch(e => console.log(e));
+// ["hello", Error: 报错了]
+```
+
+**如果参数里面都没有catch方法，就会调用Promise.all()的catch方法。**   
+```js
+const p1 = new Promise((resolve, reject) => {
+  resolve('hello');
+})
+.then(result => result);
+
+const p2 = new Promise((resolve, reject) => {
+  throw new Error('报错了');
+})
+.then(result => result);
+
+Promise.all([p1, p2])
+.then(result => console.log(result))
+.catch(e => console.log(e));
+// Error: 报错了
+```
+
+
+
+### 1.13 Iterator和 for...of循环
+
+### 1.14 Generator函数和应用
+
+### 1.15 Class语法和继承
+
+### 1.16 Module语法和加载实现
+
+
 ## 2. ES7
 ### Object.keys()，Object.values()，Object.entries() 
 [对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
@@ -1908,6 +2244,11 @@ function createWebService(url){
 [⬆ 返回目录](#二目录)
 
 ## 3. ES8
+### 3.1 async函数
+[对应地址](http://es6.ruanyifeng.com/#docs/async)
+
+### 3.2 Promise.prototype.finally()
+[对应地址](http://es6.ruanyifeng.com/#docs/promise)
 
 ## 4. ES9
 ### 4.1 正则表达式 s 修饰符
