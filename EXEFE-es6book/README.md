@@ -11,7 +11,8 @@
 **更新记录**：  
 ...前面几天没有写记录。   
 * 2018.10.24 添加**ES6**《**Symbol**》和《**Set和Map数据结构**》章节。  
-* 2018.10.25 添加**ES6**《**Proxy**》章节，还没整理完。  
+* 2018.10.26 添加**ES6**《**Proxy**》章节。  
+* 2018.10.29 添加**ES6**《**正则表达式**》章节。
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -45,6 +46,11 @@
             - [1.3.3 padStart(),padEnd()](#133-padstartpadend)
             - [1.3.4 模版字符串](#134-模版字符串)
         - [1.4 正则的拓展](#14-正则的拓展)
+            - [1.4.1 介绍](#141-介绍)
+            - [1.4.2 字符串的正则方法](#142-字符串的正则方法)
+            - [1.4.3 u修饰符](#143-u修饰符)
+            - [1.4.4 y修饰符](#144-y修饰符)
+            - [1.4.5 flags属性](#145-flags属性)
         - [1.5 数值的拓展](#15-数值的拓展)
             - [1.5.1 Number.isFinite(), Number.isNaN()](#151-numberisfinite-numberisnan)
             - [1.5.2 Number.parseInt(), Number.parseFloat()](#152-numberparseint-numberparsefloat)
@@ -88,6 +94,7 @@
         - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
     - [3. ES8](#3-es8)
     - [4. ES9](#4-es9)
+        - [4.1 正则表达式 s 修饰符](#41-正则表达式-s-修饰符)
     - [5. 知识补充](#5-知识补充)
         - [5.1 块级作用域](#51-块级作用域)
         - [5.2 ES5/6对数组空位的处理](#52-es56对数组空位的处理)
@@ -519,6 +526,124 @@ let a = `abc${v1}def`
 
 
 ### 1.4 正则的拓展
+#### 1.4.1 介绍
+在ES5中有两种情况。   
+* 参数是**字符串**，则第二个参数为正则表达式的修饰符。  
+```js
+let a = new RegExp('abc', 'i');
+// 等价于
+let a = /abx/i;
+```
+* 参数是**正则表达式**，返回一个原表达式的拷贝，且不能有第二个参数，否则报错。   
+```js
+let a = new RegExp(/abc/i);
+//等价于
+let a = /abx/i;
+
+let a = new RegExp(/abc/, 'i');
+//  Uncaught TypeError
+```
+ES6中使用：  
+第一个参数是正则对象，第二个是指定修饰符，如果第一个参数已经有修饰符，则会被第二个参数覆盖。   
+```js
+new RegExp(/abc/ig, 'i');
+```
+
+#### 1.4.2 字符串的正则方法
+常用的四种方法：`match()`、`replace()`、`search()`和`split()`。   
+
+#### 1.4.3 u修饰符
+添加`u`修饰符，是为了处理大于`uFFFF`的Unicode字符，即正确处理四个字节的UTF-16编码。   
+```js
+/^\uD83D/u.test('\uD83D\uDC2A'); // false
+/^\uD83D/.test('\uD83D\uDC2A');  // true
+```
+由于ES5之前不支持四个字节UTF-16编码，会识别为两个字符，导致第二行输出`true`，加入`u`修饰符后ES6就会识别为一个字符，所以输出`false`。   
+
+**注意：**  
+加上`u`修饰符后，会改变下面正则表达式的行为：   
+* (1)点字符
+点字符(`.`)在正则中表示除了**换行符**以外的任意单个字符。对于码点大于`0xFFFF`的Unicode字符，点字符不能识别，必须加上`u`修饰符。   
+```js
+var a = "𠮷";
+/^.$/.test(a);  // false
+/^.$/u.test(a); // true
+```
+* (2)Unicode字符表示法
+使用ES6新增的大括号表示Unicode字符时，必须在表达式添加`u`修饰符，才能识别大括号。   
+```js
+/\u{61}/.test('a');      // false
+/\u{61}/u.test('a');     // true
+/\u{20BB7}/u.test('𠮷'); // true
+```
+* (3)量词
+使用`u`修饰符后，所有量词都会正确识别码点大于`0xFFFF`的 Unicode 字符。
+```js
+/a{2}/.test('aa');    // true
+/a{2}/u.test('aa');   // true
+/𠮷{2}/.test('𠮷𠮷');  // false
+/𠮷{2}/u.test('𠮷𠮷'); // true
+```
+* (4)i修饰符
+不加`u`修饰符，就无法识别非规范的`K`字符。  
+```js
+/[a-z]/i.test('\u212A') // false
+/[a-z]/iu.test('\u212A') // true
+```
+
+**检查是否设置`u`修饰符：**
+使用`unicode`属性。   
+```js
+const a = /hello/;
+const b = /hello/u;
+
+a.unicode // false
+b.unicode // true
+```
+
+#### 1.4.4 y修饰符
+`y`修饰符与`g`修饰符类似，也是全局匹配，后一次匹配都是从上一次匹配成功的下一个位置开始。区别在于，`g`修饰符**只要**剩余位置中存在匹配即可，而`y`修饰符是必须从**剩余第一个**开始。   
+```js
+var s = 'aaa_aa_a';
+var r1 = /a+/g;
+var r2 = /a+/y;
+
+r1.exec(s) // ["aaa"]
+r2.exec(s) // ["aaa"]
+
+r1.exec(s) // ["aa"]  剩余 '_aa_a'
+r2.exec(s) // null
+```
+**`lastIndex`属性**:
+指定匹配的开始位置：   
+```js
+const a = /a/y;
+a.lastIndex = 2;  // 从2号位置开始匹配
+a.exec('wahaha'); // null
+a.lastIndex = 3;  // 从3号位置开始匹配
+let c = a.exec('wahaha');
+c.index;          // 3
+a.lastIndex;      // 4
+```
+**返回多个匹配**：  
+一个`y`修饰符对`match`方法只能返回第一个匹配，与`g`修饰符搭配能返回所有匹配。   
+```js
+'a1a2a3'.match(/a\d/y);  // ["a1"]
+'a1a2a3'.match(/a\d/gy); // ["a1", "a2", "a3"]
+```
+**检查是否使用`y`修饰符**：   
+使用`sticky`属性检查。   
+```js
+const a = /hello\d/y;
+a.sticky;     // true
+```
+
+#### 1.4.5 flags属性
+`flags`属性返回所有正则表达式的修饰符。   
+```js
+/abc/ig.flags;  // 'gi'
+```
+
 
 [⬆ 返回目录](#二目录)
 
@@ -1785,6 +1910,9 @@ function createWebService(url){
 ## 3. ES8
 
 ## 4. ES9
+### 4.1 正则表达式 s 修饰符
+[对应地址](http://es6.ruanyifeng.com/#docs/regex)
+
 
 [⬆ 返回目录](#二目录)
 
