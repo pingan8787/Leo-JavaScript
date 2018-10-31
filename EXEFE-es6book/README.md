@@ -1651,7 +1651,7 @@ for(let i of a.values()){console.log(i)}; // 'a' 'b' 'c'
 for(let i of a.entries()){console.log(i)}; 
 // ['a','a'] ['b','b'] ['c','c']
 ```
-并且 还可以使用`for...of```直接遍历`Set`。  
+并且 还可以使用`for...of`直接遍历`Set`。  
 ```js
 let a = new Set(['a','b','c']);
 for(let k of a){console.log(k)};   // 'a' 'b' 'c'
@@ -2414,6 +2414,7 @@ for (let k in a){console.log(k)};  // 0 1 2
 ```
 
 * **Set和Map**
+可以使用数组作为变量，如`for (let [k,v] of b){...}`。   
 ```js
 let a = new Set(['a', 'b', 'c']);
 for (let k of a){console.log(k)}; // a b c
