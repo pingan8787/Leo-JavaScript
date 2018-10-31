@@ -14,7 +14,7 @@
 * 2018.10.26 添加**ES6**《**Proxy**》章节。  
 * 2018.10.29 添加**ES6**《**正则表达式**》《**Promise**》章节。
 * 2018.10.30 添加**ES6**《**Iterator**》章节。 
-* 2018.10.31 添加**ES6**《**Generator**》章节。  
+* 2018.10.31 添加**ES6**《**Generator**,**Module**》章节。  
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -120,6 +120,14 @@
             - [1.14.10 应用场景](#11410-应用场景)
         - [1.15 Class语法和继承](#115-class语法和继承)
         - [1.16 Module语法和加载实现](#116-module语法和加载实现)
+            - [1.16.1 介绍](#1161-介绍)
+            - [1.16.2 严格模式](#1162-严格模式)
+            - [1.16.3 export命令](#1163-export命令)
+            - [1.16.4 import命令](#1164-import命令)
+            - [1.16.5 模块的整体加载](#1165-模块的整体加载)
+            - [1.16.6 export default 命令](#1166-export-default-命令)
+            - [1.16.7 export 和 import 复合写法](#1167-export-和-import-复合写法)
+            - [1.16.8 浏览器中的加载规则](#1168-浏览器中的加载规则)
     - [2. ES7](#2-es7)
         - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
         - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
@@ -2738,9 +2746,6 @@ result.value.then(function(data){
 })
 ```
 
-
-
-
 [⬆ 返回目录](#二目录)
 
 
@@ -2750,6 +2755,218 @@ result.value.then(function(data){
 [⬆ 返回目录](#二目录)
 
 ### 1.16 Module语法和加载实现
+#### 1.16.1 介绍
+ES6之前用于JavaScript的模块加载方案，是一些社区提供的，主要有`CommonJS`和`AMD`两种，前者用于**服务器**，后者用于**浏览器**。   
+ES6提供了模块的实现，使用`export`命令对外暴露接口，使用`import`命令输入其他模块暴露的接口。   
+```js
+// CommonJS模块
+let { stat, exists, readFire } = require('fs');
+
+// ES6模块
+import { stat, exists, readFire } = from 'fs';
+```
+
+#### 1.16.2 严格模式
+ES6模块自动采用严格模式，无论模块头部是否有`"use strict"`。  
+**严格模式有以下限制**：   
+* 变量必须**声明后再使用**
+* 函数的参数**不能有同名属性**，否则报错
+* 不能使用`with`语句
+* 不能对只读属性赋值，否则报错
+* 不能使用前缀 0 表示八进制数，否则报错
+* 不能删除不可删除的属性，否则报错
+* 不能删除变量`delete prop`，会报错，只能删除属性`delete * global[prop]`
+* `eval`不会在它的外层作用域引入变量
+* `eval`和`arguments`不能被重新赋值
+* `arguments`不会自动反映函数参数的变化
+* 不能使用`arguments.callee`
+* 不能使用`arguments.caller`
+* 禁止`this`指向全局对象
+* 不能使用`fn.caller`和`fn.arguments`获取函数调用的堆栈
+* 增加了保留字（比如`protected`、`static`和`interface`）
+
+特别是，ES6中顶层`this`指向`undefined`，即不应该在顶层代码使用`this`。  
+
+#### 1.16.3 export命令
+使用`export`向模块外暴露接口，可以是方法，也可以是变量。   
+```js
+// 1. 变量
+export let a = 'leo';
+export let b = 100;
+
+// 还可以
+let a = 'leo';
+let b = 100;
+export {a, b};
+
+// 2. 方法
+export function f(a,b){
+    return a*b;
+}
+
+// 还可以
+function f1 (){ ... }
+function f2 (){ ... }
+export {
+    a1 as f1,
+    a2 as f2
+}
+```
+可以使用`as`重命名函数的对外接口。  
+**特别注意**：  
+`export`暴露的必须是接口，不能是值。  
+```js
+// 错误
+export 1; // 报错
+
+let a = 1;
+export a; // 报错
+
+// 正确
+export let a = 1; // 正确
+
+let a = 1;
+export {a};       // 正确
+
+let a = 1;
+export { a as b}; // 正确
+```
+暴露方法也是一样:   
+```js
+// 错误
+function f(){...};
+export f;
+
+// 正确
+export function f () {...};
+
+function f(){...};
+export {f};
+```
+
+#### 1.16.4 import命令
+加载`export`暴露的接口，输出为变量。   
+```js
+import { a, b } from '/a.js';
+function f(){
+    return a + b;
+}
+```
+`import`后大括号指定变量名，需要与`export`的模块暴露的名称一致。    
+也可以使用`as`为输入的变量重命名。   
+```js
+import { a as leo } from './a.js';
+```
+`import`不能直接修改输入变量的值，因为输入变量只读只是个接口，但是如果是个对象，可以修改它的属性。  
+```js
+// 错误
+import {a} from './f.js';
+a = {}; // 报错
+
+// 正确
+a.foo = 'leo';  // 不报错
+```
+`import`命令具有提升效果，会提升到整个模块头部最先执行，且多次执行相同`import`只会执行一次。
+
+#### 1.16.5 模块的整体加载
+当一个模块暴露多个方法和变量，引用时可以用`*`整体加载。   
+```js
+// a.js
+export function f(){...}
+export function g(){...}
+
+// b.js
+import * as obj from '/a.js';
+console.log(obj.f());
+console.log(obj.g());
+```
+但是，不允许运行时改变：   
+```js
+import * as obj from '/a.js';
+// 不允许
+obj.a = 'leo';   
+obj.b = function(){...}; 
+```
+
+#### 1.16.6 export default 命令
+使用`export default`命令，为模块指定默认输出，引用的时候直接指定任意名称即可。  
+```js
+// a.js
+export default function(){console.log('leo')};
+
+// b.js
+import leo from './a.js';
+leo(); // 'leo'
+```
+`export defualt`暴露有函数名的函数时，在调用时相当于匿名函数。   
+```js
+// a.js
+export default function f(){console.log('leo')};
+// 或者
+function f(){console.log('leo')};
+export default f;
+
+// b.js
+import leo from './a.js';
+```
+`export defualt`其实是输出一个名字叫`default`的变量，所以后面不能跟变量赋值语句。  
+```js
+// 正确
+export let a= 1;
+
+let a = 1;
+export defualt a;
+
+// 错误
+export default let a = 1;
+```
+`export default`命令的本质是将后面的值，赋给`default`变量，所以可以直接将一个值写在`export default`之后。   
+```js
+// 正确
+export detault 1;
+// 错误
+export 1;
+```
+
+#### 1.16.7 export 和 import 复合写法
+常常在先输入后输出同一个模块使用，即转发接口，将两者写在一起。   
+```js
+export {a, b} from './leo.js';
+
+// 理解为
+import {a, b} from './leo.js';
+export {a, b}
+```
+常见的写法还有：   
+```js
+// 接口改名
+export { a as b} from './leo.js';
+
+// 整体输出
+export *  from './leo.js';
+
+// 默认接口改名
+export { default as a } from './leo.js';
+```
+**常常用在模块继承**。  
+
+#### 1.16.8 浏览器中的加载规则
+ES6中，可以在浏览器使用`<script>`标签，需要加入`type="module"`属性，并且这些都是异步加载，避免浏览器阻塞，即等到整个页面渲染完，再执行模块脚本，等同于打开了`<script>`标签的`defer`属性。   
+```html
+<script type="module" src="./a.js"></script>
+```
+另外，ES6模块也可以内嵌到网页，语法与外部加载脚本一致：   
+```html
+<script type="module">
+    import a from './a.js';
+</script>
+```
+**注意点**：  
+* 代码是在模块作用域之中运行，而不是在全局作用域运行。模块内部的顶层变量，外部不可见。
+* 模块脚本自动采用严格模式，不管有没有声明`use strict`。
+* 模块之中，可以使用`import`命令加载其他模块（`.js`后缀不可省略，需要提供`绝对 UR`L 或`相对 UR`L），也可以使用`export`命令输出对外接口。
+* 模块之中，顶层的`this`关键字返回`undefined`，而不是指向`window`。也就是说，在模块顶层使用`this`关键字，是无意义的。
+* 同一个模块如果加载多次，将只执行一次。
 
 [⬆ 返回目录](#二目录)
 
