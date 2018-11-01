@@ -15,7 +15,8 @@
 * 2018.10.29 添加**ES6**《**正则表达式**》《**Promise**》章节。
 * 2018.10.30 添加**ES6**《**Iterator**》章节。 
 * 2018.10.31 添加**ES6**《**Generator**,**Module**》章节。   
-* 2018.11.1 更新**ES6**《**Class**》章节。  
+* 2018.11.1 更新**ES6**《**Class**》章节。 
+* 2018.11.2 完成**ES6**所有章节内容。 
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -3118,12 +3119,123 @@ class P {
 ```
 
 #### 1.15.11 Class的继承
-主要通过`extends`关键字实现。   
+主要通过`extends`关键字实现，继承父类的所有属性和方法，通过`super`关键字来新建父类构造函数的`this`对象。   
 ```js
 class P { ... }
 class Q extends P { ... }
+
+class P { 
+    constructor(x, y){
+        // ...
+    }
+    f1 (){ ... }
+}
+class Q extends P {
+    constructor(a, b, c){
+        super(x, y);  // 调用父类 constructor(x, y)
+        this.color = color ;
+    }
+    f2 (){
+        return this.color + ' ' + super.f1(); 
+        // 调用父类的f1()方法
+    }
+}
+```
+**子类必须在`constructor()`调用`super()`否则报错**，并且只有`super`方法才能调用父类实例，还有就是，**父类的静态方法，子类也可以继承到**。    
+```js
+class P { 
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
+    static fun(){
+        console.log('hello leo')
+    }
+}
+// 关键点1 调用super
+class Q extends P {
+    constructor(){ ... }
+}
+let a = new Q(); // ReferenceError 因为Q没有调用super
+
+// 关键点2 调用super
+class R extends P {
+    constructor (x, y. z){
+        this.z = z; // ReferenceError 没调用super不能使用
+        super(x, y);
+        this.z = z; // 正确
+    }
+}
+
+// 关键点3 子类继承父类静态方法
+R.hello(); // 'hello leo'
 ```
 
+**super关键字**：   
+既可以当函数使用，还可以当对象使用。   
+* 1.当函数调用，代表父类的构造函数，但必须执行一次。  
+```js
+class P {... };
+class R extends P {
+    constructor(){
+        super();
+    }
+}
+```
+* 2.当对象调用，指向原型对象，在静态方法中指向父类。   
+```js
+class P {
+    f (){ return 2 };
+}
+class R extends P {
+    constructor (){
+        super();
+        console.log(super.f()); // 2
+    }
+}
+let a = new R()
+```
+**注意**：`super`指向父类原型对象，所以定义在父类实例的方法和属性，是无法通过`super`调用的，但是通过调用`super`方法可以把内部`this`指向当前实例，就可以访问到。   
+```js
+class P {
+    constructor(){
+        this.a = 1;
+    }
+    print(){
+        console.log(this.a);
+    }
+}
+class R extends P {
+    get f (){
+        return super.a;
+    }
+}
+let b = new R();
+b.a; // undefined 因为a是父类P实例的属性
+
+// 先调用super就可以访问
+class Q extends P {
+    constructor(){
+        super();   // 将内部this指向当前实例
+        return super.a;
+    }
+}
+let c = new Q();
+c.a; // 1
+
+// 情况3
+class J extends P {
+    constructor(){
+        super();
+        this.a = 3;
+    }
+    g(){
+        super.print();
+    }
+}
+let c = new J();
+c.g(); // 3  由于执行了super()后 this指向当前实例
+```
 
 [⬆ 返回目录](#二目录)
 
