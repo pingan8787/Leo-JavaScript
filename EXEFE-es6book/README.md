@@ -2696,7 +2696,7 @@ for(let k of b()){console.log(k)}
 ```
 
 #### 1.14.9 应用场景
-* 1. **控制流管理**  
+1. **控制流管理**  
 解决回调地狱：   
 ```js
 // 使用前
@@ -2740,7 +2740,7 @@ function g (task){
 g( f(initValue) );
 ```
 
-* 2. **异步编程的使用** 
+2. **异步编程的使用** 
 在真实的异步任务封装的情况：   
 ```js
 let fetch = require('node-fetch');
@@ -2761,7 +2761,6 @@ result.value.then(function(data){
 ```
 
 [⬆ 返回目录](#二目录)
-
 
 
 ### 1.15 Class语法和继承
@@ -2982,7 +2981,7 @@ class P {
 }
 
 let a = new P();
-a.f == 100;   // setter : 100
+a.f = 100;   // setter : 100
 a.f;          // getter
 ```
 
@@ -3063,7 +3062,7 @@ class P {
 P.a1;      // undefined
 ```
 **新提案来规定实例属性和静态属性的新写法**   
-* 1.类的实例属性
+* 1.类的实例属性   
 类的实例属性可以用等式，写入类的定义中。  
 ```js
 class P {
