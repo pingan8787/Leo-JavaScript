@@ -114,12 +114,12 @@
             - [1.14.1 基本概念](#1141-基本概念)
             - [1.14.2 yield表达式](#1142-yield表达式)
             - [1.14.3 next方法](#1143-next方法)
-            - [1.14.5 for...of循环](#1145-forof循环)
-            - [1.14.6 Generator.prototype.throw()](#1146-generatorprototypethrow)
-            - [1.14.7 Generator.prototype.return()](#1147-generatorprototypereturn)
-            - [1.14.8 next()/throw()/return()共同点](#1148-nextthrowreturn共同点)
-            - [1.14.9 yield* 表达式](#1149-yield-表达式)
-            - [1.14.10 应用场景](#11410-应用场景)
+            - [1.14.4 for...of循环](#1144-forof循环)
+            - [1.14.5 Generator.prototype.throw()](#1145-generatorprototypethrow)
+            - [1.14.6 Generator.prototype.return()](#1146-generatorprototypereturn)
+            - [1.14.7 next()/throw()/return()共同点](#1147-nextthrowreturn共同点)
+            - [1.14.8 yield* 表达式](#1148-yield-表达式)
+            - [1.14.9 应用场景](#1149-应用场景)
         - [1.15 Class语法和继承](#115-class语法和继承)
             - [1.15.1 介绍](#1151-介绍)
             - [1.15.2 constructor()方法](#1152-constructor方法)
@@ -192,7 +192,7 @@ let v2 = 2;
 ```
 
 * **不允许重复声明：**  
-`let` 和 `const` 在相同作用域下，都**不能重复声明同一变量**，并且**不能在函数内重新声明参数**。
+`let` 和 `const` 在**相同作用域下**，都**不能重复声明同一变量**，并且**不能在函数内重新声明参数**。
 ```js
 // 1. 不能重复声明同一变量
 // 报错
@@ -2510,13 +2510,13 @@ a.next();  // {value: undefined, done : false}
 
 #### 1.14.2 yield表达式
 `yield`表达式是暂停标志，遍历器对象的`next`方法的运行逻辑如下：   
-* 1. 遇到`yield`就暂停执行，将这个`yield`后的表达式的值，作为返回对象的`value`属性值。  
-* 2. 下次调用`next`往下执行，直到遇到下一个`yield`。  
-* 3. 直到函数结束或者`return`为止，并返回`return`语句后面表达式的值，作为返回对象的`value`属性值。  
-* 4. 如果该函数没有`return`语句，则返回对象的`value`为`undefined` 。   
+1. 遇到`yield`就暂停执行，将这个`yield`后的表达式的值，作为返回对象的`value`属性值。  
+2. 下次调用`next`往下执行，直到遇到下一个`yield`。  
+3. 直到函数结束或者`return`为止，并返回`return`语句后面表达式的值，作为返回对象的`value`属性值。  
+4. 如果该函数没有`return`语句，则返回对象的`value`为`undefined` 。   
 
 **注意：**   
-* `yield`只能用在`Generator`函数里，其他地方会报错。   
+* `yield`只能用在`Generator`函数里使用，其他地方使用会报错。   
 ```js
 // 错误1
 (function(){
@@ -2549,7 +2549,7 @@ function * a (){
 }
 ```
 
-* `yield`表达式用做函数参数或放在表达式右边，可以不加括号。  
+* `yield`表达式用做函数参数或放在表达式右边，可以**不加括号**。  
 ```js
 function * a (){
     f(yield 'a', yield 'b');    //  ok
@@ -2591,8 +2591,8 @@ b.next(13);   // {value : 42 ,done : false}
 // x 5 y 24 z 13
 ```
 
-#### 1.14.5 for...of循环
-`for...of`循环会自动遍历，不用调用`next`方法，需要注意的是，`for...of`遇到`next`放回的`done`属性为`true`就会终止，`return`返回的不包括在`for...of`循环中。   
+#### 1.14.4 for...of循环
+`for...of`循环会自动遍历，不用调用`next`方法，需要注意的是，`for...of`遇到`next`返回值的`done`属性为`true`就会终止，`return`返回的不包括在`for...of`循环中。   
 ```js
 function * f(){
     yield 1;
@@ -2607,7 +2607,7 @@ for (let k of f()){
 // 1 2 3 4  没有 5 
 ```
 
-#### 1.14.6 Generator.prototype.throw()
+#### 1.14.5 Generator.prototype.throw()
 `throw`方法用来向函数外抛出错误，并且在Generator函数体内捕获。   
 ```js
 let f = function * (){
@@ -2628,7 +2628,7 @@ try{
 // 外部捕获 b
 ```
 
-#### 1.14.7 Generator.prototype.return()
+#### 1.14.6 Generator.prototype.return()
 `return`方法用来返回给定的值，并结束遍历Generator函数，如果`return`方法没有参数，则返回值的`value`属性为`undefined`。   
 ```js
 function * f(){
@@ -2642,7 +2642,7 @@ g.return('leo');   // {value : 'leo', done " true}
 g.next();          // {value : undefined, done : true}
 ```
 
-#### 1.14.8 next()/throw()/return()共同点
+#### 1.14.7 next()/throw()/return()共同点
 相同点就是都是用来恢复Generator函数的执行，并且使用不同语句替换`yield`表达式。  
 * `next()`将`yield`表达式替换成一个值。  
 ```js
@@ -2669,7 +2669,7 @@ g.return(2); // {value: 2, done: true}
 // 替换成 let r = return 2;
 ```
 
-#### 1.14.9 yield* 表达式
+#### 1.14.8 yield* 表达式
 用于在一个Generator中执行另一个Generator函数，如果没有使用`yield*`会没有效果。     
 ```js
 function * a(){
@@ -2695,7 +2695,7 @@ for(let k of b()){console.log(k)}
 // 4
 ```
 
-#### 1.14.10 应用场景
+#### 1.14.9 应用场景
 * 1. **控制流管理**  
 解决回调地狱：   
 ```js
