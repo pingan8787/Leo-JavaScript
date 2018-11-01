@@ -14,7 +14,8 @@
 * 2018.10.26 添加**ES6**《**Proxy**》章节。  
 * 2018.10.29 添加**ES6**《**正则表达式**》《**Promise**》章节。
 * 2018.10.30 添加**ES6**《**Iterator**》章节。 
-* 2018.10.31 添加**ES6**《**Generator**,**Module**》章节。  
+* 2018.10.31 添加**ES6**《**Generator**,**Module**》章节。   
+* 2018.11.1 更新**ES6**《**Class**》章节。  
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -115,10 +116,21 @@
             - [1.14.5 for...of循环](#1145-forof循环)
             - [1.14.6 Generator.prototype.throw()](#1146-generatorprototypethrow)
             - [1.14.7 Generator.prototype.return()](#1147-generatorprototypereturn)
-            - [1.14.8 next()/throw()/return()Fon共同点](#1148-nextthrowreturnfon共同点)
+            - [1.14.8 next()/throw()/return()共同点](#1148-nextthrowreturn共同点)
             - [1.14.9 yield* 表达式](#1149-yield-表达式)
             - [1.14.10 应用场景](#11410-应用场景)
         - [1.15 Class语法和继承](#115-class语法和继承)
+            - [1.15.1 介绍](#1151-介绍)
+            - [1.15.2 constructor()方法](#1152-constructor方法)
+            - [1.15.3 类的实例对象](#1153-类的实例对象)
+            - [1.15.4 Class表达式](#1154-class表达式)
+            - [1.15.5 私有方法和私有属性](#1155-私有方法和私有属性)
+            - [1.15.6 this指向问题](#1156-this指向问题)
+            - [1.15.7 Class的getter和setter](#1157-class的getter和setter)
+            - [1.15.8 Class的generator方法](#1158-class的generator方法)
+            - [1.15.9 Class的静态方法](#1159-class的静态方法)
+            - [1.15.10 Class的静态属性和实例属性](#11510-class的静态属性和实例属性)
+            - [1.15.11 Class的继承](#11511-class的继承)
         - [1.16 Module语法和加载实现](#116-module语法和加载实现)
             - [1.16.1 介绍](#1161-介绍)
             - [1.16.2 严格模式](#1162-严格模式)
@@ -2629,7 +2641,7 @@ g.return('leo');   // {value : 'leo', done " true}
 g.next();          // {value : undefined, done : true}
 ```
 
-#### 1.14.8 next()/throw()/return()Fon共同点
+#### 1.14.8 next()/throw()/return()共同点
 相同点就是都是用来恢复Generator函数的执行，并且使用不同语句替换`yield`表达式。  
 * `next()`将`yield`表达式替换成一个值。  
 ```js
@@ -2752,6 +2764,366 @@ result.value.then(function(data){
 
 
 ### 1.15 Class语法和继承
+#### 1.15.1 介绍
+ES6中的`class`可以看作只是一个语法糖，绝大部分功能都可以用ES5实现，并且，**类和模块的内部，默认就是严格模式，所以不需要使用use strict指定运行模式**。   
+```js
+// ES5
+function P (x,y){
+    this.x = x;
+    this.y = y;
+}
+P.prototype.toString = function () {
+  return '(' + this.x + ', ' + this.y + ')';
+};
+var a = new P(1, 2);
+
+// ES6
+class P {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
+    toString(){
+        return '(' + this.x + ', ' + this.y + ')';
+    }
+}
+let a = new P(1, 2);
+```
+**值得注意**：
+ES6的**类**的所有方法都是定义在`prototype`属性上，调用类的实例的方法，其实就是调用原型上的方法。      
+```js
+class P {
+    constructor(){ ... }
+    toString(){ ... }
+    toNumber(){ ... }
+}
+// 等同于
+P.prototyoe = {
+    constructor(){ ... },
+    toString(){ ... },
+    toNumber(){ ... }
+}
+
+let a = new P();
+a.constructor === P.prototype.constructor; // true
+```
+类的属性名可以使用**表达式**：   
+```js
+let name = 'leo';
+class P {
+    constructor (){ ... }
+    [name](){ ... }
+}
+```
+
+**Class不存在变量提升**：
+ES6中的类不存在变量提升，与ES5完全不同：   
+```js
+new P ();   // ReferenceError
+class P{...};
+```
+**Class的name属性**：   
+`name`属性总是返回紧跟在`class`后的类名。   
+```js
+class P {}
+P.name;  // 'P'
+```
+
+#### 1.15.2 constructor()方法
+`constructor()`是类的默认方法，通过`new`实例化时自动调用执行，一个类必须有`constructor()`方法，否则一个空的`constructor()`会默认添加。  
+`constructor()`方法默认返回实例对象(即`this`)。     
+```js
+class P { ... }
+// 等同于
+class P {
+    constructor(){ ... }
+}
+```
+
+#### 1.15.3 类的实例对象
+与ES5一样，ES6的类必须使用`new`命令实例化，否则报错。   
+```js
+class P { ... }
+let a = P (1,2);     // 报错
+let b = new P(1, 2); // 正确
+```
+与 ES5 一样，实例的属性除非显式定义在其本身（即定义在`this`对象上），否则都是定义在原型上（即定义在`class`上）。
+```js
+class P {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
+    toString(){
+        return '(' + this.x + ', ' + this.y + ')';
+    }
+}
+var point = new Point(2, 3);
+
+point.toString() // (2, 3)
+
+point.hasOwnProperty('x') // true
+point.hasOwnProperty('y') // true
+point.hasOwnProperty('toString') // false 
+point.__proto__.hasOwnProperty('toString') // true
+// toString是原型对象的属性（因为定义在Point类上）
+```
+
+#### 1.15.4 Class表达式
+与函数一样，类也可以使用表达式来定义，使用表达式来作为类的名字，而`class`后跟的名字，用来指代当前类，只能再Class内部使用。   
+```js
+let a = class P{
+    get(){
+        return P.name;
+    }
+}
+
+let b = new a();
+b.get(); // P
+P.name;  // ReferenceError: P is not defined
+```
+如果类的内部没用到的话，可以省略`P`，也就是可以写成下面的形式。   
+```js
+let a = class { ... }
+```
+
+#### 1.15.5 私有方法和私有属性
+由于ES6不提供，只能变通来实现：   
+* 1.使用命名加以区别，如变量名前添加`_`，但是不保险，外面也可以调用到。   
+```js
+class P {
+    // 公有方法
+    f1 (x) {
+        this._x(x);
+    }
+    // 私有方法
+    _x (x){
+        return this.y = x;
+    }
+}
+```
+* 2.将私有方法移除模块，再在类内部调用`call`方法。   
+```js
+class P {
+    f1 (x){
+        f2.call(this, x);
+    }
+}
+function f2 (x){
+    return this.y = x;
+}
+```
+* 3.使用`Symbol`为私有方法命名。   
+```js
+const a1 = Symbol('a1');
+const a2 = Symbol('a2');
+export default class P{
+    // 公有方法
+    f1 (x){
+        this[a1](x);
+    }
+    // 私有方法
+    [a1](x){
+        return this[a2] = x;
+    }
+}
+```
+
+
+#### 1.15.6 this指向问题
+类内部方法的`this`默认指向类的实例，但单独使用该方法可能报错，因为`this`指向的问题。  
+```js
+class P{
+    leoDo(thing = 'any'){
+        this.print(`Leo do ${thing}`)
+    }
+    print(text){
+        console.log(text);
+    }
+}
+let a = new P();
+let { leoDo } = a;
+leoDo(); // TypeError: Cannot read property 'print' of undefined
+// 问题出在 单独使用leoDo时，this指向调用的环境，
+// 但是leoDo中的this是指向P类的实例，所以报错
+```
+**解决方法**：  
+* 1.在类里面绑定`this`   
+```js
+class P {
+    constructor(){
+        this.name = this.name.bind(this);
+    }
+}
+```
+* 2.使用箭头函数
+```js
+class P{
+    constructor(){
+        this.name = (name = 'leo' )=>{
+            this.print(`my name is ${name}`)
+        }
+    }
+}
+```
+
+#### 1.15.7 Class的getter和setter
+使用`get`和`set`关键词对属性设置取值函数和存值函数，拦截属性的存取行为。   
+```js
+class P {
+    constructor (){ ... }
+    get f (){
+        return 'getter';
+    }
+    set f (val) {
+        console.log('setter: ' + val);
+    }
+}
+
+let a = new P();
+a.f == 100;   // setter : 100
+a.f;          // getter
+```
+
+#### 1.15.8 Class的generator方法
+只要在方法之前加个(`*`)即可。   
+```js
+class P {
+    constructor (...args){
+        this.args = args;
+    }
+    *[Symbol.iterator](){
+        for (let arg of this.args){
+            yield arg;
+        }
+    }
+}
+for (let k of new P('aa', 'bb')){
+    console.log(k);
+}
+// 'aa'
+// 'bb'
+```
+
+#### 1.15.9 Class的静态方法
+由于类相当于实例的原型，所有类中定义的方法都会被实例继承，若不想被继承，只要加上`static`关键字，只能通过类来调用，即“**静态方法**”。   
+```js
+class P (){
+    static f1 (){ return 'aaa' };
+}
+P.f1();    // 'aa'
+let a = new P();
+a.f1();    // TypeError: a.f1 is not a function
+```
+如果静态方法包含`this`关键字，则`this`指向类，而不是实例。   
+```js
+class P {
+    static f1 (){
+        this.f2();
+    }
+    static f2 (){
+        console.log('aaa');
+    }
+    f2(){
+        console.log('bbb');
+    }
+}
+P.f2();  // 'aaa'
+```
+并且静态方法可以被子类继承，或者`super`对象中调用。   
+```js
+class P{
+    static f1(){ return 'leo' };
+}
+class Q extends P { ... };
+Q.f1();  // 'leo'
+
+class R extends P {
+    static f2(){
+        return super.f1() + ',too';
+    }
+}
+R.f2();  // 'leo , too'
+```
+
+#### 1.15.10 Class的静态属性和实例属性
+ES6中明确规定，Class内部只有静态方法没有静态属性，所以只能通过下面实现。   
+```js
+// 正确写法
+class P {}
+P.a1 = 1;
+P.a1;      // 1
+
+// 无效写法
+class P {
+    a1: 2,          // 无效
+    static a1 : 2,  // 无效
+}
+P.a1;      // undefined
+```
+**新提案来规定实例属性和静态属性的新写法**   
+* 1.类的实例属性
+类的实例属性可以用等式，写入类的定义中。  
+```js
+class P {
+    prop = 100;   // prop为P的实例属性 可直接读取
+    constructor(){
+        console.log(this.prop); // 100
+    }
+}
+```
+有了新写法后，就可以不再`contructor`方法里定义。  
+为了可读性的目的，对于那些在`constructor`里面已经定义的实例属性，新写法允许**直接列出**。   
+```js
+// 之前写法：
+class RouctCounter extends React.Component {
+    constructor(prop){
+        super(prop);
+        this.state = {
+            count : 0
+        }
+    }
+}
+
+// 新写法
+class RouctCounter extends React.Component {
+    state;
+    constructor(prop){
+        super(prop);
+        this.state = {
+            count : 0
+        }
+    }
+    
+}
+```
+* 2.类的静态属性   
+只要在实例属性前面加上`static`关键字就可以。   
+```js
+class P {
+    static prop = 100;
+    constructor(){console.log(this.prop)}; // 100
+}
+```
+新写法方便静态属性的表达。   
+```js
+// old 
+class P  { .... }
+P.a = 1;
+
+// new 
+class P {
+    static a = 1;
+}
+```
+
+#### 1.15.11 Class的继承
+主要通过`extends`关键字实现。   
+```js
+class P { ... }
+class Q extends P { ... }
+```
+
 
 [⬆ 返回目录](#二目录)
 
