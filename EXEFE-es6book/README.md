@@ -27,6 +27,16 @@
 这份资料的**ES6部分**将会参考阮一峰老师的 [ECMAScript6入门](http://es6.ruanyifeng.com/) ，精简和整理出快速实用的内容。  
 另外**ES7/ES8/ES9**则会从网络综合参考和整理。   
 
+**ES全称ECMAScript**:  
+目前JavaScript使用的ECMAScript版本为[ECMAScript-262](https://www.ecma-international.org/ecma-262/)。
+
+| ECMAScript版本 | 发布时间 | 新增特性 |
+| ------ | ------ | ------ |
+| ECMAScript 2009(ES5) | 	2009年11月 | 扩展了Object、Array、Function的功能等 |
+| ECMAScript 2015(ES6) | 	2015年6月 | 类，模块化，箭头函数，函数参数默认值等 |
+| ECMAScript 2016(ES7) | 	2016年3月 | includes，指数操作符 |
+| ECMAScript 2017(ES8) | 	2017年6月 | sync/await，Object.values()，Object.entries()，String padding等 |
+
 # 二、目录
 <!-- TOC -->
 
