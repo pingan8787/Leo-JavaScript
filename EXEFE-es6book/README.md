@@ -37,7 +37,7 @@
 | ECMAScript 2009(ES5) | 	2009年11月 | 扩展了Object、Array、Function的功能等 |
 | ECMAScript 2015(ES6) | 	2015年6月 | 类，模块化，箭头函数，函数参数默认值等 |
 | ECMAScript 2016(ES7) | 	2016年3月 | includes，指数操作符 |
-| ECMAScript 2017(ES8) | 	2017年6月 | sync/await，Object.values()，Object.entries()，String padding等 |
+| ECMAScript 2017(ES8) | 	2017年6月 | sync/await，Object.values()，Object.entries()，String padding等 | 
 
 # 二、目录
 <!-- TOC -->
@@ -158,15 +158,28 @@
         - [2.2 指数操作符(**)](#22-指数操作符)
     - [3. ES8](#3-es8)
         - [3.1 async函数](#31-async函数)
+            - [3.1.1 介绍](#311-介绍)
+            - [3.1.2 基本用法](#312-基本用法)
+            - [3.1.3 返回Promise对象](#313-返回promise对象)
+            - [3.1.4 await命令](#314-await命令)
+            - [3.1.5 使用注意](#315-使用注意)
         - [3.2 Promise.prototype.finally()](#32-promiseprototypefinally)
-        - [Object.keys()，Object.values()，Object.entries()](#objectkeysobjectvaluesobjectentries)
-        - [Object.getOwnPropertyDescriptors（）](#objectgetownpropertydescriptors)
+        - [3.3 Object.values()，Object.entries()](#33-objectvaluesobjectentries)
+            - [3.3.1 Object.values()](#331-objectvalues)
+            - [3.3.2 Object.entries()](#332-objectentries)
+        - [3.4 Object.getOwnPropertyDescriptors()](#34-objectgetownpropertydescriptors)
+        - [3.5 字符串填充 padStart和padEnd](#35-字符串填充-padstart和padend)
+        - [3.6 函数参数列表与调用中的尾部逗号](#36-函数参数列表与调用中的尾部逗号)
+        - [3.7 共享内存与原子操作](#37-共享内存与原子操作)
     - [4. ES9](#4-es9)
         - [4.1 正则表达式 s 修饰符](#41-正则表达式-s-修饰符)
+        - [4.2 对象的拓展运算符](#42-对象的拓展运算符)
+        - [4.3 异步遍历器](#43-异步遍历器)
     - [5. 知识补充](#5-知识补充)
         - [5.1 块级作用域](#51-块级作用域)
         - [5.2 ES5/6对数组空位的处理](#52-es56对数组空位的处理)
 - [四、结语](#四结语)
+        - [参考文章](#参考文章)
 
 <!-- /TOC -->
 
