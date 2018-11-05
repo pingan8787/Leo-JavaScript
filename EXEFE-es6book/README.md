@@ -3,7 +3,7 @@
 - [x] 目录  
 - [x] ES6  
 - [x] ES7  
-- [ ] ES8  
+- [x] ES8  
 - [ ] ES9  
 - [ ] 知识补充  
 > 在思考，如何整理好这一份资料，让不同阶段的人，能有不同的收获。  
@@ -18,6 +18,7 @@
 * 2018.11.1 更新**ES6**《**Class**》章节。 
 * 2018.11.2 完成**ES6**所有章节内容。  
 * 2018.11.4 完成**ES7**章节内容。  
+* 2018.11.5 完成**ES8**章节内容。  
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -3516,27 +3517,393 @@ a **= 2;    // 9
 
 ## 3. ES8
 ### 3.1 async函数
-[对应地址](http://es6.ruanyifeng.com/#docs/async)
+#### 3.1.1 介绍
+ES8引入`async`函数，是为了使异步操作更加方便，其实它就是**Generator**函数的语法糖。   
+`async`函数使用起来，只要把**Generator**函数的**（*）**号换成`async`，`yield`换成`await`即可。对比如下：     
+```js
+// Generator写法
+const fs = require('fs');
+const readFile = function (fileName) {
+  return new Promise(function (resolve, reject) {
+    fs.readFile(fileName, function(error, data) {
+      if (error) return reject(error);
+      resolve(data);
+    });
+  });
+};
+const gen = function* () {
+  const f1 = yield readFile('/etc/fstab');
+  const f2 = yield readFile('/etc/shells');
+  console.log(f1.toString());
+  console.log(f2.toString());
+};
+
+// async await写法
+const asyncReadFile = async function () {
+  const f1 = await readFile('/etc/fstab');
+  const f2 = await readFile('/etc/shells');
+  console.log(f1.toString());
+  console.log(f2.toString());
+};
+```
+**对比Genenrator有四个优点：**   
+* (1)内置执行器
+Generator函数执行需要有执行器，而`async`函数自带执行器，即`async`函数与普通函数一模一样：  
+```js
+async f();
+```
+* (2)更好的语义
+`async`和`await`，比起`星号`和`yield`，语义更清楚了。`async`表示函数里有异步操作，`await`表示紧跟在后面的表达式需要等待结果。   
+* (3)更广的适用性
+`yield`命令后面只能是 Thunk 函数或 Promise 对象，而`async`函数的`await`命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等同于同步操作）。  
+* (4)返回值是Promise
+`async`函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用`then`方法指定下一步的操作。  
+
+进一步说，`async`函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而`await`命令就是内部`then`命令的语法糖。  
+
+#### 3.1.2 基本用法
+`async`函数返回一个Promise对象，可以使用`then`方法添加回调函数，函数执行时，遇到`await`就会先返回，等到异步操作完成，在继续执行。   
+```js
+async function f(item){
+    let a = await g(item);
+    let b = await h(item);
+    return b;
+}
+f('hello').then(res => {
+    console.log(res);
+})
+```
+`async`表明该函数内部有异步操作，调用该函数时，会立即返回一个Promise对象。   
+另外还有个定时的案例，指定时间后执行：   
+```js
+function f (ms){
+    return new Promise(res => {
+        setTimeout(res, ms);
+    });
+}
+async function g(val, ms){
+    await f(ms);
+    console.log(val);
+}
+g('leo', 50);
+```
+`async`函数还有很多使用形式：   
+```js
+// 函数声明
+async function f (){...}
+
+// 函数表达式
+let f = async function (){...}
+
+// 对象的方法
+let a = {
+    async f(){...}
+}
+a.f().then(...)
+
+// Class的方法
+class c {
+    constructor(){...}
+    async f(){...}
+}
+
+// 箭头函数
+let f = async () => {...}
+```
+
+#### 3.1.3 返回Promise对象
+`async`内部`return`返回的值会作为`then`方法的参数，另外只有`async`函数内部的异步操作执行完，才会执行`then`方法指定的回调函数。   
+```js
+async function f(){
+    return 'leo';
+}
+f().then(res => { console.log (res) }); // 'leo'
+```
+`async`内部抛出的错误，会被`catch`接收。   
+```js
+async function f(){
+    throw new Error('err');
+}
+f().then (
+    v => console.log(v),
+    e => console.log(e)
+)
+// Error: err
+```
+
+#### 3.1.4 await命令
+通常`await`后面是一个Promise对象，如果不是就返回对应的值。   
+```js
+async function f(){
+    return await 10;
+}
+f().then(v => console.log(v)); // 10
+```
+我们常常将`async await`和`try..catch`一起使用，并且可以放多个`await`命令，也是防止异步操作失败因为中断后续异步操作的情况。   
+```js
+async function f(){
+    try{
+        await Promise.reject('err');
+    }catch(err){ ... }
+    return await Promise.resolve('leo');
+}
+f().then(v => console.log(v)); // 'leo'
+```
+
+#### 3.1.5 使用注意
+* (1)`await`命令放在`try...catch`代码块中，防止Promise返回`rejected`。     
+* (2)若多个`await`后面的异步操作不存在继发关系，最好让他们同时执行。   
+```js
+// 效率低
+let a = await f();
+let b = await g();
+
+// 效率高
+let [a, b] = await Promise.all([f(), g()]);
+// 或者
+let a = f();
+let b = g();
+let a1 = await a();
+let b1 = await b();
+```
+* (3)`await`命令只能用在`async`函数之中，如果用在普通函数，就会报错。   
+```js
+// 错误
+async function f(){
+    let a = [{}, {}, {}];
+    a.forEach(v =>{  // 报错，forEach是普通函数
+        await post(v);
+    });
+}
+
+// 正确
+async function f(){
+    let a = [{}, {}, {}];
+    for(let k of a){
+        await post(k);
+    }
+}
+```
+
+[⬆ 返回目录](#二目录)
 
 ### 3.2 Promise.prototype.finally()
-[对应地址](http://es6.ruanyifeng.com/#docs/promise)
+`finally()`是ES8中**Promise**添加的一个新标准，用于指定不管**Promise**对象最后状态（是`fulfilled`还是`rejected`）如何，都会执行此操作，并且`finally`方法必须写在最后面，即在`then`和`catch`方法后面。   
+```js
+// 写法如下：  
+promise
+    .then(res => {...})
+    .catch(err => {...})
+    .finally(() => {...})
+```
+`finally`方法常用在处理**Promise**请求后关闭服务器连接：   
+```js
+server.listen(port)
+    .then(() => {..})
+    .finally(server.stop);
+```
+**本质上，finally方法是then方法的特例：**   
+```js
+promise.finally(() => {...});
 
-### Object.keys()，Object.values()，Object.entries() 
-[对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
+// 等同于
+promise.then(
+    result => {
+        // ...
+        return result
+    }, 
+    error => {
+        // ...
+        throw error
+    }
+)
+```
+[⬆ 返回目录](#二目录)
+
+### 3.3 Object.values()，Object.entries() 
+ES7中新增加的 `Object.values()`和`Object.entries()`与之前的`Object.keys()`类似，返回数组类型。   
+回顾下`Object.keys()`：  
+```js
+var a = { f1: 'hi', f2: 'leo'};
+Object.keys(a); // ['f1', 'f2']
+```
+#### 3.3.1 Object.values()
+返回一个数组，成员是参数对象自身的（不含继承的）所有**可遍历属性**的键值。   
+```js
+let a = { f1: 'hi', f2: 'leo'};
+Object.values(a); // ['hi', 'leo']
+```
+如果参数不是对象，则返回空数组：   
+```js
+Object.values(10);   // []
+Object.values(true); // []
+```
+
+#### 3.3.2 Object.entries()  
+返回一个数组，成员是参数对象自身的（不含继承的）所有**可遍历属性**的键值对数组。   
+```js
+let a = { f1: 'hi', f2: 'leo'};
+Object.entries(a); // [['f1','hi'], ['f2', 'leo']]
+```
+* **用途1**：  
+遍历对象属性。  
+```js
+let a = { f1: 'hi', f2: 'leo'};
+for (let [k, v] of Object.entries(a)){
+    console.log(
+        `${JSON.stringfy(k)}:${JSON.stringfy(v)}`
+    )
+}
+// 'f1':'hi'
+// 'f2':'leo'
+```
+* **用途2**： 
+将对象转为真正的Map结构。  
+```js
+let a = { f1: 'hi', f2: 'leo'};
+let map = new Map(Object.entries(a));
+```
+手动实现`Object.entries()`方法：  
+```js
+// Generator函数实现：  
+function* entries(obj){
+    for (let k of Object.keys(obj)){
+        yield [k ,obj[k]];
+    }
+}
+
+// 非Generator函数实现：
+function entries (obj){
+    let arr = [];
+    for(let k of Object.keys(obj)){
+        arr.push([k, obj[k]]);
+    }
+    return arr;
+}
+```
 
 [⬆ 返回目录](#二目录)
 
-### Object.getOwnPropertyDescriptors（）
+### 3.4 Object.getOwnPropertyDescriptors()
+之前有`Object.getOwnPropertyDescriptor`方法会返回某个对象属性的描述对象，新增的`Object.getOwnPropertyDescriptors()`方法，返回指定对象所有自身属性（非继承属性）的描述对象，所有原对象的属性名都是该对象的属性名，对应的属性值就是该属性的描述对象
+```js
+let a = {
+    a1:1,
+    get f1(){ return 100}
+}
+Object.getOwnPropetyDescriptors(a);
+/*
+{ 
+    a:{ configurable:true, enumerable:true, value:1, writeable:true}
+    f1:{ configurable:true, enumerable:true, get:f, set:undefined}
+}
+*/
+```
+实现原理：   
+```js
+function getOwnPropertyDescriptors(obj) {
+  const result = {};
+  for (let key of Reflect.ownKeys(obj)) {
+    result[key] = Object.getOwnPropertyDescriptor(obj, key);
+  }
+  return result;
+}
+```
+引入这个方法，主要是为了解决`Object.assign()`无法正确拷贝`get`属性和`set`属性的问题。   
+```js
+let a = {
+    set f(v){
+        console.log(v)
+    }
+}
+let b = {};
+Object.assign(b, a);
+Object.a(b, 'f');
+/*
+f = {
+    configurable: true,
+    enumable: true,
+    value: undefined,
+    writeable: true
+}
+*/
+```
+`value`为`undefined`是因为`Object.assign`方法不会拷贝其中的`get`和`set`方法，使用`getOwnPropertyDescriptors`配合`Object.defineProperties`方法来实现正确的拷贝：   
+```js
+let a = {
+    set f(v){
+        console.log(v)
+    }
+}
+let b = {};
+Object.defineProperties(b, Object.getOwnPropertyDescriptors(a));
+Object.getOwnPropertyDescriptor(b, 'f')
+/*
+    configurable: true,
+    enumable: true,
+    get: undefined,
+    set: function(){...}
+*/
+```
+`Object.getOwnPropertyDescriptors`方法的配合`Object.create`方法，将对象属性克隆到一个新对象，实现浅拷贝。   
+```js
+const clone = Object.create(Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj));
 
-[对应地址](http://es6.ruanyifeng.com/#docs/object#Object-assign)
+// 或者
+const shallowClone = (obj) => Object.create(
+  Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj)
+);
+```
 
 [⬆ 返回目录](#二目录)
 
+### 3.5 字符串填充 padStart和padEnd
+用来为字符串填充特定字符串，并且都有两个参数：**字符串目标长度**和**填充字段**，第二个参数可选，默认空格。   
+```js
+'es8'.padStart(2);          // 'es8'
+'es8'.padStart(5);          // '  es8'
+'es8'.padStart(6, 'woof');  // 'wooes8'
+'es8'.padStart(14, 'wow');  // 'wowwowwowwoes8'
+'es8'.padStart(7, '0');     // '0000es8'
+
+'es8'.padEnd(2);            // 'es8'
+'es8'.padEnd(5);            // 'es8  '
+'es8'.padEnd(6, 'woof');    // 'es8woo'
+'es8'.padEnd(14, 'wow');    // 'es8wowwowwowwo'
+'es8'.padEnd(7, '6');       // 'es86666'
+```
+从上面结果来看，填充函数只有在字符长度小于目标长度时才有效，若字符长度已经等于或小于目标长度时，填充字符不会起作用，而且目标长度如果小于字符串本身长度时，字符串也不会做截断处理，只会原样输出。   
+
+### 3.6 函数参数列表与调用中的尾部逗号
+该特性允许我们在定义或者调用函数时添加尾部逗号而不报错：   
+```js
+function es8(var1, var2, var3,) {
+  // ...
+}
+es8(10, 20, 30,);
+```
+
+### 3.7 共享内存与原子操作
+当内存被共享时，多个线程可以并发读、写内存中相同的数据。原子操作可以确保那些被读、写的值都是可预期的，即新的事务是在旧的事务结束之后启动的，旧的事务在结束之前并不会被中断。这部分主要介绍了 ES8 中新的构造函数 `SharedArrayBuffer` 以及拥有许多静态方法的命名空间对象 `Atomic` 。  
+`Atomic` 对象类似于 `Math` 对象，拥有许多静态方法，所以我们不能把它当做构造函数。 `Atomic` 对象有如下常用的静态方法：
+
+* add /sub :为某个指定的value值在某个特定的位置增加或者减去某个值
+* and / or /xor :进行位操作
+* load :获取特定位置的值
+
+[⬆ 返回目录](#二目录)
 
 ## 4. ES9
 ### 4.1 正则表达式 s 修饰符
 [对应地址](http://es6.ruanyifeng.com/#docs/regex)
 
+### 4.2 对象的拓展运算符
+[对应地址](http://es6.ruanyifeng.com/#docs/object#Object-keys%EF%BC%8CObject-values%EF%BC%8CObject-entries)
+
+### 4.3 异步遍历器
+[异步遍历器](http://es6.ruanyifeng.com/#docs/async#%E5%BC%82%E6%AD%A5%E9%81%8D%E5%8E%86%E5%99%A8)
 
 ## 5. 知识补充
 ### 5.1 块级作用域
@@ -3635,3 +4002,8 @@ for (let i of arr) {
 # 四、结语
 
 [回到顶部](#一介绍)
+
+### 参考文章
+* [ECMAScript 6 入门](http://es6.ruanyifeng.com/)
+* [ES8 新特性一览](https://github.com/xitu/gold-miner/blob/master/TODO/es8-was-released-and-here-are-its-main-new-features.md)
+* [ECMAScript 2017（ES8）特性概述](https://zhuanlan.zhihu.com/p/27844393)
