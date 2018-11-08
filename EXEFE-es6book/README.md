@@ -20,7 +20,8 @@
 * 2018.11.4 完成**ES7**章节内容。  
 * 2018.11.5 完成**ES8**章节内容。 
 * 2018.11.6 更新**ES9**《**对象的拓展运算符**》章节内容。  
-* 2018.11.7 更新**ES9**《**正则表达式 s 修饰符**》章节。  
+* 2018.11.7 更新**ES9**《**正则表达式s修饰符**》章节。  
+* 2018.11.8 更新**ES9**《**异步遍历器**》章节。
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -179,6 +180,10 @@
             - [4.1.2 使用场景](#412-使用场景)
         - [4.2 正则表达式 s 修饰符](#42-正则表达式-s-修饰符)
         - [4.3 异步遍历器](#43-异步遍历器)
+            - [4.3.1 异步遍历的接口](#431-异步遍历的接口)
+            - [4.3.2 for await...of](#432-for-awaitof)
+            - [4.3.3 异步Generator函数](#433-异步generator函数)
+            - [4.3.4 yield* 语句](#434-yield-语句)
     - [5. 知识补充](#5-知识补充)
         - [5.1 块级作用域](#51-块级作用域)
         - [5.2 ES5/6对数组空位的处理](#52-es56对数组空位的处理)
@@ -2389,7 +2394,7 @@ ES6中默认的Iterator接口部署在数据结构的`Symbol.iterator`属性，�
 * NodeList 对象
 
 #### 1.13.4 Iterator使用场景
-* **(1)解构赋值**
+* **(1)解构赋值**  
 对数组和 `Set` 结构进行解构赋值时，会默认调用`Symbol.iterator`方法。   
 ```js
 let a = new Set().add('a').add('b').add('c');
@@ -2397,7 +2402,7 @@ let [x, y] = a;       // x = 'a'  y = 'b'
 let [a1, ...a2] = a;  // a1 = 'a' a2 = ['b','c']
 ```
 
-* **(2)扩展运算符**
+* **(2)扩展运算符**  
 扩展运算符（`...`）也会调用默认的 Iterator 接口。   
 ```js
 let a = 'hello';
@@ -2407,7 +2412,7 @@ let a = ['b', 'c'];
 ['a', ...a, 'd'];  // ['a', 'b', 'c', 'd']
 ```
 
-* **(2)yield***
+* **(2)yield***  
 `yield*`后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口。  
 ```js
 let a = function*(){
@@ -2425,21 +2430,21 @@ b.next() // { value: 5, done: false }
 b.next() // { value: undefined, done: true }
 ```
 
-* **(4)其他场合**
+* **(4)其他场合**  
 由于数组的遍历会调用遍历器接口，所以任何接受数组作为参数的场合，其实都调用了遍历器接口。下面是一些例子。  
 
-    * for...of
-    * Array.from()
-    * Map(), Set(), WeakMap(), WeakSet()（比如`new Map([['a',1],['b',2]])`）
-    * Promise.all()
-    * Promise.race()
+* for...of
+* Array.from()
+* Map(), Set(), WeakMap(), WeakSet()（比如`new Map([['a',1],['b',2]])`）
+* Promise.all()
+* Promise.race()
 
 #### 1.13.5 for...of循环
 只要数据结构部署了`Symbol.iterator`属性，即具有 iterator 接口，可以用`for...of`循环遍历它的成员。也就是说，`for...of`循环内部调用的是数据结构的`Symbol.iterato`方法。  
 **使用场景**：   
-`for...of`可以使用在**数组**，`Set`和`Map`结构，**类数组对象**，**Genetator对象**和**字符串**。   
+`for...of`可以使用在**数组**，**`Set`和`Map`结构**，**类数组对象**，**Genetator对象**和**字符串**。   
 
-* **数组**
+* **数组**   
 `for...of`循环可以代替数组实例的`forEach`方法。   
 ```js
 let a = ['a', 'b', 'c'];
@@ -2457,7 +2462,7 @@ for (let k of a){console.log(k)};  // a b c
 for (let k in a){console.log(k)};  // 0 1 2
 ```
 
-* **Set和Map**
+* **Set和Map**   
 可以使用数组作为变量，如`for (let [k,v] of b){...}`。   
 ```js
 let a = new Set(['a', 'b', 'c']);
@@ -2473,7 +2478,7 @@ for (let [k,v] of b){console.log(k + ":" + v)};
 // aaa:bbb
 ```
 
-* **类数组对象**
+* **类数组对象**   
 ```js
 // 字符串
 let a = 'hello';
@@ -2494,7 +2499,7 @@ function f(){
 f('a','b'); // a b
 ```
 
-* **对象**  
+* **对象**     
 普通对象不能直接使用`for...of`会报错，要部署Iterator才能使用。  
 ```js
 let a = {a:'aa',b:'bb',c:'cc'};
@@ -4071,10 +4076,179 @@ re.flags // 's'
 ### 4.3 异步遍历器
 在前面ES6章节中，介绍了Iterator接口，而ES6引入了“异步遍历器”，是为异步操作提供原生的遍历器接口，即`value`和`done`这两个属性都是异步产生的。   
 
+#### 4.3.1 异步遍历的接口
+通过调用遍历器的`next`方法，返回一个Promise对象。   
+```js
+a.next().then( 
+    ({value, done}) => {
+        //...
+    }
+)
+```
+上述`a`为异步遍历器，调用`next`后返回一个Promise对象，再调用`then`方法就可以指定Promise对象状态变为`resolve`后执行的回调函数，参数为`value`和`done`两个属性的对象，与同步遍历器一致。  
+与同步遍历器一样，异步遍历器接口也是部署在`Symbol.asyncIterator`属性上，只要有这个属性，就都可以异步遍历。   
+```js
+let a = createAsyncIterable(['a', 'b']);
+//createAsyncIterable方法用于构建一个iterator接口
+let b = a[Symbol.asyncInterator]();
 
+b.next().then( result1 => {
+    console.log(result1); // {value: 'a', done:false}
+    return b.next();
+}).then( result2 => {
+    console.log(result2); // {value: 'b', done:false}
+    return b.next();
+}).then( result3 => {
+    console.log(result3); // {value: undefined, done:true}
+})
+```
+另外`next`方法返回的是一个Promise对象，所以可以放在`await`命令后。   
+```js
+async function f(){
+    let a = createAsyncIterable(['a', 'b']);
+    let b = a[Symbol.asyncInterator]();
+    console.log(await b.next());// {value: 'a', done:false}
+    console.log(await b.next());// {value: 'b', done:false}
+    console.log(await b.next());// {value: undefined, done:true}
+}
+```
+还有一种情况，使用`Promise.all`方法，将所有的`next`按顺序连续调用：   
+```js
+let a = createAsyncIterable(['a', 'b']);
+let b = a[Symbol.asyncInterator]();
+let {{value:v1}, {value:v2}} = await Promise.all([
+    b.next(), b.next()
+])
+```
+也可以一次调用所有`next`方法，再用`await`最后一步操作。   
+```js
+async function f(){
+    let write = openFile('aaa.txt');
+    write.next('hi');
+    write.next('leo');
+    await write.return();
+}
+f();
+```
+#### 4.3.2 for await...of
+`for...of`用于遍历同步的Iterator接口，而ES8引入`for await...of`遍历异步的Iterator接口。   
+```js
+async function f(){
+    for await(let a of createAsyncIterable(['a', 'b'])) {
+        console.log(x);
+    }
+}
+// a
+// b
+```
+上面代码，`createAsyncIterable()`返回一个拥有异步遍历器接口的对象，`for...of`自动调用这个对象的`next`方法，得到一个Promise对象，`await`用来处理这个Promise，一但`resolve`就把得到的值`x`传到`for...of`里面。   
+**用途**  
+直接把部署了asyncIteable操作的异步接口放入这个循环。   
+```js
+let a = '';
+async function f(){
+    for await (let b of req) {
+        a += b;
+    }
+    let c = JSON.parse(a);
+    console.log('leo', c);
+}
+```
+当`next`返回的Promise对象被`reject`，`for await...of`就会保错，用`try...catch`捕获。   
+```js
+async function f(){
+    try{
+        for await (let a of iterableObj()){
+            console.log(a);
+        }
+    }catch(e){
+        console.error(e);
+    }
+}
+```
+注意，`for await...of`循环也可以用于同步遍历器。   
+```js
+(async function () {
+  for await (let a of ['a', 'b']) {
+    console.log(a);
+  }
+})();
+// a
+// b
+```
+#### 4.3.3 异步Generator函数
+就像 Generator 函数返回一个同步遍历器对象一样，异步 Generator 函数的作用，是返回一个异步遍历器对象。  
+在语法上，异步 Generator 函数就是`async`函数与 Generator 函数的结合。  
+```js
+async function* f() {
+  yield 'hi';
+}
+const a = f();
+a.next().then(x => console.log(x));
+// { value: 'hello', done: false }
+```
+设计异步遍历器的目的之一，就是为了让Generator函数能用同一套接口处理同步和异步操作。  
+```js
+// 同步Generator函数
+function * f(iterable, fun){
+    let a = iterabl[Symbol.iterator]();
+    while(true){
+        let {val, done} = a.next();
+        if(done) break;
+        yield fun(val);
+    }
+}
 
-[异步遍历器](http://es6.ruanyifeng.com/#docs/async#%E5%BC%82%E6%AD%A5%E9%81%8D%E5%8E%86%E5%99%A8)
+// 异步Generator函数
+async function * f(iterable, fun){
+    let a = iterabl[Symbol.iterator]();
+    while(true){
+        let {val, done} = await a.next();
+        if(done) break;
+        yield fun(val);
+    }
+}
+```
+同步和异步Generator函数相同点：在`yield`时用`next`方法停下，将后面表达式的值作为`next()`返回对象的`value`。   
+在异步Generator函数中，同时使用`await`和`yield`，简单样理解，`await`命令用于将外部操作产生的值输入函数内部，`yield`命令用于将函数内部的值输出。
+```js
+(async function () {
+  for await (const line of readLines(filePath)) {
+    console.log(line);
+  }
+})()
+```
+异步 Generator 函数可以与`for await...of`循环结合起来使用。
+```js
+async function* f(asyncIterable) {
+  for await (const line of asyncIterable) {
+    yield '> ' + line;
+  }
+}
+```
 
+#### 4.3.4 yield* 语句
+`yield*`语句跟一个异步遍历器。   
+```js
+async function * f(){
+  yield 'a';
+  yield 'b';
+  return 'leo';
+}
+async function * g(){
+  const a = yield* f();  // a => 'leo'
+}
+```
+与同步 Generator 函数一样，`for await...of`循环会展开`yield*`。   
+```js
+(async function () {
+  for await (const x of gen2()) {
+    console.log(x);
+  }
+})();
+// a
+// b
+```
 [⬆ 返回目录](#二目录)
 
 ## 5. 知识补充
