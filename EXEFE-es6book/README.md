@@ -4,7 +4,7 @@
 - [x] ES6  
 - [x] ES7  
 - [x] ES8  
-- [ ] ES9  
+- [x] ES9  
 - [ ] 知识补充  
 > 在思考，如何整理好这一份资料，让不同阶段的人，能有不同的收获。  
 
@@ -22,6 +22,7 @@
 * 2018.11.6 更新**ES9**《**对象的拓展运算符**》章节内容。  
 * 2018.11.7 更新**ES9**《**正则表达式s修饰符**》章节。  
 * 2018.11.8 更新**ES9**《**异步遍历器**》章节。
+* 2018.11.9 更新**ES9**完毕，转战vuepress整理一套。
 
 **未来规划**：
 * 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -189,6 +190,7 @@
         - [5.2 ES5/6对数组空位的处理](#52-es56对数组空位的处理)
 - [四、结语](#四结语)
         - [参考文章](#参考文章)
+        - [推荐文章](#推荐文章)
 
 <!-- /TOC -->
 
@@ -4354,3 +4356,6 @@ for (let i of arr) {
 * [ES8 新特性一览](https://github.com/xitu/gold-miner/blob/master/TODO/es8-was-released-and-here-are-its-main-new-features.md)
 * [ECMAScript 2017（ES8）特性概述](https://zhuanlan.zhihu.com/p/27844393)
 * [ECMAScript 2018（ES2018）有哪些新功能？](https://www.imooc.com/article/44423)
+
+### 推荐文章
+* [ECMAScript 2018 标准导读](https://zhuanlan.zhihu.com/p/27537439)
