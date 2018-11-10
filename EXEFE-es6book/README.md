@@ -29,9 +29,9 @@
 * 2.添加案例项目。  
 
 # 一、介绍
-现如今网络上已经有各式各样关于 **ECMAScript** 规范的介绍和分析的文章，而我准备整理一份比较完善也比较精简适合快速入门的资料，主要内容将涵盖**ES6**、**ES7**、**ES8**、**ES9**，如有异议欢迎指点。  
+现在的网络上已经有各样关于 **ECMAScript** 规范介绍和分析的文章，而我自己重新学习一遍这些规范，整理出这么一份笔记，比较精简，主要内容涵盖**ES6**、**ES7**、**ES8**、**ES9**，后续会增加**面试题**，**框架入门**等笔记，欢迎吐槽交流。  
 这份资料的**ES6部分**将会参考阮一峰老师的 [ECMAScript6入门](http://es6.ruanyifeng.com/) ，精简和整理出快速实用的内容。  
-另外**ES7/ES8/ES9**则会从网络综合参考和整理。   
+另外**ES7/ES8/ES9**则会从网络综合参考和整理。     
 
 **ES全称ECMAScript**:  
 目前JavaScript使用的ECMAScript版本为[ECMAScript-262](https://www.ecma-international.org/ecma-262/)。
@@ -42,6 +42,11 @@
 | ECMAScript 2015(ES6) | 	2015年6月 | 类，模块化，箭头函数，函数参数默认值等 |
 | ECMAScript 2016(ES7) | 	2016年3月 | includes，指数操作符 |
 | ECMAScript 2017(ES8) | 	2017年6月 | sync/await，Object.values()，Object.entries()，String padding等 | 
+ 
+> 本文开源地址 [CuteECMAScript](https://github.com/pingan8787/Leo-JavaScript/tree/master/EXEFE-es6book)    
+> 个人博客 [ping'anの博客](http://www.pingan8787.com)  
+> Github地址 [pingan8787的github](https://github.com/pingan8787)   
+> 掘金主页 [LeoCoding](https://juejin.im/user/586fc337a22b9d0058807d53)  
 
 # 二、目录
 <!-- TOC -->
@@ -177,7 +182,7 @@
         - [3.7 共享内存与原子操作](#37-共享内存与原子操作)
     - [4. ES9](#4-es9)
         - [4.1 对象的拓展运算符](#41-对象的拓展运算符)
-            - [4.11.1 介绍](#4111-介绍)
+            - [4.1.1 介绍](#411-介绍)
             - [4.1.2 使用场景](#412-使用场景)
         - [4.2 正则表达式 s 修饰符](#42-正则表达式-s-修饰符)
         - [4.3 异步遍历器](#43-异步遍历器)
@@ -3923,7 +3928,7 @@ es8(10, 20, 30,);
 
 ## 4. ES9
 ### 4.1 对象的拓展运算符
-#### 4.11.1 介绍
+#### 4.1.1 介绍
 对象的拓展运算符，即对象的Rest/Spread属性，可将对象解构赋值用于从一个对象取值，搜键值对分配到指定对象上，与数组的拓展运算符类似：  
 ```js
 let  {x, y, ...z} = {x:1, y:2, a:3, b:4};
@@ -4251,6 +4256,7 @@ async function * g(){
 // a
 // b
 ```
+
 [⬆ 返回目录](#二目录)
 
 ## 5. 知识补充
