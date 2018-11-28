@@ -40,10 +40,6 @@
 * [64-ES7汇总.md](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/64-ES7%E6%B1%87%E6%80%BB.md)  
 * [65-ES8汇总.md](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/65-ES8%E6%B1%87%E6%80%BB.md)  
 * [66-ES9汇总.md](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/66-ES9%E6%B1%87%E6%80%BB.md)  
-* [67-JS箭头函数的适用和不适用的场景.md](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/67-JS%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%82%E7%94%A8%E5%92%8C%E4%B8%8D%E9%80%82%E7%94%A8%E7%9A%84%E5%9C%BA%E6%99%AF.md)  
-* [68-创建对象的七种方式](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/68-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%83%E7%A7%8D%E6%96%B9%E5%BC%8F.md)
-* [69-秒懂this](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/69-秒懂this.md)
-* [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
 
 ### 4、Webpack
 * [25-Webpack入门教程整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/25-Webpack%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
@@ -83,6 +79,10 @@
 * [59-前端HTML5几种存储方式的总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/59-%E5%89%8D%E7%AB%AFHTML5%E5%87%A0%E7%A7%8D%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F%E7%9A%84%E6%80%BB%E7%BB%93.md)
 * [60-懒加载和预加载](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/60-%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD.md)
 * [61-JS中this的4种绑定规则](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/61-JS%E4%B8%ADthis%E7%9A%844%E7%A7%8D%E7%BB%91%E5%AE%9A%E8%A7%84%E5%88%99.md)
+* [67-JS箭头函数的适用和不适用的场景.md](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/67-JS%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%82%E7%94%A8%E5%92%8C%E4%B8%8D%E9%80%82%E7%94%A8%E7%9A%84%E5%9C%BA%E6%99%AF.md)  
+* [68-创建对象的七种方式](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/68-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%83%E7%A7%8D%E6%96%B9%E5%BC%8F.md)
+* [69-秒懂this](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/69-秒懂this.md)
+* [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
 
 ### 7、HTTP
 * [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
