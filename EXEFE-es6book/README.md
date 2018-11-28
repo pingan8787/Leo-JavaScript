@@ -44,6 +44,7 @@
 | ECMAScript 2016(ES7) | 	2016年3月 | includes，指数操作符 |
 | ECMAScript 2017(ES8) | 	2017年6月 | sync/await，Object.values()，Object.entries()，String padding等 | 
  
+> 本文博客 [CuteECMAScript](http://es.pingan8787.com)  
 > 本文开源地址 [CuteECMAScript](https://github.com/pingan8787/Leo-JavaScript/tree/master/EXEFE-es6book)    
 > 个人博客 [ping'anの博客](http://www.pingan8787.com)  
 > Github地址 [pingan8787的github](https://github.com/pingan8787)   
