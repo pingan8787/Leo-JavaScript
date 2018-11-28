@@ -43,6 +43,7 @@
 * [67-JS箭头函数的适用和不适用的场景.md](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/67-JS%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%82%E7%94%A8%E5%92%8C%E4%B8%8D%E9%80%82%E7%94%A8%E7%9A%84%E5%9C%BA%E6%99%AF.md)  
 * [68-创建对象的七种方式](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/68-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%83%E7%A7%8D%E6%96%B9%E5%BC%8F.md)
 * [69-秒懂this](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/69-秒懂this.md)
+* [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
 
 ### 4、Webpack
 * [25-Webpack入门教程整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/25-Webpack%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
