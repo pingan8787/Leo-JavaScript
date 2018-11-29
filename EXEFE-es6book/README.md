@@ -23,7 +23,7 @@
 * 2018.11.7 更新**ES9**《**正则表达式s修饰符**》章节。  
 * 2018.11.8 更新**ES9**《**异步遍历器**》章节。
 * 2018.11.9 更新**ES9**完毕，转战vuepress整理一套。
-* 2018.11.29  修改《**Set和Map数据结构**》章节错误 书写。
+* 2018.11.29  修改《**Set和Map数据结构**》章节错误 书写，更新《Symbol》章节。
 
 **未来规划**：
 * [x] 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -1440,10 +1440,12 @@ typeof a; // "symbol"
 * `Symbol`函数不能用`new`，会报错。由于`Symbol`是一个原始类型，不是对象，所以不能添加属性，它是类似于字符串的数据类型。   
 * `Symbol`都是不相等的，即使参数相同。   
 ```js
+// 没有参数
 let a1 = Symbol();
 let a2 = Symbal();
 a1 === a2; // false 
 
+// 有参数
 let a1 = Symbol('abc');
 let a2 = Symbal('abc');
 a1 === a2; // false 
@@ -1454,9 +1456,223 @@ let a = Symbol('hello');
 a + " world!";  // 报错
 `${a} world!`;  // 报错
 ```
+Symbol可以显式转换为字符串：  
+```js
+let a1 = Symbol('hello');
 
-#### 1.9.2 更多介绍
-详细介绍[参考阮一峰老师的ES6 Symbol介绍](http://es6.ruanyifeng.com/#docs/symbol)
+String(a1);    // "Symbol(hello)"
+a1.toString(); // "Symbol(hello)"
+```
+Symbol可以转换为布尔值，但不能转为数值：   
+```js
+let a1 = Symbol();
+Boolean(a1);
+!a1;        // false
+
+Number(a1); // TypeError
+a1 + 1 ;    // TypeError
+```
+
+#### 1.9.2 Symbol作为属性名
+好处：防止同名属性，还有防止键被改写或覆盖。  
+```js
+let a1 = Symbol();
+
+// 写法1
+let b = {};
+b[a1] = 'hello';
+
+// 写法2
+let b = {
+    [a1] : 'hello'
+} 
+
+// 写法3
+let b = {};
+Object.defineProperty(b, a1, {value : 'hello' });
+
+// 3种写法 结果相同
+b[a1]; // 'hello'
+```
+**需要注意：** Symbol作为对象属性名时，不能用点运算符，并且必须放在方括号内。   
+```js
+let a = Symbol();
+let b = {};
+
+// 不能用点运算
+b.a = 'hello';
+b[a] ; // undefined
+b['a'] ; // 'hello'
+
+// 必须放在方括号内
+let c = {
+    [a] : function (text){
+        console.log(text);
+    }
+}
+c[a]('leo'); // 'leo'
+
+// 上面等价于 更简洁
+let c = {
+    [a](text){
+        console.log(text);
+    }
+}
+```
+
+**常常还用于创建一组常量，保证所有值不相等：**   
+```js
+let a = {};
+a.a1 = {
+    AAA: Symbol('aaa'),
+    BBB: Symbol('bbb'),
+    CCC: Symbol('ccc')
+}
+```
+
+#### 1.9.3 应用：消除魔术字符串
+魔术字符串：指代码中多次出现，强耦合的字符串或数值，应该避免，而使用含义清晰的变量代替。
+```js
+function f(a){
+    if(a == 'leo') {
+        console.log('hello');
+    }
+}
+f('leo');   // 'leo' 为魔术字符串
+```
+常使用变量，消除魔术字符串：   
+```js
+let obj = {
+    name: 'leo'
+};
+function f (a){
+    if(a == obj.name){
+        console.log('hello');
+    }
+}
+f(obj.name); // 'leo'
+```
+使用Symbol消除强耦合，使得不需关系具体的值:   
+```js
+let obj = {
+    name: Symbol()
+};
+function f (a){
+    if(a == obj.name){
+        console.log('hello');
+    }
+}
+f(obj.name);
+```
+
+#### 1.9.4 属性名遍历
+Symbol作为属性名遍历，不出现在`for...in`、`for...of`循环，也不被`Object.keys()`、`Object.getOwnPropertyNames()`、`JSON.stringify()`返回。
+```js
+let a = Symbol('aa'),b= Symbol('bb');
+let obj = {
+    [a]:'11', [b]:'22'
+}
+for(let k of Object.values(obj)){console.log(k)}
+// 无输出
+
+let obj = {};
+let aa = Symbol('leo');
+Object.defineProperty(obj, aa, {value: 'hi'});
+
+for(let k in obj){
+    console.log(k); // 无输出
+}
+
+Object.getOwnPropertyNames(obj);   // []
+Object.getOwnPropertySymbols(obj); // [Symbol(leo)]
+```
+
+`Object.getOwnPropertySymbols`方法返回一个数组，包含当前对象所有用做属性名的Symbol值。   
+```js
+let a = {};
+let a1 = Symbol('a');
+let a2 = Symbol('b');
+a[a1] = 'hi';
+a[a2] = 'oi';
+
+let obj = Object.getOwnPropertySymbols(a);
+obj; //  [Symbol(a), Symbol(b)]
+```
+
+另外可以使用`Reflect.ownKeys`方法可以返回所有类型的键名，包括常规键名和 Symbol 键名。   
+```js
+let a = {
+    [Symbol('leo')]: 1,
+    aa : 2, 
+    bb : 3,
+}
+Reflect.ownKeys(a); // ['aa', 'bb',Symbol('leo')]
+```
+
+由于Symbol值作为名称的属性不被常规方法遍历获取，因此常用于定义对象的一些非私有，且内部使用的方法。  
+
+#### 1.9.5 Symbol.for()、Symbol.keyFor()
+* Symbol.for()   
+**用于重复使用一个Symbol值**，接收一个**字符串**作为参数，若存在用此参数作为名称的Symbol值，返回这个Symbol，否则新建并返回以这个参数为名称的Symbol值。  
+```js
+let a = Symbol.for('aaa');
+let b = Symbol.for('aaa');
+
+a === b;  // true
+```
+`Symbol()` 和 `Symbol.for()`区别：  
+```js
+Symbol.for('aa') === Symbol.for('aa'); // true
+Symbol('aa') === Symbol('aa');         // false
+```
+
+* Symbol.keyFor()   
+**用于返回一个已使用的Symbol类型的key**:  
+```js
+let a = Symbol.for('aa');
+Symbol.keyFor(a);   //  'aa'
+
+let b = Symbol('aa');
+Symbol.keyFor(b);   //  undefined
+```
+
+#### 1.9.6 内置的Symbol值
+ES6提供11个内置的Symbol值，指向语言内部使用的方法：   
+* **1.Symbol.hasInstance**   
+当其他对象使用`instanceof`运算符，判断是否为该对象的实例时，会调用这个方法。比如，`foo instanceof Foo`在语言内部，实际调用的是`Foo[Symbol.hasInstance](foo)`。   
+```js
+class P {
+    [Symbol.hasInstance](a){
+        return a instanceof Array;
+    }
+}
+[1, 2, 3] instanceof new P(); // true
+```
+P是一个类，new P()会返回一个实例，该实例的`Symbol.hasInstance`方法，会在进行`instanceof`运算时自动调用，判断左侧的运算子是否为`Array`的实例。   
+
+* **2.Symbol.isConcatSpreadable**   
+值为布尔值，表示该对象用于`Array.prototype.concat()`时，是否可以展开。    
+```js
+let a = ['aa','bb'];
+['cc','dd'].concat(a, 'ee'); 
+// ['cc', 'dd', 'aa', 'bb', 'ee']
+a[Symbol.isConcatSpreadable]; // undefined
+
+let b = ['aa','bb']; 
+b[Symbol.isConcatSpreadable] = false; 
+['cc','dd'].concat(b, 'ee'); 
+// ['cc', 'dd',[ 'aa', 'bb'], 'ee']
+```
+
+* **3.Symbol.hasInstance**   
+* **4.Symbol.hasInstance**   
+* **5.Symbol.hasInstance**   
+* **6.Symbol.hasInstance**   
+* **7.Symbol.hasInstance**   
+* **8.Symbol.hasInstance**   
+* **9.Symbol.hasInstance**   
+* **10.Symbol.hasInstance**   
+* **11.Symbol.hasInstance**   
 
 
 [⬆ 返回目录](#二目录)
