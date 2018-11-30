@@ -24,6 +24,7 @@
 * 2018.11.8 更新**ES9**《**异步遍历器**》章节。
 * 2018.11.9 更新**ES9**完毕，转战vuepress整理一套。
 * 2018.11.29  修改《**Set和Map数据结构**》章节错误 书写，更新《Symbol》章节。
+* 2018.11.30  完成《Symbol》章节。
 
 **未来规划**：
 * [x] 1.将内容按不同模块拆分不同文件，方便README文件的阅读。  
@@ -1815,15 +1816,186 @@ b[Symbol.isConcatSpreadable] = false;
 // ['cc', 'dd',[ 'aa', 'bb'], 'ee']
 ```
 
-* **3.Symbol.hasInstance**   
-* **4.Symbol.hasInstance**   
-* **5.Symbol.hasInstance**   
+* **3.Symbol.species**   
+指向一个构造函数，在创建衍生对象时会使用，使用时需要用`get`取值器。     
+```js
+class P extends Array {
+    static get [Symbol.species](){
+        return this;
+    }
+}
+```
+解决下面问题：   
+```js
+// 问题：  b应该是 Array 的实例，实际上是 P 的实例
+class P extends Array{}
+
+let a = new P(1,2,3);
+let b = a.map(x => x);
+
+b instanceof Array; // true
+b instanceof P; // true
+
+// 解决：  通过使用 Symbol.species
+class P extends Array {
+  static get [Symbol.species]() { return Array; }
+}
+let a = new P();
+let b = a.map(x => x);
+b instanceof P;     // false
+b instanceof Array; // true
+```
+
+* **4.Symbol.match**   
+当执行`str.match(myObject)`，传入的属性存在时会调用，并返回该方法的返回值。   
+```js
+class P {
+    [Symbol.match](string){
+        return 'hello world'.indexOf(string);
+    }
+}
+'h'.match(new P());   // 0
+```
+
+* **5.Symbol.replace**
+当该对象被`String.prototype.replace`方法调用时，会返回该方法的返回值。   
+```js
+let a = {};
+a[Symbol.replace] = (...s) => console.log(s);
+'Hello'.replace(a , 'World') // ["Hello", "World"]
+```
+
 * **6.Symbol.hasInstance**   
-* **7.Symbol.hasInstance**   
-* **8.Symbol.hasInstance**   
-* **9.Symbol.hasInstance**   
-* **10.Symbol.hasInstance**   
-* **11.Symbol.hasInstance**   
+当该对象被`String.prototype.search`方法调用时，会返回该方法的返回值。   
+```js
+class P {
+    constructor(val) {
+        this.val = val;
+    }
+    [Symbol.search](s){
+        return s.indexOf(this.val);
+    }
+}
+'hileo'.search(new P('leo')); // 2
+```
+
+* **7.Symbol.split**   
+当该对象被`String.prototype.split`方法调用时，会返回该方法的返回值。   
+```js
+// 重新定义了字符串对象的split方法的行为
+class P {
+    constructor(val) {
+        this.val = val;
+    }
+    [Symbol.split](s) {
+        let i = s.indexOf(this.val);
+        if(i == -1) return s;
+        return [
+            s.substr(0, i),
+            s.substr(i + this.val.length)
+        ]
+    }
+}
+
+'helloworld'.split(new P('hello')); // ["hello", ""]
+'helloworld'.split(new P('world')); // ["", "world"] 
+'helloworld'.split(new P('leo'));   // "helloworld"
+```
+
+* **8.Symbol.iterator**   
+对象进行`for...of`循环时，会调用`Symbol.iterator`方法，返回该对象的默认遍历器。   
+```js
+class P {
+    *[Symbol.interator]() {
+        let i = 0;
+        while(this[i] !== undefined ) {
+            yield this[i];
+            ++i;
+        }
+    }
+}
+let a = new P();
+a[0] = 1;
+a[1] = 2;
+
+for (let k of a){
+    console.log(k);
+}
+```
+
+* **9.Symbol.toPrimitive**   
+该对象被转为原始类型的值时，会调用这个方法，返回该对象对应的原始类型值。调用时，需要接收一个字符串参数，表示当前运算模式，运算模式有：  
+    * Number : 此时需要转换成数值   
+    * String : 此时需要转换成字符串  
+    * Default :  此时可以转换成数值或字符串
+```js
+let obj = {
+  [Symbol.toPrimitive](hint) {
+    switch (hint) {
+      case 'number':
+        return 123;
+      case 'string':
+        return 'str';
+      case 'default':
+        return 'default';
+      default:
+        throw new Error();
+     }
+   }
+};
+
+2 * obj // 246
+3 + obj // '3default'
+obj == 'default' // true
+String(obj) // 'str'
+```
+
+* **10.Symbol.toStringTag**   
+在该对象上面调用`Object.prototype.toString`方法时，如果这个属性存在，它的返回值会出现在`toString`方法返回的字符串之中，表示对象的类型。也就是说，这个属性可以用来定制`[object Object`]或`[object Array]`中`object`后面的那个字符串。   
+```js
+// 例一
+({[Symbol.toStringTag]: 'Foo'}.toString())
+// "[object Foo]"
+
+// 例二
+class Collection {
+  get [Symbol.toStringTag]() {
+    return 'xxx';
+  }
+}
+let x = new Collection();
+Object.prototype.toString.call(x) // "[object xxx]"
+```
+
+* **11.Symbol.unscopables**   
+该对象指定了使用with关键字时，哪些属性会被with环境排除。
+```js
+// 没有 unscopables 时
+class MyClass {
+  foo() { return 1; }
+}
+
+var foo = function () { return 2; };
+
+with (MyClass.prototype) {
+  foo(); // 1
+}
+
+// 有 unscopables 时
+class MyClass {
+  foo() { return 1; }
+  get [Symbol.unscopables]() {
+    return { foo: true };
+  }
+}
+
+var foo = function () { return 2; };
+
+with (MyClass.prototype) {
+  foo(); // 2
+}
+```
+上面代码通过指定`Symbol.unscopables`属性，使得`with`语法块不会在当前作用域寻找`foo`属性，即`foo`将指向外层作用域的变量。   
 
 
 [⬆ 返回目录](#二目录)
