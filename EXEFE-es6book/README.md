@@ -49,9 +49,10 @@
 > 本文开源地址 [CuteECMAScript](https://github.com/pingan8787/Leo-JavaScript/tree/master/EXEFE-es6book)    
 > 个人博客 [ping'anの博客](http://www.pingan8787.com)  
 > Github地址 [pingan8787的github](https://github.com/pingan8787)   
-> 掘金主页 [LeoCoding](https://juejin.im/user/586fc337a22b9d0058807d53)  
+> 掘金主页 [pingan8787](https://juejin.im/user/586fc337a22b9d0058807d53)  
 
 # 二、目录
+
 <!-- TOC -->
 
 - [一、介绍](#一介绍)
