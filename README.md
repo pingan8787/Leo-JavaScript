@@ -83,6 +83,8 @@
 * [68-创建对象的七种方式](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/68-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%83%E7%A7%8D%E6%96%B9%E5%BC%8F.md)
 * [69-秒懂this](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/69-秒懂this.md)
 * [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
+* [71-复习instanceof运算符](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/71-%E5%A4%8D%E4%B9%A0instanceof%E8%BF%90%E7%AE%97%E7%AC%A6.md)
+* [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
 
 ### 7、HTTP
 * [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
