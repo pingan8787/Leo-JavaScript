@@ -84,7 +84,7 @@
 * [69-秒懂this](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/69-秒懂this.md)
 * [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
 * [71-复习instanceof运算符](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/71-%E5%A4%8D%E4%B9%A0instanceof%E8%BF%90%E7%AE%97%E7%AC%A6.md)
-* [70-JS复杂判断的更优雅写法](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/70-JS复杂判断的更优雅写法.md)
+* [72-【重温基础】JS中的高阶函数](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/72-%E3%80%90%E9%87%8D%E6%B8%A9%E5%9F%BA%E7%A1%80%E3%80%91JS%E4%B8%AD%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0.md)
 
 ### 7、HTTP
 * [47-http请求头与响应头的应用](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/47-http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8E%E5%93%8D%E5%BA%94%E5%A4%B4%E7%9A%84%E5%BA%94%E7%94%A8.md)
