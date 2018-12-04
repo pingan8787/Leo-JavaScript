@@ -53,6 +53,7 @@
 
 # 二、目录
 
+
 <!-- TOC -->
 
 - [一、介绍](#一介绍)
@@ -510,9 +511,9 @@ console.log(name,age); // leo, 18
 * **遍历Map结构**: 
 ```js
 const m = new Map();
-m.set('a':1);
-m.set('b':2);
-for ([k, v] of m){
+m.set('a', 1);
+m.set('b', 2);
+for (let [k, v] of m){
     console.log(k + ' : ' + v);
 }
 // 获取键名
@@ -600,7 +601,7 @@ a.includes('lo',6);      // false
 * 省略第二个参数，则用`空格`补全。  
 ```js
 'x'.padStart(4);           // '    x'
-'x'.endStart(4);           // 'x    '
+'x'.padEnd(4);             // 'x    '
 ```
 #### 1.3.4 模版字符串
 用于拼接字符串，ES6之前：  
@@ -1407,13 +1408,13 @@ for (let i of ['a', 'b'].keys()){
 // 0
 // 1
 
-for (let e of ['a', 'b'].keys()){
+for (let e of ['a', 'b'].values()){
     console.log(e)
 }
 // 'a'
 // 'b'
 
-for (let e of ['a', 'b'].keys()){
+for (let e of ['a', 'b'].entries()){
     console.log(e)
 }
 // 0 'a'
