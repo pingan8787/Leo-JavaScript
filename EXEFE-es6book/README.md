@@ -3943,7 +3943,7 @@ a **= 2;    // 9
 ### 3.1 async函数
 #### 3.1.1 介绍
 ES8引入`async`函数，是为了使异步操作更加方便，其实它就是**Generator**函数的语法糖。   
-`async`函数使用起来，只要把**Generator**函数的**（*）**号换成`async`，`yield`换成`await`即可。对比如下：     
+`async`函数使用起来，只要把**Generator**函数的（*）号换成`async`，`yield`换成`await`即可。对比如下：     
 ```js
 // Generator写法
 const fs = require('fs');
@@ -4342,7 +4342,7 @@ let {a, ...b, c} = obj;     // 语法错误
 **注意**：
 * 1.解构赋值是浅拷贝。   
 ```js
-let a = {a1: {a2: 1}};
+let a = {a1: {a2: 'leo'}};
 let {...b} = a;
 a.a1.a2 = 'leo';
 b.a1.a2 = 'leo';
