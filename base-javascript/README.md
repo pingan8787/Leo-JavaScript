@@ -6,6 +6,17 @@
 
 这次开始复习 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide) 这个系列的文章，巩固好自己的基础，也让自己养成记录学习的习惯，当然这些文章我也会同步到自己的博客。   
 
+# 本文目录
+## JavaScript初级
+1. [语法和数据类型](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/1.%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
+2. [流程控制和错误处理](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/2.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.md)
+3. [循环和迭代](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/3.%E5%BE%AA%E7%8E%AF%E5%92%8C%E8%BF%AD%E4%BB%A3.md)
+
+## JavaScript中级
+待补充
+
+## JavaScript高级
+待补充
 
 希望自己的文章会对各位有所帮助，也欢迎各位大佬指点。 
 
