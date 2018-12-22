@@ -15,6 +15,7 @@
 5. [表达式和运算符](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/5.%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6.md)
 6. [数字](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/6.数字.md)
 7. [时间对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/7.时间对象.md)
+8. [字符串](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/8.字符串.md)
 
 ## JavaScript中级
 待补充
