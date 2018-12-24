@@ -17,6 +17,7 @@
 7. [时间对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/7.时间对象.md)
 8. [字符串](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/8.字符串.md)
 9. [正则表达式](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/9.正则表达式.md)
+10. [数组](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/10.数组.md)
 
 ## JavaScript中级
 待补充
