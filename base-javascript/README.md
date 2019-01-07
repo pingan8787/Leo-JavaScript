@@ -29,6 +29,11 @@
 ## JavaScript高级
 待补充
 
+## 其他细节知识
+1. [JS中的高阶函数](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/other/1-JS中的高阶函数.md)
+2. [instanceof运算符](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/other/2-instanceof运算符.md)
+
+
 希望自己的文章会对各位有所帮助，也欢迎各位大佬指点。 
 
 
