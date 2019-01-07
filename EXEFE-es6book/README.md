@@ -2315,6 +2315,20 @@ let p = new Proxy(function(a, b){
     }
 })
 ```
+这里还有一个简单的案例：   
+```js
+let handler = {
+    get : function (target, name){
+        return name in target ? target[name] : 16;
+    }
+}
+
+let p = new Proxy ({}, handler);
+p.a = 1;
+console.log(p.a , p.b);
+// 1   16
+```
+这里因为 `p.a = 1` 定义了`p`中的`a`属性，值为`1`，而没有定义`b`属性，所以`p.a`会得到`1`，而`p.b`会得到`undefined`从而使用`name in target ? target[name] : 16;`返回的默认值`16`；
 
 **`Proxy`支持的13种拦截操作**：   
 13种拦截操作的详细介绍：[打开阮一峰老师的链接](http://es6.ruanyifeng.com/#docs/proxy)。   
@@ -2365,7 +2379,7 @@ let b = {};
 let {proxy, revoke} = Proxy.revocale(a, b);
 
 proxy.name = 'leo';  // 'leo'
-revoeke();
+revoke();
 proxy.name;  // TypeError: Revoked
 ```
 
