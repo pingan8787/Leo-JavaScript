@@ -203,4 +203,4 @@ let sort3 = arr3.sort((a, b) => {
 |博  客|www.pingan8787.com|
 |微  信|pingan8787|
 |每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
-|ES小册|es.pingan8787.com|
+|ES小册|js.pingan8787.com|
