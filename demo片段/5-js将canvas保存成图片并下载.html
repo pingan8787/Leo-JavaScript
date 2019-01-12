@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas转img并下载</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+<div>
+    <button id="save">保存</button>
+    <script>
+        var arr = [
+        {locations:[[0,0],[200,200],[0,400]],color:"red"},
+        {locations:[[0,0],[400,0],[200,200]],color:"orange"},
+        {locations:[[0,400],[100,300],[200,400]],color:"yellow"},
+        {locations:[[100,300],[200,200],[300,300],[200,400]],color:"green"},
+        {locations:[[300,100],[200,200],[300,300]],color:"blue"},
+        {locations:[[300,100],[400,0],[400,200],[300,300]],color:"indigo"},
+        {locations:[[200,400],[400,400],[400,200]],color:"purple"}
+    ];
+    var oCanvas = document.getElementById("canvas");
+    var ctx = oCanvas.getContext("2d");
+    for(let i=0;i<arr.length;i++){
+        draw(arr[i],ctx);
+    }
+    
+    function draw(item,ctx){
+        ctx.beginPath();
+        ctx.moveTo(item.locations[0][0],item.locations[0][1]);
+        for(let i = 0;i<item.locations.length;i++){
+            let x = item.locations[i][0];
+            let y = item.locations[i][1];
+            ctx.lineTo(x,y);
+            console.log(1234567)
+        }
+        ctx.closePath();
+        
+        ctx.fillStyle = item.color;
+        ctx.fill();
+        
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+    var imgId = document.getElementById("imgId");
+    document.getElementById("save").onclick = function (){
+        downLoad(saveAsPNG(canvas));
+    }
+    
+    // 保存成png格式的图片
+    function saveAsPNG(canvas) {
+        return canvas.toDataURL("image/png");
+    }
+    
+    // 保存成jpg格式的图片
+    function saveAsJPG(canvas) {
+        return canvas.toDataURL("image/jpeg");
+    }
+    
+    // 保存成bmp格式的图片  目前浏览器支持性不好
+    function saveAsBMP(canvas) {
+        return canvas.toDataURL("image/bmp");
+    }
+    
+    /**
+     * @author web得胜
+     * @param {String} url 需要下载的文件地址
+     * */
+    function downLoad(url){
+        var oA = document.createElement("a");
+        oA.download = '';// 设置下载的文件名，默认是'下载'
+        oA.href = url;
+        document.body.appendChild(oA);
+        oA.click();
+        oA.remove(); // 下载之后把创建的元素删除
+    }
+    
+    </script>
+</div>
+</body>
+</html>
