@@ -8,25 +8,25 @@
 
 # 本文目录
 ## JavaScript初级
-1. [语法和数据类型](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/1.%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
-2. [流程控制和错误处理](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/2.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.md)
-3. [循环和迭代](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/3.%E5%BE%AA%E7%8E%AF%E5%92%8C%E8%BF%AD%E4%BB%A3.md)
-4. [函数](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/4.%E5%87%BD%E6%95%B0.md)
-5. [表达式和运算符](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/5.%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6.md)
-6. [数字](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/6.数字.md)
-7. [时间对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/7.时间对象.md)
-8. [字符串](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/8.字符串.md)
-9. [正则表达式](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/9.正则表达式.md)
-10. [数组](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/10.数组.md)
-11. [Map和Set对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/11.Map和Set对象.md)
-12. [使用对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/12.使用对象.md)
-13. [迭代器和生成器](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/13.迭代器和生成器.md)
-14. [元编程](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level1/14.元编程.md)
+1. [语法和数据类型](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/1.%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
+2. [流程控制和错误处理](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/2.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.md)
+3. [循环和迭代](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/3.%E5%BE%AA%E7%8E%AF%E5%92%8C%E8%BF%AD%E4%BB%A3.md)
+4. [函数](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/4.%E5%87%BD%E6%95%B0.md)
+5. [表达式和运算符](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/5.%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6.md)
+6. [数字](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/6.数字.md)
+7. [时间对象](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/7.时间对象.md)
+8. [字符串](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/8.字符串.md)
+9. [正则表达式](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/9.正则表达式.md)
+10. [数组](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/10.数组.md)
+11. [Map和Set对象](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/11.Map和Set对象.md)
+12. [使用对象](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/12.使用对象.md)
+13. [迭代器和生成器](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/13.迭代器和生成器.md)
+14. [元编程](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/14.元编程.md)
 
 ## JavaScript中级
-15. [JS对象介绍](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level2/1.JS对象介绍.md)
-16. [JSON对象介绍](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level2/2.JSON对象介绍.md)
-17. [JSON对象介绍](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/level2/3.WebAPI介绍.md)
+15. [JS对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/1.JS对象介绍.md)
+16. [JSON对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/2.JSON对象介绍.md)
+17. [JSON对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/3.WebAPI介绍.md)
 
 更新中
 
