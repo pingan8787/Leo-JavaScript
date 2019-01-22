@@ -27,6 +27,7 @@
 15. [JS对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/1.JS对象介绍.md)
 16. [JSON对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/2.JSON对象介绍.md)
 17. [WebAPI介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/3.WebAPI介绍.md)
+17. [相等性判断](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/4.相等性判断.md)
 
 更新中
 
