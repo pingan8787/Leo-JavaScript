@@ -27,12 +27,13 @@
 15. [JS对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/1.JS对象介绍.md)
 16. [JSON对象介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/2.JSON对象介绍.md)
 17. [WebAPI介绍](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/3.WebAPI介绍.md)
-17. [相等性判断](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/4.相等性判断.md)
-
-更新中
+18. [相等性判断](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/4.相等性判断.md)
+19. [闭包](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/5.闭包.md)
 
 ## JavaScript高级
-待补充
+19. [闭包](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level3/1.事件.md)
+
+更新中   
 
 ## 其他细节知识
 1. [JS中的高阶函数](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/other/1-JS中的高阶函数.md)
