@@ -4772,3 +4772,6 @@ for (let i of arr) {
 
 ### 推荐文章
 * [ECMAScript 2018 标准导读](https://zhuanlan.zhihu.com/p/27537439)
+
+## 微信公众号
+![bg](http://images.pingan8787.com/fe_bg.png)

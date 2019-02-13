@@ -50,3 +50,6 @@
 |微  信|pingan8787|
 |每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
 |ES小册|js.pingan8787.com|
+
+## 微信公众号
+![bg](http://images.pingan8787.com/fe_bg.png)
