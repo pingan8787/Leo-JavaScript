@@ -107,4 +107,4 @@
 
 
 ## 微信公众号
-![bg](http://images.pingan8787.com/fe_bg.png)
+![bg](http://images.pingan8787.com/fe_bg.png)  
