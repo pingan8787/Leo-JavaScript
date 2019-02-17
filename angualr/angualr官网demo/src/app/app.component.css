@@ -1,29 +1,22 @@
-/* AppComponent's private CSS styles */
+/* Application-wide Styles */
 h1 {
-    font-size: 1.2em;
-    color: #999;
-    margin-bottom: 0;
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
   }
-  h2 {
-    font-size: 2em;
-    margin-top: 0;
-    padding-top: 0;
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
   }
-  nav a {
-    padding: 5px 10px;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
-    background-color: #eee;
-    border-radius: 4px;
+  body {
+    margin: 2em;
   }
-  nav a:visited, a:link {
-    color: #607d8b;
+  body, input[type="text"], button {
+    color: #888;
+    font-family: Cambria, Georgia;
   }
-  nav a:hover {
-    color: #039be5;
-    background-color: #cfd8dc;
-  }
-  nav a.active {
-    color: #039be5;
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
   }
