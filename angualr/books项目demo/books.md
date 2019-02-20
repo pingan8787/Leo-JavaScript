@@ -195,7 +195,8 @@ getDetail(): void{
 **知识点**：     
 `*ngFor` 是一个 Angular 的复写器（repeater）指令，就像**angular1**中的`ng-for`和**vuejs**中的`v-for`。 它会为列表中的每项数据复写它的宿主元素。   
 这时候可以看到页面变成下面这个样子：  
-[图片3-1]()    
+![图片3-1](http://images.pingan8787.com/angular_books_3_1.png)     
+
 
 接下来我们要把写死在HTML上面的数据，抽到JS中：    
 
@@ -358,4 +359,4 @@ export class BooksComponent implements OnInit {
 写到这里，看看我们项目，还是一样正常在运行，只是现在项目中组件分工更加明确了。   
 
 现在的效果图：    
-[图片3-2]
+![图片3-2](http://images.pingan8787.com/angular_books_3_2.png)
