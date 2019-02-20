@@ -10,7 +10,46 @@
   * 2.编写服务
 * 五、引入Rxjx改造项目
 
-## 安装过程省略
+## 零、Angular安装
+Angular 需要 `Node.js` 的 `8.x` 或 `10.x` 版本。    
+检查你的`Node.js`版本，请在终端/控制台窗口中运行 node -v 命令。    
+要想安装 Node.js，请访问 nodejs.org。   
+
+1. 安装Angular CLI   
+
+```bash
+npm install -g @angular/cli
+```
+
+2. 常用命令
+
+后续用到会详细介绍这些命令。
+
+* 启动服务，并打开新窗口
+```bash
+ng serve --open
+# --open 可简写 -o
+```
+
+* 创建新组件
+```bash
+ng generate component books
+# generate 可简写 g
+```
+
+* 创建新服务
+```bash
+ng generate service books
+```
+
+* 创建路由模块
+```bash
+ng generate module app-routing --flat --module=app
+```
+
+* 其他   
+另外Angular CLI还有很多的命令提供，详细可以查阅官方文档 [Angular CLI 命令](https://angular.cn/cli)。
+
 
 ## 一、项目起步
 1. 创建项目    
