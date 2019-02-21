@@ -611,3 +611,5 @@ getBooks(): void{
     .subscribe(books => this.books = books);
 }
 ```
+由于原本直接赋值数据，在实际场景中是不可能这样同步的，所以这里`subscribe`函数，会在`Observable`发出数据以后，再把书本列表传到里面的回调函数，再复制给`books`属性。    
+使用这种异步方式，当 `BooksService` 从远端服务器获取英雄数据时，不用担心还没拿到数据就执行后面。   
