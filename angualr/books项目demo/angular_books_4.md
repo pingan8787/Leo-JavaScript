@@ -296,9 +296,77 @@ getBookList(): Observable<Books[]> {
 }
 ```
 
-
 ### 3.通过HTTP增加数据
+
+
 ### 4.通过HTTP修改数据
+这里我们需要在原来`DetailComponent`上面，添加一个输入框、保存按钮和返回按钮，就像这样：   
+```html
+<!-- detail.component.html -->
+<!-- 前面代码省略 -->
+<div>
+    <h2>修改信息：</h2>
+    <label>新标题：
+        <input [(ngModel)]="books.title" placeholder="请输入新标题">
+    </label>
+    <button (click)="save()">保存</button>
+    <button (click)="goBack()">返回</button>
+</div>
+```
+这边切记一点，一定要在`app.module.ts`中引入 `FormsModule`模块，并在`@NgModule`的`imports`中引入，不然要报错了。 
+```js
+// app.module.ts
+// ...
+import { FormsModule } from '@angular/forms'; 
+@NgModule({
+    // ...
+    imports: [
+        // ...
+        FormsModule
+    ],
+    // ...
+})
+```
+`input`框绑定书本的标题`books.title`，而保存按钮绑定一个`save()`方法，这里还要实现这个方法：   
+```js
+// detail.component.ts
+save(): void {
+    this.historyservice.updateBooks(this.books)
+        .subscribe(() => this.goBack());
+}
+goBack(): void {
+    this.location.back();
+}
+```
+这里通过调用`BooksService`的`updateBooks`方法，将当前修改后的书本信息修改到源数据中，这里我们需要去`books.service.ts`中添加`updateBooks`方法：   
+```js
+// books.service.ts
+// ...
+updateBooks(books: Books): Observable<any>{
+    return this.http.put(this.booksUrl, books, httpOptions).pipe(
+        tap(_ => this.log(`修改书本的id是${books.id}`)),
+        catchError(this.handleError<Books>(`getBooks请求是id为${books.id}`))
+    )
+}
+// ...
+```
+**知识点**：   
+`HttpClient.put()` 方法接受三个参数：`URL 地址`、`要修改的数据`和`其他选项`。  
+
+现在，我们点击首页，选择一本书进入详情，修改标题然后保存，会发现，首页上这本书的名称也会跟着改变呢。这算是好了。     
+
+
 ### 5.通过HTTP删除数据
 ### 6.通过HTTP查找数据
-
+还是在`books.service.ts`，我们添加一个方法`getBooks`，来实现通过ID来查找指定书本，因为我们是通过ID查找，所以返回的是单个数据，这里就是`Observable<Books>`类型：   
+```js
+// books.service.ts
+getBooks(id: number): Observable<Books>{
+    const url = `${this.booksUrl}/${id}`;
+    return this.http.get<Books>(url).pipe(
+        tap( _ => this.log(`请求书本的id为${id}`)),
+        catchError(this.handleError<Books>(`getBooks请求是id为${id}`))
+    )
+}
+```
+注意，这里 `getBooks` 会返回 `Observable<Books>`，是一个可观察的单个对象，而不是一个可观察的对象数组。    
