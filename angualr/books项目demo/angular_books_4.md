@@ -18,8 +18,8 @@
 * 七、HTTP改造
   * 1.引入HTTP
   * 2.通过HTTP请求数据
-  * 3.通过HTTP增加数据
-  * 4.通过HTTP修改数据
+  * 3.通过HTTP修改数据
+  * 4.通过HTTP增加数据
   * 5.通过HTTP删除数据
   * 6.通过HTTP查找数据
 
@@ -209,7 +209,7 @@ import { Books } from './books';
 @Injectable({
   providedIn: 'root'
 })
-export class InMemoryDataService implements InMemoryDataService {
+export class InMemoryDataService implements InMemoryDbService {
   createDb(){
     const books = [
       {
@@ -225,6 +225,15 @@ export class InMemoryDataService implements InMemoryDataService {
   constructor() { }
 }
 ```
+
+这里先总结`InMemoryDbService`所提供的RESTful API，后面都要用到：   
+例如如果`url`是`api/books`，那么  
+* 查询所有成员：以**GET**方法访问`api/books`    
+* 查询某个成员：以**GET**方法访问`api/books/id`，比如`id`是`1`，那么访问`api/books/1`  
+* 更新某个成员：以**PUT**方法访问`api/books/id`   
+* 删除某个成员：以**DELETE**方法访问`api/books/id`    
+* 增加一个成员：以**POST**方法访问`api/books`   
+
 
 ### 2.通过HTTP请求数据
 
@@ -296,10 +305,7 @@ getBookList(): Observable<Books[]> {
 }
 ```
 
-### 3.通过HTTP增加数据
-
-
-### 4.通过HTTP修改数据
+### 3.通过HTTP修改数据
 这里我们需要在原来`DetailComponent`上面，添加一个输入框、保存按钮和返回按钮，就像这样：   
 ```html
 <!-- detail.component.html -->
@@ -352,11 +358,173 @@ updateBooks(books: Books): Observable<any>{
 ```
 **知识点**：   
 `HttpClient.put()` 方法接受三个参数：`URL 地址`、`要修改的数据`和`其他选项`。  
+`httpOptions` 常量需要定义在`@Injectable`修饰器之前。   
 
 现在，我们点击首页，选择一本书进入详情，修改标题然后保存，会发现，首页上这本书的名称也会跟着改变呢。这算是好了。     
 
 
+### 4.通过HTTP增加数据
+我们可以新增一个页面，并添加上路由和按钮：   
+```bash
+ng g component add
+```
+添加路由：     
+```js
+// app-routing.module.ts
+// ...
+import { AddComponent } from './add/add.component';
+
+const routes: Routes = [
+  { path: '', redirectTo:'/index', pathMatch:'full' },
+  { path: 'index', component: IndexComponent},
+  { path: 'detail/:id', component: DetailComponent},
+  { path: 'add', component: AddComponent},
+]
+```
+添加路由入口：   
+```html
+<!-- app.component.html -->
+<!-- 省略一些代码 -->
+<a routerLink="/add">添加书本</a>
+```
+编辑添加书本的页面：    
+```html
+<!-- add.component.html -->
+<div class="add">
+    <h2>添加书本：</h2>
+    <label>标题：
+        <input [(ngModel)]="books.title" placeholder="请输入标题">
+    </label>
+    <label>作者：
+        <input [(ngModel)]="books.author" placeholder="请输入作者">
+    </label>
+    <label>书本id：
+        <input [(ngModel)]="books.id" placeholder="请输入书本id">
+    </label>
+    <label>封面地址：
+        <input [(ngModel)]="books.url" placeholder="请输入封面地址">
+    </label>
+    <div><button (click)="add(books)">添加</button></div>
+</div>
+```
+初始化添加书本的数据：   
+```js
+// add.component.ts
+// ...
+import { Books } from '../books';
+import { BooksService } from '../books.service';
+import { HistoryService } from '../history.service';
+import { Location } from '@angular/common';
+export class AddComponent implements OnInit {
+    books: Books = {
+        id: 0,
+        url: '',
+        title: '',
+        author: ''
+    }
+    constructor(
+        private location: Location,
+        private booksservice: BooksService,
+        private historyservice: HistoryService
+    ) { }
+    ngOnInit() {}
+    add(books: Books): void{
+        books.title = books.title.trim();
+        books.author = books.author.trim();
+        this.booksservice.addBooks(books)
+        .subscribe( book => {
+            this.historyservice.add(`新增书本${books.title}，id为${books.id}`);
+            this.location.back();
+        });
+    }
+}
+```
+然后在`books.service.ts`中添加`addBooks`方法，来添加一本书本的数据：   
+```js
+// books.service.ts
+addBooks(books: Books): Observable<Books>{
+    return this.http.post<Books>(this.booksUrl, books, httpOptions).pipe(
+        tap((newBook: Books) => this.log(`新增书本的id为${newBook.id}`)),
+        catchError(this.handleError<Books>('添加新书'))
+    );
+}
+```
+
+
+现在就可以正常添加书本啦。   
+
+![图片5-3](http://images.pingan8787.com/angular_books_5_3.png)
+
+
 ### 5.通过HTTP删除数据
+这里我们先为每个书本后面添加一个删除按钮，并绑定删除事件`delete`：   
+```html
+<!-- books.component.html -->
+<!-- 省略一些代码 -->
+<span class="delete" (click)="delete(list)">X</span>
+```
+```js
+// books.component.ts
+import { BooksService } from '../books.service';
+export class BooksComponent implements OnInit {
+  @Input() list: Books;
+  constructor(
+    private booksservice: BooksService
+  ) { }
+  // ...
+  delete(books: Books): void {
+    this.booksservice.deleteBooks(books)
+      .subscribe();
+  }
+}
+```
+然后还要再`books.service.ts`中添加`deleteBooks`方法来删除：   
+```js
+// books.service.ts
+deleteBooks(books: Books): Observable<Books>{
+    const id = books.id;
+    const url = `${this.booksUrl}/${id}`;
+    return this.http.delete<Books>(url, httpOptions).pipe(
+        tap(_ => this.log(`删除书本${books.title}，id为${books.id}`)),
+        catchError(this.handleError<Books>('删除书本'))
+    );
+}
+```
+这里需要在删除书本结束后，通知`IndexComponent`将数据列表中的这条数据删除，这里还需要再了解一下[Angular 父子组件数据通信](https://blog.csdn.net/u010730126/article/details/68080139)。   
+然后我们在父组件`IndexComponent`上添加`change`事件监听，并传入本地的`funChange`：   
+```html
+<!-- index.component.html -->
+<app-books *ngFor="let item of books" [list]="item"
+    (change) = "funChange(item, $event)"
+></app-books>
+```
+在对应的`index.component.ts`中添加`funChange`方法：   
+```js
+// index.component.ts
+funChange(books, $event){
+    this.books = this.books.filter(h => h.id !== books.id);
+}
+```
+
+再来，我们在子组件`BooksComponent`上多导入`Output`和`EventEmitter`，并添加`@Output()`修饰器和调用`emit`：    
+```js
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+export class BooksComponent implements OnInit {
+    // ... 
+    @Output()
+    change = new EventEmitter()
+    // ... 
+    delete(books: Books): void {
+        this.booksservice.deleteBooks(books)
+        .subscribe(()=>{
+            this.change.emit(books);
+        });
+    }
+}
+```
+这样就实现了我们父子组件之间的事件传递啦，现在我们的页面还是正常运行，并且删除一条数据后，页面数据会更新。   
+
+
 ### 6.通过HTTP查找数据
 还是在`books.service.ts`，我们添加一个方法`getBooks`，来实现通过ID来查找指定书本，因为我们是通过ID查找，所以返回的是单个数据，这里就是`Observable<Books>`类型：   
 ```js
