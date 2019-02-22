@@ -283,10 +283,17 @@ private handleError<T> (operation = 'operation', result?: T) {
 `catchError()` 操作符会拦截失败的 Observable。并把错误对象传给错误处理器，错误处理器会处理这个错误。    
 `handleError()` 错误处理函数做了两件事，发出错误通知和返回空结果避免程序出错。   
 
-这里还需要使用`tap`操作符，来窥探`Observable`数据流，它会查看`Observable`的值，然后我们使用`log`方法，记录一条历史记录。   
+这里还需要使用`tap`操作符改造`getBookList`方法，来窥探`Observable`数据流，它会查看`Observable`的值，然后我们使用`log`方法，记录一条历史记录。   
 `tap` 回调不会改变这些值本身。   
 ```js
-
+// books.service.ts
+getBookList(): Observable<Books[]> {
+    return this.http.get<Books[]>(this.booksUrl)
+        .pipe(
+            tap( _ => this.log('请求书本数据')),
+            catchError(this.handleError<Books[]>('getHeroes', []))
+        );
+}
 ```
 
 
