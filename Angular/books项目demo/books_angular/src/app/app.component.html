@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <nav>
+    <!-- <a [routerLink]="[ '/path', routeParam ]">name</a> -->
+    <a routerLink="/dashboard">DashBoard</a><br>
+    <a routerLink="/heroes">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <!-- <app-heroes></app-heroes> -->
+  <app-messages></app-messages>
+</div>

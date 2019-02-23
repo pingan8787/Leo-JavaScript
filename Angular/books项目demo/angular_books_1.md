@@ -1,6 +1,6 @@
 ## 本文目录
-* 一、项目起步
-* 二、编写路由组件
+* **一、项目起步**
+* **二、编写路由组件**
 * 三、编写页面组件   
   * 1.编写单一组件
   * 2.模拟数据
@@ -24,7 +24,8 @@
   * 6.通过HTTP查找数据
 * 八、结语
 
-这个入门项目是我学习完[Angular官网英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，大佬们请指点啦。    
+
+这个入门项目是我学习完[Angular 英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，大佬们请指点啦。    
 还有呢，我没怎么关注到样式，所以样式会有点丑，主要都放在核心逻辑中了。   
 **最终实现：**    
 * 首页书本列表数据展示
@@ -34,9 +35,11 @@
 * 父子组件通信
 * 常用指令使用和介绍
 
-![图片结果](http://images.pingan8787.com/angular_books_result.png)
+![图片结果](https://user-gold-cdn.xitu.io/2019/2/23/1691828f7d7ff8f7?w=895&h=847&f=png&s=101062)
 
-那么，快跟我一步步来完成这个入门项目吧。  
+后面我将把这个系列的文章，收录到我的[【CuteJavaScript】](http://js.pingan8787.com)中，里面有整理了**ES6/7/8/9知识点**和**重温JS基础系列**文章。   
+
+那么，快跟我一步步来完成这个入门项目吧。
 
 ## 零、Angular安装
 Angular 需要 `Node.js` 的 `8.x` 或 `10.x` 版本。    
@@ -80,7 +83,7 @@ ng generate module app-routing --flat --module=app
 
 最后搭建完是这样：    
 
-![图片创建](http://images.pingan8787.com/angular_books_create.png)
+![图片创建](https://user-gold-cdn.xitu.io/2019/2/23/1691828f7c418b79?w=579&h=631&f=png&s=29117)
 
 ## 一、项目起步
 1. 创建项目    
@@ -98,7 +101,7 @@ ng g component detail
 
 
 ## 二、编写路由组件
-这里为了项目结构先起来，所以先简单配置一下路由，后面路由会调整：  
+这里为了项目结构先起来，所以先简单配置一下路由，后面路由会调整，如果遇到什么不懂，可以查看[Angular 路由与导航](https://angular.cn/guide/router)。  
 
 1. 安装**路由模块**    
 ```bash
@@ -129,20 +132,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 这里添加路由的时候，记得将所需要指向的组件也引入进来，这里我们需要引入两个页面的组件：   
 ```js
-// src/app/app-routing.module.ts  
+// app-routing.module.ts  
 import { IndexComponent } from './index/index.component';
 import { DetailComponent } from './detail/detail.component';
 ```
 然后将我们所需要的路由定义在`routes`变量中，类型是我们引入的`Routes`：    
 ```js
-// src/app/app-routing.module.ts  
+// app-routing.module.ts  
 const routes: Routes = [
   { path: '', redirectTo:'/index', pathMatch:'full' },    // 1
   { path: 'index', component: IndexComponent},            // 2
   { path: 'detail/:id', component: DetailComponent},      // 3 
 ]
 ```
-介绍下这段代码：   
+**知识点**：     
 `angular`的路由接收两个参数：   
 * `path`：用于匹配浏览器地址栏中 `URL` 的字符串。   
 * `component`：当导航到此路由时，路由器展示的组件名称。   
@@ -164,7 +167,7 @@ const routes: Routes = [
 配置好路由还不能使用，需要一个监视路由变化的工具，这时候需要把`RouterModule`添加到 `@NgModule.imports` 数组中，并用 `routes` 来配置它。   
 这里只需要调用` imports `数组中的 `RouterModule.forRoot()` 函数就行了，就像这样：   
 ```js
-// src/app/app-routing.module.ts  
+// app-routing.module.ts  
 imports: [ RouterModule.forRoot(routes) ],
 ```
 
@@ -172,6 +175,7 @@ imports: [ RouterModule.forRoot(routes) ],
 
 所谓的路由出口，就是路由所对应的组件展示的地方，接下来我们在`app.component.html`内容中，添加`<router-outlet></router-outlet>`：   
 ```html
+<!-- app.component.html -->
 <div>
   <h1> 欢迎来到我的个人书屋! </h1>
   <router-outlet></router-outlet>
@@ -183,6 +187,7 @@ imports: [ RouterModule.forRoot(routes) ],
 
 所谓的路由链接，就是出发路由跳转事件的地方，比如一个按钮，一张图片等，我们还是在`app.component.html`中，使用`<a routerLink="/path"></a>`添加3个按钮：   
 ```html
+<!-- app.component.html -->
 <div>
   <h1> 欢迎来到我的个人书屋! </h1>
   <a routerLink="">重定向</a> | 
@@ -193,7 +198,7 @@ imports: [ RouterModule.forRoot(routes) ],
 ```
 这边3个按钮的路由，我们将上面定义的3种路由，传入到`routerLink`参数中，现在就项目就可以实现页面跳转了。    
 
-另外，这里还可以传入一个参数`routerLinkActive="className"`，表示当这个`<a>`标签激活的时候显示的样式，值是一个字符串，为样式的类名：   
+另外，这里还可以传入一个可选参数`routerLinkActive="className"`，表示当这个`<a>`标签激活的时候显示的样式，值是一个字符串，为样式的类名：   
 ```html
 <a routerLink="/index" routerLinkActive="activeClass">打开首页</a> | 
 ```
@@ -209,6 +214,7 @@ import { Location } from '@angular/common';
 ```
 * 再注入到构造函数中，并将值作为私有变量：    
 ```js
+// detail.component.ts
 export class DetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
@@ -217,7 +223,7 @@ export class DetailComponent implements OnInit {
   ngOnInit() {}
 }
 ```
-**代码解释**：    
+**知识点：**      
 `ActivatedRoute` 保存该 `DetailComponent` 实例的路由信息。可以从这个组件获取URL中的路由参数和其他数据。    
 `Location` 是一个 `Angular` 的服务，用来与浏览器打交道。后续会使用它来导航回上一个视图。    
 
@@ -234,13 +240,25 @@ getDetail(): void{
     console.log(`此课本的id是${id}`)
 }
 ```
-**代码解释**：    
+**知识点**：    
 `route.snapshot` 是一个路由信息的**静态快照**，抓取自组件刚刚创建完毕之后。       
 `paramMap` 是一个URL中路由所携带的参数值的对象。"id"对应的值就是要获取的书本的 id。     
 **注意**：   
 路由参数总会是字符串。这里我们使用 (+) 操作符，将字符串转换成数字。     
 
-
-现在在浏览器上刷新下页面，再点击 ** 打开书本详情** 按钮，可以看到控制台输出了` 此课本的id是1 `的结果。   
+现在在浏览器上刷新下页面，再点击 **打开书本详情** 按钮，可以看到控制台输出了` 此课本的id是1 `的结果。   
 到这一步，我们算是把路由配置完成了，接下来可以开始做页面的逻辑了。    
 
+**本部分内容到这结束**
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|JS小册|js.pingan8787.com|
+|微信公众号|前端自习课|
+
+
+![前端自习课](https://user-gold-cdn.xitu.io/2019/2/16/168f49f0238191ca?w=1078&h=647&f=png&s=282515)

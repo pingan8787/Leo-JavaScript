@@ -545,3 +545,18 @@ getBooks(id: number): Observable<Books>{
 最终效果：    
 
 ![图片结果](http://images.pingan8787.com/angular_books_result.png)
+
+
+**本部分内容到这结束**
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|JS小册|js.pingan8787.com|
+|微信公众号|前端自习课|
+
+
+![前端自习课](https://user-gold-cdn.xitu.io/2019/2/16/168f49f0238191ca?w=1078&h=647&f=png&s=282515)
