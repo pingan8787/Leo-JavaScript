@@ -25,7 +25,13 @@
 * 八、结语
 
 
-这个入门项目是我学习完[Angular 英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，大佬们请指点啦。    
+
+这个入门项目是我学习完[Angular 英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，最终的[项目源码可以这里查看](https://github.com/pingan8787/Leo-JavaScript/tree/master/Angular/books%E9%A1%B9%E7%9B%AEdemo/books_angular)，大佬们请指点啦。    
+
+推荐两个Angular学习网站：   
+1. [Angular 中文网](https://angular.cn/)   
+2. [Angular 修仙之路](http://www.semlinker.com/)   
+
 还有呢，我没怎么关注到样式，所以样式会有点丑，主要都放在核心逻辑中了。   
 **最终实现：**    
 * 首页书本列表数据展示
