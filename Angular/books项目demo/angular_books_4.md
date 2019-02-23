@@ -538,3 +538,10 @@ getBooks(id: number): Observable<Books>{
 }
 ```
 注意，这里 `getBooks` 会返回 `Observable<Books>`，是一个可观察的单个对象，而不是一个可观察的对象数组。    
+
+
+## 八、结语
+这个项目其实很简单，但是我还是一步一步的写下来，一方面让自己更熟悉Angular，另一方面也是希望能帮助到更多朋友哈~
+最终效果：    
+
+![图片结果](http://images.pingan8787.com/angular_books_result.png)

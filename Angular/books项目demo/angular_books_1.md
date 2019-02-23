@@ -12,17 +12,36 @@
   * 1.关于RxJS
   * 2.引入RxJS
   * 3.改造数据获取方式
-  * 4.添加历史记录组件
 * 六、改造组件
   * 1.添加历史记录组件
-  * 2.开发增加书本
-  * 3.开发搜索书本
-  * 4.开发删除书本
+  * 2.添加和删除历史记录
+* 七、HTTP改造
+  * 1.引入HTTP
+  * 2.通过HTTP请求数据
+  * 3.通过HTTP修改数据
+  * 4.通过HTTP增加数据
+  * 5.通过HTTP删除数据
+  * 6.通过HTTP查找数据
+* 八、结语
+
+这个入门项目是我学习完[Angular官网英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，大佬们请指点啦。    
+还有呢，我没怎么关注到样式，所以样式会有点丑，主要都放在核心逻辑中了。   
+**最终实现：**    
+* 首页书本列表数据展示
+* 各个页面静态/动态路由跳转
+* 本地模拟数据服务
+* 书本数据的增删改查
+* 父子组件通信
+* 常用指令使用和介绍
+
+![图片结果](http://images.pingan8787.com/angular_books_result.png)
+
+那么，快跟我一步步来完成这个入门项目吧。  
 
 ## 零、Angular安装
 Angular 需要 `Node.js` 的 `8.x` 或 `10.x` 版本。    
-检查你的`Node.js`版本，请在终端/控制台窗口中运行 node -v 命令。    
-要想安装 Node.js，请访问 nodejs.org。   
+检查你的`Node.js`版本，请在终端/控制台窗口中运行 `node -v` 命令。    
+要想安装` Node.js`，请访问 nodejs.org。   
 
 1. 安装Angular CLI   
 
@@ -59,6 +78,9 @@ ng generate module app-routing --flat --module=app
 * 其他   
 另外Angular CLI还有很多的命令提供，详细可以查阅官方文档 [Angular CLI 命令](https://angular.cn/cli)。
 
+最后搭建完是这样：    
+
+![图片创建](http://images.pingan8787.com/angular_books_create.png)
 
 ## 一、项目起步
 1. 创建项目    
@@ -82,19 +104,20 @@ ng g component detail
 ```bash
 ng g module app-routing --flat --module=app
 ```
+**知识点：**   
 `--flat` 把这个文件放进了 `src/app` 中，而不是单独的目录中。   
 `--module=app` 告诉 CLI 把它注册到 `AppModule` 的 `imports` 数组中。   
 
 2. 引入**路由模块**    
 ```js
-// src/app/app-routing.module.ts  
+// app-routing.module.ts  
 import { RouterModule, Routes } from '@angular/router';
 ```
 3. 导出**路由模块**的指令  
 
 这里需要添加一个 `@NgModule.exports` 数组，并传入`RouterModule`，导出 `RouterModule` 让路由器的相关指令可以在 `AppModule` 中的组件中使用。   
 ```js
-// src/app/app-routing.module.ts  
+// app-routing.module.ts  
 @NgModule({
   imports: [CommonModule],
   declarations: [],
@@ -220,3 +243,4 @@ getDetail(): void{
 
 现在在浏览器上刷新下页面，再点击 ** 打开书本详情** 按钮，可以看到控制台输出了` 此课本的id是1 `的结果。   
 到这一步，我们算是把路由配置完成了，接下来可以开始做页面的逻辑了。    
+
