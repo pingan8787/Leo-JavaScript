@@ -7,12 +7,12 @@
 这次开始复习 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide) 这个系列的文章，巩固好自己的基础，也让自己养成记录学习的习惯，当然这些文章我也会同步到自己的博客。   
 
 ## 查看更多
-[![博客](http://images.pingan8787.com/icon_my.png)](http://www.pingan8787.com)
-[![知乎](http://images.pingan8787.com/icon_zhihu.png)](https://zhuanlan.zhihu.com/cute-javascript)
-[![掘金](http://images.pingan8787.com/icon_juejin.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
-[![思否](http://images.pingan8787.com/icon_sf.png)](https://segmentfault.com/blog/pingan8787)
-[![CSDN](http://images.pingan8787.com/icon_csdn.png)](https://blog.csdn.net/qq_36380426)
-[![简书](http://images.pingan8787.com/icon_jianshu.png)](https://www.jianshu.com/u/2ec5d94afd60)
+[![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
+[![知乎](http://images.pingan8787.com/icon_zhihu1.png)](https://zhuanlan.zhihu.com/cute-javascript)
+[![掘金](http://images.pingan8787.com/icon_juejin1.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
+[![思否](http://images.pingan8787.com/icon_sf1.png)](https://segmentfault.com/blog/pingan8787)
+[![CSDN](http://images.pingan8787.com/icon_csdn1.png)](https://blog.csdn.net/qq_36380426)
+[![简书](http://images.pingan8787.com/icon_jianshu1.png)](https://www.jianshu.com/u/2ec5d94afd60)
 
 
 # 本文目录
