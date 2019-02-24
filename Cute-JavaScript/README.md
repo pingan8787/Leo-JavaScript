@@ -6,6 +6,15 @@
 
 这次开始复习 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide) 这个系列的文章，巩固好自己的基础，也让自己养成记录学习的习惯，当然这些文章我也会同步到自己的博客。   
 
+## 查看更多
+[![博客](http://images.pingan8787.com/icon_my.png)](http://www.pingan8787.com)
+[![知乎](http://images.pingan8787.com/icon_zhihu.png)](https://zhuanlan.zhihu.com/cute-javascript)
+[![掘金](http://images.pingan8787.com/icon_juejin.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
+[![思否](http://images.pingan8787.com/icon_sf.png)](https://segmentfault.com/blog/pingan8787)
+[![CSDN](http://images.pingan8787.com/icon_csdn.png)](https://blog.csdn.net/qq_36380426)
+[![简书](http://images.pingan8787.com/icon_jianshu.png)](https://www.jianshu.com/u/2ec5d94afd60)
+
+
 # 本文目录
 ## JavaScript初级
 1. [语法和数据类型](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/1.%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
