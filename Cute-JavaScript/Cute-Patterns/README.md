@@ -1,6 +1,6 @@
 ## 本节目录
 
-* [一、单体模式](#一单体模式)
+* [一、单体模式](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/1.%E5%8D%95%E4%BD%93%E6%A8%A1%E5%BC%8F(Singleton).md)
 * [二、工厂模式](#二工厂模式)
 * [三、迭代器模式](#三迭代器模式)
 * [四、装饰者模式](#四装饰者模式)
