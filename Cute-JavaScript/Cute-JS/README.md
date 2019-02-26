@@ -31,7 +31,9 @@
 19. [闭包](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level2/5.闭包.md)
 
 ## JavaScript高级
-19. [闭包](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level3/1.事件.md)
+20. [事件](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level3/1.事件.md)
+21. [高阶函数](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level3/2.高阶函数.md)
+22. [内存管理](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level3/3.内存管理.md)
 
 更新中   
 
