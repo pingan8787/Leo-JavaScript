@@ -1,7 +1,7 @@
 ## 本节目录
 
 * [一、单体模式(Singleton Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/1.%E5%8D%95%E4%BD%93%E6%A8%A1%E5%BC%8F(Singleton).md)
-* [二、工厂模式(Factory Pattern)](#二工厂模式)
+* [二、工厂模式(Factory Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/2.%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F(Factory).md)
 * [三、迭代器模式(Iterator Pattern)](#三迭代器模式)
 * [四、装饰者模式(Decorator Pattern)](#四装饰者模式)
 * [五、策略模式(Strategy Pattern)](#五策略模式)
