@@ -1,0 +1,33 @@
+.books_item{
+    width: 116px;
+    margin: 6px;
+    padding: 10px;
+    border: 1px solid green;
+    display: inline-block;
+    position: relative;
+}
+.books_item img{
+    width: 100%;
+    height: 160px;
+}
+.books_item div{
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.books_item .title a{
+    font-size: 14px;
+}
+.books_item .author{
+    font-size: 13px;
+}
+.books_item .delete{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: red;
+    color: #fff;
+    padding: 0 5px;
+    cursor: pointer;
+}

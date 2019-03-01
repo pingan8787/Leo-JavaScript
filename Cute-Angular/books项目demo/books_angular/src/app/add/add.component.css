@@ -1,0 +1,14 @@
+.add{
+    width: 260px;
+    margin: 0 auto;
+}
+.add label{
+    display: block;
+    margin: 5px 0;
+}
+.add label input{
+    float: right;
+}
+.add div{
+    text-align: center;
+}

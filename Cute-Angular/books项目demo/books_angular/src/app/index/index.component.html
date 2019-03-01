@@ -1,0 +1,7 @@
+<div class="content">
+  <div class="books_box">
+    <app-books *ngFor="let item of books" [list]="item"
+      (change) = "funChange(item, $event)"
+    ></app-books>
+  </div>
+</div>

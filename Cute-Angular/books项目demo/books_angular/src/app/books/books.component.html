@@ -1,0 +1,8 @@
+<div class="books_item">
+  <img class="cover" src="{{list.url}}" alt="{{list.id}}" (click)="getDetailImage(list)">
+  <div class="title">
+    <a routerLink="/detail/{{list.id}}">{{list.title}}</a>
+  </div>
+  <div class="author">{{list.author}}</div>
+  <span class="delete" (click)="delete(list)">X</span>
+</div>

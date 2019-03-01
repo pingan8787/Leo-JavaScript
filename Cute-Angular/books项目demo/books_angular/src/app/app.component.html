@@ -1,14 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <nav>
-    <!-- <a [routerLink]="[ '/path', routeParam ]">name</a> -->
-    <a routerLink="/dashboard">DashBoard</a><br>
-    <a routerLink="/heroes">Heroes</a>
-  </nav>
+<div class="my_books">
+  <h1 class="my_books_title"> 欢迎来到我的个人书屋! </h1>
+  <div class="router">
+    <a routerLink="">重定向</a> | 
+    <a routerLink="/index">打开首页</a> | 
+    <a routerLink="/detail/1">打开书本详情</a> | 
+    <a routerLink="/add">添加书本</a>
+  </div>
   <router-outlet></router-outlet>
-  <!-- <app-heroes></app-heroes> -->
-  <app-messages></app-messages>
+
+  <app-history></app-history>
 </div>

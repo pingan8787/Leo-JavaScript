@@ -1,0 +1,16 @@
+<div class="add">
+  <h2>添加书本：</h2>
+  <label>标题：
+    <input [(ngModel)]="books.title" placeholder="请输入标题">
+  </label>
+  <label>作者：
+    <input [(ngModel)]="books.author" placeholder="请输入作者">
+  </label>
+  <label>书本id：
+    <input [(ngModel)]="books.id" placeholder="请输入书本id">
+  </label>
+  <label>封面地址：
+    <input [(ngModel)]="books.url" placeholder="请输入封面地址">
+  </label>
+  <div><button (click)="add(books)">添加</button></div>
+</div>

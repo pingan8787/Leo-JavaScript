@@ -1,0 +1,9 @@
+<div *ngIf="historyservice.history.length">
+  <h2>操作历史：</h2>
+  <div>
+    <button class="clear"
+      (click)="historyservice.clear()"
+    >清除</button>
+    <div *ngFor="let item of historyservice.history">{{item}}</div>
+  </div>
+</div>

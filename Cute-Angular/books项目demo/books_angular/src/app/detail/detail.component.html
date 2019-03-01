@@ -1,0 +1,20 @@
+<div *ngIf="books" class="detail">
+  <h3>《{{books.title}}》介绍</h3>
+  <div>
+    <img src="{{books.url}}">
+  </div>
+  <p>书本标题: {{books.title}}</p>
+  <p>书本作者: {{books.author}}</p>
+  <p>书本id: {{books.id}}</p>
+</div>
+<div *ngIf="!books" class="detail">
+  <h3>暂无信息</h3>
+</div>
+
+<div>
+  <h2>修改信息：</h2>
+  <label>新标题：
+    <input [(ngModel)]="books.title" placeholder="请输入新标题">
+  </label>
+  <button (click)="save()">保存</button>
+</div>
