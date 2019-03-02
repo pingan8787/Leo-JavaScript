@@ -22,7 +22,7 @@ JavaScript是一种弱类型的、动态的、基于原型的语言，这使得�
 ## 关于作者
 [![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
 [![知乎](http://images.pingan8787.com/icon_zhihu1.png)](https://zhuanlan.zhihu.com/cute-javascript)
-[![掘金](http://images.pingan8787.com/icon_juejin1.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
+[![掘金](http://images.pingan8787.com/icon_juejin2.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
 [![思否](http://images.pingan8787.com/icon_sf1.png)](https://segmentfault.com/blog/pingan8787)
 [![CSDN](http://images.pingan8787.com/icon_csdn1.png)](https://blog.csdn.net/qq_36380426)
 [![简书](http://images.pingan8787.com/icon_jianshu1.png)](https://www.jianshu.com/u/2ec5d94afd60)
