@@ -26,7 +26,7 @@
 
 ## 项目介绍
 
-这个入门项目是我学习完[Angular 英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，最终的[项目源码可以这里查看](https://github.com/pingan8787/Leo-JavaScript/tree/master/Angular/books%E9%A1%B9%E7%9B%AEdemo/books_angular)，大佬们请指点啦。    
+这个入门项目是我学习完[Angular 英雄指南教程](https://angular.cn/tutorial)后，自己手写的一个练习项目，一步一步来，最终的[项目源码可以这里查看](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo)，大佬们请指点啦。    
 
 推荐两个Angular学习网站：   
 1. [Angular 中文网](https://angular.cn/)   
