@@ -59,6 +59,11 @@
 8. [中介者模式(Mediator Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/8.中介者模式(Mediator).md)
 9. [观察者模式(Observer Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/9.观察者模式(Observer).md)
 
+## 四、《框架入门教程》目录
+### Angular6
+2. [Angular6官网入门项目](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo)
+1. [Angular6入门项目books](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo)
+
 
 希望自己的文章会对各位有所帮助，也欢迎各位大佬指点。 
 
