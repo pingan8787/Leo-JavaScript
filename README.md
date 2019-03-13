@@ -19,6 +19,7 @@
 1. [Cute-ES](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/)
 2. [Cute-JS](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-JS/)
 3. [Cute-Patterns](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/)
+4. [Cute-Regular](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/)
 
 ### 三、[Cute-Angular](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular)
 分享Angular开源项目，和自己整理的新手开发教程。  
