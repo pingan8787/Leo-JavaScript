@@ -59,7 +59,16 @@
 8. [中介者模式(Mediator Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/8.中介者模式(Mediator).md)
 9. [观察者模式(Observer Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/9.观察者模式(Observer).md)
 
-## 四、《框架入门教程》目录
+## 四、《Cute-Regular》目录
+1. [1.正则表达式字符匹配](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+2. [2.正则表达式位置匹配](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+3. [3.正则表达式括号的使用](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+4. [4.正则表达式回溯法原理](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+5. [5.正则表达式的拆分](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+6. [6.正则表达式的构建](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+7. [7.正则表达式编程](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-Regular)
+
+## 五、《框架入门教程》目录
 ### Angular6
 2. [Angular6官网入门项目](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo)
 1. [Angular6入门项目books](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo)
