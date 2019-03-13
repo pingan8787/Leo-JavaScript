@@ -27,4 +27,5 @@
 
 ## 文章推荐（补充中）
 
+* [老姚 —— JS正则表达式完整教程](https://juejin.im/post/5965943ff265da6c30653879)
 * [常见的正则表达式可视化描述](https://juejin.im/entry/581efdb7da2f60005d00ed65)
