@@ -12,8 +12,8 @@
 
 **然后可以看看这篇文章，来回顾重要知识点。**   
 
-* 《JavaScript 正则表达式迷你书》https://github.com/qdlaoyao/js-regex-mini-book
-* 《Cute-JavaScript》http://js.pingan8787.com
+* [《JavaScript 正则表达式迷你书》](https://github.com/qdlaoyao/js-regex-mini-book)
+* [《Cute-JavaScript》](http://js.pingan8787.com)
 
 ## 目录
 
