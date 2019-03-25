@@ -1,0 +1,26 @@
+@import "~taro-ui/dist/style/components/nav-bar.scss";
+@import "~taro-ui/dist/style/components/search-bar.scss";
+@import "~taro-ui/dist/style/components/button.scss";
+
+.learnIndex{
+    padding-top: 100px;
+    .learn-menu {
+        .taro-text{
+            font-size: 26px;
+        }
+    }
+    
+    .learn-total{
+        font-size: 26px;
+        text-align: center;
+        border-top: 1px solid #ddd;
+        .learn-item{
+            padding-top: 16px;
+            padding-bottom: 32px;
+            .num{
+                font-size: 36px;
+            }
+        }
+    }
+
+}
