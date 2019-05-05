@@ -28,19 +28,13 @@ GraphQL 使用类型来保证应用只请求可能的数据，还提供了清晰
 ```js
 query {
     hello
-    account {
-        name
-    }
 }
 ```
 然后得到的就是我们所要查询的 `hello` 和 `account` 对象下的 `name` 属性：    
 ```js
 {
     "data": {
-        "hello": "hello leo",
-        "account": {
-            "name": null
-        }
+        "hello": "hello leo"
     }
 }
 ```
@@ -67,6 +61,8 @@ query {
 
 ## 三、使用express构建基本helloworld
 
+### 1. 简单案例
+
 初始化一个 `package.json`，并且安装 `express` / `graphql` / `express-graphql` ：   
 ```bash
 npm init -y
@@ -85,7 +81,6 @@ const graphqlHTTP = require('express-graphql')
 const schema = buildSchema(`
     type Query {
         hello: String
-        account: Account
     }
 `)
 ```
@@ -95,13 +90,6 @@ const schema = buildSchema(`
 const root = {
     hello: () => {
         return 'hello leo'
-    },
-    account: () => {
-        return {
-            name: 'leo',
-            age: 18,
-            sex: '男'
-        }
     }
 }
 ```
@@ -144,7 +132,6 @@ const graphqlHTTP = require('express-graphql')
 const schema = buildSchema(`
     type Query {
         hello: String
-        account: Account
     }
 `)
 
@@ -152,13 +139,6 @@ const schema = buildSchema(`
 const root = {
     hello: () => {
         return 'hello leo'
-    },
-    account: () => {
-        return {
-            name: 'leo',
-            age: 18,
-            sex: '男'
-        }
     }
 }
 
@@ -174,7 +154,40 @@ app.use('/graphql', graphqlHTTP({
 app.listen(3000)
 ```
 
+### 2. 自定义类型查询
 
+我们前面的查询中，已经将查询类型定义为 `String` 类型，但是常常开发中，我们又会碰到数据是多个类型，比如一个 `user` 会有 `name`、`age`等属性，而 `name` 是字符串类型，`age` 是数值类型。    
+
+这时候，我们可以新建一个查询类型来定义 `user`：  
+```js
+const schema = buildSchema(`
+    type User {
+        name: String
+        age: Int
+    }
+    type Query {
+        hello: String
+        user: User
+    }
+`)
+```
+
+在处理器中我们也要加上：   
+```js
+
+const root = {
+    hello: () => {
+        return 'hello leo'
+    },
+    user: () => {
+        return {
+            name: 'leo',
+            age: 18
+        }
+    }
+}
+```
+**这边 Int/String 参数类型的问题，下一章介绍**    
 
 ## 四、参数类型和参数传递
 
