@@ -3,7 +3,7 @@ GraphQL 是 Facebook 开发的一种 **API 的查询语言**，与 2015 年公�
 
 GraphQL 既是一种用于 API 的**查询语言**也是一个满足你数据查询的**运行时**。 GraphQL 对你的 API 中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获得它需要的数据，而且**没有任何冗余**，也让 API 更容易地随着时间推移而演进，还能用于构建强大的开发者工具。    
 
-官网： http://graphql.org/
+官网： http://graphql.org/   
 中文网： http://graphql.cn/
 
 ### 1. 特点
@@ -125,13 +125,13 @@ app.listen(3000)
 
 接下来运行项目，在命令行中执行 `node hello.js`，这里可以在 `graphiql` 上做调试，打开地址 `localhost:3000/graphiql` 就可以愉快的查询了。     
 
-![1](http://images.pingan8787.com/graph_1.png)    
+![1](http://images.pingan8787.com/graphql_1.png)    
 
 另外我们可以在 `graphiql` 界面右侧打开 **Docs** 查看我们定义的所有字段和描述信息。   
 
-![2](http://images.pingan8787.com/graph_2.png)    
+![2](http://images.pingan8787.com/graphql_2.png)    
 
-![3](http://images.pingan8787.com/graph_3.png)    
+![3](http://images.pingan8787.com/graphql_3.png)    
 
 
 最终代码：    
