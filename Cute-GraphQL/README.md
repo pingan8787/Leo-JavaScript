@@ -2,7 +2,9 @@
 
 ## 首先有请阿爸镇贴！哈哈哈
 
-![iron_man](http://images.pingan8787.com/iron_man.jpg)   
+![iron_man](http://images.pingan8787.com/iron_man1.jpg)   
+
+这是我的手机壁纸，哈哈，需要高清原图的小伙伴可以 [点我下载 阿爸无敌](http://images.pingan8787.com/iron_man1.jpg) 。   
 
 ## 一、GraphQL介绍
 `GraphQL` 是 Facebook 开发的一种 **API 的查询语言**，与 2015 年公开发布，是 REST API 的替代品。      
