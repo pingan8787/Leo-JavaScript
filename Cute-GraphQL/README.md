@@ -76,7 +76,7 @@ const { buildSchema } = require('graphql')
 const graphqlHTTP = require('express-graphql')
 ```
 
-创建一个 `schema` 来定义查询语句和类型，`buildSchema()` 方法需要传入的参数是**字符串**类型，如下面的 `hello` 类似于查询的字段，后面的 `String` 类型表示字段返回的数据类型：   
+创建一个 `schema` 来定义查询语句和类型，`buildSchema()` 方法需要传入的参数是**字符串**类型，如下面的 `hello` 查询字段，后面的 `String` 类型表示字段返回的数据类型：   
 ```js
 const schema = buildSchema(`
     type Query {
@@ -156,12 +156,15 @@ app.listen(3000)
 
 ### 2. 自定义类型查询
 
-我们前面的查询中，已经将查询类型定义为 `String` 类型，但是常常开发中，我们又会碰到数据是多个类型，比如一个 `user` 会有 `name`、`age`等属性，而 `name` 是字符串类型，`age` 是数值类型。    
+我们前面的查询中，已经将 `hello` 字段定义为 `String` 类型，但是常常开发中，我们又会碰到字段是多个类型，即**字段也能指代对象类型（Object）**，比如一个 `user` 字段会有 `name` 、`age` 等字段，而 `name` 返回字符串类型，`age` 返回数值类型。    
 
-这时候，我们可以新建一个查询类型来定义 `user`：  
+这时候，我们可以对这个对象的字段进行**次级选择（sub-selection）**。GraphQL 查询能够遍历相关对象及其字段，使得客户端可以一次请求查询大量相关数据，而不像传统 REST 架构中那样需要多次往返查询。
+
+我们可以新建一个查询类型来定义 `user` 字段返回的类型：  
 ```js
 const schema = buildSchema(`
     type User {
+        # 查询可以有备注！
         name: String
         age: Int
     }
