@@ -484,9 +484,249 @@ body: JSON.stringify({ query, variables })
 
 ## 六、使用Mutations修改数据
 
+### 1. Mutation 使用
+
+根据前面的学习，我们知道，要做查询操作，需要使用 `Query` 来声明:    
+```JS
+type Query {
+    queryHero(heroName: String): String
+}
+```
+当我们要做**修改操作**，需要用到的是 `Mutation` :   
+```js
+type Mutation {
+    createHero(heroName: String): String
+}
+```
+如果 `Mutation` 中字段的形参是**自定义类型**，则类型需要用 `input` 标识：   
+```js
+const schema = buildSchema(`
+    # 输入类型 用 input 标识
+    input HeroInput {
+        name: String
+        age: Int
+    }
+    # 查询类型
+    type Hero {
+        name: String
+        age: Int
+    }
+    type Mutation {
+        createHero(heroName: String): Hero
+        updateHero(heroName: String, hero: HeroInput): Hero
+    }
+`)
+```
+注意下：这里需要至少定义一个 `Query` 不然` GraphiQL` 会不显示查询：   
+```js
+type Query {
+    hero: [Hero]
+}
+```
+
+### 2. Mutation 使用案例
+
+先创建一个 `schema` ，内容为上一步【1. Mutation 使用】中定义的内容，这里不重复写。    
+然后模拟创建一个本地数据库 `localDb`， 用于模拟存放添加的超级英雄数据:    
+```js
+const localDb = {}
+```
+接下来声明 `root` 实现 `schema` 中的字段方法：   
+```js
+const root = {
+    hero() {
+        // 这里需要转成数组 因为前面定义了返回值是  [Hero]  类型
+        let arr = []
+        for(const key in localDb){
+            arr.push(localDb[key])
+        }
+        return arr
+    },
+    createHero({ input }) {
+        // 相当于数据库的添加操作
+        localDb[input.name] = input
+        return localDb[input.name]
+    },
+    updateHero({ id, input }) {
+        // 相当于数据库的更新操作
+        const update = Object.assign({}, localDb[id], input)
+        localDb[id] = update
+        return update
+    }
+}
+```
+
+最后配置 `graphqlHTTP` 方法和启动服务器，这里就不多重复咯。    
+
+最终代码：    
+```js
+//...省略其他
+const schema = buildSchema(`
+    # 输入类型 用 input 标识
+    input HeroInput {
+        name: String
+        age: Int
+    }
+    # 查询类型
+    type Hero {
+        name: String
+        age: Int
+    }
+    type Mutation {
+        createHero(input: HeroInput): Hero 
+        updateHero(id: ID!, input: HeroInput): Hero
+    }
+    # 需要至少定义一个 Query 不要GraphiQL会不显示查询
+    type Query {
+        hero: [Hero]
+    }
+`)
+
+const localDb = {}
+
+const root = {
+    hero() {
+        // 这里需要转成数组 因为前面定义了返回值是  [Hero]  类型
+        let arr = []
+        for(const key in localDb){
+            arr.push(localDb[key])
+        }
+        return arr
+    },
+    createHero({ input }) {
+        // 相当于数据库的添加操作
+        localDb[input.name] = input
+        return localDb[input.name]
+    },
+    updateHero({ id, input }) {
+        // 相当于数据库的更新操作
+        const update = Object.assign({}, localDb[id], input)
+        localDb[id] = update
+        return update
+    }
+}
+//...省略其他
+```
+
+现在我们可以启动服务器，在 `GraphiQL` 上测试下效果了。    
+
+我们是使用 `mutation` 的 `createHero` 字段添加两条数据：   
+```js
+mutation {
+    createHero(input: {
+        name: "钢铁侠"
+        age: 40
+    }){
+        name
+        age
+    }
+}
+``` 
+```js
+mutation {
+    createHero(input: {
+        name: "美国队长"
+        age: 41
+    }){
+        name
+        age
+    }
+}
+```
+然后使用 `query` 的 `hero` 字段查询添加的结果：   
+```js
+query {
+    hero {
+        name
+        age
+    }
+}
+```
+这样我们就获取到刚才的添加结果：   
+```js
+{
+    "data": {
+        "hero": [
+            {
+                "name": "钢铁侠",
+                "age": 40
+            },
+            {
+                "name": "美国队长",
+                "age": 41
+            }
+        ]
+  }
+}
+```
+然后我们开始更新数据，使用 `mutation` 的 `updateHero` 字段将 **美国队长** 的 `age` 值修改为 18：    
+```js
+mutation {
+    updateHero(id: "美国队长", input: {
+        age: 18
+    }){
+        age
+    }
+}
+```
+再使用 `query` 的 `hero` 字段查询下新的数据，会发现 **美国队长** 的 `age` 值已经更新为 18：   
+```js
+{
+    "data": {
+        "hero": [
+            {
+                "name": "钢铁侠",
+                "age": 40
+            },
+            {
+                "name": "美国队长",
+                "age": 18
+            }
+        ]
+    }
+}
+```
 
 ## 七、认证和中间件
+我们知道，修改数据的接口不能让所有人随意访问，所以需要添加权限认证，让有权限的人才可以访问。    
+在 `express` 中，可以很简单的使用**中间件**来将请求进行拦截，将没有权限的请求过滤并返回错误提示。
 
+中间件实际上是一个函数，在接口执行之前，先拦截请求，再决定我们是否接着往下走，还是返回错误提示。   
+
+这在【六、使用Mutations修改数据】的最终代码上，在添加这个中间件：    
+
+```js
+//... 省略其他
+const app = express()
+const middleWare = (req, res, next) => {
+    // 这里是简单模拟权限
+    // 实际开发中 更多的是和后端进行 token 交换来判断权限
+    if(req.url.indexOf('/graphql') !== -1 && req.headers.cookie.indexOf('auth') === -1){
+        // 向客户端返回一个错误信息
+        res.send(JSON.stringify({
+            err: '暂无权限'
+        }))
+        return
+    }
+    next() // 正常下一步
+}
+// 注册中间件
+app.use(middleWare)
+
+//... 省略其他
+```
+
+这里的权限判断，只是简单模拟，实际开发中，更多的是和后端进行 `token` 交换来判断权限（或者其他形式）。   
+我们重启服务器，打开 `http://localhost:3000/graphql` ，发现页面提示错误了，因为 `cookies` 中没有含有 `auth` 字符串。    
+
+如果这里提示 `TypeError: Cannot read property 'indexOf' of undefined` ，可以先不用管，因为浏览器中没有 `cookies` 的原因，其实前面的权限判断逻辑需要根据具体业务场景判断。   
+
+
+为了方便测试，我们在 chrome 浏览器控制台的 `application` 下，手动设置一个含有 `auth` 字符串的一个 `cookies` ，只是测试使用哦。   
+
+![2](http://images.pingan8787.com/graphql_4.png)     
+
+设置完成后，我们就能正常进入页面。    
 
 ## 八、ConstructingTypes
 
