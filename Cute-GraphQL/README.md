@@ -724,11 +724,99 @@ app.use(middleWare)
 
 为了方便测试，我们在 chrome 浏览器控制台的 `application` 下，手动设置一个含有 `auth` 字符串的一个 `cookies` ，只是测试使用哦。   
 
-![2](http://images.pingan8787.com/graphql_4.png)     
+![graphql4](http://images.pingan8787.com/graphql_4.png)     
 
 设置完成后，我们就能正常进入页面。    
 
 ## 八、ConstructingTypes
+
+在前面的介绍中，我们要创建一个 `schema` 都是使用 `buildSchema` 方法来定义，但我们也可以使用另外一种定义方式。   
+就是这里要学习使用的构造函数 `graphql.GraphQLObjectType` 定义，它有这么几个优点和缺点：    
+
+* **优点**：报错提醒更直观，结构更清晰，更便于维护。   
+* **缺点**：代码量上升。   
+
+
+### 1. 定义type（类型）
+
+这里先将前面定义的 `Hero` 类型进行改造：   
+```js
+const graphql = require('graphql') // 需要引入
+const HeroType = new graphql.GraphQLObjectType({
+    name: 'Hero',
+    fields: {
+        name:{ type: graphql.GraphQLString },
+        age:{ type: graphql.GraphQLInt },
+    }
+})
+```
+
+![graphql6](http://images.pingan8787.com/graphql_6.png)   
+
+两者区别在于：    
+
+|区别|`buildSchema`|`graphql.GraphQLObjectType`|
+|:--:|:--:|:--:|
+|参数类型|字符串|对象|
+|类名|跟在 `type` 字符后面，这里是 `type Hero`|在参数对象的 `name` 属性上|
+|属性定义|定义在类型后，**键值对**形式|定义在参数对象 `fields` 属性中，值为对象，每个属性名为键名，值也是对象，其中 `type` 属性的值为 `graphql` 中的属性，下面会补充|
+
+补充：    
+`fields` 属性中的子属性的类型通常有：    
+* `graphql.GraphQLString`  
+* `graphql.GraphQLInt`
+* `graphql.GraphQLBoolean`
+....
+
+即在 `GraphQL`后面跟上基本类型名称。    
+
+
+### 2. 定义query（查询）
+
+定义查询的时候，跟之前类似，可以参照下面对比图理解，这里比较不同的是，多了个 `resolve` 的方法，这个方法是用来执行处理查询的逻辑，其实就是之前的 `root` 中的方法。    
+
+```js
+const QueryType = new graphql.GraphQLObjectType({
+    name: 'Query',
+    fields: {
+        // 一个个查询方法
+        getSuperHero: {
+            type: HeroType,
+            args: {
+                heroName: { type: graphql.GraphQLString }
+            },
+            // 方法实现 查询的处理函数
+            resolve: function(_, { heroName }){
+                const name = heroName
+                const age = 18
+                return { name, age }
+            }
+        }
+    }
+})
+```
+
+![graphql8](http://images.pingan8787.com/graphql_8.png)   
+
+### 3. 创建 schema
+
+创建的时候只需实例化并且将参数传入即可：  
+
+```js
+// step3 构造 schema
+const schema = new graphql.GraphQLSchema({ query: QueryType})
+```
+
+最后使用也是和前面一样：   
+```js
+const app = express()
+
+app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+}))
+app.listen(3000)
+```
 
 
 ## 九、与数据库结合实战
