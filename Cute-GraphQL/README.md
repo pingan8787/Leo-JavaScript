@@ -1,6 +1,9 @@
-# 看完复联四，我整理了这份 GraphQL 入门教程
+看完复联四，我整理了这份 GraphQL 入门教程
 
-## 首先有请阿爸镇贴！哈哈哈
+> 欢迎关注我的 [个人主页](https://github.com/pingan8787) &&  [个人博客](http://www.pingan8787.com/) && [个人知识库](http://js.pingan8787.com/) && 微信公众号“前端自习课”
+
+
+首先有请阿爸镇贴！哈哈哈
 
 ![iron_man](http://images.pingan8787.com/iron_man1.jpg)   
 
@@ -1003,3 +1006,19 @@ mutation {
 
 
 到这一步，我们也算是将这个练习做完了。    
+
+## 总结
+
+* `GraphQL` 是一种 **API 的查询语言**，是 REST API 的替代品。 
+
+* 创建查询的方式有两种：使用 `buildSchema` 或者 `GraphQLObjectType`。   
+
+* 查询操作用 `Query`，修改操作用 `Mutations`。   
+
+* 查询类型用 `type` ，输入类型用 `input`。  
+
+其实 `GraphQL` 还是很简单好用的呢~~~
+
+---
+
+> 本文首发在 [pingan8787个人博客](http://www.pingan8787.com)，如需转载请保留个人介绍
