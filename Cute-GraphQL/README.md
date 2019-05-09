@@ -724,8 +724,6 @@ app.use(middleWare)
 
 为了方便测试，我们在 chrome 浏览器控制台的 `application` 下，手动设置一个含有 `auth` 字符串的一个 `cookies` ，只是测试使用哦。   
 
-![graphql4](http://images.pingan8787.com/graphql_4.png)     
-
 设置完成后，我们就能正常进入页面。    
 
 ## 八、ConstructingTypes
@@ -820,3 +818,188 @@ app.listen(3000)
 
 
 ## 九、与数据库结合实战
+
+我们试着使用前面所学的内容，开发一个简单的实践项目：     
+通过 `GraphiQL` 页面，往 `Mongodb` 中插入和更新数据，主要用到【六、使用Mutations修改数据】章节的操作。    
+
+### 1. 搭建并启动本地 Mongodb 数据库
+首先我们可以到 [Mongodb 官网](https://www.mongodb.com/download-center) 选择对应平台和版本下载安装。    
+> 下载安装步骤，可以参考 [mongoDB下载、安装和配置](https://blog.csdn.net/qq_43288085/article/details/83187440)，这里就不多介绍哟~~   
+
+安装完成后，我们打开两个终端，分别执行下面两行命令：   
+```bash
+// 终端1  启动数据库
+mongod --dbpath c:\leo\app\mongodb\data\db
+
+// 终端2  进入数据库命令行操作模式
+mongo
+```
+
+### 2. 连接数据库，创建 Schema 和 Model
+首先我们新建一个文件 `db.js` ，并 `npm install mongoose` 安装 `mongoose` ，然后写入下面代码，实现**连接数据库**：   
+```js
+const express = require('express')
+const { buildSchema } = require('graphql')
+const graphqlHTTP = require('express-graphql')
+const mongoose = require('mongoose')
+
+const DB_PATH = 'mongodb://127.0.0.1:27017/hero_table'
+const connect = () => {
+    // 连接数据库
+    mongoose.connect(DB_PATH)
+    // 连接断开
+    mongoose.connection.on('disconnected', () => {
+        mongoose.connect(DB_PATH)
+    })
+    // 连接失败
+    mongoose.connection.on('error', err => {
+        console.error(err)
+    })
+    // 连接成功
+    mongoose.connection.on('connected', async () => {
+        console.log('Connected to MongoDB connected', DB_PATH)
+    })  
+}
+connect()
+```
+
+然后创建 `Schema` 和 `Model`：   
+```js
+let HeroSchema = new mongoose.Schema({
+    name: String,
+    age: Number
+})
+let HeroModel = mongoose.model('hero',HeroSchema, 'hero_table')
+```
+
+### 3. 声明查询语句
+
+这一步，还是先使用【六、使用Mutations修改数据】章节的操作逻辑，也就是先用**字符串创建查询**，而不使用 `GraphQLObjectType` 创建：   
+```js
+const schema = buildSchema(`
+    # 输入类型 用 input 标识
+    input HeroInput {
+        name: String
+        age: Int
+    }
+    # 查询类型
+    type Hero {
+        name: String
+        age: Int
+    }
+    type Mutation {
+        createHero(input: HeroInput): Hero 
+        updateHero(hero: String!, input: HeroInput): Hero
+    }
+    # 需要至少定义一个 Query 不要GraphiQL会不显示查询
+    type Query {
+        hero: [Hero]
+    }
+`)
+```
+**这边案例有稍作修改**   
+
+### 4. 实现添加数据和更新数据的逻辑
+
+这边处理添加数据和更新数据的逻辑，就要修改之前声明的 `root` 的操作内容了：   
+
+```js
+const root = {
+    hero() {
+        return new Promise( (resolve, reject) => {
+            HeroModel.find((err, res) => {
+                if(err) {
+                    reject(err)
+                    return
+                }
+                resolve(res)
+            })
+        })
+    },
+    createHero({ input }) {
+        // 实例化一个Model
+        const { name, age } = input
+        const params = new HeroModel({ name, age })
+        return new Promise( (resolve, reject) => {
+            params.save((err, res) => {
+                if(err) {
+                    reject(err)
+                    return
+                }
+                resolve(res)
+            })
+        })
+    },
+    updateHero({ hero, input }) {
+        const { age } = input
+        return new Promise ((resolve, reject) => {
+            HeroModel.update({name: hero}, {age}, (err, res) => {
+                if(err) {
+                    reject(err)
+                    return
+                }
+                resolve(res)
+            })
+        })
+    }
+}
+```
+
+### 5. 模拟测试
+
+最后我们在 `GraphiQL` 页面上模拟测试一下，首先添加两个英雄，钢铁侠和美国队长，并设置他们的 `age / name` 属性：   
+```js
+mutation {
+    createHero(input: {
+        name: "钢铁侠"
+        age: 40
+    }){
+        name
+        age
+    }
+}
+```
+```js
+mutation {
+    createHero(input: {
+        name: "美国队长"
+        age: 20
+    }){
+        name
+        age
+    }
+}
+```
+
+页面和接口没有报错，说明我们添加成功，数据库中也有这两条数据了：   
+
+
+![graphql10](http://images.pingan8787.com/graphql_10.png)     
+
+在测试下查询：   
+
+```js
+query {
+    hero {
+        name
+        age
+    }
+}
+```
+![graphql11](http://images.pingan8787.com/graphql_11.png)   
+
+查询也正常，接下来测试下更新，将美国队长的 `age` 修改为 60：      
+```js
+mutation {
+    updateHero(hero: "美国队长", input: {
+        age: 60
+    }){
+        age
+    }
+}
+```
+
+![graphql12](http://images.pingan8787.com/graphql_12.png)   
+
+
+到这一步，我们也算是将这个练习做完了。    
