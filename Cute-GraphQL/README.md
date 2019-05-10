@@ -1,13 +1,17 @@
+![封面](http://images.pingan8787.com/graph_demo.png)
+
+
 看完复联四，我整理了这份 GraphQL 入门教程
 
 > 欢迎关注我的 [个人主页](https://github.com/pingan8787) &&  [个人博客](http://www.pingan8787.com/) && [个人知识库](http://js.pingan8787.com/) && 微信公众号“前端自习课”
 
 
-首先有请阿爸镇贴！哈哈哈
+首先有请阿爸镇贴！哈哈哈，需要高清原图的小伙伴可以 [点我下载 阿爸无敌](http://images.pingan8787.com/iron_man1.jpg) 。   
 
 ![iron_man](http://images.pingan8787.com/iron_man1.jpg)   
 
-这是我的手机壁纸，哈哈，需要高清原图的小伙伴可以 [点我下载 阿爸无敌](http://images.pingan8787.com/iron_man1.jpg) 。   
+下面开始本文内容：   
+
 
 ## 一、GraphQL介绍
 `GraphQL` 是 Facebook 开发的一种 **API 的查询语言**，与 2015 年公开发布，是 REST API 的替代品。      
@@ -34,8 +38,8 @@
 
 ### 2. 简单案例   
 
-这里先看下简单的案例，体验下 `GraphQL` 的神奇之处。   
-我们定义查询语句：   
+这里先看下简单案例，体验下 `GraphQL` 的神奇之处（后面详细介绍）。   
+我们这样定义查询语句：   
 ```js
 query {
     hero
@@ -74,7 +78,7 @@ query {
 
 ### 1. 简单案例
 
-初始化一个 `package.json`，并且安装 `express` / `graphql` / `express-graphql` ：   
+首先创建一个文件夹 `demo` ，并初始化一个 `package.json`，安装 `express` / `graphql` / `express-graphql` 依赖包：   
 ```bash
 npm init -y
 npm install express graphql express-graphql -S
@@ -108,6 +112,7 @@ const root = {
 当然，处理器中也可以是其他复杂操作，后面会介绍。   
 
 然后实例化 `express` ，并且将路由转发给 `graphqlHTTP` 处理：   
+
 ```js
 const app = express()
 app.use('/graphql', graphqlHTTP({
@@ -1010,6 +1015,8 @@ mutation {
 ## 总结
 
 * `GraphQL` 是一种 **API 的查询语言**，是 REST API 的替代品。 
+
+* `GraphQL` 可以使用一个请求，获取所有想要的数据。    
 
 * 创建查询的方式有两种：使用 `buildSchema` 或者 `GraphQLObjectType`。   
 
