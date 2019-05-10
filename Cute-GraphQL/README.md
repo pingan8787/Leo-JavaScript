@@ -1,7 +1,7 @@
 ![封面](http://images.pingan8787.com/graph_demo.png)
 
 
-看完复联四，我整理了这份 GraphQL 入门教程
+看完复联四，我整理了这份 GraphQL 入门教程，哈哈真香。。。
 
 > 欢迎关注我的 [个人主页](https://github.com/pingan8787) &&  [个人博客](http://www.pingan8787.com/) && [个人知识库](http://js.pingan8787.com/) && 微信公众号“前端自习课”
 
