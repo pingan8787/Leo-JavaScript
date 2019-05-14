@@ -22,11 +22,15 @@
 4. [Cute-Regular](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/)
 5. [Cute-GraphQL](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
 
-### 三、[Cute-Angular](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular)
-分享Angular开源项目，和自己整理的新手开发教程。  
-[前往阅读](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
+### 三、Cute-Angular
 
-### 四、其他
+分享Angular开源项目，和自己整理的新手开发教程。  
+1. [Angular入门教程](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
+
+### 四、Cute-GraphQL
+1. [GraphQL入门教程](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
+
+### 五、其他
 1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 
 |Author|王平安|
