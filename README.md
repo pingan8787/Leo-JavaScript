@@ -20,7 +20,6 @@
 2. [《Cute-JS》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-JS/)
 3. [《Cute-Patterns》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/)
 4. [《Cute-Regular》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/)
-5. [《Cute-GraphQL》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
 
 ### 三、📜Cute-Angular
 
