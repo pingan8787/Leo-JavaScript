@@ -1,7 +1,7 @@
 ## 💌仓库介绍
-**Cute系列**更新一些系列文章和框架demo，作为自己学习结果的输出，喜欢的朋友欢迎stat。  
+**Cute系列**更新一些系列文章和框架demo，作为自己学习结果的输出，喜欢的朋友欢迎 👉stat。  
 
-### 💌关于作者
+### 关于作者
 [![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
 [![知乎](http://images.pingan8787.com/icon_zhihu1.png)](https://zhuanlan.zhihu.com/cute-javascript)
 [![掘金](http://images.pingan8787.com/icon_juejin2.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
@@ -13,7 +13,7 @@
 ## 💌仓库目录
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
-[前往阅读](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/)
+[👉前往阅读](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/)
 
 ### 二、📜[Cute-JavaScript](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript)
 1. [《Cute-ES》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/)
@@ -30,7 +30,7 @@
 ### 四、📜Cute-GraphQL
 1. [《GraphQL入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
 
-### 五、📜HTTP相关
+### 五、📜Cute-HTTP
 
 1. [《HTTP 的15个常见知识点复习》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/)  
 
