@@ -11,6 +11,13 @@
 
 
 ## 💌仓库目录
+
+### 零、📜[Cute-Frontend](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Frontend)
+
+整理一些前端入门的资料。   
+
+1. [《Cute-Frontend》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Frontend/EFT应届生Web前端入门指南.md)
+
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
 [👉前往阅读](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/)
