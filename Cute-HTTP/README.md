@@ -94,7 +94,7 @@ TCP连接的拆除需要发送四个包，客户端或者服务器端均可主�
 
 ### 3. 请介绍常见的 HTTP 头部(至少五个)
 
-### 3.1 HTTP 头部
+#### 3.1 HTTP 头部
 
 更多完整内容，可以查看 [《HTTP响应头和请求头信息对照表》](tools.jb51.net/table/http_header)
 
@@ -112,7 +112,7 @@ TCP连接的拆除需要发送四个包，客户端或者服务器端均可主�
 |`Connection`|客户机通过这个头告诉服务器，请求完后是关闭还是保持链接。|
 |`Date`|客户机通过这个头告诉服务器，客户机当前请求时间|
 
-### 3.2 Request Header
+#### 3.2 Request Header
 
 参考文章：[《HTTP常用头部信息》](https://www.cnblogs.com/amiezhang/p/9389840.html)   
 
@@ -130,7 +130,7 @@ TCP连接的拆除需要发送四个包，客户端或者服务器端均可主�
 |`Accept-Language: zh-CN,zh;q=0.9` |代表客户端可以支持语言 zh-CN 或者 zh (值得一提的是q(0~1)是优先级权重的意思，不写默认为1，这里 zh-CN 是1， zh 是0.9)|
 |`Connection: keep-alive`  |告诉服务器，客户端需要的 tcp 连接是一个长连接|
 
-### 3.3 Response Header
+#### 3.3 Response Header
 
 参考文章：[《HTTP常用头部信息》](https://www.cnblogs.com/amiezhang/p/9389840.html)   
 
