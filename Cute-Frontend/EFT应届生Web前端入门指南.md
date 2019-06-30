@@ -12,7 +12,7 @@
 3. 优先熟悉每个标签的字母拼写，含义，请勿使用编辑器自动补全功能；
 4. 适当翻阅感兴趣的知识，发挥想象；
 
-### 🏳️‍🌈本教程方法
+### 🏳️‍🌈教程使用方法
 
 1. 学习时，参考《[w3school教程](http://www.w3school.com.cn/)》，将自己对这个知识点的**理解 / 代码 / 思考**等，填下在每个知识点的下一行。
 
@@ -20,11 +20,33 @@
 
 3. 将学习时写的代码，整理起来。
 
-### 参考学习网站
+### 💻参考学习网站
 
 1. [《w3school教程》](http://www.w3school.com.cn/)
 
 2. [《火狐开发者社区 MDN》](https://developer.mozilla.org/zh-CN/docs/learn)
+
+### 💡资源收集
+#### 1. 学习网站
+* [w3school](http://www.w3school.com.cn/) ---  入门知识网站
+* [MDN 火狐开发者社区](
+https://developer.mozilla.org/zh-CN/) ---  入门知识网站
+* [慕课网](https://www.imooc.com/)  ---  视频学习网站
+* [掘金](www.juejin.im)  ---  技术社区
+* [segmentfault](https://segmentfault.com/) ---  技术社区
+
+#### 2. 常用工具
+* 微信  ---  日常沟通
+* [语雀](https://www.yuque.com/)  ---  团队知识库
+* 印象笔记  ---  个人笔记软件
+* TeamViewer 14 --- 电脑远程桌面软件
+* WPS ---  文档处理软件
+
+#### 3. 开发工具
+* Visual Studio Code  ---  前端最爱的编辑器
+* Google Chrome  ---  前端最爱的浏览器
+* git  ---  团队代码管理软件
+
 
 ### 一、页面结构层 HTML
 
@@ -136,8 +158,19 @@
 
 #### 2.4 CSS 高级
 
+* CSS 对齐（多种方式 / 水平对齐 / 垂直对齐）
+* CSS 尺寸（宽度 / 高度）
+* CSS 导航栏（水平 / 垂直）
+* CSS 图片透明
+* CSS 分类（6种情况）
+
 
 ### 三、高级页面结构层 HTML5
+
+* HTML5 介绍（概念 / 新特性）
+* HTML5 多媒体（视频 / 音频）
+* HTML5 画图（Canvas / SVG）
+* HTML5 新表单（输入类型 / 元素 / 属性）
 
 
 ### 四、高级页面化妆师 CSS3
