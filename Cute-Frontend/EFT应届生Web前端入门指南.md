@@ -175,5 +175,18 @@ https://developer.mozilla.org/zh-CN/) ---  入门知识网站
 
 ### 四、高级页面化妆师 CSS3
 
+这部分内容，需要你将 CSS3 模块的**新属性** 和 **兼容性问题** 整理下来。   
+
+* CSS3 介绍（主要模块）
+* CSS3 边框（新属性 / 兼容问题）
+* CSS3 背景（新属性 / 兼容问题）
+* CSS3 文本效果（新属性 / 兼容问题）
+* CSS3 转换（2D转换 / 3D转换）
+* CSS3 过渡
+* CSS3 动画
+* CSS3 字体
+* CSS3 单位（尺寸单位使用场景）
 
 ### 五、页面舞蹈师 JavaScript
+
+> 参考资料：[《Cute-JavaScript》](http://js.pingan8787.com/)
