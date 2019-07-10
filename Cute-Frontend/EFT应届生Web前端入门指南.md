@@ -1,5 +1,5 @@
 整理：王平安  
-最近更新：2019.06.24  
+最近更新：2019.07.10   
 
 ## EFT应届生Web前端入门指南
 
@@ -11,6 +11,7 @@
 2. 整理练习的代码，保存下来；
 3. 优先熟悉每个标签的字母拼写，含义，请勿使用编辑器自动补全功能；
 4. 适当翻阅感兴趣的知识，发挥想象；
+5. 建议绘制自己的知识图谱；
 
 ### 🏳️‍🌈教程使用方法
 
@@ -93,7 +94,7 @@ https://developer.mozilla.org/zh-CN/) ---  入门知识网站
 * HTML 字符实体(`&lt;` / `&gt;` / `&nbsp;` ...)
 
 
-**🔖可以先了解(后面详细学习)：**  
+**🔖先了解：**  
 
 * HTML 布局
 * HTML 响应式设计
@@ -188,5 +189,73 @@ https://developer.mozilla.org/zh-CN/) ---  入门知识网站
 * CSS3 单位（尺寸单位使用场景）
 
 ### 五、页面舞蹈师 JavaScript
+> 学习建议：《[w3school教程](http://www.w3school.com.cn/)》 和 《[《Cute-JavaScript》](http://js.pingan8787.com/)》 对照学习。  
 
-> 参考资料：[《Cute-JavaScript》](http://js.pingan8787.com/)
+> 参考资料：《[JavaScript知识图谱](https://www.w3cschool.cn/javascript/javascript-skillmap.html)》
+
+
+#### 5.1 JavaScript 介绍
+
+* JS 概念
+* JS 如何使用（常见4种方式）
+* JS 注意点
+
+#### 5.2 JavaScript 基础
+
+* JS 语法(声明 / 赋值 / 注释 / 表达式 / 标识符)
+* JS 数据类型
+* JS 运算符(算术 / 关系 / 对象 / 逻辑 / 位 / 其他 运算符)
+* JS 流程控制语句(循环语句 / 跳转语句 / 选择语句 / 异常处理语句)
+
+#### 5.3 JavaScript 变量
+
+* JS 变量声明(命名规则 / 变量类型)
+* JS 变量作用域和作用域链
+* JS 全局变量和局部变量
+
+#### 5.4 JavaScript 数组 / 对象
+
+* JS 数组定义(概念 / 创建 / 单维数组 / 多维数组)
+* JS 数组基本操作(增 / 删 / 改 / 查 / 遍历 / 排序 / 转换)
+* JS 对象定义(概念 / 创建 / 属性 / 值 / 方法)
+* JS 对象基本操作(增 / 删 / 改 / 查 / 遍历)
+
+#### 5.5 JavaScript 函数
+
+* JS 函数作用
+* JS 函数语法(定义 / 调用 / 返回)
+* JS 函数参数(入参 / 出参 / 形参 / 实参)
+
+#### 5.6 JavaScript DOM
+* JS DOM 概念
+* JS 获取 DOM 节点
+* JS 操作 DOM 节点(创建 / 插入 / 替换 / 复制 / 删除)
+* JS DOM 节点属性操作(获取属性 / 设置属性 / 删除属性)
+* JS DOM 节点文本操作
+* JS DOM 事件
+
+#### 5.7 JavaScript BOM
+
+暂时先了解：  
+
+* JS BOM 概念
+* JS BOM `navigator` 对象
+* JS BOM `screen` 对象
+* JS BOM `history` 对象
+* JS BOM `location` 对象
+* JS BOM `document` 对象
+
+
+### 🎀学习小结
+
+希望学完这些基础的你：  
+手头会有**两份笔记**和**很多作业代码**；
+脑海里有一片**前端小世界**；
+还有更浓厚的**兴趣**；
+
+还希望你：
+能够整理好知识点，知识图谱，多复习，多写代码；
+能够更上一层楼；
+
+
+leo 2019/7/10（结）
