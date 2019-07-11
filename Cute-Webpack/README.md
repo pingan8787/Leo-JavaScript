@@ -364,7 +364,7 @@ webpack 的配置文件，是导出一个对象的 JavaScript 文件，由 webpa
 因为 webpack 配置是标准的 Node.js CommonJS 模块，你可以做到以下事情：
 
 * 通过 `require(...)` 导入其他文件;   
-* 通过 `require(...)` 使用` npm` 的工具函数;   
+* 通过 `require(...)` 使用 `npm` 的工具函数;   
 * 使用 JavaScript 控制流表达式，例如 `?:` 操作符;   
 * 对常用值使用常量或变量;   
 * 编写并执行函数来生成部分配置;   
@@ -399,8 +399,8 @@ module.exports = {
 
 我们可能需要同时考虑到**开发环境**和**生产环境**，在 `webpack.config.js`中实现，我们会有至少两种方式：  
 
-1. 导出一个配置对象来代替；
-2. 导出一个可以传入参数的函数：  
+1. 导出一个**配置对象**来代替；
+2. 导出一个**可以传入参数**的函数：  
 
 传入两个参数：环境变量（[查看 CLI 文档的环境选项](https://www.webpackjs.com/api/cli/#environment-options)）和 map 对象（`argv`）参数。
 
@@ -493,13 +493,15 @@ export default config;
 
 ##### 3.2 Babel and JSX
 
-在以下的例子中，使用了 JSX（React 形式的 javascript）以及 Babel 来创建 JSON 形式的 webpack 配置文件：
+在以下的例子中，使用了 `JSX`（`React` 形式的 javascript）以及 `Babel` 来创建 `JSON` 形式的 webpack 配置文件：
 
 首先安装依赖：
 
 ```shell
 npm install --save-dev babel-register jsxobj babel-preset-es2015
 ```
+
+设置配置：   
 
 ```js
 // .babelrc
@@ -539,3 +541,69 @@ export default (
   </webpack>
 );
 ```
+
+### 三、模块
+
+#### 1. 模块介绍
+
+开发中将程序分解成离散功能块，成为模块。
+
+而 webpack 模块能够以各种形式表达他们的依赖关系：
+
+* [es6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)： `import`语句；
+* [CommonJS](http://www.commonjs.org/specs/modules/1.0/): `require()` 语句；
+* [AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md)：  `define` 和 `require` 语句；
+* `css/sass/less` 文件中的 `@import` 语句；
+* 样式(`url(...)`)或 HTML 文件(`<img src=...>`)中的图片链接(`image url`)；
+
+#### 2. 模块解析
+
+使用 `resolver` 库来找到模块的绝对路径，帮助 webpack 找到 bundle 中需要引入的模块代码，这些代码包含在每个 `require` / `import` 语句中，在模块打包中，webpack 使用 [enhanced-resolve](https://github.com/webpack/enhanced-resolve) 来解析文件路径
+
+**webpack 解析规则：**
+使用 `enhanced-resolve`，`webpack` 支持解析三种文件路径：  
+
+* 绝对路径：   
+
+```js
+import "/home/me/file";
+
+import "C:\\Users\\me\\file";
+```
+
+* 相对路径： 
+
+```js
+import "../src/file1";
+import "./file2";
+```
+
+* 模块路径：
+
+```js
+import "module";
+import "module/lib/file";
+```
+
+模块将在 [`resolve.modules`](https://www.webpackjs.com/configuration/resolve/#resolve-modules) 中指定的所有目录中搜索，另外可以使用 [`resolve.alias`](https://www.webpackjs.com/configuration/resolve/#resolve-alias) 做初始化模块路径。
+
+解析器（resolver）检查路径是否指向文件或目录，如果是指向文件：
+
+* 如果有文件拓展名则直接打包；
+* 否则使用 [`resolve.extensions`] 选项作为文件扩展名来解析，配置解析器在解析中能够接受哪些扩展名（例如 `.js`, `.jsx`）。
+
+如果是指向文件夹，则按照步骤找到正确拓展名的文件：   
+
+* 如果文件夹中包含 `package.json` 文件，则按照顺序查找 [resolve.mainFields](https://www.webpackjs.com/configuration/resolve/#resolve-mainfields) 配置选项中指定的字段。并且 `package.json` 中的第一个这样的字段确定文件路径。
+* 如果不存在 `package.json` 文件或者 `package.json` 文件中的 `main` 字段没有返回一个有效路径，则按照顺序查找 `resolve.mainFiles` 配置选项中指定的文件名，看是否能在 `import/require` 目录下匹配到一个存在的文件名。
+* 文件扩展名通过 `resolve.extensions` 选项采用类似的方法进行解析。
+
+#### 3. 解析 loader
+
+Loader 解析遵循与文件解析器指定的规则相同的规则。但是 [`resolveLoader`](https://www.webpackjs.com/configuration/resolve/#resolveloader) 配置选项可以用来为 Loader 提供独立的解析规则。
+
+#### 4. 缓存
+
+每个文件系统访问都被缓存，以便更快触发对同一文件的多个并行或串行请求。在[观察模式](https://www.webpackjs.com/configuration/watch/#watch)下，只有修改过的文件会从缓存中摘出。如果关闭观察模式，在每次编译前清理缓存。
+
+有关上述配置的更多信息，请查看[解析 API](https://www.webpackjs.com/configuration/resolve/)学习。
