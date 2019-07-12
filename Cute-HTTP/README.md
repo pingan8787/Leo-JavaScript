@@ -690,4 +690,4 @@ LRU（Least recently used，最近最少使用）算法根据数据的历史访�
 |ES小册|js.pingan8787.com|
 
 ## 微信公众号
-![bg](http://images.pingan8787.com/fe_bg.png)  
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  

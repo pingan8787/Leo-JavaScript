@@ -839,4 +839,4 @@ s.match(/\b(\d+)\b/g); // ["2019", "03", "16"]
 |ES小册|js.pingan8787.com|
 
 ## 微信公众号
-![bg](http://images.pingan8787.com/fe_bg.png)  
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  

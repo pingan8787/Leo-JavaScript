@@ -556,6 +556,8 @@ export default (
 * `css/sass/less` 文件中的 `@import` 语句；
 * 样式(`url(...)`)或 HTML 文件(`<img src=...>`)中的图片链接(`image url`)；
 
+**查看更多 [模块方法](https://www.webpackjs.com/api/module-methods/)**。   
+
 #### 2. 模块解析
 
 使用 `resolver` 库来找到模块的绝对路径，帮助 webpack 找到 bundle 中需要引入的模块代码，这些代码包含在每个 `require` / `import` 语句中，在模块打包中，webpack 使用 [enhanced-resolve](https://github.com/webpack/enhanced-resolve) 来解析文件路径

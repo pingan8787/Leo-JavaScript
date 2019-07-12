@@ -4775,4 +4775,4 @@ for (let i of arr) {
 * [ECMAScript 2018 标准导读](https://zhuanlan.zhihu.com/p/27537439)
 
 ## 微信公众号
-![bg](http://images.pingan8787.com/fe_bg.png)  
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  

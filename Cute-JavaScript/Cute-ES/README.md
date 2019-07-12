@@ -57,4 +57,4 @@
     - [4.3 异步遍历器](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/4.ES9.md)
 
 
-![bg](http://images.pingan8787.com/fe_bg.png)  
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  
