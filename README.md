@@ -23,10 +23,10 @@
 [👉前往阅读](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/)
 
 ### 二、📜[Cute-JavaScript](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript)
-1. [《Cute-ES》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/)
-2. [《Cute-JS》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-JS/)
-3. [《Cute-Patterns》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/)
-4. [《Cute-Regular》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/)
+1. [《Cute-ES》系列文章](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/)
+2. [《Cute-JS》系列文章](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-JS/)
+3. [《Cute-Patterns》系列文章](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/)
+4. [《Cute-Regular》系列文章](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/)
 
 ### 三、📜Cute-Angular
 
@@ -40,7 +40,29 @@
 
 1. [《HTTP 的15个常见知识点复习》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/)  
 
-### 六、📜其他
+
+### 六、📜Cute-Hybrid
+
+1. [《Hybrid App 应用开发中必备知识点复习 - 1》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+2. [《Hybrid App 应用开发中必备知识点复习 - 1》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+
+### 七、📜Cute-Algorithms
+
+1. [《数据结构与算法 - Tree》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+1. [《数据结构与算法 - Stack》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+1. [《数据结构与算法 - Queue》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+1. [《数据结构与算法 - Set》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+1. [《数据结构与算法 - LinkedList》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+1. [《数据结构与算法 - Dictionary&&HashTable》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/) 
+
+### 八、📜其他
 1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 
 |Author|王平安|
