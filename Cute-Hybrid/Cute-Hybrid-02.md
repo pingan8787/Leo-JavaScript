@@ -126,6 +126,8 @@
 
 由于 `WKWebView` 在独立进程里执行网络请求。一旦注册 `http(s) scheme` 后，网络请求将从 `Network Process` 发送到 `App Process`，这样 `NSURLProtocol` 才能拦截网络请求。在 `webkit2` 的设计里使用 `MessageQueue` 进行进程之间的通信，Network Process 会将请求 `encode` 成一个 `Message`,然后通过 IPC 发送给` App Process`。出于性能的原因，`encode` 的时候 `HTTPBody` 和 `HTTPBodyStream` 这两个字段会被丢弃掉了。
 
+如果是用正常 `HTTP` 和 `HTTPs` 就是用 `WKWebView` 自带的拦截器，自定义协议用 `NSURLProtocol` 拦截。   
+
 > 详细可以参考：[《NSURLProtocol处理WKWebView的http和https的请求》](https://blog.csdn.net/liuyinghui523/article/details/89550083)
 
 #### 5. WKWebView 页面样式问题
