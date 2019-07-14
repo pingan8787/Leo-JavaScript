@@ -8,26 +8,26 @@
 
 这一期共整理了 10 个问题，和相应的参考答案，文字和图片较多，**建议大家可以收藏，根据文章目录来阅读**。
 
-之前分享的每周内容，我都整理到掘金收藏集 [📔《EFT每周一练》](https://juejin.im/collection/5cd11b0af265da0346227e24) 上啦，欢迎点赞收藏咯💕💕。  
+之前分享的每周内容，我都整理到掘金收藏集 [📔《EFT每周一练》] (https://juejin.im/collection/5cd11b0af265da0346227e24) 上啦，欢迎点赞收藏咯💕💕。  
 
 **内容回顾：**
 
-1. [《EFT 每周分享 —— Hybrid App 应用开发中 5 个必备知识点复习》](https://juejin.im/post/5d125306e51d45773e418aab)
+1. [《EFT 每周分享 —— Hybrid App 应用开发中 5 个必备知识点复习》] (https://juejin.im/post/5d125306e51d45773e418aab)
 
-2. [《EFT 每周分享 —— HTTP 的15个常见知识点复习》](https://juejin.im/post/5d0de954e51d4556be5b3a6f)
+2. [《EFT 每周分享 —— HTTP 的15个常见知识点复习》] (https://juejin.im/post/5d0de954e51d4556be5b3a6f)
 
-3. [《EFT 每周分享 —— 数据结构与算法合集》](https://juejin.im/collection/5cd11b0af265da0346227e24)
+3. [《EFT 每周分享 —— 数据结构与算法合集》] (https://juejin.im/collection/5cd11b0af265da0346227e24)
 
 **文章收录：** 
 
-本系列所有文章，都将收录在 Github 上，[欢迎点击查阅](https://github.com/pingan8787/Leo-EveryWeek)。   
+本系列所有文章，都将收录在 Github 上，[欢迎点击查阅] (https://github.com/pingan8787/Leo-EveryWeek)。   
 
 > 注：本文整理部分资料来源网络，有些图片/段落找不到原文出处，如有侵权，联系删除。
 
 
 ### 一、iOS 平台中 UIWebView 与 WKWebView 有什么区别？
 
-> 参考文章：[《UIWebView与WKWebView》](http://www.cocoachina.com/articles/17337)
+> 参考文章：[《UIWebView与WKWebView》] (http://www.cocoachina.com/articles/17337)
 
 `UIWebView` 是苹果继承于 `UIView` 封装的一个加载 web 内容的类,它可以加载任何远端的web数据展示在你的页面上，你可以像浏览器一样前进后退刷新等操作。不过苹果在 iOS8 以后推出了 `WKWebView` 来加载 Web，并应用于 iOS 和 OSX 中，它取代了 `UIWebView` 和 `WebView` ，在两个平台上支持同一套 API。
 
@@ -76,7 +76,7 @@
 
 ### 二、WKWebView 有哪一些坑？
 
-> 参考文章：[《WKWebView 那些坑》](https://kknews.cc/tech/x2rzg3g.html)
+> 参考文章：[《WKWebView 那些坑》] (https://kknews.cc/tech/x2rzg3g.html)
 
 
 #### 1. WKWebView 白屏问题
@@ -125,6 +125,8 @@
 **解决办法：**  
 
 由于 `WKWebView` 在独立进程里执行网络请求。一旦注册 `http(s) scheme` 后，网络请求将从 `Network Process` 发送到 `App Process`，这样 `NSURLProtocol` 才能拦截网络请求。在 `webkit2` 的设计里使用 `MessageQueue` 进行进程之间的通信，Network Process 会将请求 `encode` 成一个 `Message`,然后通过 IPC 发送给` App Process`。出于性能的原因，`encode` 的时候 `HTTPBody` 和 `HTTPBodyStream` 这两个字段会被丢弃掉了。
+
+> 详细可以参考：[《NSURLProtocol处理WKWebView的http和https的请求》](https://blog.csdn.net/liuyinghui523/article/details/89550083)
 
 #### 5. WKWebView 页面样式问题
 
@@ -183,8 +185,8 @@ WKWebView 下通过 -[CALayer renderInContext:]实现截屏的方式失效，需
 
 ### 三、Crosswalk 是什么，它有什么作用？
 
-> 参考网站： [《Crosswalk Github》](https://Crosswalk-project.org/) 
-> 参考文章： [《Crosswalk入门》](https://www.mobibrw.com/2015/1934)
+> 参考网站： [《Crosswalk Github》] (https://Crosswalk-project.org/) 
+> 参考文章： [《Crosswalk入门》] (https://www.mobibrw.com/2015/1934)
 
 **Crosswalk** 是一款开源的 web 引擎。目前 **Crosswalk** 正式支持的移动操作系统包括 Android 和 Tizen ，在 Android 4.0 及以上的系统中使用 **Crosswalk** 的 Web 应用程序在 HTML5 方面可以有一致的体验，**同时和系统的整合交互方面（比如启动画面、权限管理、应用切换、社交分享等等）可以做到类似原生应用**。
 
@@ -236,7 +238,7 @@ WKWebView 下通过 -[CALayer renderInContext:]实现截屏的方式失效，需
 
 #### 2. WebView 动态加载
 
-> 参考文章：[《WebView常用优化方案》](https://www.jianshu.com/p/f64e1b1c90d9)
+> 参考文章：[《WebView常用优化方案》] (https://www.jianshu.com/p/f64e1b1c90d9)
 
 `WebView` 动态加载。就是不在 `xml` 中写 `WebView` ，写一个 `layout` ，然后把 `WebView` add 进去。
 
@@ -258,7 +260,7 @@ protected void onDestroy() {
 
 #### 3. 独立的web进程，与主进程隔开
 
-> 参考文章：[《WebView常用优化方案》](https://www.jianshu.com/p/f64e1b1c90d9)
+> 参考文章：[《WebView常用优化方案》] (https://www.jianshu.com/p/f64e1b1c90d9)
 
 这个方法被运用于类似 qq ，微信这样的超级 app 中，这也是解决任何 `WebView` 内存问题屡试不爽的方法 对于封装的 `webactivity` ，在` manifest.xml` 中设置。
 
@@ -283,7 +285,7 @@ super.onDestroy();
 
 #### 4. WebView 释放
 
-> 参考文章：[《WebView常用优化方案》](https://www.jianshu.com/p/f64e1b1c90d9)
+> 参考文章：[《WebView常用优化方案》] (https://www.jianshu.com/p/f64e1b1c90d9)
 
 ```java
 public void destroy() {
@@ -314,7 +316,7 @@ public void destroy() {
 ### 五、在 Android 平台下如何调试 WebView？
 
 #### 1. 在 Chrome 浏览器上调试
-> 参考文章：[《Android调试webview》](https://www.jianshu.com/p/3591eebbe797)     
+> 参考文章：[《Android调试webview》] (https://www.jianshu.com/p/3591eebbe797)     
 
 
 **1.1 条件：**   
@@ -368,7 +370,7 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
 #### 2. 使用 DebugGap 调试
 
-> 参考文章：[《Android下的webview调试》](https://segmentfault.com/a/1190000009240637)
+> 参考文章：[《Android下的webview调试》] (https://segmentfault.com/a/1190000009240637)
 
 **2.1 Windows 下载 DebugGap 并配置：**   
 
@@ -398,7 +400,7 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
 ### 六、在 iOS 平台下如何调试 WebView？
 
-> 参考文章：[《iOS之Safari调试webView/H5页面》](https://www.cnblogs.com/dianming/p/6902442.html)
+> 参考文章：[《iOS之Safari调试webView/H5页面》] (https://www.cnblogs.com/dianming/p/6902442.html)
 
 一般我们通过 Mac 的 Safari浏览器 来调试，但是要注意两点：
 
@@ -423,7 +425,7 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
 #### 3. 调试 APP 内的 WebView
 
-> 参考文章：[《前端 WEBVIEW 指南之 IOS 调试篇》](https://imnerd.org/ios-webview-debug.html)
+> 参考文章：[《前端 WEBVIEW 指南之 IOS 调试篇》] (https://imnerd.org/ios-webview-debug.html)
 
 在 Safari-> 开发中，看到自己的设备以及 WebView 中网页，点击后即可开启对应页面的 `Inspector` ，可以用来进行断点调试。   
 
@@ -446,7 +448,7 @@ Fiddler 或 Charles 的主要作用有：
 * 可以模拟网络请求的速度；
 * 可以代理服务器的静态资源请求，指向本地文件，省去频繁发布 H5 包，达到快速调试目的；
 
-> 补充链接：[《Fiddler工具使用介绍一》](https://www.cnblogs.com/miantest/p/7289694.html)
+> 补充链接：[《Fiddler工具使用介绍一》] (https://www.cnblogs.com/miantest/p/7289694.html)
 
 ### 八、调试企业微信、微信和钉钉版时，可以使用哪些工具？
 
@@ -467,7 +469,7 @@ Fiddler 或 Charles 的主要作用有：
 
 #### 1. Chrome 控制台调试
 
-> 参考文章：[《前端常见调试技巧篇总结（持续更新...）》](https://www.cnblogs.com/chenbeibei520/p/9959555.html)
+> 参考文章：[《前端常见调试技巧篇总结（持续更新...）》] (https://www.cnblogs.com/chenbeibei520/p/9959555.html)
 
 **1.1 Source 面板断点调试 JS**  
 从左到右，各个图标表示的功能分别为：
@@ -500,7 +502,7 @@ Fiddler 或 Charles 的主要作用有：
 
 #### 2. console 调试
 
-> 参考文章：[《Console调试常用用法》](https://blog.csdn.net/a0405221/article/details/85248433)
+> 参考文章：[《Console调试常用用法》] (https://blog.csdn.net/a0405221/article/details/85248433)
 
 **2.1 显示信息的命令：** 
 
