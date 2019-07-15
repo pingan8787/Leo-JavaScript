@@ -609,3 +609,48 @@ Loader 解析遵循与文件解析器指定的规则相同的规则。但是 [`r
 每个文件系统访问都被缓存，以便更快触发对同一文件的多个并行或串行请求。在[观察模式](https://www.webpackjs.com/configuration/watch/#watch)下，只有修改过的文件会从缓存中摘出。如果关闭观察模式，在每次编译前清理缓存。
 
 有关上述配置的更多信息，请查看[解析 API](https://www.webpackjs.com/configuration/resolve/)学习。
+
+
+### 四、构建目标
+
+注意：webpack 的 `target` 属性不要和` output.libraryTarget `属性混淆。
+
+#### 1. 用法
+
+在你的 webpack 配置中设置 `target` 的值:   
+
+```js
+module.exports = {
+  target: 'node'
+};
+```
+在上面例子中，使用 `node` webpack 会编译为用于「类 Node.js」环境（使用 Node.js 的 `require` ，而不是使用任意内置模块（如 `fs` 或 `path`）来加载 chunk）。
+
+更多详细的值，可以参考 [构建目标(targets)](https://www.webpackjs.com/configuration/target/)
+
+#### 2. 多个 target
+
+尽管 webpack 不支持向 `target` 传入多个字符串，你可以通过打包两份分离的配置来创建同构的库：
+
+```js
+var path = require('path');
+var serverConfig = {
+  target: 'node',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'lib.node.js'
+  }
+  //…
+};
+
+var clientConfig = {
+  target: 'web', // <=== 默认是 'web'，可省略
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'lib.js'
+  }
+  //…
+};
+
+module.exports = [ serverConfig, clientConfig ];
+```
