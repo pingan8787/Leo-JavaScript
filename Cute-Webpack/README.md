@@ -1,4 +1,5 @@
-### 一、概念
+
+### 一. 概念
 
 需要理解**四个核心概念**：   
 
@@ -357,7 +358,7 @@ webpack --mode=production
 **记住，只设置 NODE_ENV，则不会自动设置 mode。**
 
 
-### 二、配置
+### 二. 配置
 
 webpack 的配置文件，是导出一个对象的 JavaScript 文件，由 webpack 根据对象定义的属性进行解析。
 
@@ -542,7 +543,7 @@ export default (
 );
 ```
 
-### 三、模块
+### 三. 模块
 
 #### 1. 模块介绍
 
@@ -611,7 +612,7 @@ Loader 解析遵循与文件解析器指定的规则相同的规则。但是 [`r
 有关上述配置的更多信息，请查看[解析 API](https://www.webpackjs.com/configuration/resolve/)学习。
 
 
-### 四、构建目标
+### 四. 构建目标
 
 注意：webpack 的 `target` 属性不要和` output.libraryTarget `属性混淆。
 

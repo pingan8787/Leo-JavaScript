@@ -76,5 +76,4 @@
 |JS小册|js.pingan8787.com|
 |微信公众号|前端自习课|
 
-
-![前端自习课](https://user-gold-cdn.xitu.io/2019/2/16/168f49f0238191ca?w=1078&h=647&f=png&s=282515)
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  
