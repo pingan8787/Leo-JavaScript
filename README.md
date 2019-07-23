@@ -53,19 +53,23 @@
 
 1. [《数据结构与算法 - Tree》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Tree.md) 
 
-1. [《数据结构与算法 - Stack》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Stack.md) 
+2. [《数据结构与算法 - Stack》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Stack.md) 
 
-1. [《数据结构与算法 - Queue》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Queue.md) 
+3. [《数据结构与算法 - Queue》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Queue.md) 
 
-1. [《数据结构与算法 - Set》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Set.md) 
+4. [《数据结构与算法 - Set》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Set.md) 
 
-1. [《数据结构与算法 - LinkedList》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Tree.md) 
+5. [《数据结构与算法 - LinkedList》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Tree.md) 
 
-1. [《数据结构与算法 - Dictionary&&HashTable》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Dictionary%26%26HashTable.md) 
+6. [《数据结构与算法 - Dictionary&&HashTable》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Dictionary%26%26HashTable.md) 
 
-### 八、📜其他
+### 八、📜翻译
 
-1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
+1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
+
+### 九、📜其他
+
+1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B译%5D正确使用sort()方法.md)  
 
 |Author|王平安|
 |---|---|
