@@ -65,11 +65,11 @@
 
 ### 八、📜翻译
 
-1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
+1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
 
 ### 九、📜其他
 
-1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B译%5D正确使用sort()方法.md)  
+1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 
 |Author|王平安|
 |---|---|
