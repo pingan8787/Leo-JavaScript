@@ -2,6 +2,7 @@
 
 > [webpack 4.0 教程  bilibili](https://www.bilibili.com/video/av41546218/?p=1)
 
+本教程没有太去介绍一些概念的问题了，在代码编写过程中，我会加上分析解释的介绍。
 
 ### 一、 快速入门 demo
 
@@ -34,6 +35,8 @@ npm i -D webpack webpack-cli
 ```bash
 npm i -S lodash
 ```
+
+*`--save` 可以简写为`-S`, `--save-dev`可以简写为`-D`.*
 
 开发 `index.js`：
 ```js
