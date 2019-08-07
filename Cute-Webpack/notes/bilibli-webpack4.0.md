@@ -1,7 +1,86 @@
-## webpack 4.0 B站教程 知识点
+## webpack 4.0 B站教程整理
 
 > [webpack 4.0 教程  bilibili](https://www.bilibili.com/video/av41546218/?p=1)
 
+
+### 一、 快速入门 demo
+
+新建文件夹 `leo`:
+```bash
+mkdir leo
+```
+
+进入文件夹 `cd leo`:
+```bash
+cd leo
+```
+
+然后本地安装 `webpack` 和 `webpack-cli` （在 Webpack 4.0以后需要单独安装）：
+```bash
+npm i -D webpack webpack-cli
+```
+
+初始化项目结构：
+```
++ ├─package.json
++ ├─dist          // 存放最终打包的文件
++ │  └─index.html
++ ├─src           // 存放入口文件等开发文件
++ │  └─index.js
++ ├─webpack.config.js  // webpack的配置文件
+```
+
+安装 `lodash`：
+```bash
+npm i -S lodash
+```
+
+开发 `index.js`：
+```js
+import _ from 'lodash';
+
+function createElement(){
+    let div = document.createElement('div');
+    div.innerHTML = _.join(['my', 'name', 'is', 'leo'], '');
+    return div;
+}
+document.body.appendChild(createElement());
+```
+
+开发 `webpack.config.js`：   
+```js
+const path = require('path');
+
+module.exports = {
+    entry: './src/index.js',
+    mode: 'development',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist')
+    }
+}
+```
+
+开始第一次打包任务：   
+
+```bash
+npx webpack
+
+// 输出：
+
+Hash: 030b37b6b9a0b4344437
+Version: webpack 4.39.1Time: 308ms
+Built at: 2019-08-07 08:10:21
+  Asset     Size  Chunks             Chunk Names
+main.js  552 KiB    main  [emitted]  main
+Entrypoint main = main.js
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {main} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {main} [built][./src/index.js] 225 bytes {main} [built]
+    + 1 hidden module
+```
+
+
+### 四、 webpack的sass添加c3前缀和sourcemap的处理
 
 ### 四. webpack的sass添加c3前缀和sourcemap的处理
 
