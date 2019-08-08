@@ -85,8 +85,6 @@ Entrypoint main = main.js
 
 ### 四、 webpack的sass添加c3前缀和sourcemap的处理
 
-### 四. webpack的sass添加c3前缀和sourcemap的处理
-
 1. 开启 `sourceMap`   
 
 ```js
