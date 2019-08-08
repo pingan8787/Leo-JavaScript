@@ -82,6 +82,61 @@ Entrypoint main = main.js
     + 1 hidden module
 ```
 
+打包成功后，会保存在 `dist` 目录中。
+
+
+### 二、webpack 处理 css 模块
+
+这一部分，我们开始学着使用 `webpack` 去处理 `css` 相关的模块。
+
+#### 1. 修改代码
+
+在项目 `src` 目录中，新建 `style` 文件夹，并新建 `index.css` 文件：
+```
+  ├─package.json
+  ├─dist          // 存放最终打包的文件
+  │  └─index.html
+  ├─src           // 存放入口文件等开发文件
+  │  ├─index.js
++ │  └─style
++ │     └─index.css
+  ├─webpack.config.js  // webpack的配置文件
+```
+
+并在 `index.css` 文件给我们新建的 `div` 元素添加 class ：
+
+```css
+// src/style/index.css
+.box{
+    color: brown;
+}
+```
+
+接着在 `index.js` 的新建元素方法中，添加 `class` 为 `box`，这样新建的元素就带有 `box` 的 `class` 属性：
+
+```js
+// src/index.js
+import _ from 'lodash';
+import './style/index.css';// 引入样式文件
+
+function createElement(){
+    let div = document.createElement('div');
+    div.innerHTML = _.join(['my', 'name', 'is', 'leo'], '');
+    div.className = 'box';
+    return div;
+}
+document.body.appendChild(createElement());
+```
+
+**注意：**
+
+这里使用 `import './style/index.css';` 引入我们的样式文件，是没办法解析使用，这时我们需要在 `webpack` 中使用到第三方 `loader` 插件，这里我们使用：   
+
+`css-loader` 和 `style-loader`。
+
+#### 2. 安装插件
+
+
 
 ### 四、 webpack的sass添加c3前缀和sourcemap的处理
 
