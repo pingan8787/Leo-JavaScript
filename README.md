@@ -1,5 +1,5 @@
 ## 💌仓库介绍
-**Cute系列**更新一些系列文章和框架demo，作为自己学习结果的输出，喜欢的朋友欢迎 👉stat。  
+**Cute系列**更新一些系列文章和框架demo，作为自己学习结果的输出，喜欢的朋友欢迎 👉star。  
 
 ### 关于作者
 [![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
