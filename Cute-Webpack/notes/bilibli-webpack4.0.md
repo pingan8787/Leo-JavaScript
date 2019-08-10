@@ -96,7 +96,7 @@ Entrypoint main = main.js
 ```
 
 
-### 二、 webpack 处理 css 模块
+### 二、 webpack 处理 CSS 模块
 
 这一部分，我们开始学着使用 `webpack` 去处理 `css` 相关的模块。
 
@@ -217,7 +217,9 @@ webpack 模块支持如下语句：
 
 另外，所有的 [webpack 配置选项](https://www.webpackjs.com/configuration/) 可以在中文官网查看，我们入门只学习常用模块。
 
-#### 2. 常用模块 module.noParse
+#### 2. 常用模块 
+
+##### 2.1 `module.noParse`
 
 值的类型：`RegExp | [RegExp] | function`
 
@@ -233,15 +235,251 @@ module: {
 }
 ```
 
+##### 2.2 `module.rules`
+
+创建模块时，匹配请求的规则数组。按照规则为对应模块使用对应的 `loader`，或修改解析器（parser）。
+
+```js
+// webpack.config.js
+
+module: {
+  rules: [
+    { test: /\.css$/, use: ['style-loader', 'css-loader']}
+  ]
+}
+```
+
+* `module.rules` 参数有：
+
+`use`：为模块使用指定 `loader`，并且可以传入一个字符串数组，**加载顺序从右往左**。
+
+* `module.rules` 匹配条件有：
+
+`{test : Condition}`：**匹配**特定条件，非必传，支持一个**正则表达式**或**正则表达式数组**；  
+`{include : Condition}`：**匹配**特定条件，非必传，支持一个**字符串**或**字符串数组**；  
+`{exclude : Condition}`：**排除**特定条件，非必传，支持一个**字符串**或**字符串数组**；  
+`{and : [Condition]}`：必须匹配数组中的所有条件；
+`{or : [Condition]}`：匹配数组中任一条件；
+`{not : [Condition]}`：必须排除这个条件；
+
+> 更多参数介绍，可访问中文官网的介绍:
+> [《Rule》](https://www.webpackjs.com/configuration/module/#rule) https://www.webpackjs.com/configuration/module/#rule
+
+```js
+// webpack.config.js
+
+module: {
+  rules: [
+    { 
+      test: /\.css$/, 
+      use: ['style-loader', 'css-loader'],
+      include: [
+        path.resolve(__dirname, "app/style.css"),
+        path.resolve(__dirname, "vendor/style.css")
+      ]
+    }
+  ]
+}
+
+```
+
+#### 3. 加载 Sass 文件
+
+需要使用到 `sass-loader` 的插件，这里先安装：  
+
+```bash
+npm install sass-loader node-sass --save-dev
+```
+
+在 `src/style` 目录下添加 `leo.scss` 文件，并添加内容：
+
+```css
+// leo.scss
+
+$bg-color: #ee3;
+.box{
+    background-color: $bg-color;
+}
+```
+
+然后在 `src/index.js` 中引入 `leo.scss` 文件：
+
+```js
+// src/index.js
+import './style/leo.scss';
+```
+
+再 `npx webpack` 重新打包，并打开 `dist/index.html` 可以看到背景颜色已经添加上去：
+
+![webpack03](http://images.pingan8787.com/webpack03.png)
+
+
+#### 4. 小技巧
+
+像 `npx webpack` 这个命令我们需要经常使用，对于这种命令，我们可以把它写成命令，方便每次使用。
+
+我们在 `package.json` 的 `scripts` 中添加一个命令为 `build`，以后打包只要执行 `npm run build` 即可：  
+
+```js
+"scripts": {
+  "build": "npx webpack -c webpack.config.js"
+},
+```
+
+这里的 `-c webpack.config.js` 中，`-c` 后面跟着的是 `webpack` 配置文件，默认可以不写。  
 
 
 
+### 四、 webpack 开启 SourceMap 和添加 CSS3 前缀
+
+添加 `SourceMap` 是为了方便打包之后，我们在项目中调试样式，定位到样式在源文件的位置。
+
+#### 1. 开启 `SourceMap`   
+
+在 `css-loader` 和 `sass-loader` 都可以通过设置 `options` 选项启用 `sourceMap`。
+
+```js
+// webpack.config.js
+
+rules: [
+  {
+    test: /\.(sc|c|sa)ss$/,
+    use: [
+      "style-loader", 
+      {
+        loader:"css-loader",
+        options:{ sourceMap: true }
+      },
+      {
+        loader:"sass-loader",
+        options:{ sourceMap: true }
+      },
+    ]
+  }
+]
+```
+
+再重新打包，看下 `index.html` 的样式，可以看到，样式已经定位到源文件上了：
+
+![webpack04](http://images.pingan8787.com/webpack04.png)
+
+这样我们在开发过程中，调试样式就方便很多了。
 
 
+#### 2. 为样式添加 CSS3 前缀
 
-### 四、 webpack的sass添加c3前缀和sourcemap的处理
+这里我们用到 `PostCSS` 这个 `loader`，它是一个 CSS **预处理工具**，可以为 CSS3 的属性**添加前缀**，样式格式校验（`stylelint`），提前使用 `CSS` 新特性，实现 `CSS` 模块化，防止 `CSS` 样式冲突。
 
-1. 开启 `sourceMap`   
+首先安装 `PostCSS`：
+
+```shell
+npm install postcss-loader autoprefixer --save-dev
+```
+
+另外还有：
+
+* `postcss-cssnext` 可以让我们使用 `CSS4 `的样式，并能配合 `autoprefixer` 进行浏览器部分兼容的补全，还支持嵌套语法。
+
+* `precss` 类似 `scss` 语法，如果我们只需要使用嵌套，就可以用它替换 `scss`。
+
+* `postcss-import` 让我们可以在`@import` CSS文件的时 `webpack` 能监听并编译。
+
+
+`postcss-loader` 更多介绍和使用可以查看文档[《postcss-loader》](https://www.webpackjs.com/loaders/postcss-loader/)。
+
+开始添加 `postcss-loader` 并设置 `autoprefixer`：
+
+```js
+// webpack.config.js
+
+rules: [
+  {
+    test: /\.(sc|c|sa)ss$/,
+    use: [
+      "style-loader", 
+      {
+        loader:"css-loader",
+        options:{ sourceMap: true }
+      },
+      {
+        loader:"postcss-loader",
+        options: {
+          ident: "postcss",
+          sourceMap: true,
+          plugins: loader => [
+            require('autoprefixer')(),
+            // 这里可以使用更多配置，如上面提到的 postcss-cssnext 等
+            // require('postcss-cssnext')()
+          ]
+        }
+      },
+      {
+        loader:"sass-loader",
+        options:{ sourceMap: true }
+      },
+    ]
+  }
+]
+```
+
+还需要在 `package.json` 中添加判断浏览器版本：
+
+```json
+// package.json
+
+{
+  //...
+  "browserslist": [
+    "> 1%", // 全球浏览器使用率大于1%，最新两个版本并且是IE8以上的浏览器，加前缀 
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
+```
+
+为了做测试，我们修改 `src/style/leo.scss` 中 `.box` 的样式：
+
+```css
+// src/style/leo.scss
+
+.box{
+    background-color: $bg-color;
+    display: flex;
+}
+```
+
+然后重新打包，可以看见 CSS3 属性的前缀已经添加上去了：
+
+![webpack05](http://images.pingan8787.com/webpack05.png)
+
+
+### 五、 webpack 将 CSS 抽取成单独文件
+
+在之前学习中，CSS 样式代码都是写到 `index.html` 的 `<style>` 标签中，这样样式代码多了以后，很不方便。
+
+于是我们需要将这些样式打包成单独的 `CSS` 文件。
+
+webpack4 开始使用 `mini-css-extract-plugin` 插件，而在 1-3 版本使用 `extract-text-webpack-plugin`。
+
+> 注意：抽取样式以后，就不能使用 `style-loader` 注入到 html 中。
+
+#### 1. 安装 `mini-css-extract-plugin`
+
+```bash
+npm install mini-css-extract-plugin --save-dev
+```
+
+#### 2. 使用 `mini-css-extract-plugin`
+
+我们需要引入 `mini-css-extract-plugin`：
+
+```js
+// webpack.config.js
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+```
+
+然后修改 `rules`，将 `style-loader`，替换成 `MiniCssExtractPlugin.loader` ，然后添加 `plugins` 配置项：   
 
 ```js
 // webpack.config.js
@@ -249,61 +487,118 @@ module: {
 module: {
   rules: [
     {
-      test: /\.css$/,
+      test: /\.(sc|c|sa)ss$/,
       use: [
-        'style-loader',
+        MiniCssExtractPlugin.loader, 
         {
-          loader: 'css-loader',
-          options:{
-            sourceMap: true
+          loader:"css-loader",
+          options:{ sourceMap: true }
+        },
+        {
+          loader:"postcss-loader",
+          options: {
+            ident: "postcss",
+            sourceMap: true,
+            plugins: loader => [require('autoprefixer')()]
           }
-        }
+        },
+        {
+          loader:"sass-loader",
+          options:{ sourceMap: true }
+        },
       ]
     }
   ]
-}
+},
+plugins: [
+  new MiniCssExtractPlugin({
+    filename: '[name].css', // 最终输出的文件名
+    chunkFilename: '[id].css'
+  })
+]
 ```
-2. 使用` PostCSS` 处理 `loader`（附带：添加 `CSS3` 前缀）
 
-`PostCSS` 用来做 `CSS` 预处理，用途：为 `CSS` 属性添加浅醉，样式格式校验（`stylelint`），提前使用 `CSS `新特性，实现 `CSS `模块化，防止 `CSS` 样式冲突。
+然后重新打包，这时候可以看到我们 `dist` 目录下就多了个 `main.css` 文件：
 
-以使用 `PostCSS` 添加前缀为例：
+![webpack06](http://images.pingan8787.com/webpack06.png)
 
-```shell
-npm i D postcss-loader autoprefixer
+因为现在已经将 CSS 都抽取成单独文件，所以在 `dist/index.html` 中，我们需要手动引入 `main.css` 了：
+
+```html
+// index.html
+
+<link rel="stylesheet" href="main.css">
 ```
-另外还有：
 
-* `postcss-cssnext` 可以让我们使用 `CSS4 `的样式，并能配合 `autoprefixer` 进行浏览器部分兼容的补全，还支持嵌套语法。
+### 六、 webpack 压缩 CSS 和 JS
 
-* `precss` 如果只需要使用嵌套，可以用它。
+为了缩小打包后包的体积，我们经常做优化的时候，将 CSS 和 JS 文件进行压缩，这里需要使用到不同的插件。
 
-* `postcss-import` 让我们可以在`@import` CSS文件的时候让 `webpack` 监听并编译。
+#### 1. 压缩 CSS
 
-更多插件可以看 `postcss-loader` 的 github 官网介绍。
+使用 `optimize-css-assets-webpack-plugin` 压缩 CSS 的插件。  
+
+* **安装**
+
+```bash
+npm install optimize-css-assets-webpack-plugin --save-dev
+```
+
+* **使用**
 
 ```js
-module: {
-    rules: [
-        {
-            test: /\.css$/,
-            use: [
-                'style-loader',{
-                    loader: 'css-loader',
-                    options:{
-                        sourceMap: true
-                    }
-                },{
-                    loader: 'postcss-loader',
-                    options:{
-                        ident:'postcss',
-                        plugins: loader => {
-                            require('autoprefixer')({ browsers: ['> 0.15% in CN']})
-                        }
-                    }
-                }
-            ]
-        }
-    ]
+// webpack.config.js
+
+// ... 省略
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+module.exports = {
+  // ... 省略
+  plugins: [
+    // ... 省略
+    new OptimizeCssAssetsPlugin({})
+  ],
 }
 ```
+
+重新打包，可以看到 `main.css` 已经被压缩成一行代码，即压缩成功~
+
+#### 2. 压缩 JS
+
+使用 `uglifyjs-webpack-plugin` 压缩 JS 的插件。  
+
+
+* **安装**
+
+```bash
+npm install uglifyjs-webpack-plugin --save-dev
+```
+
+* **使用**
+
+```js
+// webpack.config.js
+
+// ... 省略
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+module.exports = {
+  // ... 省略
+  plugins: [
+    // ... 省略
+    new OptimizeCssAssetsPlugin({}),
+    new UglifyJsPlugin({
+      cache: true, parallel: true, sourceMap: true
+    })
+  ],
+}
+```
+
+其中 `UglifyJsPlugin` 的参数：  
+
+`cache`：当 JS 没有发生变化则不压缩；  
+`parallel`：是否启用并行压缩；  
+`sourceMap`：是否启用 sourceMap；  
+
+然后重新打包，查看 `main.js`，已经被压缩了：
+
+![webpack07](http://images.pingan8787.com/webpack07.png)
+
