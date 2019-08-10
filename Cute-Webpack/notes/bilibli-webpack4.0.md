@@ -1,4 +1,4 @@
-## webpack 4.0 B站教程整理
+## webpack4 实践之路
 
 > [webpack 4.0 教程  bilibili](https://www.bilibili.com/video/av41546218/?p=1)
 
@@ -601,4 +601,117 @@ module.exports = {
 然后重新打包，查看 `main.js`，已经被压缩了：
 
 ![webpack07](http://images.pingan8787.com/webpack07.png)
+
+### 七、webpack 为文件名添加 hash 值
+
+由于我们打包出来的 `css`、`js` 文件是静态文件，就存在缓存问题，因此我们可以给文件名添加 `hash` 值，防止缓存。   
+
+#### 1. 添加 hash 值
+
+直接在 `webpack.config.js` 中，为需要添加 hash 值的文件名添加 `[hash]` 就可以：
+
+```js
+// webpack.config.js
+
+module.exports = {
+  // ... 省略其他
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css'
+    }),
+  ],
+}
+```
+
+配置完成后，重新打包，就可以看到文件名中包含了 hash 值了：
+
+![webpack08](http://images.pingan8787.com/webpack08.png)
+
+#### 2. 动态引用打包后的文件
+
+由于我们前面给打包的文件名添加了 `hash` 值，会导致 `index.html` 引用文件错误，所以我们需要让它能动态引入打包后的文件。
+
+这里我们使用 `HtmlWebpackPlugin` 插件，它可以把打包后的 CSS 或者 JS 文件直接引用注入到 HTML 模版中，就不用每次手动修改。
+
+安装：
+
+```bash
+npm install html-webpack-plugin --save-dev
+```
+
+引入插件：
+
+```js
+// webpack.config.js
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+```
+
+使用插件：
+
+```js
+// webpack.config.js
+
+plugins: [
+  new HtmlWebpackPlugin({
+    title: "leo study!",   // 生成的文件标题
+    filename: "main.html", // 最终生成的文件名
+    minify: { // 压缩选项
+      collapseWhitespace: true, // 移除空格
+      removeComments: true, // 移除注释
+      removeAttributeQuotes: true, // 移除双引号
+    }
+  })
+],
+```
+
+关于 `html-webpack-plugin` 更多介绍可以[《查看文档》](https://github.com/jantimon/html-webpack-plugin)https://github.com/jantimon/html-webpack-plugin/。
+
+接着我们打包以后，可以看见 `dist` 目录下，多了 `main.html` 的文件，格式化以后，可以看出，已经动态引入打包后的 CSS 文件和 JS 文件了：
+
+![webpack09](http://images.pingan8787.com/webpack09.png)
+
+
+### 八、 webpack 清理目录插件
+
+在之前，我们每次打包都会生成新的文件，并且在添加 hash 值以后，文件名不会出现重复的情况，导致每次打包都会生成新文件，并且这些文件都用不到。
+
+为了解决这个问题，我们需要在每次打包之前，将 `/dist` 目录清空，再进行打包。
+
+这里我们使用 `clean-webpack-plugin` 插件来实现：  
+
+```bash
+npm install clean-webpack-plugin --save-dev
+```
+
+引入插件：
+
+```js
+// webpack.config.js
+
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+```
+
+使用插件：  
+
+```js
+// webpack.config.js
+
+plugins: [
+  new CleanWebpackPlugin(
+    {cleanOnceBeforeBuildPatterns:['dist']}
+  )
+],
+```
+
+参数 `cleanOnceBeforeBuildPatterns` 是表示需要清除的文件夹。
+
+这样我们每次打包之前，都会先将 `/dist` 目录清空一次，再执行打包。   
+
+关于 `clean-webpack-plugin` 更多介绍可以[《查看文档》](https://github.com/jantimon/clean-webpack-plugin)https://github.com/jantimon/clean-webpack-plugin/。
 
