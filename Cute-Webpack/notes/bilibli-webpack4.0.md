@@ -197,7 +197,7 @@ Entrypoint main = main.js
 
 ![webpack01](http://images.pingan8787.com/webpack01.png)
 
-## 三、 webpack 的模块和处理 sass
+## 三、 webpack 模块介绍和处理 sass
 
 在这一节中，我们会介绍 `weboack` 中关于模块的一些概念，并且会介绍在上一节基础上，如何去处理 `sass` 文件。
 
@@ -221,7 +221,7 @@ webpack 模块支持如下语句：
 
 ### 2. 常用模块 
 
-#### 2.1 `module.noParse`
+#### 2.1 module.noParse
 
 值的类型：`RegExp | [RegExp] | function`
 
@@ -237,7 +237,7 @@ module: {
 }
 ```
 
-#### 2.2 `module.rules`
+#### 2.2 module.rules
 
 创建模块时，匹配请求的规则数组。按照规则为对应模块使用对应的 `loader`，或修改解析器（parser）。
 
@@ -336,7 +336,7 @@ import './style/leo.scss';
 
 添加 `SourceMap` 是为了方便打包之后，我们在项目中调试样式，定位到样式在源文件的位置。
 
-### 1. 开启 `SourceMap`   
+### 1. 开启 SourceMap  
 
 在 `css-loader` 和 `sass-loader` 都可以通过设置 `options` 选项启用 `sourceMap`。
 
@@ -723,3 +723,22 @@ plugins: [
 
 关于 `clean-webpack-plugin` 更多介绍可以[《查看文档》](https://github.com/jantimon/clean-webpack-plugin)https://github.com/jantimon/clean-webpack-plugin/。
 
+## 九、 webpack 图片处理和优化
+
+## 十、 webpack 图片 base64 和字体处理
+
+## 十一、 webpack 配置合并和提取公共配置
+
+## 十二、 webpack 监控自动编译和启用 js 是 sourceMap
+
+## 十三、 webpack 热更新和代理配置
+
+## 十四、 webpack 设置代理服务器和 bable 转换及优化
+
+## 十五、 webpack 开启 Eslint
+
+## 十六、 webpack 模块解析后缀和别名
+
+## 十七、 webpack 的模块外部依赖的配置
+
+## 十八、 webpack 打包分析报表及优化总结
