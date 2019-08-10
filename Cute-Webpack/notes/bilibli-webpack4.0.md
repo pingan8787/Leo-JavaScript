@@ -4,9 +4,9 @@
 
 本教程没有太去介绍一些概念的问题了，在代码编写过程中，我会加上分析解释的介绍。
 
-### 一、 快速入门 demo
+## 一、 快速入门 demo
 
-#### 1. 项目初始化
+### 1. 项目初始化
 
 新建文件夹 `leo`:
 ```bash
@@ -21,7 +21,7 @@ cd leo
 然后本地安装 `webpack` 和 `webpack-cli` （在 Webpack 4.0以后需要单独安装）：
 
 ```bash
-npm i -D webpack webpack-cli
+npm install webpack webpack-cli --save-dev
 ```
 
 初始化项目结构：
@@ -35,13 +35,15 @@ npm i -D webpack webpack-cli
 ```
 
 安装 `lodash`：
+
 ```bash
-npm i -S lodash
+npm install lodash --save-dev
 ```
 
 *`--save` 可以简写为`-S`, `--save-dev`可以简写为`-D`.*
 
 开发 `index.js`：
+
 ```js
 import _ from 'lodash';
 
@@ -54,6 +56,7 @@ document.body.appendChild(createElement());
 ```
 
 开发 `webpack.config.js`：   
+
 ```js
 const path = require('path');
 
@@ -67,7 +70,7 @@ module.exports = {
 }
 ```
 
-#### 2. 打包测试
+### 2. 打包测试
 
 开始第一次打包任务：   
 
@@ -96,11 +99,11 @@ Entrypoint main = main.js
 ```
 
 
-### 二、 webpack 处理 CSS 模块
+## 二、 webpack 处理 CSS 模块
 
 这一部分，我们开始学着使用 `webpack` 去处理 `css` 相关的模块。
 
-#### 1. 修改代码
+### 1. 修改代码
 
 在项目 `src` 目录中，新建 `style` 文件夹，并新建 `index.css` 文件：
 ```
@@ -132,10 +135,10 @@ import _ from 'lodash';
 import './style/index.css';// 引入样式文件
 
 function createElement(){
-    let div = document.createElement('div');
-    div.innerHTML = _.join(['my', 'name', 'is', 'leo'], '');
-    div.className = 'box';
-    return div;
+  let div = document.createElement('div');
+  div.innerHTML = _.join(['my', 'name', 'is', 'leo'], '');
+  div.className = 'box';
+  return div;
 }
 document.body.appendChild(createElement());
 ```
@@ -147,9 +150,9 @@ document.body.appendChild(createElement());
 * `css-loader` ： 用于处理 `css` 文件，使得能在 js 文件中引入使用；
 * `style-loader` ： 用于将 `css` 文件注入到 `index.html` 中的 `<style>` 标签上；
 
-#### 2. 安装配置插件
+### 2. 安装配置插件
 
-首先通过 `npm` 去安装这两个插件：
+安装插件：
 
 ```bash
 npm install --save-dev style-loader css-loader
@@ -172,7 +175,7 @@ module: {
 
 这段代码中，`test` 的值表示**需要匹配的模块后缀名**，`use` 则表示对应**处理的 loader 插件名称**（处理顺序是从右往左）。
 
-#### 3. 打包测试
+### 3. 打包测试
 
 ```bash
 npx webpack
@@ -194,12 +197,11 @@ Entrypoint main = main.js
 
 ![webpack01](http://images.pingan8787.com/webpack01.png)
 
-
-### 三、 webpack 的模块和处理 sass
+## 三、 webpack 的模块和处理 sass
 
 在这一节中，我们会介绍 `weboack` 中关于模块的一些概念，并且会介绍在上一节基础上，如何去处理 `sass` 文件。
 
-#### 1. webpack 模块介绍
+### 1. webpack 模块介绍
 
 这里介绍的模块（module）是指 `webpack.config.js` 文件中的 `module` 配置，它决定了如何处理项目中的不同类型模块。
 
@@ -217,9 +219,9 @@ webpack 模块支持如下语句：
 
 另外，所有的 [webpack 配置选项](https://www.webpackjs.com/configuration/) 可以在中文官网查看，我们入门只学习常用模块。
 
-#### 2. 常用模块 
+### 2. 常用模块 
 
-##### 2.1 `module.noParse`
+#### 2.1 `module.noParse`
 
 值的类型：`RegExp | [RegExp] | function`
 
@@ -235,7 +237,7 @@ module: {
 }
 ```
 
-##### 2.2 `module.rules`
+#### 2.2 `module.rules`
 
 创建模块时，匹配请求的规则数组。按照规则为对应模块使用对应的 `loader`，或修改解析器（parser）。
 
@@ -258,11 +260,11 @@ module: {
 `{test : Condition}`：**匹配**特定条件，非必传，支持一个**正则表达式**或**正则表达式数组**；  
 `{include : Condition}`：**匹配**特定条件，非必传，支持一个**字符串**或**字符串数组**；  
 `{exclude : Condition}`：**排除**特定条件，非必传，支持一个**字符串**或**字符串数组**；  
-`{and : [Condition]}`：必须匹配数组中的所有条件；
-`{or : [Condition]}`：匹配数组中任一条件；
-`{not : [Condition]}`：必须排除这个条件；
+`{and : [Condition]}`：必须匹配数组中的所有条件；  
+`{or : [Condition]}`：匹配数组中任一条件；   
+`{not : [Condition]}`：必须排除这个条件；   
 
-> 更多参数介绍，可访问中文官网的介绍:
+> 更多参数介绍，可访问中文官网的介绍:   
 > [《Rule》](https://www.webpackjs.com/configuration/module/#rule) https://www.webpackjs.com/configuration/module/#rule
 
 ```js
@@ -283,7 +285,7 @@ module: {
 
 ```
 
-#### 3. 加载 Sass 文件
+### 3. 加载 Sass 文件
 
 需要使用到 `sass-loader` 的插件，这里先安装：  
 
@@ -314,7 +316,7 @@ import './style/leo.scss';
 ![webpack03](http://images.pingan8787.com/webpack03.png)
 
 
-#### 4. 小技巧
+### 4. 小技巧
 
 像 `npx webpack` 这个命令我们需要经常使用，对于这种命令，我们可以把它写成命令，方便每次使用。
 
@@ -330,11 +332,11 @@ import './style/leo.scss';
 
 
 
-### 四、 webpack 开启 SourceMap 和添加 CSS3 前缀
+## 四、 webpack 开启 SourceMap 和添加 CSS3 前缀
 
 添加 `SourceMap` 是为了方便打包之后，我们在项目中调试样式，定位到样式在源文件的位置。
 
-#### 1. 开启 `SourceMap`   
+### 1. 开启 `SourceMap`   
 
 在 `css-loader` 和 `sass-loader` 都可以通过设置 `options` 选项启用 `sourceMap`。
 
@@ -366,7 +368,7 @@ rules: [
 这样我们在开发过程中，调试样式就方便很多了。
 
 
-#### 2. 为样式添加 CSS3 前缀
+### 2. 为样式添加 CSS3 前缀
 
 这里我们用到 `PostCSS` 这个 `loader`，它是一个 CSS **预处理工具**，可以为 CSS3 的属性**添加前缀**，样式格式校验（`stylelint`），提前使用 `CSS` 新特性，实现 `CSS` 模块化，防止 `CSS` 样式冲突。
 
@@ -385,7 +387,7 @@ npm install postcss-loader autoprefixer --save-dev
 * `postcss-import` 让我们可以在`@import` CSS文件的时 `webpack` 能监听并编译。
 
 
-`postcss-loader` 更多介绍和使用可以查看文档[《postcss-loader》](https://www.webpackjs.com/loaders/postcss-loader/)。
+`postcss-loader` 更多介绍和使用可以查看文档[《postcss-loader》](https://www.webpackjs.com/loaders/postcss-loader/)https://www.webpackjs.com/loaders/postcss-loader/。
 
 开始添加 `postcss-loader` 并设置 `autoprefixer`：
 
@@ -453,7 +455,7 @@ rules: [
 ![webpack05](http://images.pingan8787.com/webpack05.png)
 
 
-### 五、 webpack 将 CSS 抽取成单独文件
+## 五、 webpack 将 CSS 抽取成单独文件
 
 在之前学习中，CSS 样式代码都是写到 `index.html` 的 `<style>` 标签中，这样样式代码多了以后，很不方便。
 
@@ -463,15 +465,13 @@ webpack4 开始使用 `mini-css-extract-plugin` 插件，而在 1-3 版本使用
 
 > 注意：抽取样式以后，就不能使用 `style-loader` 注入到 html 中。
 
-#### 1. 安装 `mini-css-extract-plugin`
+安装插件：   
 
 ```bash
 npm install mini-css-extract-plugin --save-dev
 ```
 
-#### 2. 使用 `mini-css-extract-plugin`
-
-我们需要引入 `mini-css-extract-plugin`：
+引入插件：
 
 ```js
 // webpack.config.js
@@ -530,21 +530,21 @@ plugins: [
 <link rel="stylesheet" href="main.css">
 ```
 
-### 六、 webpack 压缩 CSS 和 JS
+## 六、 webpack 压缩 CSS 和 JS
 
 为了缩小打包后包的体积，我们经常做优化的时候，将 CSS 和 JS 文件进行压缩，这里需要使用到不同的插件。
 
-#### 1. 压缩 CSS
+### 1. 压缩 CSS
 
 使用 `optimize-css-assets-webpack-plugin` 压缩 CSS 的插件。  
 
-* **安装**
+安装插件：
 
 ```bash
 npm install optimize-css-assets-webpack-plugin --save-dev
 ```
 
-* **使用**
+使用插件：
 
 ```js
 // webpack.config.js
@@ -562,24 +562,30 @@ module.exports = {
 
 重新打包，可以看到 `main.css` 已经被压缩成一行代码，即压缩成功~
 
-#### 2. 压缩 JS
+### 2. 压缩 JS
 
 使用 `uglifyjs-webpack-plugin` 压缩 JS 的插件。  
 
 
-* **安装**
+安装插件：   
 
 ```bash
 npm install uglifyjs-webpack-plugin --save-dev
 ```
 
-* **使用**
+引入插件：
 
 ```js
 // webpack.config.js
 
-// ... 省略
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+```
+
+使用插件：
+
+```js
+// webpack.config.js
+// ... 省略
 module.exports = {
   // ... 省略
   plugins: [
@@ -602,11 +608,11 @@ module.exports = {
 
 ![webpack07](http://images.pingan8787.com/webpack07.png)
 
-### 七、webpack 为文件名添加 hash 值
+## 七、webpack 为文件名添加 hash 值
 
 由于我们打包出来的 `css`、`js` 文件是静态文件，就存在缓存问题，因此我们可以给文件名添加 `hash` 值，防止缓存。   
 
-#### 1. 添加 hash 值
+### 1. 添加 hash 值
 
 直接在 `webpack.config.js` 中，为需要添加 hash 值的文件名添加 `[hash]` 就可以：
 
@@ -632,13 +638,13 @@ module.exports = {
 
 ![webpack08](http://images.pingan8787.com/webpack08.png)
 
-#### 2. 动态引用打包后的文件
+### 2. 动态引用打包后的文件
 
 由于我们前面给打包的文件名添加了 `hash` 值，会导致 `index.html` 引用文件错误，所以我们需要让它能动态引入打包后的文件。
 
 这里我们使用 `HtmlWebpackPlugin` 插件，它可以把打包后的 CSS 或者 JS 文件直接引用注入到 HTML 模版中，就不用每次手动修改。
 
-安装：
+安装插件：
 
 ```bash
 npm install html-webpack-plugin --save-dev
@@ -677,13 +683,15 @@ plugins: [
 ![webpack09](http://images.pingan8787.com/webpack09.png)
 
 
-### 八、 webpack 清理目录插件
+## 八、 webpack 清理目录插件
 
 在之前，我们每次打包都会生成新的文件，并且在添加 hash 值以后，文件名不会出现重复的情况，导致每次打包都会生成新文件，并且这些文件都用不到。
 
 为了解决这个问题，我们需要在每次打包之前，将 `/dist` 目录清空，再进行打包。
 
-这里我们使用 `clean-webpack-plugin` 插件来实现：  
+这里我们使用 `clean-webpack-plugin` 插件来实现。
+
+安装插件：
 
 ```bash
 npm install clean-webpack-plugin --save-dev
