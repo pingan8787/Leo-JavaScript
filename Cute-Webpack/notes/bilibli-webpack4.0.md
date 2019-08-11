@@ -712,9 +712,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // webpack.config.js
 
 plugins: [
-  new CleanWebpackPlugin(
-    {cleanOnceBeforeBuildPatterns:['dist']}
-  )
+  new CleanWebpackPlugin()
 ],
 ```
 
@@ -953,7 +951,7 @@ module.exports = {
               removeAttributeQuotes: true,
           }
       }),
-      new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns:['dist']})
+      new CleanWebpackPlugin()
   ],
 }
 ```
@@ -1086,7 +1084,137 @@ module.exports = merge(common, prodConfig)
 
 ## 十二、 webpack 监控自动编译和启用 js 是 sourceMap
 
-## 十三、 webpack 热更新和代理配置
+### 1. 开启 js 的 sourceMap
+
+当 webpack 打包源代码后，就很难追踪到错误和警告在源代码的位置。
+
+如将三个源文件打包一个 `bundle` 中，其中一个文件的代码报错，那么堆栈追中就会指向 `bundle`。
+
+为了能方便定位错误，我们使用 `inline-source-map` 选项，注意不要在生产环境中使用。
+
+```diff
+// webpack.dev.js
+
+let devConfig = {
+  // ... 省略其他
++  devtool: 'inline-source-map'
+}
+```
+
+### 2. 测试 sourceMap
+
+为了测试是否成功，我们将 `src/index.js` 代码中，在第 12 行上，添加一句日志打印。
+
+```diff
+// src/index.js
+
+// ... 省略其他
++ console.log(111)
+```
+
+对比下开启 `sourceMap` 前后的区别：
+
+![webpack12](http://images.pingan8787.com/webpack12.png)
+
+### 3. 开启监控自动编译
+
+如果每次我们修改完代码，都要手动编译，那是多累的一件事。
+
+为此我们使用 `--watch` 命令，让我们每次保存完，都会自动编译。
+
+为此，我们需要在 `package.json` 中的打包命令添加 `--watch` 命令：
+
+```diff
+// package.json
+
+- "build": "npx webpack --config webpack.dev.js",
++ "build": "npx webpack --config webpack.dev.js --watch",
+```
+
+这里仅对开发环境开启，生产环境不需要使用。
+
+## 十三、 webpack 热更新
+
+上一节介绍监控自动编译，当我们保存文件后，会自动编译文件，但是我们还是需要手动去刷新页面，才能看到编译后的结果。
+
+于是为了自动编译之后，再自动重新加载，我们就可以使用 `webpack-dev-server` 来启动一个简单 web 服务器，实时重新加载。
+
+### 1. 开启热更新
+
+插件安装：
+
+```sh
+npm install webpack-dev-server --save-dev
+```
+
+使用插件：
+
+```js
+// webpack.dev.js
+
+const webpack = require('webpack');
+const webpack = require('webpack');
+
+let devConfig = {
+  // ... 省略其他
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'), 
+    compress: true,
+    hot: true,
+    overlay: true, 
+    open:true,
+    publicPath: '/',
+    host: 'localhost',
+    port: '1200'
+ }
+ plugins: [
+    new webpack.NamedModulesPlugin(), // 更容易查看（patch）的以来
+    new webpack.HotModuleReplacementPlugin() // 替换插件
+ ]
+}
+```
+
+启动热更新：
+
+```sh
+npx webpack-dev-server --config webpack.dev.js
+```
+
+常用配置：
+```
+contentBase: path.join(__dirname, 'dist'), //本地服务器所加载的页面所在的目录
+clinetLogLevel: 'warning', // 可能值有 none, error, warning 或者 info (默认值)
+hot:true,//启动热更新替换特性，需要配合 webpack.HotModuleReplacementPlugin 插件
+host:'0.0.0.0', // 启动服务器的 host
+port:7000,      // 端口号
+compress:true,  // 为所有服务启用gzip压缩
+overlay: true,  // 在浏览器中显示全屏覆盖
+stats: "errors-only" ,// 只显示包中的错误
+open:true, // 启用“打开”后，dev服务器将打开浏览器。
+proxy: {   // 设置代理
+    "/api": {
+        target: "http://localhost:3000",
+        pathRewrite: {"^/api" : ""}
+    }
+}
+```
+
+这时候我们访问 `http://localhost:1200/main.html` 就可以看到页面，并且修改文件，页面也会同时刷新。
+
+### 2. 优化命令
+
+我们可以将 `npx webpack-dev-server --config webpack.dev.js` 写到 `package.json` 中作为一个命令：
+
+```diff
+// package.json
+
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "npx webpack --config webpack.dev.js --watch",
+  "dist": "npx webpack --config webpack.prod.js",
++ "watch": "npx webpack-dev-server --config webpack.dev.js"
+},
+```
 
 ## 十四、 webpack 设置代理服务器和 bable 转换及优化
 
