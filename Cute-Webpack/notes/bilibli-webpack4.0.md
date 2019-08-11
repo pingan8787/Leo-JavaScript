@@ -1216,9 +1216,72 @@ proxy: {   // 设置代理
 },
 ```
 
-## 十四、 webpack 设置代理服务器和 bable 转换及优化
+## 十四、 webpack 设置代理服务器和 babel 转换及优化
+
+
+### 1. 设置代理服务器
+
+接着上一节，接下来给 webpack 设置代理服务器：
+
+```js
+// webpack.dev.js
+
+let devConfig = {
+  // ... 省略其他
+  devServer: {
+    // ... 省略其他
+    proxy: { 
+      "/api": { // 以 '/api' 开头的请求，会跳转到下面的 target 配置
+        target: "http://192.168.30.33:8080",
+        pathRewrite: {
+          "^api": "/mock/api"
+        }
+    }
+ }
+}
+```
+
+最后当我们请求 `/api/getuser` 接口，就会转发到 `http://192.168.30.33:8080/mock/api`。
+
+### 2. babel 转换及优化
+
+`babel-loader` 插件的安装，已经提前介绍，在【十一、 webpack 配置合并和提取公共配置】中。
+
+这里讲一下 `babel-loader` 的优化。
+
+`babel-loader` 可以配置 `cacheDirectory` 来提高打包效率：
+
+* `cacheDirectory`：默认值 `false`，开启后构建时会缓存文件夹，后续从缓存中读取，将提高打包效率。
 
 ## 十五、 webpack 开启 Eslint
+
+安装插件：
+
+```sh
+npm install eslint eslint-loader --save-dev
+```
+
+另外还需要安装 eslint 解释器、校验规则等：
+
+```sh
+npm install babel-loader standard --save-dev
+```
+
+### 2. 添加 .eslintrc.js
+
+在项目根目录创建 `.eslintrc.js`，指定 eslint 规则。
+
+这份配置内容有点多，可以去 [我的 gist 复制](https://gist.github.com/pingan8787/8b9abe4e04bed85f9d7846e513ed2e11)https://gist.github.com/pingan8787/8b9abe4e04bed85f9d7846e513ed2e11 。
+
+### 3. 添加 .eslintignore
+
+在项目根目录创建 `.eslintignore`，指定 eslint 忽略一些文件不校验，比如内容可以是：
+
+```
+/dist/
+/node_modules/
+```
+
 
 ## 十六、 webpack 模块解析后缀和别名
 
