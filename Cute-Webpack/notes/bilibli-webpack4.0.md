@@ -9,23 +9,23 @@
 ### 1. 项目初始化
 
 新建文件夹 `leo`:
-```bash
+```sh
 mkdir leo
 ```
 
 进入文件夹 `cd leo`:
-```bash
+```sh
 cd leo
 ```
 
 然后本地安装 `webpack` 和 `webpack-cli` （在 Webpack 4.0以后需要单独安装）：
 
-```bash
+```sh
 npm install webpack webpack-cli --save-dev
 ```
 
 初始化项目结构：
-```
+```diff
 + ├─package.json
 + ├─dist          // 存放最终打包的文件
 + │  └─index.html
@@ -36,7 +36,7 @@ npm install webpack webpack-cli --save-dev
 
 安装 `lodash`：
 
-```bash
+```sh
 npm install lodash --save-dev
 ```
 
@@ -74,7 +74,7 @@ module.exports = {
 
 开始第一次打包任务：   
 
-```bash
+```sh
 npx webpack
 
 // 输出：
@@ -106,7 +106,7 @@ Entrypoint main = main.js
 ### 1. 修改代码
 
 在项目 `src` 目录中，新建 `style` 文件夹，并新建 `index.css` 文件：
-```
+```diff
   ├─package.json
   ├─dist          // 存放最终打包的文件
   │  └─index.html
@@ -117,7 +117,7 @@ Entrypoint main = main.js
   ├─webpack.config.js  // webpack的配置文件
 ```
 
-并在 `index.css` 文件给我们新建的 `div` 元素添加 class ：
+并在 `index.css` 文件给我们新建的 `div` 元素添加 `class` ：
 
 ```css
 // src/style/index.css
@@ -129,15 +129,16 @@ Entrypoint main = main.js
 
 接着在 `index.js` 的新建元素方法中，添加 `class` 为 `box`，这样新建的元素就带有 `box` 的 `class` 属性：
 
-```js
+```diff
 // src/index.js
+
 import _ from 'lodash';
 import './style/index.css';// 引入样式文件
 
 function createElement(){
   let div = document.createElement('div');
   div.innerHTML = _.join(['my', 'name', 'is', 'leo'], '');
-  div.className = 'box';
++ div.className = 'box';
   return div;
 }
 document.body.appendChild(createElement());
@@ -154,7 +155,7 @@ document.body.appendChild(createElement());
 
 安装插件：
 
-```bash
+```sh
 npm install --save-dev style-loader css-loader
 ```
 
@@ -177,7 +178,7 @@ module: {
 
 ### 3. 打包测试
 
-```bash
+```sh
 npx webpack
 
 // 输出：
@@ -289,7 +290,7 @@ module: {
 
 需要使用到 `sass-loader` 的插件，这里先安装：  
 
-```bash
+```sh
 npm install sass-loader node-sass --save-dev
 ```
 
@@ -467,7 +468,7 @@ webpack4 开始使用 `mini-css-extract-plugin` 插件，而在 1-3 版本使用
 
 安装插件：   
 
-```bash
+```sh
 npm install mini-css-extract-plugin --save-dev
 ```
 
@@ -540,7 +541,7 @@ plugins: [
 
 安装插件：
 
-```bash
+```sh
 npm install optimize-css-assets-webpack-plugin --save-dev
 ```
 
@@ -569,7 +570,7 @@ module.exports = {
 
 安装插件：   
 
-```bash
+```sh
 npm install uglifyjs-webpack-plugin --save-dev
 ```
 
@@ -646,7 +647,7 @@ module.exports = {
 
 安装插件：
 
-```bash
+```sh
 npm install html-webpack-plugin --save-dev
 ```
 
@@ -693,7 +694,7 @@ plugins: [
 
 安装插件：
 
-```bash
+```sh
 npm install clean-webpack-plugin --save-dev
 ```
 
@@ -725,9 +726,363 @@ plugins: [
 
 ## 九、 webpack 图片处理和优化
 
+### 1. 图片处理
+
+在项目中引入图片：
+
+```css
+// src/style/leo.scss
+
+.box{
+    background-color: $bg-color;
+    display: flex;
+    background: url('./../assets/logo.jpg')
+}
+```
+
+这时候我们如果直接打包，会报错。
+
+我们需要使用 `file-loader` 插件来处理文件导入的问题。   
+
+安装插件：
+
+```sh
+npm install file-loader --save-dev
+```
+
+使用插件：
+
+```js
+// webpack.config.js
+
+module: {
+  {
+    test: /\.(png|svg|jpg|jpeg|gif)$/,
+    use: ["file-loader"]
+  }]
+},
+```
+
+重新打包以后，发现 `dist` 目录下多了一个如 `373e5e0e214390f8aa9e7abb4c7c635c.jpg` 名称的文件，这就是我们打包后的图片。
+
+![webpack10](http://images.pingan8787.com/webpack10.png)
+
+### 2. 图片优化
+
+更进一步，我们可以对图片进行压缩和优化，这里我们用到 `image-webpack-loader` 插件来处理。
+
+安装插件：
+
+```sh
+npm install image-webpack-loader --save-dev
+```
+
+使用插件：
+
+```js
+// webpack.config.js
+
+module: {
+  {
+    test: /\.(png|svg|jpg|jpeg|gif)$/,
+    include: [path.resolve(__dirname, 'src/')],
+    use: ["file-loader",{
+        loader: "image-webpack-loader",
+        options: {
+          mozjpeg: { progressive: true, quality: 65 },
+          optipng: { enabled: false },
+          pngquant: { quality: '65-90', speed: 4 },
+          gifsicle: { interlaced: false },
+          webp: { quality: 75 }
+        }
+      },
+    ]
+  }]
+},
+```
+
+关于 `image-webpack-loader` 更多介绍可以[《查看文档》](https://github.com/tcoopman/image-webpack-loader)https://github.com/tcoopman/image-webpack-loader。
+
+再重新打包，我们可以看到图片打包前后，压缩了很大：
+
+![webpack11](http://images.pingan8787.com/webpack11.png)
+
+
 ## 十、 webpack 图片 base64 和字体处理
 
+### 1. 图片 base64 处理
+
+`url-loader` 功能类似于 `file-loader`，可以将 url 地址对应的文件，打包成 base64 的 DataURL，提高访问效率。
+
+安装插件：
+
+```sh
+npm install url-loader --save-dev
+```
+
+使用插件：
+
+> 注意：这里需要将前面配置的 `image-webpack-loader` 先删除掉，在使用 `url-loader`。
+
+```js
+// webpack.config.js
+
+module: {
+  {
+    test: /\.(png|svg|jpg|jpeg|gif)$/,
+    include: [path.resolve(__dirname, 'src/')],
+    use: [
+      {
+        loader: 'url-loader', // 根据图片大小，把图片转换成 base64
+          options: { limit: 10000 }, 
+      },
+      {
+        loader: "image-webpack-loader",
+        options: {
+          mozjpeg: { progressive: true, quality: 65 },
+          optipng: { enabled: false },
+          pngquant: { quality: '65-90', speed: 4 },
+          gifsicle: { interlaced: false },
+          webp: { quality: 75 }
+        }
+      },
+    ]
+  }]
+},
+```
+
+关于 `url-loader` 更多介绍可以[《查看文档》](https://github.com/webpack-contrib/url-loader)https://github.com/webpack-contrib/url-loader。
+
+### 2. 字体处理
+
+字体处理的方式和图片处理方式是一样的，只是我们在配置 `rules` 时的 `test` 值不相同：
+
+```js
+// webpack.config.js
+
+module: {
+  {
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    include: [path.resolve(__dirname, 'src/')],
+    use: [ 'file-loader' ]
+  }
+},
+```
+
 ## 十一、 webpack 配置合并和提取公共配置
+
+在开发环境（development）和生产环境（production）配置文件有很多不同，但也有部分相同，为了不每次更换环境的时候都修改配置，我们就需要将配置文件做合并，和提取公共配置。
+
+我们使用 `webpack-merge` 工具，将两份配置文件合并。
+
+安装插件：
+
+```sh
+npm install webpack-merge --save-dev
+```
+
+然后调整目录结构，为了方便，我们将原来 `webpack.config.js` 文件修改名称为 `webpack.commen.js`，并复制两份相同的文件出来，分别修改文件名为 `webpack.prod.js` 和 `webpack.dev.js` 。 
+
+```diff
+  ├─package.json
+  ├─dist
+  ├─src
+- ├─webpack.config.js
++ ├─webpack.common.js  // webpack 公共配置文件
++ ├─webpack.prod.js    // webpack 生产环境配置文件
++ ├─webpack.dev.js     // webpack 开发环境配置文件
+```
+
+由于我们文件调整了，所以在 `package.json` 中，打包命令也需要调整，并且配置 `mode` 模式。
+
+```diff
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+- "build": "npx webpack -c webpack.config.js",
++ "build": "npx webpack -c webpack.dev.js --mode development",
++ "dist": "npx webpack -c webpack.prod.js --mode production"
+},
+```
+
+### 1. 调整 webpack.common.js 
+
+我们先调整 `webpack.common.js ` 文件，将通用的配置保留，不是通用的配置删除，结果如下：
+
+```js
+// webpack.common.js
+
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  module: {
+    noParse: function (content) {return /jquery|lodash/.test(content);},
+    rules: [
+    {
+      test: /\.(png|svg|jpg|jpeg|gif)$/,
+      include: [path.resolve(__dirname, 'src/')],
+      use: [{
+        loader: 'url-loader', // 根据图片大小，把图片转换成 base64
+        options: { limit: 10000 },
+      },{
+        loader: "image-webpack-loader",
+        options: {
+          mozjpeg: { progressive: true, quality: 65 },
+          optipng: { enabled: false },
+          pngquant: { quality: '65-90', speed: 4 },
+          gifsicle: { interlaced: false },
+          webp: { quality: 75 }
+        }
+      }]
+    },{
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      include: [path.resolve(__dirname, 'src/')],
+      use: [ 'file-loader' ]
+    }]
+  },
+  plugins: [
+      new HtmlWebpackPlugin({
+          title: "leo study!",
+          filename: "main.html",
+          template: path.resolve(__dirname, 'src/index.html'), 
+          minify: {
+              collapseWhitespace: true,
+              removeComments: true,
+              removeAttributeQuotes: true,
+          }
+      }),
+      new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns:['dist']})
+  ],
+}
+```
+
+### 2. 安装 babel-loader
+
+安装 `babel-loader` 是为了将 ES6 及以上版本的 JS 代码转换成 ES5。
+
+```sh
+npm install babel-loader @babel/core @babel/preset-env --save-dev
+```
+
+使用插件：  
+
+```js
+// webpack.common.js
+
+rules: [
+  // ... 省略其他
+  {
+    test: /\.js$/,
+    use: [{
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env']
+      }
+    }],
+    exclude: /(node_modules|bower_components)/,
+  }
+]
+```
+
+关于 `babel-loader` 更多介绍可以[《查看文档》](https://webpack.js.org/loaders/babel-loader/)https://webpack.js.org/loaders/babel-loader/。
+
+
+### 3. 调整 webpack.dev.js
+
+这里我们就需要用到 `merge-webpack` 插件进行配置合并了：  
+
+```js
+// webpack.dev.js
+
+const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+let devConfig = {
+  mode: 'development',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [{
+      test: /\.(sc|c|sa)ss$/,
+      use: [
+        'style-loader', {
+          loader: "css-loader",
+          options: { sourceMap: true }
+        }, {
+          loader: "postcss-loader",
+          options: {
+              ident: "postcss", sourceMap: true,
+              plugins: loader => [ require('autoprefixer')() ]
+          }
+        }, {
+          loader: "sass-loader",
+          options: { sourceMap: true }
+        }
+      ]
+    }]
+  }
+}
+module.exports = merge(common, devConfig)
+```
+
+### 4. 调整 webpack.prod.js
+
+同样对于生产环境的配置，我们也需要用 `merge-webpack` 插件进行配置合并：  
+
+```js
+// webpack.prod.js
+
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+
+let prodConfig = {
+  mode: 'production',
+  output: {
+    filename: 'main.[hash].js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [{
+      test: /\.(sc|c|sa)ss$/,
+      use: [
+        MiniCssExtractPlugin.loader, {
+          loader: "css-loader",
+          options: { sourceMap: true }
+        },  {
+          loader: "postcss-loader",
+          options: {
+            ident: "postcss", sourceMap: true,
+            plugins: loader => [ require('autoprefixer')() ]
+          }
+        }, {
+          loader: "sass-loader",
+          options: { sourceMap: true }
+        }
+      ]
+    }]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css'
+    }),
+    new OptimizeCssAssetsPlugin({}),
+    new UglifyJsPlugin({
+      cache: true, parallel: true, sourceMap: true
+    }),
+  ],
+}
+module.exports = merge(common, prodConfig)
+```
 
 ## 十二、 webpack 监控自动编译和启用 js 是 sourceMap
 
