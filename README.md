@@ -17,9 +17,7 @@
 
 ### 零、📜[Cute-Frontend](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Frontend)
 
-整理一些前端入门的资料：   
-
-1. [《Cute-Frontend》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Frontend/README.md)
+前端入门的学习资料和计划安排。
 
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
@@ -33,9 +31,9 @@
 
 ### 三、📜[Cute-Angular](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/README.md)
 
-1. [《Angular 入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
-2. [《Angular 官网 demo》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
-3. [《Angular 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
+1. [《Angular 入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo/README.md)  
+2. [《Angular 官网 demo》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo/README.md)  
+3. [《Angular 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/README.md)  
 
 ### 四、📜[Cute-GraphQL](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
 
