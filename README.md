@@ -31,14 +31,15 @@
 3. [《Cute-Patterns》系列文章](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/)
 4. [《Cute-Regular》系列文章](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/)
 
-### 三、📜Cute-Angular
+### 三、📜[Cute-Angular](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/README.md)
 
-分享Angular开源项目，和自己整理的新手开发教程。  
-1. [《Angular入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
+1. [《Angular 入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
+2. [《Angular 官网 demo》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
+3. [《Angular 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
 
-### 四、📜Cute-GraphQL
+### 四、📜[Cute-GraphQL](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
 
-1. [《GraphQL入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
+1. [《GraphQL入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/guide/README.md)
 
 ### 五、📜[Cute-HTTP](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/README.md)
 

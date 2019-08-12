@@ -1,5 +1,5 @@
 ## 💌仓库介绍
-**Cute-GraphQL 系列**主要分享我学习 `GraphQL` 的一些学习笔记和资料，后面也有实战的案例等，喜欢的朋友欢迎 👉star。
+**Cute-GraphQL 系列**主要分享我学习 `Angular` 的一些学习笔记和资料，后面也有实战的案例等，喜欢的朋友欢迎 👉star。
 
 ### 关于作者
 [![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
@@ -11,4 +11,4 @@
 
 ## 💌文章目录
 
-1. [《GraphQL 入门手册》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Frontend/learningMaterials/%E3%80%90%E4%B8%BB%E7%BA%BF%E4%BB%BB%E5%8A%A1%E3%80%91EFT%E5%BA%94%E5%B1%8A%E7%94%9FWeb%E5%89%8D%E7%AB%AF%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.md) 
+1. [《Angular入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/)  
