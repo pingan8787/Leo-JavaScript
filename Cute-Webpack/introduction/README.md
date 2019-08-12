@@ -1,6 +1,4 @@
-## webpack4 实践之路
-
-> [webpack 4.0 教程  bilibili](https://www.bilibili.com/video/av41546218/?p=1)
+## Webpack4 入门手册（共 18 章）
 
 本教程没有太去介绍一些概念的问题了，在代码编写过程中，我会加上分析解释的介绍。
 
@@ -1282,9 +1280,209 @@ npm install babel-loader standard --save-dev
 /node_modules/
 ```
 
+## 十六、 webpack 模块解析拓展名和别名
 
-## 十六、 webpack 模块解析后缀和别名
+在 webpack 配置中，我们使用 `resolve` 来配置模块解析方式。
 
-## 十七、 webpack 的模块外部依赖的配置
+这是非常重要的，比如 `import _ from 'lodash'` ，其实是加载解析了 `lodash.js` 文件。
+
+该配置就是用来设置**加载和解析**的方式。
+
+在解析过程中，我们可以进行配置：   
+
+### 1. resolve.alias
+
+当我们引入一些文件时，需要写很长的路径，这样使得代码更加复杂。
+
+为此我们可以使用 `resolve.alias`，创建 `import` 或 `require` 的别名，使模块引入更加简单。
+
+使用配置：
+
+```diff
+// webpack.common.js
+
+module.exports = {
+  entry: './src/index.js',
++ resolve: {
++   alias: {
++     '@' : path.resolve(__dirname, 'src/')
++   }
++ }
+  // 省略其他
+}
+```
+
+`alias` 参数的含义：
+
+使用 `@` 来替代 `path.resolve(__dirname, 'src/')` 这个路径，接下来我们测试看看。
+
+我们在 `src/` 目录下新增 `leo.js`：
+
+```js
+// leo.js
+
+export let name = 'pingan';
+```
+
+再到 `src/index.js` 中引入：  
+
+```js
+// index.js
+
+import { name } from '@/leo.js';
+```
+
+这样就能正常引入。   
+
+当然，我们也可以根据实际情况，**为不同路径设置不同别名**：
+
+```diff
+// webpack.common.js
+
+
+alias: {
+  '@' : path.resolve(__dirname, 'src/')
++ 'assets' : path.resolve(__dirname, 'src/assets/')
+}
+```
+
+关于 `resolve` 更多介绍可以[《查看文档》](https://www.webpackjs.com/configuration/resolve/)https://www.webpackjs.com/configuration/resolve/。
+
+
+### 2. resolve.extensions
+
+`resolve.extensions` 用来自动解析确定的扩展，让我们在引入模块的时候，可以不用设置拓展名，默认值为：
+
+```js
+extensions: [".js", ".json"]
+```
+
+使用配置：
+
+```js
+// webpack.common.js
+
+import { name } from '@/leo';
+```
+
+## 十七、 webpack 配置外部拓展
+
+当我们使用 CDN 引入 `jquery` 时，我们并不想把它也打包到项目中，我们就可以配置 `externals` 外部拓展的选项，来将这些不需要打包的模块从输出的 bundle 中排除：
+
+```html
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+```
+
+配置 `externals`：
+
+```diff
+// webpack.common.js
+
+module.exports = {
+  // ... 省略其他
++ externals: {
++   jquery: 'jQuery'
++ },
+}
+```
+
+通过上面配置，我们就不会把不需要打包的模块打包进来。并且下面代码正常运行：
+
+```js
+import $ from 'jquery';
+
+$('.leo').show();
+```
+
+关于 `externals` 更多介绍可以[《查看文档》](https://www.webpackjs.com/configuration/externals/)https://www.webpackjs.com/configuration/externals/。
 
 ## 十八、 webpack 打包分析报表及优化总结
+
+### 1. 生成报表
+
+这里我们使用 `webpack-bundle-analyzer` 插件，来对打包后的文件进行数据分析，从来找到项目优化的方向。
+
+`webpack-bundle-analyzer` 使用交互式可缩放树形图可视化 webpack 输出文件的大小。
+
+安装插件：
+
+```sh
+npm install webpack-bundle-analyzer --save-dev
+```
+
+这个我们只有在**开发环境**中使用。
+
+使用插件：
+
+```js
+// webpack.dev.js
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin()
+    // ...
+  ]
+}
+```
+
+配置完成以后，我们执行 `npm run build` 打包，打包完成后，会自动打开一个数据报表分析的页面，地址是 `http://127.0.0.1:8888/`：
+
+![webpack14](http://images.pingan8787.com/webpack14.png)
+
+`webpack-bundle-analyzer` 将帮助我们：
+* 看清楚我们包内都包含什么模块；
+* 准确看出每个模块的组成；
+* 最后优化它！
+
+我们经常将报表中区域最大的模块进行优化！
+
+### 2. 通过报表优化项目
+
+![webpack14](http://images.pingan8787.com/webpack14.png)
+
+我们可以看出，打包后的项目中 `lodash.js` 占了非常大的内存，我们就针对 `lodash.js` 进行优化。
+
+我们将 `lodash.js` 改为 CDN 引入：
+
+```html
+// index.html
+
+<script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+```
+
+然后去设置上一节讲到的 `externals`：
+
+```diff
+// webpack.common.js
+
+externals: {
+  jquery: 'jQuery',
++ lodash: '_'
+},
+```
+
+再打包以后，可以看到 `lodash.js` 已经不在包里面了：
+
+![webpack15](http://images.pingan8787.com/webpack15.png)
+
+
+并且打包后的文件，也能正常运行：
+
+![webpack16](http://images.pingan8787.com/webpack16.png)
+
+关于 `webpack-bundle-analyzer` 更多介绍可以[《查看文档》](https://github.com/webpack-contrib/webpack-bundle-analyzer)https://github.com/webpack-contrib/webpack-bundle-analyzer。
+
+
+## 参考资料
+
+* [《2019最新Webpack4.0教程4.x 成仙之路》](https://www.bilibili.com/video/av41546218/?p=1)
+
+## 总结
+
+本文是根据 [《2019最新Webpack4.0教程4.x 成仙之路》](https://www.bilibili.com/video/av41546218/?p=1) 学习总结下来的学习之路，适合入门，涉及范围较多，内容比较长，需要能静下心来学习。
+
+内容如果有误，欢迎留言指点，我会及时修改。
+
+本文代码最终托管在我的 github 上，[点击查看]()。
+
