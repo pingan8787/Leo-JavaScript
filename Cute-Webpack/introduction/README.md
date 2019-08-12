@@ -1484,5 +1484,19 @@ externals: {
 
 内容如果有误，欢迎留言指点，我会及时修改。
 
-本文代码最终托管在我的 github 上，[点击查看]()。
+本文代码最终托管在我的 github 上，[点击查看](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/introduction/README.md)。
 
+
+希望自己的文章会对各位有所帮助，也欢迎各位大佬指点。 
+
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+
+## 微信公众号
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  
