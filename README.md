@@ -73,11 +73,16 @@
 3. [《Webpack4 基础概念介绍》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md)
 
 
-### 九、📜翻译
+### 九、📜[Cute-TypeScript](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-TypeScript/README.md)
+
+1. [《TypeScript 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-TypeScript/guide/README.md)
+
+
+### 十、📜翻译
 
 1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
 
-### 十、📜其他
+### 十一、📜其他
 
 1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 
