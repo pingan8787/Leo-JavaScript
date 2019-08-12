@@ -1,6 +1,20 @@
 ## Webpack4 入门手册（共 18 章）
 
-本教程没有太去介绍一些概念的问题了，在代码编写过程中，我会加上分析解释的介绍。
+![webpack_bg](http://images.pingan8787.com/webpack_bg.png)
+
+为了帮助公司新人入门 `Webpack4`，于是我整理了这么一份**入门手册**。
+
+感觉现在的前端开发，已经基本上离不开 `Webpack` 霸霸了，并且在 `Webpack4` 以后，有些插件变化特别大，使用方式也改变很大，实在容易掉坑。
+
+由于本文篇幅较长，将分为《**Webpack4入门手册（上）（共 18 章）**》和《**Webpack4入门手册（下）（共 18 章）**》两篇文章发布，请联系起来看~
+
+我将从最基础的【项目初始化】开始介绍，到【处理 CSS / JS / 图片】，到【热更新，打包优化】等等，一一介绍和实践。
+
+文章共分为 18 章，关于最基础的四个核心概念，可以到我整理的另一篇文章 [《Webpack4 的四个核心概念》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md) 中学习。
+
+> 《Webpack4 的四个核心概念》
+> https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md
+
 
 ## 一、 快速入门 demo
 
