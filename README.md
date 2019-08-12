@@ -40,19 +40,18 @@
 
 1. [《GraphQL入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-GraphQL/README.md)
 
-### 五、📜Cute-HTTP
+### 五、📜[Cute-HTTP](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/README.md)
 
-1. [《HTTP 的15个常见知识点复习》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/)  
+1. [《HTTP 的15个常见知识点复习》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/http_knowledge_point.md)  
 
-
-### 六、📜Cute-Hybrid
+### 六、📜[Cute-Hybrid](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Hybrid/README.md)
 
 1. [《Hybrid App 应用开发中必备知识点复习 - 1》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Hybrid/Cute-Hybrid-01.md) 
 
 2. [《Hybrid App 应用开发中必备知识点复习 - 2》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Hybrid/Cute-Hybrid-02.md) 
 
 
-### 七、📜Cute-Algorithms
+### 七、📜[Cute-Algorithms](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/README.md)
 
 1. [《数据结构与算法 - Tree》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Tree.md) 
 
@@ -66,11 +65,20 @@
 
 6. [《数据结构与算法 - Dictionary&&HashTable》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Algorithms/Cute-Algorithms-Dictionary%26%26HashTable.md) 
 
-### 八、📜翻译
+### 八、📜[Cute-Webpack](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/README.md)
+
+1. [《Webpack4 入门手册（共 18 章）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)
+
+2. [《Webpack4 入门手册（共 18 章）配套 demo》](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Webpack/introduction/demo)
+
+3. [《Webpack4 基础概念介绍》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md)
+
+
+### 九、📜翻译
 
 1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
 
-### 九、📜其他
+### 十、📜其他
 
 1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 

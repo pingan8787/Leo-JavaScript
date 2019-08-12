@@ -12,5 +12,7 @@
 
 ## 💌文章目录
 
-1. [《HTTP 的15个常见知识点复习》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-HTTP/http_knowledge_point.md) 
+1. [《Hybrid App 应用开发中必备知识点复习 - 1》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Hybrid/Cute-Hybrid-01.md) 
+
+2. [《Hybrid App 应用开发中必备知识点复习 - 2》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Hybrid/Cute-Hybrid-02.md) 
 

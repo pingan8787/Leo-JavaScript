@@ -12,6 +12,6 @@
 
 ## 💌文章目录
 
-1. [《Webpack4 入门手册（共 18 章）》]()
-2. [《Webpack4 入门手册（共 18 章）配套 demo》]()
-3. [《Webpack4 基础概念介绍》]()
+1. [《Webpack4 入门手册（共 18 章）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)
+2. [《Webpack4 入门手册（共 18 章）配套 demo》](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Webpack/introduction/demo)
+3. [《Webpack4 基础概念介绍》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md)
