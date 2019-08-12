@@ -17,9 +17,9 @@
 
 ### 零、📜[Cute-Frontend](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Frontend)
 
-整理一些前端入门的资料。   
+整理一些前端入门的资料：   
 
-1. [《Cute-Frontend》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Frontend/EFT应届生Web前端入门指南.md)
+1. [《Cute-Frontend》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Frontend/README.md)
 
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
@@ -67,7 +67,7 @@
 
 ### 八、📜[Cute-Webpack](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/README.md)
 
-1. [《Webpack4 入门手册（共 18 章）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)
+1. [《Webpack4 入门手册（共 18 章）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/introduction/README.md)
 
 2. [《Webpack4 入门手册（共 18 章）配套 demo》](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Webpack/introduction/demo)
 
