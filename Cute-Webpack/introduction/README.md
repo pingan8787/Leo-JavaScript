@@ -24,7 +24,7 @@
 
 ### 3. 教程目录
 
-![教程目录](http://images.pingan8787.com/Webpack4%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C.png)
+![教程目录](http://images.pingan8787.com/Webpack4%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C2.png)
 
 ## 一、 项目初始化
 
