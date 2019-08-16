@@ -722,7 +722,7 @@ npm install clean-webpack-plugin --save-dev
 ```js
 // webpack.config.js
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 ```
 
 使用插件：  
