@@ -37,7 +37,7 @@
 `IndexService`中，使用该服务来展示消息。   
 
 接下来我们使用命令行，创建`BooksService `：  
-```bash
+```sh
 ng g service books
 ```
 在生成的`books.service.ts`文件中：   

@@ -53,7 +53,7 @@ Angular 需要 `Node.js` 的 `8.x` 或 `10.x` 版本。
 
 1. 安装Angular CLI   
 
-```bash
+```sh
 npm install -g @angular/cli
 ```
 
@@ -62,24 +62,24 @@ npm install -g @angular/cli
 后续用到会详细介绍这些命令。
 
 * 启动服务，并打开新窗口
-```bash
+```sh
 ng serve --open
 # --open 可简写 -o
 ```
 
 * 创建新组件
-```bash
+```sh
 ng generate component books
 # generate 可简写 g
 ```
 
 * 创建新服务
-```bash
+```sh
 ng generate service books
 ```
 
 * 创建路由模块
-```bash
+```sh
 ng generate module app-routing --flat --module=app
 ```
 
@@ -92,13 +92,13 @@ ng generate module app-routing --flat --module=app
 
 ## 一、项目起步
 1. 创建项目    
-```bash
+```sh
 ng new books
 cd books
 ```
 
 2. 创建所需的两个页面组件  
-```bash
+```sh
 ng g component index
 ng g component detail
 ```
@@ -109,7 +109,7 @@ ng g component detail
 这里为了项目结构先起来，所以先简单配置一下路由，后面路由会调整，如果遇到什么不懂，可以查看[Angular 路由与导航](https://angular.cn/guide/router)。  
 
 1. 安装**路由模块**    
-```bash
+```sh
 ng g module app-routing --flat --module=app
 ```
 **知识点：**   
@@ -388,7 +388,7 @@ books = BookList;
 这便是我们接下来要写的主从组件。    
 
 思考一下，我们这里现在能抽成组件作为公共代码的，就是这个单个书本的内容，因为每个书本的内容都一致，只是里面数据的差异，于是我们再新建一个组件：   
-```bash
+```sh
 ng g component books
 ```
 并将前面`index.component.html`中关于课本的代码剪切到`books.component.html`中来，然后删除掉`*ngFor`的内容，并将原本本地的变量`books`替换成`list`，这个变量我们等会会取到：   
@@ -459,7 +459,7 @@ export class BooksComponent implements OnInit {
 `IndexService`中，使用该服务来展示消息。   
 
 接下来我们使用命令行，创建`BooksService `：  
-```bash
+```sh
 ng g service books
 ```
 在生成的`books.service.ts`文件中：   
@@ -665,7 +665,7 @@ getBooks(): void{
 ### 1.添加历史记录组件
 
 * 创建`HistoryComponent`组件
-```bash
+```sh
 ng g component hostory
 ```
 然后在`app.component.html`文件夹中添加组件：   
@@ -679,7 +679,7 @@ ng g component hostory
 这里我们要开始做书本的增删改查功能，需要先创建一个`HistoryService`服务，方便我们实现这几个功能：   
 
 * 创建`HistoryService`服务
-```bash
+```sh
 ng g service history
 ```
 然后在生成的ts文件中，增加`add`和`clear`方法，`add`方法用来添加历史记录到`history`数组中，`clear`方法则是清空`history`数组：   
@@ -808,7 +808,7 @@ import { HttpClientModule } from '@angular/common/http';
 **注意：** 这个内存 Web API 模块与 Angular 中的 HTTP 模块无关。
 
 通过下面命令来安装：   
-```bash
+```sh
 npm install angular-in-memory-web-api --save
 ```
 然后在`app.module.ts`中导入 `HttpClientInMemoryWebApiModule` 和 `InMemoryDataService` 类（后面创建）：   
@@ -832,7 +832,7 @@ export class AppModule { }
 `forRoot()` 配置方法接受一个 InMemoryDataService 类（初期的内存数据库）作为参数。   
 
 然后我们要创建`InMemoryDataService`类：   
-```bash
+```sh
 ng g service InMemoryData
 ```
 并将生成的`in-memory-data.service.ts`修改为：   
@@ -1000,7 +1000,7 @@ updateBooks(books: Books): Observable<any>{
 
 ### 4.通过HTTP增加数据
 我们可以新增一个页面，并添加上路由和按钮：   
-```bash
+```sh
 ng g component add
 ```
 添加路由：     

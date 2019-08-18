@@ -30,7 +30,7 @@
 ### 1.添加历史记录组件
 
 * 创建`HistoryComponent`组件
-```bash
+```sh
 ng g component hostory
 ```
 然后在`app.component.html`文件夹中添加组件：   
@@ -44,7 +44,7 @@ ng g component hostory
 这里我们要开始做书本的增删改查功能，需要先创建一个`HistoryService`服务，方便我们实现这几个功能：   
 
 * 创建`HistoryService`服务
-```bash
+```sh
 ng g service history
 ```
 然后在生成的ts文件中，增加`add`和`clear`方法，`add`方法用来添加历史记录到`history`数组中，`clear`方法则是清空`history`数组：   
@@ -173,7 +173,7 @@ import { HttpClientModule } from '@angular/common/http';
 **注意：** 这个内存 Web API 模块与 Angular 中的 HTTP 模块无关。
 
 通过下面命令来安装：   
-```bash
+```sh
 npm install angular-in-memory-web-api --save
 ```
 然后在`app.module.ts`中导入 `HttpClientInMemoryWebApiModule` 和 `InMemoryDataService` 类（后面创建）：   
@@ -197,7 +197,7 @@ export class AppModule { }
 `forRoot()` 配置方法接受一个 InMemoryDataService 类（初期的内存数据库）作为参数。   
 
 然后我们要创建`InMemoryDataService`类：   
-```bash
+```sh
 ng g service InMemoryData
 ```
 并将生成的`in-memory-data.service.ts`修改为：   
@@ -365,7 +365,7 @@ updateBooks(books: Books): Observable<any>{
 
 ### 4.通过HTTP增加数据
 我们可以新增一个页面，并添加上路由和按钮：   
-```bash
+```sh
 ng g component add
 ```
 添加路由：     

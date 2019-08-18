@@ -156,7 +156,7 @@ books = BookList;
 这便是我们接下来要写的主从组件。    
 
 思考一下，我们这里现在能抽成组件作为公共代码的，就是这个单个书本的内容，因为每个书本的内容都一致，只是里面数据的差异，于是我们再新建一个组件：   
-```bash
+```sh
 ng g component books
 ```
 并将前面`index.component.html`中关于课本的代码剪切到`books.component.html`中来，然后删除掉`*ngFor`的内容，并将原本本地的变量`books`替换成`list`，这个变量我们等会会取到：   

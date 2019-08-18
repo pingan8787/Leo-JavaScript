@@ -54,7 +54,7 @@ Angular 需要 `Node.js` 的 `8.x` 或 `10.x` 版本。
 
 1. 安装Angular CLI   
 
-```bash
+```sh
 npm install -g @angular/cli
 ```
 
@@ -63,24 +63,24 @@ npm install -g @angular/cli
 后续用到会详细介绍这些命令。
 
 * 启动服务，并打开新窗口
-```bash
+```sh
 ng serve --open
 # --open 可简写 -o
 ```
 
 * 创建新组件
-```bash
+```sh
 ng generate component books
 # generate 可简写 g
 ```
 
 * 创建新服务
-```bash
+```sh
 ng generate service books
 ```
 
 * 创建路由模块
-```bash
+```sh
 ng generate module app-routing --flat --module=app
 ```
 
@@ -93,24 +93,29 @@ ng generate module app-routing --flat --module=app
 
 ## 一、项目起步
 1. 创建项目    
-```bash
+```sh
 ng new books
 cd books
 ```
 
 2. 创建所需的两个页面组件  
-```bash
+```sh
 ng g component index
 ng g component detail
 ```
 `g`是`generate`的简写。   
 
+然后运行项目：
+
+```sh
+ng serve --open
+```
 
 ## 二、编写路由组件
 这里为了项目结构先起来，所以先简单配置一下路由，后面路由会调整，如果遇到什么不懂，可以查看[Angular 路由与导航](https://angular.cn/guide/router)。  
 
 1. 安装**路由模块**    
-```bash
+```sh
 ng g module app-routing --flat --module=app
 ```
 **知识点：**   
