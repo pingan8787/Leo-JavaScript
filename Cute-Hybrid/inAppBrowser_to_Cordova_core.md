@@ -31,9 +31,48 @@
 
 ### 1. 前端页面加载 JSSDK
 
+用户进入页面用，会开始加载 JSSDK 文件（`jexe.js`）。
+
+```html
+<script src="./dist/js/jexe.js"></script>
+```
+
 ### 2. 动态添加不同平台 Cordova 及插件
 
+在 `jexe.js` 中会去判断当前设备平台（ iOS / Android ），并**动态创建 script 标签**去加载对应平台的 `Cordova.js` 及插件。
+
+- iOS 平台会加载 `cdvi.js` 文件；
+
+- Android 平台会加载 `cdva.js` 文件；
+
+```html
+<script src="./dist/js/cdvi-1.1.4.min.js?r=1567007708887" type="text/javascript"></script>
+```
+
 ### 3. 用户触发请求，前端调用插件
+
+我们通过约定好的命名空间 `exe` 去调用 `ImagePicker` 插件的 `getPictures` 方法。
+
+这里需要传入 `options` 参数，具体可以查看《EXE开放平台》上的参数介绍。
+
+```js
+var options = {
+    maximumImagesCount: 9,
+    width: 360,
+    height: 360,
+    quality: 100,
+    outputType: 1,
+    chosePicture: true,
+    choseVideo: true,
+}
+exe.ImagePicker.getPictures(options)
+  .then( res => {
+      console.log(res)
+  })
+  .catch( err => {
+      console.log(err)
+  })
+```
 
 ### 4. 与原生端通信
 
@@ -46,3 +85,48 @@
 ### 8. 回传调用结果
 
 ### 9. 前端调用回调函数
+
+
+```js
+
+    var PreviewBox = document.getElementById('eft-preview-box');
+
+    function CameraFun(){
+        exe.Camera.getPicture().then(function (res) {
+            PreviewBox.style.display = 'block';
+            var html = '<div class="eft-preview-scroll"><img src="' + res.url + '"/></div>';
+            document.getElementById('eft-preview').innerHTML = html;
+        })
+    }
+
+
+    function PickerFun(){
+        var options = {
+            maximumImagesCount: 9,
+            width: 360,
+            height: 360,
+            quality: 100,
+            outputType: 1,
+            chosePicture: true,
+            choseVideo: true,
+        }
+        exe.ImagePicker.getPictures(options).then(function (res) {
+            if(Array.isArray(res)){
+                PreviewBox.style.display = 'block';
+                var html = '';
+                for(var k = 0; k < res.length; k++){
+                    html += '<img src="' + res[k]['url'] + '"/>'
+                }
+                console.log(html)
+                document.getElementById('eft-preview').innerHTML = '<div class="eft-preview-scroll">' + html + '</div>';
+            }
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
+
+    function CloseFun(){
+        PreviewBox.style.display = 'none';
+    }
+
+```
