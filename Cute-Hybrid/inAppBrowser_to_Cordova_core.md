@@ -130,8 +130,6 @@ module.exports = function(strUrl, strWindowName, strWindowFeatures, callbacks) {
 
 之后在调用过程中，会将 `Cordova` 插件与主 `WebView` 绑定，实现主 `WebView` 和 `InAppBrowser` 共享实例。
 
-**实现原理：**
-
 ### 6. 调起 Native 层的 Cordova 插件
 
 接下来开始调用 Native 层的对应 Cordova 插件。
