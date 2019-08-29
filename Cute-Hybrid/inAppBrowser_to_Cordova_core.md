@@ -1,29 +1,24 @@
-## 简介
-
-`InAppBrowser` 调用 `Cordova` 插件的流程和 `Ionic Native `的核心
-
-
 ## 一、流程简介
 
 `InAppBrowser` 调用 `Cordova` 插件的流程共分为 9 个步骤：
 
-1. 前端进入页面，加载 JSSDK（`jexe.js`），调用 `exe.app.js` 部分，并判断平台（ iOS / Android ）；
+1. 前端进入页面，加载 JSSDK（`jexe.js`）；
 
 2. 动态加载对应平台的 `Cordova.js` 及 `Cordova` 插件；
 
-3. 用户触发请求事件， 前端携带 `Command` 参数调用 `Cordova` 插件；
+3. 用户触发请求事件， 前端调用 `Cordova` 插件；
 
-4. 前端与 Native 层通信（如 iOS 端使用 `postMessage`）；
+4. 前端传递 `command` 参数与 Native 层通信（如 iOS 端使用 `postMessage`）；
 
-5. Native 层接收并解析前端传入的 `Command` 参数，调用对应 `Cordova` 插件，将插件和主 `WebView` 绑定，将返回调用结果传入主 `WebView` 的 `Cordova` 插件；
+5. Native 层接收并解析前端传入的 参数，调用对应 `Cordova` 插件，将插件和主 `WebView` 绑定；
 
 6. 主 `WebView` 中调用 `callbackFromNative`；
 
-7. 执行 `callbackFromNative` 中的 `else` 语句；
+7. 执行 `callbackFromNative` ，调用 `InAppBrowser` 实例的 `executeScript` 方法进行结果回传；
 
-8. 将主 `WebView` 中调用结果返回回传，调用 `InAppBrowser` 中 `callbackFromNative` 方法；
+8. 将调用结果进行回传到 `InAppBorwser` 层中；
 
-9. 调用响应回调函数，返回调用结果给前端；
+9. 调用 `InAppBorwser` 层的 `callbackFromNative`，调用前端回调函数；
 
 ## 二、流程分析
 
@@ -119,65 +114,102 @@ exe.ImagePicker.getPictures(options)
  
 ### 5. 解析参数和插件绑定
 
-在 iOS 端接收并解析完 `command` 参数以后，开始调用 Native 层的对应插件。
+在 iOS 端接收后，开始解析 `command` 参数，将解析结果回传到下一步。
 
-在调用过程中，会将 `Cordova` 插件与主 `WebView` 绑定，实现主 `WebView` 和 `InAppBrowser` 共享实例。
+另外在此之前， `InAppBrowser.js` 中声明全局变量 `__globalBrowser`，保存当前使用的 `InAppBrowser` 实例：
 
-// TODO： 添加代码
+```js
+module.exports = function(strUrl, strWindowName, strWindowFeatures, callbacks) {
+    // ... 省略其他
+    exec(cb, cb, "InAppBrowser", "open", [strUrl, strWindowName, strWindowFeatures]);
+    // 声明全局变量__globalBrowser，保存当前使用的InAppBrowser实例
+    window.__globalBrowser = iab;
+    return iab;
+}
+```
+
+之后在调用过程中，会将 `Cordova` 插件与主 `WebView` 绑定，实现主 `WebView` 和 `InAppBrowser` 共享实例。
+
+**实现原理：**
 
 ### 6. 调起 Native 层的 Cordova 插件
 
-当主 `WebView` 和 `InAppBrowser` 共享实例后，Native 层就可以获取到 `InAppBorwser` 中的整个 `window` 对象。
+接下来开始调用 Native 层的对应 Cordova 插件。
 
-然后调起 Native 层的 `Cordova.js` 和 Cordova 插件，再通过 Native 层的 `callbackFromNative` 方法，执行。
+当主 `WebView` 和 `InAppBrowser` 共享实例后，Native 层就可以获取到 `InAppBorwser` 中的整个 `window` 对象（即 `window.__globalBrowser`）。
+
+再执行 Native 层的 `callbackFromNative` 方法。
+
 
 ### 7. 执行前端传入的回调
 
-### 8. 回传调用结果
+在执行的 `callbackFromNative` 方法中，会执行到 `else` 语句中，随后判断主 `WebView` 和 `InAppBrowser` 是否已经共享实例（即 `__globalBrowser` 是否指向当前使用的 `InAppBrowser` 实例）。
 
-### 9. 前端调用回调函数
-
-
-```js
-
-    var PreviewBox = document.getElementById('eft-preview-box');
-
-    function CameraFun(){
-        exe.Camera.getPicture().then(function (res) {
-            PreviewBox.style.display = 'block';
-            var html = '<div class="eft-preview-scroll"><img src="' + res.url + '"/></div>';
-            document.getElementById('eft-preview').innerHTML = html;
-        })
-    }
-
-
-    function PickerFun(){
-        var options = {
-            maximumImagesCount: 9,
-            width: 360,
-            height: 360,
-            quality: 100,
-            outputType: 1,
-            chosePicture: true,
-            choseVideo: true,
-        }
-        exe.ImagePicker.getPictures(options).then(function (res) {
-            if(Array.isArray(res)){
-                PreviewBox.style.display = 'block';
-                var html = '';
-                for(var k = 0; k < res.length; k++){
-                    html += '<img src="' + res[k]['url'] + '"/>'
-                }
-                console.log(html)
-                document.getElementById('eft-preview').innerHTML = '<div class="eft-preview-scroll">' + html + '</div>';
-            }
-        }).catch(function (err) {
-            console.log(err);
-        });
-    }
-
-    function CloseFun(){
-        PreviewBox.style.display = 'none';
-    }
+如果已经共享实例，则会通过拼接字符串实现 `cordova.callbackFromNative` 方法调用，并将字符串作为 `InAppBrowser` 实例的 `executeScript` 方法的参数对象中 `code` 的值，进行结构的回传。
 
 ```
+callbackFromNative: function(callbackId, isSuccess, status, args, keepCallback) {
+    try {
+        // ... 省略
+    } else {
+        // __globalBrowser指向当前使用的InAppBrowser实例
+        if(window.__globalBrowser) {
+            var message = 'cordova.callbackFromNative("'+callbackId+'",
+            '+isSuccess+',' + status +',' +JSON.stringify(args) + ',' 
+                + keepCallback + ')';
+            // 调用InAppBrowser实例的executeScript方法进行结果回传
+            window.__globalBrowser.executeScript({code: message});
+        }
+    }
+}
+```
+
+### 8. 回传调用结果
+
+将 `window.__globalBrowser.executeScript` 调用结果进行回传到 `InAppBorwser` 层中。
+
+### 9. 调用前端回调函数
+
+最后一步，`window.__globalBrowser.executeScript` 中会在 `InAppBorwser` 层中执行参数 `code` 值中的 `cordova.callbackFromNative` 方法，此时已经是在 `InAppBorwser` 层，因此这个 `cordova.callbackFromNative` 方法是 `InAppBorwser` 层中的。
+
+在 `code` 参数中，包含：
+
+- `callbackId`；
+- `isSuccess`；
+- `status`；
+- `args`；
+- `keepCallback`；
+
+对应 `cordova.callbackFromNative` 方法中的参数。
+
+此时在 `try` 语句中，就会通过 `callbackId` 拿到对应整个 `callback` 对象，最终执行 `callback.success` 方法等。
+
+```js
+callbackFromNative: function(callbackId, isSuccess, status, args, keepCallback) {
+    try {
+        var callback = cordova.callbacks[callbackId];
+        if (callback) {
+            if (isSuccess && status == cordova.callbackStatus.OK) {
+                callback.success && callback.success.apply(null, args);
+            } else if (!isSuccess) {
+                callback.fail && callback.fail.apply(null, args);
+            }
+            if (!keepCallback) {
+                delete cordova.callbacks[callbackId];
+            }
+    } else {
+        // __globalBrowser指向当前使用的InAppBrowser实例
+        if(window.__globalBrowser) {
+        var message = 'cordova.callbackFromNative("'+callbackId+'",
+        '+isSuccess+',' + status +',' +JSON.stringify(args) + ',' 
+            + keepCallback + ')';
+        // 调用InAppBrowser实例的executeScript方法进行结果回传
+        window.__globalBrowser.executeScript({code: message});
+        }
+    }
+}
+```
+
+这样便实现了 iOS 端到前端的单向通信。
+
+于是，两端通信边完成，整个 `InAppBrowser` 调用 `Cordova` 插件的流程便完成了。
