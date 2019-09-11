@@ -1,0 +1,1 @@
+当前学习 React Source 时， React 的版本为 16.6.0。
