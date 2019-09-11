@@ -9,9 +9,11 @@
 [![CSDN](http://images.pingan8787.com/icon_csdn1.png)](https://blog.csdn.net/qq_36380426)
 [![简书](http://images.pingan8787.com/icon_jianshu1.png)](https://www.jianshu.com/u/2ec5d94afd60)
 
-推荐我的另一个仓库 [《Leo_CSS》](https://github.com/pingan8787/Leo_CSS)。
+推荐我的另两个仓库：   
+ 
+1. [CSS 知识库：《Leo_CSS》](https://github.com/pingan8787/Leo_CSS)：更新一些原创和网络上的优秀文章，将文章整理下来，方便自己以后学习和复习。
 
-[《Leo_CSS》](https://github.com/pingan8787/Leo_CSS)更新一些原创和网络上的优秀文章，将文章整理下来，方便自己以后学习和复习。
+2. [个人阅读书架：《Leo_Reading》](https://github.com/pingan8787/Leo_Reading/issues/26)：将每日阅读的文章整理在这里面，已经持续将近两年。
 
 ## 💌仓库目录
 
