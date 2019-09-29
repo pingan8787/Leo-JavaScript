@@ -40,3 +40,43 @@ export const REACT_STRICT_MODE_TYPE = hasSymbol
 ```
 
 可以看出，它就是一个 Symbol ，一个标志，可能已经颠覆了我们的理解，在我们开发组件时，会在组件里面写很多业务逻辑或者渲染一些东西，但是 `StrictMode` 组件就是一个简单的 `Symbol` 没有任何的其他东西。
+
+接下来我们全局搜索 `REACT_STRICT_MODE_TYPE`，看下它有做什么处理，搜索到这么多结果：
+
+![图片1](reacrt20190929-01.png)
+
+其他文件不是很重要，我们重点看 `ReactPartialRenderer.js`，其中有这么一段代码：
+
+```js
+//...
+switch (elementType) {
+  case REACT_STRICT_MODE_TYPE:
+  case REACT_CONCURRENT_MODE_TYPE:
+  case REACT_PROFILER_TYPE:
+  case REACT_SUSPENSE_LIST_TYPE:
+  case REACT_FRAGMENT_TYPE: {
+    const nextChildren = toArray(
+      ((nextChild: any): ReactElement).props.children,
+    );
+    const frame: Frame = {
+      type: null,
+      domNamespace: parentNamespace,
+      children: nextChildren,
+      childIndex: 0,
+      context: context,
+      footer: '',
+    };
+    if (__DEV__) {
+      ((frame: any): FrameDev).debugElementStack = [];
+    }
+    this.stack.push(frame);
+    return '';
+  }
+//...
+```
+
+上面代码我们可以大概看出，当我们渲染的元素是 `REACT_STRICT_MODE_TYPE` 类型时，声明了 `nextChildren` 和 `frame` 两个变量，并且往 `this.stack` 中压入 `frame` 的值。
+
+看到这么，可能你就会（**哎呀卧槽，就是这里了**）。
+
+![e1](http://ww2.sinaimg.cn/large/9150e4e5gy1g5bp6k40t7g208c08c3ze.gif)
