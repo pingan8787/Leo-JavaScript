@@ -4,9 +4,35 @@
 
 ## 一、严格模式 - 介绍和用途
 
+严格模式（StrictMode）已经在 React v16.3 版本加入。它的作用是：在开发环境下中，主动提示组件内使用不推荐写法和即将废弃的 API。
 
-StrictMode 于 v16.3 推出。顾名思义，即严格模式，可用于在开发环境下提醒组件内使用不推荐写法和即将废弃的 API（该版本废弃了三个生命周期钩子）。与 Fragment 相同，并不会被渲染成真实 DOM。官方文档严格模式里详细介绍了会在哪些情况下发出警告。对于我们开发者来说，及时弃用不被推荐的写法即可规避这些警告。
+React 支持我们在部分代码中启用严格模式，下面通过简单代码，看下它是如何使用：
 
+```js
+import React from 'react';
+
+function LoginPage() {
+  return (
+    <>
+      <Logo />
+      <React.StrictMode>
+        <div>
+          <LoginForm />
+        </div>
+      </React.StrictMode>
+      <SubimtBtn />
+    </>
+  );
+}
+```
+
+在上面 demo 中，不会对 `Logo` 和 `SubimtBtn` 组件进行严格模式检查。只会对 `<React.StrictMode>` 标签内的 `LoginForm` 及它的所有后代元素都将进行检查。
+
+
+**需要注意几点重要的知识：**
+
+* 严格模式检查仅在开发模式下运行；它们不会影响生产构建；   
+* `<React.StrictMode>` 不会被渲染成真实 DOM；
 
 
 ## 二、严格模式 - 实例分析
