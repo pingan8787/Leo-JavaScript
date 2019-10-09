@@ -40,6 +40,7 @@
 * [25-Webpack入门教程整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/25-Webpack%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
 * [26-Webpack常用配置整理（整理中）](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/26-Webpack%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E6%95%B4%E7%90%86%EF%BC%88%E6%95%B4%E7%90%86%E4%B8%AD%EF%BC%89.md)
 * [75-Webpack怎么运行？](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/75-Webpack%E6%80%8E%E4%B9%88%E8%BF%90%E8%A1%8C%EF%BC%9F.md)  
+* [77-一看就懂之webpack高级配置与优化](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/77-%E4%B8%80%E7%9C%8B%E5%B0%B1%E6%87%82%E4%B9%8Bwebpack%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BC%98%E5%8C%96.md)  
 
 ### 5、WebSocket
 * [18-websocket常用demo](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/18-websocket%E5%B8%B8%E7%94%A8demo.md)  
