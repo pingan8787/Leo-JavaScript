@@ -1,3 +1,5 @@
+![inAppBrowser_to_Cordova_core.jpg](http://images.pingan8787.com/image/blog/inAppBrowser_to_Cordova_core.jpg)
+
 ## 一、流程简介
 
 `InAppBrowser` 调用 `Cordova` 插件的流程共分为 9 个步骤：
