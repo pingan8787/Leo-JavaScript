@@ -1,4 +1,4 @@
-## 一、MobX 介绍
+# 一、MobX 介绍
 
 首先看下官网介绍： 
 
@@ -9,7 +9,7 @@
 
 核心重点就是：**MobX 通过响应式编程实现简单高效的状态管理**。
 
-### React 和 Mobx 关系
+## React 和 Mobx 关系
 
 React 和 MobX 相辅相成，相互合作。
 
@@ -18,14 +18,14 @@ React 和 MobX 相辅相成，相互合作。
 > React 通过提供机制把应用状态转换为可渲染组件树并对其进行渲染。而MobX提供机制来存储和更新应用状态供 React 使用。
 
 
-### Mobx 工作流程
+## Mobx 工作流程
 
 这里先了解下大概整理流程，接下来会结合代码，介绍每一个部分。
 
 ![2019102303.png](http://images.pingan8787.com/blog/2019102303.png)
 
 
-## 二、配置 Webpack 的 MobX 开发环境
+# 二、配置 Webpack 的 MobX 开发环境
 
 * 安装 webpack 和 babel 依赖包：
 
@@ -75,17 +75,17 @@ module.exports = config
 ```
 
 
-## 三、MobX 常用 API 介绍
+# 三、MobX 常用 API 介绍
 
-### 1. 设置可观察数据（observable）
+## 1. 设置可观察数据（observable）
 
-#### 1.1 (@)observable
+### 1.1 (@)observable
 
 `observable` 是一种让数据的变化可以被观察的方法。
 
 `observable` 值可以是 JS原始数据类型、引用类型、普通对象、类实例、数组和映射。
 
-##### observable 使用
+#### observable 使用
 
 * 对于**JS原始类型**（`Number`/`String`/`Boolean`）， 使用` observable.box() `方法设置:
 
@@ -137,7 +137,7 @@ map.delete("key");
 console.log(map.has('key'))  // false
 ```
 
-##### @observable 使用
+#### @observable 使用
 
 MobX 也提供使用装饰器 `@observable` 来将其转换成可观察的，可以使用在实例的字段和属性上。
 
@@ -162,9 +162,9 @@ console.log(leo.arr[0]) // 1
 原因是装饰器 `@observable` 更进一步封装了 `observable.box()`。
 
 
-### 2. 响应可观察数据的变化
+## 2. 响应可观察数据的变化
 
-#### 2.1 (@)computed
+### 2.1 (@)computed
 
 **计算值**(computed values)是可以根据现有的状态或其它计算值进行组合计算的值。可以使实际可修改的状态尽可能的小。 
 
@@ -172,7 +172,7 @@ console.log(leo.arr[0]) // 1
 
 **可以简单理解为：**它可以将多个可观察数据合并成一个可观察数据。
 
-##### 使用方式
+#### 使用方式
 
 * **使用方式1：声明式创建**
 
@@ -253,7 +253,7 @@ console.log(Money.total) // 10
 
 如果前一个计算中使用的数据没有更改，计算属性将不会重新运行。 如果某个其它计算属性或 reaction 未使用该计算属性，也不会重新运行。 在这种情况下，它将被暂停。
 
-##### computed 的 setter
+#### computed 的 setter
 
 `computed` 的 `setter` 不能用来改变**计算属性的值**，而是用来它里面的成员，来使得 `computed` 发生变化。
 
@@ -293,7 +293,7 @@ console.log(m.total) // 14
 **注意：**   
 一定在 geeter 之后定义 setter，一些 typescript 版本会认为声明了两个名称相同的属性。
 
-##### computed(expression) 函数
+#### computed(expression) 函数
 
 一般可以通过下面两种方法观察变化，并获取计算值：
 
@@ -311,7 +311,7 @@ leo.set('pingan')
 
 更详细的 `computed` 参数可以查看文档：[《Computed 选项》](https://cn.mobx.js.org/refguide/computed-decorator.html)。
 
-##### 错误处理
+#### 错误处理
 
 计算值在计算期间抛出异常，则此异常会被捕获，并**在读取其值的时候抛出异常**。
 
@@ -334,7 +334,7 @@ y.set(5)
 div.get() // 恢复正常，返回 2
 ```
 
-##### 小结
+#### 小结
 用法：
 
 * `computed(() => expression)`
@@ -353,9 +353,9 @@ div.get() // 恢复正常，返回 2
 
 
 
-#### 2.2 autorun
+### 2.2 autorun
 
-##### 概念
+#### 概念
 
 `autorun` 直译就是**自动运行**的意思，那么我们要知道这两个问题：
 
@@ -394,7 +394,7 @@ store.str = 'pingan'
 
 现在可以看到控制台输出这两个日志，证明 `autorun` 已经被执行两次。
 
-##### 观察 computed 的数据
+#### 观察 computed 的数据
 
 ```js
 import { observable, autorun } from 'mobx'
@@ -419,7 +419,7 @@ store.str = 'pingan'
 
 可以看出，这样将 `computed` 的值在 `autorun` 中进行观察，也是可以达到一样的效果，这也是我们实际开发中常用到的。
 
-##### computed 与 autorun 区别
+#### computed 与 autorun 区别
 
 **相同点：**
 
@@ -432,13 +432,13 @@ store.str = 'pingan'
 * `@computed`中，如果一个计算值不再被观察了，MobX 可以自动地将其**垃圾回收**，而 `autorun` 中的值必须要手动清理才行。
 
 
-##### 小结
+#### 小结
 
 `autorun` 默认会执行一次，以获取哪些可观察数据被引用。
 
 `autorun` 的作用是在**可观察数据被修改之后**，**自动去执行依赖可观察数据的行为**，这个行为一直就是传入 `autorun` 的函数。
 
-#### 2.3 when
+### 2.3 when
 
 接收两个函数参数，第一个函数**必须根据可观察数据来返回一个布尔值**，当该布尔值为 `true` 时，才会去执行第二个函数，并且只会执行一次。
 
@@ -460,13 +460,13 @@ leo.bool = true
 
 可以看出当 `leo.bool` 设置成 `true` 以后，`when` 的第二个方法便执行了。
 
-##### 注意
+#### 注意
 
 1. 第一个参数，必须是根据**可观察数据**来返回的布尔值，而不是普通变量的布尔值。
 
 2. 如果第一个参数默认值为 `true`，则 `when` 函数会默认执行一次。
 
-#### 2.4 reaction
+### 2.4 reaction
 
 接收两个函数参数，第一个函数**引用可观察数据，并返回一个可观察数据**，作为第二个函数的参数。
 
@@ -496,7 +496,7 @@ leo.num = 122
 
 当我们没有获取到数据的时候，没有必要去执行存缓存逻辑，当第一次获取到数据以后，就执行存缓存的逻辑。
 
-#### 2.5 小结
+### 2.5 小结
 
 * `computed` 可以将多个可观察数据组合成一个可观察数据；
 
@@ -509,7 +509,7 @@ leo.num = 122
 它们各有特点，互为补充，都能在合适场景中发挥重要作用。
 
 
-### 3. 修改可观察数据
+## 3. 修改可观察数据
 
 在上一部分内容中，我们了解到，对可观察的数据做出反应的时候，需要我们手动修改可观察数据的值。这种修改是通过直接向变量赋值来实现的，虽然简单易懂，但是这样会带来一个较为严重的副作用，就是**每次的修改**都会触发 `autorun` 或者 `reaction` **运行一次**。多数情况下，这种高频的触发是完全没有必要的。
 
@@ -517,7 +517,7 @@ leo.num = 122
 
 为了优化这个问题， MobX 引入了 `action` 。
 
-#### 3.1 (@)action
+### 3.1 (@)action
 
 `action` 是修改任何状态的行为，使用 `action` 的好处是能**将多次状态数据的赋值合并成一次**，从而减少触发 `autorun` 或者 `reaction` 的次数。
 
@@ -543,7 +543,7 @@ store.bar() // ["pingan", 100]
 
 当我们连续去修改 `store.string` 和 `store.number` 两个变量后，再运行 `store.bar()` 会发现，控制台值输出一次 `["pingan", 100]` ，这就说明 `reaction` 只被执行一次。
 
-##### action.bound
+#### action.bound
 
 另外 `action` 还有一种特殊使用方法：`action.bound`，常常用来作为一个 `callback` 的方法参数，并且执行效果也是一样：
 
@@ -569,7 +569,7 @@ function foo(fun){
 foo(bar) //["pingan", 100]
 ```
 
-##### runInAction(name?, thunk)
+#### runInAction(name?, thunk)
 
 `runInAction` 是个简单的工具函数，它接收代码块并在(异步的)动作中执行。这对于即时创建和执行动作非常有用，例如在**异步过程**中。`runInAction(f)` 是 `action(f)()` 的语法糖。
 
@@ -593,7 +593,7 @@ runInAction(() => {
 })//["pingan", 100]
 ```
 
-## 四、 Mobx 简单实例
+# 四、 Mobx 简单实例
 
 这里以简单计数器为例，实现点击按钮，数值累加的简单操作，如图：
 
@@ -607,7 +607,7 @@ runInAction(() => {
 
 接下来开始我们的案例：
 
-### 1. 安装依赖和配置webpack
+## 1. 安装依赖和配置webpack
 
 由于配置和前面第二节介绍差不多，所以这里会以第二节的配置为基础，添加配置。
 
@@ -639,7 +639,7 @@ module: {
 },
 ```
 
-### 2. 初始化 React 项目
+## 2. 初始化 React 项目
 
 这里初始化一下我们本次项目的简单骨架：
 
@@ -671,7 +671,7 @@ ReactDOM.render(<Foo />, document.querySelector("#root"))
 
 ![2019102302.png](http://images.pingan8787.com/blog/2019102302.png)
 
-### 2. 实现 Store 类
+## 2. 实现 Store 类
 
 `Store` 类用于存储数据。
 
@@ -686,7 +686,7 @@ class Store {
 
 
 
-### 3. 实现 Bar 和 Foo 组件
+## 3. 实现 Bar 和 Foo 组件
 
 实现代码如下:
 ```js
@@ -720,7 +720,7 @@ class Foo extends Component{
 
 1. 事实上，我们只需要记住 `observer` 方法，将所有 `React` 组件用 `observer` 修饰，就是 `react-mobx` 的用法。
 
-### 4. 使用 Foo 组件
+## 4. 使用 Foo 组件
 
 最后我们使用 `Foo` 组件，需要给它传递两个参数，这样 `Bar` 组件才能拿到并使用：
 
@@ -728,7 +728,7 @@ class Foo extends Component{
 ReactDOM.render(<Foo cache={store.cache} refresh={store.refresh}/>, document.querySelector("#root"))
 ```
 
-## 参考
+# 参考
 
 * [《MobX 官方文档》](https://cn.mobx.js.org/)
 * [茵风泳月《MobX 入门基础教程》](https://www.imooc.com/learn/1012)
