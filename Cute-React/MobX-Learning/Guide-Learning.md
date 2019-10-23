@@ -2,12 +2,13 @@
 
 首先看下官网介绍： 
 
-
 > MobX 是一个经过战火洗礼的库，它通过透明的函数响应式编程(transparently applying functional reactive programming - TFRP)使得状态管理变得简单和可扩展。MobX背后的哲学很简单:
 > 任何源自应用状态的东西都应该自动地获得。
 > 其中包括UI、数据序列化、服务器通讯，等等。
 
-核心重点就是：**MobX 通过响应式编程实现简单高效的状态管理**。
+核心重点就是：**MobX 通过响应式编程实现简单高效，可扩展的状态管理**。
+
+<img src="http://images.pingan8787.com/blog/mobx.png" width="120px"/>
 
 ## React 和 Mobx 关系
 
@@ -23,6 +24,14 @@ React 和 MobX 相辅相成，相互合作。
 这里先了解下大概整理流程，接下来会结合代码，介绍每一个部分。
 
 ![2019102303.png](http://images.pingan8787.com/blog/2019102303.png)
+
+## 本文概要
+
+本文使用的是 MobX 5 版本，主要将从以下几个方面介绍 MobX 的使用：
+
+1. 配置 Webpack 的 MobX 开发环境
+2. MobX 常用 API 介绍（主要介绍与**可观察数据**相关的操作）
+3. MobX 简单实例
 
 
 # 二、配置 Webpack 的 MobX 开发环境
@@ -728,7 +737,25 @@ class Foo extends Component{
 ReactDOM.render(<Foo cache={store.cache} refresh={store.refresh}/>, document.querySelector("#root"))
 ```
 
-# 参考
+# 结尾
+
+本文参考：
 
 * [《MobX 官方文档》](https://cn.mobx.js.org/)
 * [茵风泳月《MobX 入门基础教程》](https://www.imooc.com/learn/1012)
+
+
+### 关于我
+
+> 本文首发在 [pingan8787个人博客](http://www.pingan8787.com)，如需转载请保留个人介绍。
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+
+###  微信公众号
+![bg](http://images.pingan8787.com/blog/2019_10_24guild_page.png)  
