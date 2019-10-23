@@ -172,7 +172,7 @@ console.log(leo.arr[0]) // 1
 
 **可以简单理解为：**它可以将多个可观察数据合并成一个可观察数据。
 
-#### 使用方式
+#### 知识点：使用方式
 
 * **使用方式1：声明式创建**
 
@@ -253,7 +253,7 @@ console.log(Money.total) // 10
 
 如果前一个计算中使用的数据没有更改，计算属性将不会重新运行。 如果某个其它计算属性或 reaction 未使用该计算属性，也不会重新运行。 在这种情况下，它将被暂停。
 
-#### computed 的 setter
+#### 知识点：computed 的 setter
 
 `computed` 的 `setter` 不能用来改变**计算属性的值**，而是用来它里面的成员，来使得 `computed` 发生变化。
 
@@ -293,7 +293,7 @@ console.log(m.total) // 14
 **注意：**   
 一定在 geeter 之后定义 setter，一些 typescript 版本会认为声明了两个名称相同的属性。
 
-#### computed(expression) 函数
+#### 知识点：computed(expression) 函数
 
 一般可以通过下面两种方法观察变化，并获取计算值：
 
@@ -311,7 +311,7 @@ leo.set('pingan')
 
 更详细的 `computed` 参数可以查看文档：[《Computed 选项》](https://cn.mobx.js.org/refguide/computed-decorator.html)。
 
-#### 错误处理
+#### 知识点：错误处理
 
 计算值在计算期间抛出异常，则此异常会被捕获，并**在读取其值的时候抛出异常**。
 
@@ -394,7 +394,7 @@ store.str = 'pingan'
 
 现在可以看到控制台输出这两个日志，证明 `autorun` 已经被执行两次。
 
-#### 观察 computed 的数据
+#### 知识点：观察 computed 的数据
 
 ```js
 import { observable, autorun } from 'mobx'
@@ -419,7 +419,7 @@ store.str = 'pingan'
 
 可以看出，这样将 `computed` 的值在 `autorun` 中进行观察，也是可以达到一样的效果，这也是我们实际开发中常用到的。
 
-#### computed 与 autorun 区别
+#### 知识点：computed 与 autorun 区别
 
 **相同点：**
 
@@ -543,7 +543,7 @@ store.bar() // ["pingan", 100]
 
 当我们连续去修改 `store.string` 和 `store.number` 两个变量后，再运行 `store.bar()` 会发现，控制台值输出一次 `["pingan", 100]` ，这就说明 `reaction` 只被执行一次。
 
-#### action.bound
+#### 知识点：action.bound
 
 另外 `action` 还有一种特殊使用方法：`action.bound`，常常用来作为一个 `callback` 的方法参数，并且执行效果也是一样：
 
@@ -569,7 +569,7 @@ function foo(fun){
 foo(bar) //["pingan", 100]
 ```
 
-#### runInAction(name?, thunk)
+#### 知识点：runInAction(name?, thunk)
 
 `runInAction` 是个简单的工具函数，它接收代码块并在(异步的)动作中执行。这对于即时创建和执行动作非常有用，例如在**异步过程**中。`runInAction(f)` 是 `action(f)()` 的语法糖。
 
