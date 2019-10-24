@@ -1,3 +1,5 @@
+![Cover](http://images.pingan8787.com/blog/20191024MobX_Cover.png)
+
 # 一、MobX 介绍
 
 首先看下官网介绍： 
@@ -737,7 +739,10 @@ class Foo extends Component{
 最后我们使用 `Foo` 组件，需要给它传递两个参数，这样 `Bar` 组件才能拿到并使用：
 
 ```jsx
-ReactDOM.render(<Foo cache={store.cache} refresh={store.refresh}/>, document.querySelector("#root"))
+ReactDOM.render(
+    <Foo cache={store.cache} refresh={store.refresh}/>, 
+    document.querySelector("#root")
+)
 ```
 
 # 结尾
