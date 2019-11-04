@@ -96,7 +96,10 @@
 ### 9、面试题
 * [62-2018各大公司近期面试题](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/62-2018%E5%90%84%E5%A4%A7%E5%85%AC%E5%8F%B8%E8%BF%91%E6%9C%9F%E9%9D%A2%E8%AF%95%E9%A2%98.md)
 
-### 10、其他
+### 10、React
+* [79-在React中使用ShadowDOM](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/79-在React中使用ShadowDOM.md)
+
+### 11、其他
 * [2017-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2017-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md)
 * [2018-全年计划](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2018-%E5%85%A8%E5%B9%B4%E8%AE%A1%E5%88%92.md) 
 * [2018-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2018-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md) 
