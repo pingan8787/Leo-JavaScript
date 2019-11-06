@@ -68,6 +68,8 @@ https://juejin.im/entry/5a968ba56fb9a06340524128
 
 ### 25. WeakMap 和 Map 的区别?
 
+https://muyiy.cn/question/js/4.html
+
 ### 
 
 ### 
