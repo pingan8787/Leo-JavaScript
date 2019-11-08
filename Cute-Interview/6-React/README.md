@@ -48,8 +48,8 @@
 
 咱们可以将"render"分为两个步骤：
 
-* **虚拟 DOM 渲染:**当 `render` 方法被调用时，它返回一个新的组件的虚拟 DOM 结构。当调用 `setState() `时， `render` 会被再次调用，因为默认情况下 `shouldComponentUpdate` 总是返回 `true` ，所以默认情况下 React 是没有优化的。
-* **原生 DOM 渲染:**React 只会在虚拟 DOM 中修改真实 DOM 节点，而且修改的次数非常少——这是很棒的 React 特性，它优化了真实 DOM 的变化，使 React 变得更快。
+* **虚拟 DOM 渲染:** 当 `render` 方法被调用时，它返回一个新的组件的虚拟 DOM 结构。当调用 `setState() `时， `render` 会被再次调用，因为默认情况下 `shouldComponentUpdate` 总是返回 `true` ，所以默认情况下 React 是没有优化的。
+* **原生 DOM 渲染:** React 只会在虚拟 DOM 中修改真实 DOM 节点，而且修改的次数非常少——这是很棒的 React 特性，它优化了真实 DOM 的变化，使 React 变得更快。
 
 ### 25. props和state的区别
 
