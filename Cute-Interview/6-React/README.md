@@ -71,7 +71,36 @@
 * `componentDidUpdate`： 它主要用于更新 DOM 以响应 `props` 或 `state` 更改。   
 * `componentWillUnmount`： 它用于取消任何的网络请求，或删除与组件关联的所有事件监听器。   
 
-### 
+### 31. 在使用 ES6 类的 React 中 super() 和 super(props) 有什么区别?
+
+当你想要在 `constructor()` 函数中访问 `this.props`，你需要将 `props` 传递给 `super()` 方法。
+
+使用 `super(props)`:
+
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(this.props) // { name: 'John', ... }
+  }
+}
+```
+
+使用 super():
+
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super()
+    console.log(this.props) // undefined
+  }
+}
+```
+在 `constructor()` 函数之外，访问` this.props` 属性会显示相同的值。
+
+阅读资源：
+
+[《为什么我们要写 super(props) ？》](https://overreacted.io/zh-hans/why-do-we-write-super-props/)
 
 ### 
 
