@@ -251,17 +251,17 @@ https://muyiy.cn/question/js/4.html
 
 ### 26. WeakSet 和 WeakMap 的区别？
 
-### 
+### 27. JSbridge原理, js和native是如何通信的?
 
-### 
+### 28. new String('a') 和 'a' 是一样的么?
 
-### 
+### 29. 数组去重实现?
 
-### 
+### 30. 知道浏览器事件机制吗
 
-### 
+### 31. typeof instanceof 区别
 
-### 
+### 32. IE浏览器 开启怪异模式的方式是什么? 
 
 ### 
 
