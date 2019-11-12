@@ -263,7 +263,19 @@ https://muyiy.cn/question/js/4.html
 
 ### 32. IE浏览器 开启怪异模式的方式是什么? 
 
-### 
+### 33. ES6 中的临时死区是什么
+链接：https://juejin.im/post/5dc8a231f265da4d40712f8a
+
+在 ES6 中，let 和const 跟 var、class和function一样也会被提升，只是在进入作用域和被声明之间有一段时间不能访问它们，这段时间是临时死区(TDZ)。
+
+```js
+//console.log(aLet)  // would throw ReferenceError
+
+let aLet;
+console.log(aLet); // undefined
+aLet = 10;
+console.log(aLet); // 10
+```
 
 ### 
 
