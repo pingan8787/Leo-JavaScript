@@ -3,6 +3,7 @@
 
 ### 关于作者
 [![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
+[![语雀](http://images.pingan8787.com/assets/icon_26_yuque.png)](https://www.yuque.com/wangpingan/cute-frontend)
 [![知乎](http://images.pingan8787.com/icon_zhihu1.png)](https://zhuanlan.zhihu.com/cute-javascript)
 [![掘金](http://images.pingan8787.com/icon_juejin2.png)](https://juejin.im/user/586fc337a22b9d0058807d53/posts)
 [![思否](http://images.pingan8787.com/icon_sf1.png)](https://segmentfault.com/blog/pingan8787)
