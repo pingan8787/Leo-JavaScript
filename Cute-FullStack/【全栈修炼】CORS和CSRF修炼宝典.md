@@ -4,7 +4,7 @@ CORS 和 CSRF 太容易混淆了，看完本文，你就清楚了。
 
 先看下图：
 
-![CORS 和 CSRF 区别](CORS-CSRF-1.png)
+![CORS 和 CSRF 区别](http://images.pingan8787.com/blog/CORS-CSRF-1.png)
 
 两者概念完全不同，另外常常我们也会看到 XSS ，这里一起介绍：
 
@@ -44,14 +44,14 @@ CORS 和 CSRF 太容易混淆了，看完本文，你就清楚了。
 
 `Origin` 字段用来说明本次请求的来源（包括**协议** + **域名** + **端口号**），服务端根据这个值来决定是否同意此次请求。
 
-![简单请求的 CORS 流程](CORS-CSRF-2.png)
+![简单请求的 CORS 流程](http://images.pingan8787.com/blog/CORS-CSRF-2.png)
 
 当 `Origin` 指定的源不在许可范围，服务器会返回一个正常的 HTTP 回应，但浏览器会在响应头中发现 `Access-Control-Allow-Origin` 字段，便抛出异常。
 
 
 当 `Origin` 指定的源在许可范围，服务器返回的响应头中会多出几个头信息字段：
 
-![简单请求的 CORS 流程](CORS-CSRF-3.png)
+![简单请求的 CORS 流程](http://images.pingan8787.com/blog/CORS-CSRF-3.png)
 
 除了上面图中的头信息，一般会有以下三个相关头信息：
 
@@ -139,7 +139,7 @@ Connection: Keep-Alive
 
 ### 2. CSRF 攻击流程
 
-![CSRF 攻击流程](CORS-CSRF-4.png)
+![CSRF 攻击流程](http://images.pingan8787.com/blog/CORS-CSRF-4.png)
 
 上面描述了 CSRF 攻击的流程，其中受害者完成两个步骤：
 
