@@ -1,10 +1,10 @@
 CORS 和 CSRF 太容易混淆了，看完本文，你就清楚了。
 
-## 一、CORS 和 CSRF 概念
+## 一、CORS 和 CSRF 区别
 
 先看下图：
 
-![CORS 和 CSRF 概念](CORS-CSRF-1.png)
+![CORS 和 CSRF 区别](CORS-CSRF-1.png)
 
 两者概念完全不同，另外常常我们也会看到 XSS ，这里一起介绍：
 
@@ -123,6 +123,8 @@ Connection: Keep-Alive
 
 ## 三、CSRF
 
+### 1. 概念
+
 > 跨站请求伪造（英语：Cross-site request forgery），也被称为 one-click attack 或者 session riding，通常缩写为 CSRF 或者 XSRF， 是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。跟跨网站脚本（XSS）相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
 —— [维基百科](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0)
 
@@ -135,14 +137,131 @@ Connection: Keep-Alive
 
 造成影响：个人隐私泄露以及财产安全。
 
+### 2. CSRF 攻击流程
 
+![CSRF 攻击流程](CORS-CSRF-4.png)
+
+上面描述了 CSRF 攻击的流程，其中受害者完成两个步骤：
+
+1. 登录受信任网站 A ，并在本地生成保存Cookie；
+2. 在不登出 A 情况下，访问病毒网站 B；
+
+可以理解为：若以上两个步骤没有都完成，则不会受到 CSRF 攻击。
+
+### 3. 服务端防御 CSRF 攻击
+
+服务端防御的方式有很多，思想类似，都是在客户端页面增加**伪随机数**。
+
+#### 3.1 Cookie Hashing（所有表单都包含同一个伪随机数）
+
+最简单有效方式，因为攻击者理论上无法获取第三方的Cookie，所以表单数据伪造失败。以 php 代码为例：
+
+```php
+<?php
+    //构造加密的Cookie信息
+    $value = "LeoDefenseSCRF";
+    setcookie("cookie", $value, time()+3600);
+?>
+```
+
+在表单里增加Hash值，以认证这确实是用户发送的请求。
+
+```php
+<?php
+    $hash = md5($_COOKIE['cookie']);
+?>
+<form method="POST" action="transfer.php">
+　　<input type="text" name="toBankId">
+　　<input type="text" name="money">
+　　<input type="hidden" name="hash" value="<?=$hash;?>">
+　　<input type="submit" name="submit" value="Submit">
+</form>
+```
+
+然后在服务器端进行Hash值验证。
+
+```php
+<?php
+    if(isset($_POST['check'])) {
+　　     $hash = md5($_COOKIE['cookie']);
+    　　 if($_POST['check'] == $hash) {
+            doJob();
+        } else {
+　　　　　//...
+    　　}
+    } else {
+　　    //...
+    }
+?>
+```
+
+这个方法个人觉得已经**可以杜绝99%的CSRF攻击了**，那还有1%呢....由于用户的 Cookie 很容易由于网站的 XSS 漏洞而被盗取，这就另外的1%。
+
+一般的攻击者看到有需要算Hash值，基本都会放弃了，某些除外，所以如果需要100%的杜绝，这个不是最好的方法。
+
+#### 3.2 验证码
+
+思路是：每次用户提交都需要用户在表单中填写一个图片上的随机字符串，这个方案可以完全解决CSRF，但易用性差，并且验证码图片的使用涉及 MHTML 的Bug，可能在某些版本的微软IE中受影响。
+
+#### 3.3 One-Time Tokens(不同的表单包含一个不同的伪随机值)
+
+需要注意“**并行会话的兼容**”。如果用户在一个站点上同时打开了两个不同的表单，CSRF保护措施不应该影响到他对任何表单的提交。考虑一下如果每次表单被装入时站点生成一个伪随机值来覆盖以前的伪随机值将会发生什么情况：用户只能成功地提交他最后打开的表单，因为所有其他的表单都含有非法的伪随机值。必须小心操作以确保CSRF保护措施不会影响选项卡式的浏览或者利用多个浏览器窗口浏览一个站点。
+
+php 实现如下：
+
+1. 先是 `Token` 令牌生成函数(`gen_token()`)和 `Session` 令牌生成函数(`gen_stoken()`)：
+
+```php
+<?php
+    function gen_token() {
+        $token = md5(uniqid(rand(), true));
+        return $token;
+    }
+　　function gen_stoken() {
+　　　　$pToken = "";
+　　　　if($_SESSION[STOKEN_NAME]  == $pToken){
+　　　　　　$_SESSION[STOKEN_NAME] = gen_token();
+　　　　}    
+　　　　else{ }
+　　}
+?>
+```
+
+2. WEB表单生成隐藏输入域的函数：　
+
+```php
+<?php
+    function gen_input() {
+        gen_stoken();
+        echo "<input type=\"hidden\" name=\"" . FTOKEN_NAME . "\"
+     　　     value=\"" . $_SESSION[STOKEN_NAME] . "\"> ";
+　　}
+?>
+```
+
+3. WEB表单结构：
+
+```php
+<?php
+    session_start();
+    include("functions.php");
+?>
+<form method="POST" action="transfer.php">
+    <input type="text" name="toBankId">
+    <input type="text" name="money">
+    <? gen_input(); ?>
+    <input type="submit" name="submit" value="Submit">
+</FORM>
+```
+
+4. 服务端核对令牌
+
+这一步很简单，不需要介绍。
 
 ## 四、XSS
 
 > 跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。
 —— [维基百科](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC)
-
-
 
 
 ## 参考文章
@@ -151,3 +270,4 @@ Connection: Keep-Alive
 2. [《CSRF & CORS》](https://www.cnblogs.com/lailailai/p/4528092.html)
 3. [《跨站脚本攻击—XSS》](https://segmentfault.com/a/1190000020402185)
 4. [《前端安全系列（一）：如何防止XSS攻击？》](https://tech.meituan.com/2018/09/27/fe-security.html)
+5. [《浅谈CSRF攻击方式》](https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)
