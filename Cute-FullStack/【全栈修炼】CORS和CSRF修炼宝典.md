@@ -260,7 +260,7 @@ php 实现如下：
 
 ## 四、XSS
 
-**注意**： 本文简单介绍 XSS 知识，具体详细可以阅读 **FEWY** 写的 [《跨站脚本攻击—XSS》](https://segmentfault.com/a/1190000020402185)。
+**注意**： 本文简单介绍 XSS 知识，具体详细可以阅读 **FEWY** 写的 [《跨站脚本攻击—XSS》](https://segmentfault.com/a/1190000020402185)https://segmentfault.com/a/1190000020402185。
 
 ### 1. 概念
 
