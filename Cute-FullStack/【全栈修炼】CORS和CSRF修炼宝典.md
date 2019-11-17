@@ -256,18 +256,135 @@ php 实现如下：
 
 4. 服务端核对令牌
 
-这一步很简单，不需要介绍。
+这一步很简单，不做详细介绍。
 
 ## 四、XSS
+
+**注意**： 本文简单介绍 XSS 知识，具体详细可以阅读 **FEWY** 写的 [《跨站脚本攻击—XSS》](https://segmentfault.com/a/1190000020402185)。
+
+### 1. 概念
 
 > 跨站脚本（英语：Cross-site scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。
 —— [维基百科](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC)
 
+XSS 攻击，一般是指攻击者通过在网页中注入恶意脚本，当用户浏览网页时，恶意脚本执行，控制用户浏览器行为的一种攻击方式。
+
+常见 XSS 危害有：
+
+* 窃取用户Cookie，获取用户隐私，盗取用户账号。
+* 劫持用户（浏览器）会话，从而执行任意操作，例如进行非法转账、强制发表日志、发送电子邮件等。
+* 强制弹出广告页面，刷流量，传播跨站脚本蠕虫，网页挂马等。
+* 结合其他漏洞，如 CSRF 漏洞，实施进一步的攻击。
+
+### 2. XSS 分类
+
+![XSS 分类](http://images.pingan8787.com/blog/CORS-CSRF-5.png)
+
+
+### 3. XSS 防御
+
+#### 3.1 方法1：浏览器自带防御 （X-XSS-Protection ）
+
+现今主流浏览器（Internet Explorer，Chrome 和 Safari）带有 HTTP `X-XSS-Protection` 响应头，当检测到跨站脚本攻击(XSS)时，浏览器将停止加载页面。
+
+`X-XSS-Protection` 响应头有以下 4 个值：
+
+* `X-XSS-Protection: 0`
+
+禁止XSS过滤。     
+
+* `X-XSS-Protection: 1`
+
+启用XSS过滤（通常浏览器是默认的）。 如果检测到跨站脚本攻击，浏览器将清除页面（删除不安全的部分）。  
+
+* `X-XSS-Protection: 1; mode=block`
+
+启用XSS过滤。 如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载。  
+
+* `X-XSS-Protection: 1; report=<reporting-uri>`
+
+启用XSS过滤。 如果检测到跨站脚本攻击，浏览器将清除页面并使用CSP report-uri指令的功能发送违规报告。 
+
+**注意：**
+
+这并不能完全防止反射型 XSS，而且也并不是所有浏览器都支持 `X-XSS-Protection`，存在兼容性问题。
+
+它只对反射型 XSS 有一定的防御力，其原理也只是检查 URL 和 DOM 中元素的相关性。
+
+#### 3.2 方法2：转义
+
+即将常用特殊字符进行转义，避免攻击者使用构造特殊字符来注入脚本。需要在客户端和服务端，都对用户输入的数据进行转义。
+
+常见需要转义的特殊字符如 `<`，`>`，`&`，`"`，`'`。
+
+转义方法：
+
+```js
+function escapeHTML(str) {
+    if (!str) return '';
+    str = str.replace(/&/g, "&amp;");
+    str = str..replace(/</g, "&lt;");
+    str = str..replace(/>/g, "&gt;");
+    str = str..replace(/"/g, "&quot;");
+    str = str..replace(/'/g, "&#39;");
+    return str;
+};
+```
+
+#### 3.3 方法3：过滤
+
+常见于富文本内容，因为其需要保留 HTML，所以不能直接使用转义方法，而可以通过使用白名单，来允许特定的 HTML 标签及属性，来抵御 XSS 攻击。
+
+#### 3.4 方法4：内容安全策略（CSP）
+
+[内容安全策略（Content Security Policy，CSP）](http://www.ruanyifeng.com/blog/2016/09/csp.html)，实质就是白名单制度，开发者明确告诉客户端，哪些外部资源可以加载和执行，大大增强了网页的安全性。
+
+
+两种方法可以启用 CSP。
+
+1. 通过 HTTP 头信息的 `Content-Security-Policy` 的字段：
+
+```http
+Content-Security-Policy: script-src 'self'; 
+                         object-src 'none';
+                         style-src cdn.example.org third-party.org; 
+                         child-src https:
+```
+
+2. 通过网页的 `<meta>` 标签
+
+```html
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:">
+```
+
+上面代码中，CSP 做了如下配置：
+
+* 脚本： 只信任当前域名
+* `<object>`标签： 不信任任何 URL，即不加载任何资源
+* 样式表： 只信任 `cdn.example.org `和` third-party.org`
+* 页面子内容，如 `<frame>`、`<iframe>`： 必须使用HTTPS协议加载
+* 其他资源： 没有限制
+* 启用后，不符合 CSP 的外部资源就会被阻止加载。
 
 ## 参考文章
 
 1. [《跨域资源共享 CORS 详解》](www.ruanyifeng.com/blog/2016/04/cors.html)
 2. [《CSRF & CORS》](https://www.cnblogs.com/lailailai/p/4528092.html)
-3. [《跨站脚本攻击—XSS》](https://segmentfault.com/a/1190000020402185)
-4. [《前端安全系列（一）：如何防止XSS攻击？》](https://tech.meituan.com/2018/09/27/fe-security.html)
-5. [《浅谈CSRF攻击方式》](https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)
+3. [《浅谈CSRF攻击方式》](https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)
+4. [《跨站脚本攻击—XSS》](https://segmentfault.com/a/1190000020402185)
+
+
+## 关于我
+
+> 本文首发在 [pingan8787个人博客](http://www.pingan8787.com)，如需转载请联系本人。
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+
+##  微信公众号
+![bg](http://images.pingan8787.com/blog/2019_10_24guild_page.png)  
