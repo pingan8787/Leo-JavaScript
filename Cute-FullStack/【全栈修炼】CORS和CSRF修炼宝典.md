@@ -70,6 +70,8 @@ let xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 ```
 
+**注意：** 如果前端设置 `Access-Control-Allow-Credentials` 为 `true` 来携带 Cookie 发起请求，则服务端 `Access-Control-Allow-Origin` 不能设置为 `*`。
+
 3. `Access-Control-Expose-Headers`
 
 该字段可选。可以设置需要获取的字段。因为默认 CORS 请求时，`XMLHttpRequest` 对象的`getResponseHeader()`方法只能拿到以下 6 个基本字段：
