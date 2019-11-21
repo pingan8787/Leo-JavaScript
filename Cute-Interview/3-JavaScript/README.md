@@ -277,7 +277,12 @@ aLet = 10;
 console.log(aLet); // 10
 ```
 
-### 
+### 34. 怎么判断对象类型？
+
+可以通过 `Object.prototype.toString.call(xx)`。这样我们就可以获得类似` [object Type] `的字符串。
+`instanceof` 可以正确的判断对象的类型，因为内部机制是通过判断对象的原型链中是不是能找到类型的 `prototype`。
+
+
 
 ### 
 
