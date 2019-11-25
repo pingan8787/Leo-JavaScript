@@ -227,9 +227,24 @@ app.get('/deleteUser', (req, res) => {
 })
 ```
 
-
+  
 ## 参考资料
 
 1. [《维基百科 - 表现层状态转换》](https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%8E%B0%E5%B1%82%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2)
 2. [《RESTful风格的springMVC》](https://blog.csdn.net/wy5612087/article/details/52149249)
 3. [《Node.js RESTful API》](https://www.runoob.com/nodejs/nodejs-restful-api.html)
+
+## 关于我
+
+> 本文首发在 [pingan8787个人博客](http://www.pingan8787.com)，如需转载请联系本人。
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+
+##  微信公众号
+![bg](http://images.pingan8787.com/blog/2019_10_24guild_page.png)  
