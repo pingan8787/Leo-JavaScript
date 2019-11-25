@@ -1,4 +1,6 @@
 
+![RESTful API](http://images.pingan8787.com/blog/RESTful.png)
+
 ## 一、概念介绍
 
 ### 1. REST 概念
@@ -204,7 +206,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-#### 5. 删除指定用户
+### 5. 删除指定用户
 
 这一步我们会创建 RESTful API 中的 **deleteUser**，用来**删除指定用户**：
 
