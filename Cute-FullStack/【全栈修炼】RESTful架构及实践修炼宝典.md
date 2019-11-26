@@ -332,7 +332,7 @@ Content-Type: application/json
 1. [《维基百科 - 表现层状态转换》](https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%8E%B0%E5%B1%82%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2)
 2. [《RESTful风格的springMVC》](https://blog.csdn.net/wy5612087/article/details/52149249)
 3. [《Node.js RESTful API》](https://www.runoob.com/nodejs/nodejs-restful-api.html)
-4. [《RESTful API 最佳实践》](www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+4. [《RESTful API 最佳实践》](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
 
 ## 关于我
 
