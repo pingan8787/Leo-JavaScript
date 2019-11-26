@@ -134,7 +134,7 @@ GET  /api/user/100/bill?from=201910&to=201911
 
 ### 2. 获取用户列表
 
-这一步我们会创建 RESTful API 中的 **listUsers**，用来**读取用户的信息列表**：
+这一步我们会创建 RESTful API 中的 **user**，使用 GET 来**读取用户的信息列表**：
 
 ```js
 // index.js
@@ -143,7 +143,7 @@ const app = express();
 const fs = require("fs");
 
 // 定义 读取用户的信息列表 的接口
-app.get('/listUsers', (req, res) => {
+app.get('/user', (req, res) => {
    fs.readFile( __dirname + "/" + "users.json", 'utf8', (err, data) => {
        console.log( data );
        res.end( data );
@@ -158,7 +158,7 @@ const server = app.listen(8081, function () {
 
 ### 3. 添加用户
 
-这一步我们会创建 RESTful API 中的 **addUser**，用来**添加用户记录**：
+这一步我们会创建 RESTful API 中的 **user**，使用 POST 来**添加用户记录**：
 
 ```js
 // index.js
@@ -175,7 +175,7 @@ const user = {
 }
 
 // 定义 添加用户记录 的接口
-app.get('/addUser', (req, res) => {
+app.post('/user', (req, res) => {
    // 读取已存在的数据
    fs.readFile( __dirname + "/" + "users.json", 'utf8', (err, data) => {
        data = JSON.parse( data );
@@ -188,7 +188,7 @@ app.get('/addUser', (req, res) => {
 
 ### 4. 获取用户详情
 
-这一步我们在 RESTful API 中的 URI 后面加上 **:id**，用来**获取指定用户详情**：
+这一步我们在 RESTful API 中的 URI 后面加上 **:id**，使用 GET 来**获取指定用户详情**：
 
 ```js
 // index.js
@@ -199,7 +199,7 @@ app.get('/:id', (req, res) => {
    // 首先我们读取已存在的用户
    fs.readFile( __dirname + "/" + "users.json", 'utf8', (err, data) => {
        data = JSON.parse( data );
-       var user = data["user" + req.params.id] 
+       const user = data["user" + req.params.id] 
        console.log( user );
        res.end( JSON.stringify(user));
    });
@@ -208,7 +208,7 @@ app.get('/:id', (req, res) => {
 
 ### 5. 删除指定用户
 
-这一步我们会创建 RESTful API 中的 **deleteUser**，用来**删除指定用户**：
+这一步我们会创建 RESTful API 中的 **user**，使用 DELETE 来**删除指定用户**：
 
 ```js
 // index.js
@@ -217,7 +217,7 @@ app.get('/:id', (req, res) => {
 // mock 一条要删除的用户id
 const id = 2;
 
-app.get('/deleteUser', (req, res) => {
+app.delete('/user', (req, res) => {
    fs.readFile( __dirname + "/" + "users.json", 'utf8', (err, data) => {
        data = JSON.parse( data );
        delete data["user" + id];
