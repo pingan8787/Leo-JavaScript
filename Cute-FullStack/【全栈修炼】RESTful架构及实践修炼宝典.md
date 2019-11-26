@@ -130,8 +130,6 @@ GET  /api/user/100/bill?from=201910&to=201911
 
 我们将实现以下 RESTful API ：
 
-![RESTful API](http://images.pingan8787.com/blog/RESTful-API-1.png)
-
 ### 2. 获取用户列表
 
 这一步我们会创建 RESTful API 中的 **user**，使用 GET 来**读取用户的信息列表**：
