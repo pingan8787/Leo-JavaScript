@@ -302,7 +302,7 @@ JSBridge 简单来讲，主要是 **给 JavaScript 提供调用 Native 功能的
 
 JSBridge 就像其名称中的 **“Bridge”** 的意义一样，**是 Native 和非 Native 之间的桥梁**，它的核心是 **构建 Native 和非 Native 间消息通信的通道，而且是 双向通信的通道**。
 
-JSBridge 另一个叫法及大家熟知的 Hybrid app 技术。
+JSBridge 也被称为 Hybrid app 技术。
 
 ![brige](http://images.pingan8787.com/20190623HybridApp4.png)
 
