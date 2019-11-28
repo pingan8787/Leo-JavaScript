@@ -523,7 +523,7 @@ public class AndroidtoJs extends Object {
    </head>
    <body>
       //点击按钮则调用callAndroid函数
-      <button type="button" id="button1" "callAndroid()"></button>
+      <button type="button" id="button1" onclick="callAndroid()"></button>
    </body>
 </html>
 ```
