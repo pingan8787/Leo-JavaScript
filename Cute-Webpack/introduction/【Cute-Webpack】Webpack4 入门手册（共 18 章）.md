@@ -156,7 +156,7 @@ Entrypoint main = main.js
 // src/index.js
 
 import _ from 'lodash';
-require("!style-loader!css-loader!./style/index.css");// 引入样式文件
+require("./style/index.css");// 引入样式文件
 
 function createElement(){
   let div = document.createElement('div');
@@ -180,7 +180,7 @@ document.body.appendChild(createElement());
 
 **注意：**
 
-这里使用 `require("!style-loader!css-loader!./style/index.css");` 引入我们的样式文件，是没办法解析使用，这时我们需要在 `webpack` 中使用到第三方 `loader` 插件，这里我们使用：   
+这里使用 `require("./style/index.css");` 引入我们的样式文件，是没办法解析使用，这时我们需要在 `webpack` 中使用到第三方 `loader` 插件，这里我们使用：   
 
 * `css-loader` ： 用于处理 `css` 文件，使得能在 js 文件中引入使用；
 * `style-loader` ： 用于将 `css` 文件注入到 `index.html` 中的 `<style>` 标签上；
@@ -336,7 +336,7 @@ npm install sass-loader node-sass --save-dev
 
 ![webpack-editor-2020-01-18-01](http://images.pingan8787.com/blog/webpack-editor-2020-01-18-01.png)
 
-在 `src/style` 目录下添加 `leo.scss` 文件，并添加内容：
+在 `src/style` 目录下的 `leo.css` 文件重命名为 `leo.scss` 文件，并添加内容：
 
 ```css
 // leo.scss
@@ -347,12 +347,33 @@ $bg-color: #ee3;
 }
 ```
 
+修改 webpack 配置文件：
+
+```diff
+// ...
+module: {
+  rules: [
+    {test: /\.css$/, use: ["style-loader", "css-loader"]},
++     {
++       test: /\.scss$/,
++       use: [
++         "style-loader", // 将 JS 字符串生成为 style 节点
++         "css-loader", // 将 CSS 转化成 CommonJS 模块
++         "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
++       ]
++     }
+  ],
+  // ...
+}
+// ...
+```
+
 然后在 `src/index.js` 中引入 `leo.scss` 文件：
 
 ```diff
 // src/index.js
-+ require("!style-loader!css-loader!sass-loader!./style/index.scss");
-- require("!style-loader!css-loader!./style/index.scss");
++ require("./style/index.scss");
+- require("./style/index.css");
 ```
 
 再 `npx webpack` 重新打包，并打开 `dist/index.html` 可以看到背景颜色已经添加上去：
@@ -368,11 +389,11 @@ $bg-color: #ee3;
 
 ```js
 "scripts": {
-  "build": "npx webpack -c webpack.config.js"
+  "build": "npx webpack --config webpack.config.js"
 },
 ```
 
-这里的 `-c webpack.config.js` 中，`-c` 后面跟着的是 `webpack` 配置文件的文件名，默认可以不写。  
+这里的 `--config webpack.config.js` 中，`--config` 后面跟着的是 `webpack` 配置文件的文件名，默认可以不写。  
 
 
 ## 四、 webpack 开启 SourceMap 和添加 CSS3 前缀
