@@ -52,6 +52,21 @@ npm install webpack webpack-cli --save-dev
 + ├─webpack.config.js  // webpack的配置文件
 ```
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webpack-Starter</title>
+</head>
+<body>
+    <script src="./main.js"></script>
+</body>
+</html>
+```
+
 安装 `lodash`：
 
 ```sh
@@ -141,7 +156,7 @@ Entrypoint main = main.js
 // src/index.js
 
 import _ from 'lodash';
-import './style/index.css';// 引入样式文件
+require("!style-loader!css-loader!./style/index.css");// 引入样式文件
 
 function createElement(){
   let div = document.createElement('div');
@@ -165,7 +180,7 @@ document.body.appendChild(createElement());
 
 **注意：**
 
-这里使用 `import './style/index.css';` 引入我们的样式文件，是没办法解析使用，这时我们需要在 `webpack` 中使用到第三方 `loader` 插件，这里我们使用：   
+这里使用 `require("!style-loader!css-loader!./style/index.css");` 引入我们的样式文件，是没办法解析使用，这时我们需要在 `webpack` 中使用到第三方 `loader` 插件，这里我们使用：   
 
 * `css-loader` ： 用于处理 `css` 文件，使得能在 js 文件中引入使用；
 * `style-loader` ： 用于将 `css` 文件注入到 `index.html` 中的 `<style>` 标签上；
@@ -317,6 +332,10 @@ module: {
 npm install sass-loader node-sass --save-dev
 ```
 
+安装过程中，若出现以下错误，请安装 `npm install sass fibers --save-dev` 解决：
+
+![webpack-editor-2020-01-18-01](http://images.pingan8787.com/blog/webpack-editor-2020-01-18-01.png)
+
 在 `src/style` 目录下添加 `leo.scss` 文件，并添加内容：
 
 ```css
@@ -330,9 +349,10 @@ $bg-color: #ee3;
 
 然后在 `src/index.js` 中引入 `leo.scss` 文件：
 
-```js
+```diff
 // src/index.js
-import './style/leo.scss';
++ require("!style-loader!css-loader!sass-loader!./style/index.scss");
+- require("!style-loader!css-loader!./style/index.scss");
 ```
 
 再 `npx webpack` 重新打包，并打开 `dist/index.html` 可以看到背景颜色已经添加上去：
