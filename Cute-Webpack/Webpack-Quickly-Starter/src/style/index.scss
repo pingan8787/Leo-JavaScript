@@ -1,0 +1,10 @@
+$bg-color: #ee3;
+html{
+    height: 100%;
+}
+.box{
+    color: red;
+    background-color: $bg-color;
+    display: flex;
+    font-size: 22px;
+}
