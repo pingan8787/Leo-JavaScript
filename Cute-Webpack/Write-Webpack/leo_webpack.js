@@ -33,7 +33,7 @@ function createAssets(filename){
 }
 
 function createGraph(entry) {
-    const mainAsset = createAssets("./src/index.js");
+    const mainAsset = createAssets(entry);
     const queue = [mainAsset];
 
     for(const asset of queue){
