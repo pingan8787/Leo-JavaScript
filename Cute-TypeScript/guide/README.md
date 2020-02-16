@@ -30,7 +30,6 @@ let arr:Array<String> = ["aa", "bb"]
 ```js
 enum flag {success: 1, error: 2}
 let leo:flag = flag.error
-
 ```
 ```js
 enum Color {blue , red, 'orange'}
@@ -43,6 +42,19 @@ c; // 1
 enum Color {blue , red = 3, 'orange'}
 let c:Color = Color.red
 c; // 3
+```
+
+常量枚举：在编译阶段被移除。
+使用场景：当我们不需要一个对象，而需要一个对象的值的时候。
+好处：减少编译环境的代码。
+
+```js
+const enum Month {
+    Jan, Feb, Mar
+}
+let month = [Month.Jan, Month.Feb, Month. Mar]
+// 下面是 编译结果  非常简洁
+var month = [0 /* Jan */, 1 /* Feb */, 2 /* Mar */];
 ```
 
 * 定义 void 类型，没有返回值
@@ -104,7 +116,48 @@ function fun(age:number){
 
 ### 3. 类
 
-* 实例方法和静态方法  
+#### 3.1 概念介绍
+
+**类成员的属性都是实例属性**，而不是原型属性。而**类成员的方法都是实例的方法**。
+
+```js
+class Dog {
+    constructor(name: string) {
+        this.name = name;
+    }
+    name: string
+    run(){}
+}
+console.log(Dog.prototype); // { run: f, constructor: f }
+let dog = new Dog("wangwang");
+console.log(dog); // Dog {name: "wangwang"}
+```
+
+另外，实例的属性必须有初始值，或者在构造函数中被初始化：
+
+```js
+class Dog {
+
+    // 第一种方式
+    constructor(name: string) {
+        this.name = name;
+    }
+    name: string
+
+    // 第二种方式
+    constructor(name: string) { }
+    name: string = "dog"
+
+    // 第三种方式
+    constructor(name: string) { }
+    name?: string
+}
+console.log(Dog.prototype); // { run: f, constructor: f }
+let dog = new Dog("wangwang");
+console.log(dog); // Dog {name: "wangwang"}
+```
+
+#### 3.2 实例方法和静态方法  
 
 以 jquery 为例：   
 ```js
@@ -129,44 +182,53 @@ Per.leo
 Per.print()
 ```
 
-
-* 多态
-
-父类定义一个方法不去实现，让继承它的子类去实现，每个子类有不同的表现。  
+#### 3.3 类的继承
 
 ```js
-class A {
-  name: string
-  constructor(name:string){
-    this.name = name
-  }
-  eat (){ console.log('吃···') }
-}
-
-class B extends A {
-  constructor(name:string){
-    super(name)
-  }
-  eat (){
-    return this.name + '哈哈哈'
-  }
+class Husky extends Dog {
+    constructor(name: string, color: string) {
+        super(name) // 必须调用 super 继承父类
+        this.color = color;
+    }
+    color: string
 }
 ```
 
-* 抽象类
+五种修饰符：
+* `public` ： 对所有成员可见；
+* `private` ：私有成员，只能在类里面调用，不能被类的实例调用，也不能被子类调用；
+* `protected` : 受保护成员，只能在类和子类中访问，不能在类的实例访问；
+* `readonly` ： 只读属性，不能被更改，并且需要初始化；
+* `static` : 类的静态成员，只能通过类名来调用，不能通过类的实例调用。
 
-它提供其他类继承的基类，不能直接实例化。
+**构造函数中的参数也可以使用修饰符，作用是将参数自动变为实例的属性，就可以省略在类中的定义。**
 
-用 `abstract` 关键字定义**抽象类**和**抽象方法**。    
+```js
+class Husky extends Dog {
+    constructor(name: string, public color: string) {
+        super(name) // 必须调用 super 继承父类
+        this.color = color;
+    }
+}
+```
 
-可以说**抽象类**和**抽象方法**使用来定义标准。   
+#### 3.4 抽象类
 
-**抽象类**中的**抽象方法**不包含具体实现并且必须在派生类中实现。   
+**它提供其他类继承的基类，只能被继承，不能被实例化的类**。 https://www.tslang.cn/docs/handbook/classes.html
+
+`abstract` 关键字是用于定义**抽象类**和在抽象类内部定义**抽象方法**。
+
+```js
+abstract class Animal {}
+// let animal = new Animal() ; // 报错 无法创建抽象类的实例
+class Dog extends Animal {} ; //可以
+```
+
+还有这个案例：
 
 ```js
 // 抽象类必须有抽象方法
 // 抽象方法必须在抽象类中
-
 abstract class A {
   public name: string
   constructor(name:string){
@@ -187,11 +249,38 @@ class B extends A {
 let aa = new B(' hello ')
 ```
 
+
+**好处**：抽离一些事务的共性，有利于代码的复用和拓展。也可以实现多态。
+**多态**：父类定义方法，子类各自实现。
+
+```js
+abstract class Animal {
+    eat() {  console.log("eat") }
+    abstract sleep(): void; // 抽象类中定义抽象方法，子类中去实现
+}
+
+class Dog extends Animal {
+    constructor(name: string) {
+        super();
+        this.name = name;
+    }
+    name: string;
+    sleep() {
+        console.log("sleep"); // 子类实现父类定义的抽象方法
+    }
+}; //可以
+let dog = new Dog("wang");
+dog.eat(); // eat
+dog.sleep(); // sleep
+```
+
+
 ### 4. 接口
 
 行为和动作的规范，对批量方法进行约束。   
 
 * 属性类型接口
+
 ```js
 interface Name {
   fName: string; // 必须
@@ -201,7 +290,9 @@ function F(name:Name){
     console.log(name.fName, name.sName)
 }
 ```
+
 * 函数类型接口
+
 ```js
 interface f{
     (key: string, value: string): string
@@ -210,7 +301,11 @@ let md5:f = function(key: string, value: string): string{
     return key + value
 }
 ```
+
 * 可索引接口 （约束数组、对象）
+
+如字符串索引签名 ，含义：用任意类型的字符串索引List，会获得对应类型的值。
+
 ```js
 interface Arr {
     [index: number]: string
@@ -225,7 +320,27 @@ let o: Obj = {
     bb: 'bbb'
 }
 ```
+
+需要注意：**数字类型的签名返回值，必须是字符串类型的前面返回值的子集**。因为 JS 会进行类型转换。
+
+```js
+interface Names {
+    // 正确
+    [x: string]: string
+    [z: number]: string
+
+    // 错误
+    [x: string]: string
+    [z: number]: number
+
+    // 正确
+    [x: string]: any
+    [z: number]: number
+}
+```
+
 * 类类型接口
+
 
 `implements`  实现后面的接口。   
 ```js
@@ -270,6 +385,14 @@ let p = new C()
 p.fun1('leo')
 ```
 
+一个接口可以继承多个接口:
+
+```js
+interface E extends A, B {
+    sideLength: number;
+}
+```
+
 ### 5. 泛型
 简单理解：泛型就是解决类、接口和方法的复用性，以及对不特定数据类型的支持。   
 可以使用泛型来创建可重用的组件，一个组件支持多种类型的数据。   
@@ -303,6 +426,13 @@ function fun3<T>(name: T): T{
 }
 fun3<number>(123); // 调用方法的时候决定
 fun3<string>('123');
+```
+
+也可以这么写：
+
+```js
+type Log = <T>(value: T) => T;
+let myLog: Log = log;
 ```
 
 #### 5.2 泛型类
@@ -345,6 +475,20 @@ let fun1: Config<string> = getData;
 fun1('aaa')
 ```
 
+还可以这样：
+
+```js
+interface Log<T> {  // 约束了整个接口，使用时就需要指定类型
+    (value: T) : T
+}
+let myLog: Log<number> = log
+// 也可以指定默认类型
+interface Log<T = string> {
+    (value: T) : T
+}
+let myLog: Log = log
+```
+
 #### 5.4 把类作为参数类型的泛型类
 
 * 以前将类作为参数类型，可以检查参数是否类型符合
@@ -381,6 +525,21 @@ dd.pwd = "1233";
 
 let D = new Db<Data>()
 D.add(dd);
+```
+
+#### 5.5 泛型约束
+
+```js
+interface Length {
+    length: number
+}
+function log<T extends Length>(value: T): T{
+    console.log(value,  value.length)
+    return value
+}
+log([1])
+log("123")
+log({length:1})
 ```
 
 ### 6. 模块
