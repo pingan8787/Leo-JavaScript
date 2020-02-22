@@ -9,13 +9,19 @@
 [![简书](http://images.pingan8787.com/icon_jianshu1.png)](https://www.jianshu.com/u/2ec5d94afd60)
 
 
-## 二、《Cute-ES》目录
+## 二、🔥原创文章
+1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)
+2. [【前端知乎】ArrayBuffer对象与Blob对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/3.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91ArrayBuffer%E5%AF%B9%E8%B1%A1%E4%B8%8EBlob%E5%AF%B9%E8%B1%A1.md)
+3. [【前端知乎】File对象、FileList对象和FileReader对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/4.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91File%E5%AF%B9%E8%B1%A1%E3%80%81FileList%E5%AF%B9%E8%B1%A1%E5%92%8CFileReader%E5%AF%B9%E8%B1%A1.md)
+4. [🔥JavaScript 自定义事件如此简单！](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/5.%F0%9F%94%A5JavaScript%20%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E5%A6%82%E6%AD%A4%E7%AE%80%E5%8D%95%EF%BC%81.md)
+
+## 三、《Cute-ES》目录
 1. [ES6 章节](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/1.ES6.md)
 2. [ES7 章节](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/2.ES7.md)
 3. [ES8 章节](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/3.ES8.md)
 4. [ES9 章节](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-ES/4.ES9.md)
 
-## 二、《Cute-JS》目录
+## 四、《Cute-JS》目录
 ### JavaScript初级
 1. [语法和数据类型](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/1.%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.md)
 2. [流程控制和错误处理](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-JavaScript/Cute-JS/level1/2.%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.md)
@@ -48,7 +54,7 @@
 1. [JS中的高阶函数](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/other/1-JS中的高阶函数.md)
 2. [instanceof运算符](https://github.com/pingan8787/Leo-JavaScript/blob/master/base-javascript/other/2-instanceof运算符.md)
 
-## 三、《Cute-Patterns》目录
+## 五、《Cute-Patterns》目录
 1. [单体模式(Singleton Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/1.单体模式(Singleton).md)
 2. [工厂模式(Factory Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/2.工厂模式(Factory).md)
 3. [迭代器模式(Iterator Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/3.迭代器模式(Iterator).md)
@@ -59,7 +65,7 @@
 8. [中介者模式(Mediator Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/8.中介者模式(Mediator).md)
 9. [观察者模式(Observer Pattern)](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/9.观察者模式(Observer).md)
 
-## 四、《Cute-Regular》目录
+## 六、《Cute-Regular》目录
 1. [一、正则表达式字符匹配](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/1.字符匹配.md)
 2. [二、正则表达式位置匹配](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/2.位置匹配.md)
 3. [三、正则表达式括号的使用](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/3.括号的使用.md)
@@ -68,7 +74,7 @@
 6. [六、正则表达式的构建](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/6.正则构建.md)
 7. [七、正则表达式编程](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/7.正则编程.md)
 
-## 五、《框架入门教程》目录
+## 七、《框架入门教程》目录
 ### Angular6
 1. [Angular6官网入门项目](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo)
 2. [Angular6入门项目books](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo)
