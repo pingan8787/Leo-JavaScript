@@ -79,9 +79,7 @@
 1. [Angular6官网入门项目](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo)
 2. [Angular6入门项目books](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo)
 
-
 希望自己的文章会对各位有所帮助，也欢迎各位大佬指点。 
-
 
 |Author|王平安|
 |---|---|
