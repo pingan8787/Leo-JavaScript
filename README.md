@@ -22,6 +22,14 @@
 
 前端入门的学习资料和计划安排。
 
+其他文章：
+
+1. [《【全栈修炼】CORS和CSRF修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】CORS和CSRF修炼宝典.md)
+2. [《【全栈修炼】OAuth2修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】OAuth2修炼宝典.md)
+3. [《【全栈修炼】RESTful架构及实践修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】RESTful架构及实践修炼宝典.md)
+4. [《【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/87-【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）.md)
+5. [《【原创】JS自定义事件如此简单！》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/83-【原创】JS自定义事件如此简单！.md)
+
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
 [👉前往阅读](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/)
@@ -37,6 +45,7 @@
 1. [《Angular 入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo/README.md)  
 2. [《Angular 官网 demo》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo/README.md)  
 3. [《Angular 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/README.md)  
+4. [《Webpack 插件开发》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/Webpack插件开发.md)
 
 ### 四、📜[Cute-React](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-React)
 
@@ -92,7 +101,7 @@
 
 1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
 
-### 十一、📜其他
+### 十二、📜其他
 
 1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 

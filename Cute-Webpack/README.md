@@ -17,3 +17,4 @@
 1. [《Webpack4 入门手册（共 18 章）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/introduction/README.md)
 2. [《Webpack4 入门手册（共 18 章）配套 demo》](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Webpack/introduction/demo)
 3. [《Webpack4 基础概念介绍》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md)
+4. [《Webpack 插件开发》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/Webpack插件开发.md)
