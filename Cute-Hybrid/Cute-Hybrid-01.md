@@ -326,11 +326,27 @@ JSBridge 也被称为 Hybrid app 技术。
 
 ##### 4.2.1 基本流程
 
+JSBridge是Native代码与JS代码的通信桥梁。目前的一种统一方案是：
+
+* * H5 页面通过某种方式触发一个 url scheme；
+* * Native 捕获到 url scheme，并进行分析和处理；
+* * Native 调用 H5 的 JSBridge 对象传递回调；
+
+> url scheme 是一种类似于url的链接,是为了方便app直接互相调用设计的，系统浏览器打开一个类似于url的链接(可拼入参数)，然后系统会进行判断，如果是系统的url scheme,则打开系统应用，否则找看是否有app注册这种scheme，打开对应app，需要注意的是，这种scheme必须原生app注册后才会生效,如微信的scheme为(weixin://)。
+
+
+> 而 JSBridge中的 url scheme 则是仿照上述的形式的一种方式 具体为,app不会注册对应的scheme,而是由前端页面通过某种方式触发scheme(如用iframe.src),然后Native用某种方法捕获对应的url触发事件,然后拿到当前的触发url,根据定义好的协议,分析当前触发了那种方法,然后根据定义来执行等。
+
 ![brige原理](http://images.pingan8787.com/20190623HybridApp5.png)
 
-* H5 页面通过某种方式触发一个 `url scheme `；  
-* Native 捕获到 `url scheme`，并进行分析和处理；  
-* Native 调用 H5 的 JSBridge 对象传递回调；  
+要实现JSBridge,我们可以进行关键步骤分析  
+
+* 第一步:设计出一个Native与JS交互的全局桥对象
+* 第二步:JS如何调用Native
+* 第三步:Native如何得知api被调用
+* 第四步:分析url-参数和回调的格式
+* 第五步:Native如何调用JS
+* 第六步:H5中api方法的注册以及格式
 
 原生的 WebView/UIWebView 控件已经能够和 JS 实现数据通信了，那为什么还要 JSBridge呢？
 
