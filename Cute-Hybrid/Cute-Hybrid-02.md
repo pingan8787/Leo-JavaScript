@@ -93,7 +93,7 @@
 
 2. **检测 webView.title 是否为空**
 
-并不是所有 H5 页面白屏的时候都会调用上面的回调函数，比如，最近遇到在一个高内存消耗的 H5 页面上 present 系统相机，拍照完毕后返回原来页面的时候出现白屏现象（拍照过程消耗了大量内存，导致内存紧张，WebContent Process 被系统挂起），但上面的回调函数并没有被调用。在 `WKWebView` 白屏的时候，另一种现象是 `webView.titile` 会被置空, 因此，可以在 `viewWillAppear` 的时候检测 `webView.title` 是否为空来 `reload` 页面。
+并不是所有 H5 页面白屏的时候都会调用上面的回调函数，比如，最近遇到在一个高内存消耗的 H5 页面上 present 系统相机，拍照完毕后返回原来页面的时候出现白屏现象（拍照过程消耗了大量内存，导致内存紧张，WebContent Process 被系统挂起），但上面的回调函数并没有被调用。在 `WKWebView` 白屏的时候，另一种现象是 `webView.title` 会被置空, 因此，可以在 `viewWillAppear` 的时候检测 `webView.title` 是否为空来 `reload` 页面。
 
 
 #### 2. WKWebView Cookie 问题
