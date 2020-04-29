@@ -71,13 +71,13 @@
 9. [《观察者模式(Observer Pattern)》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Patterns/9.观察者模式(Observer).md)
 
 ## 六、《Cute-Regular》目录
-1. [<一、正则表达式字符匹配》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/1.字符匹配.md)
-2. [<二、正则表达式位置匹配》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/2.位置匹配.md)
-3. [<三、正则表达式括号的使用》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/3.括号的使用.md)
-4. [<四、正则表达式回溯法原理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/4.回溯法.md)
-5. [<五、正则表达式的拆分》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/5.正则拆分.md)
-6. [<六、正则表达式的构建》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/6.正则构建.md)
-7. [<七、正则表达式编程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/7.正则编程.md)
+1. [《一、正则表达式字符匹配》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/1.字符匹配.md)
+2. [《二、正则表达式位置匹配》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/2.位置匹配.md)
+3. [《三、正则表达式括号的使用》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/3.括号的使用.md)
+4. [《四、正则表达式回溯法原理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/4.回溯法.md)
+5. [《五、正则表达式的拆分》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/5.正则拆分.md)
+6. [《六、正则表达式的构建》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/6.正则构建.md)
+7. [《七、正则表达式编程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Regular/7.正则编程.md)
 
 ## 七、《框架入门教程》目录
 ### Angular6

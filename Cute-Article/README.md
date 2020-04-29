@@ -112,8 +112,5 @@
 * [79-在React中使用ShadowDOM](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/79-在React中使用ShadowDOM.md)
 
 ### 11、其他
-* [2017-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2017-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md)
-* [2018-全年计划](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2018-%E5%85%A8%E5%B9%B4%E8%AE%A1%E5%88%92.md) 
-* [2018-全年总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/2018-%E5%85%A8%E5%B9%B4%E6%80%BB%E7%BB%93.md) 
 * [★ 27-Markdowm语法整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/27-Markdowm%E8%AF%AD%E6%B3%95%E6%95%B4%E7%90%86.md)
 * [39-作为前端需要了解的开源协议知识](https://github.com/pingan8787/Leo-JavaScript/blob/master/article/39-%E4%BD%9C%E4%B8%BA%E5%89%8D%E7%AB%AF%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86.md)
