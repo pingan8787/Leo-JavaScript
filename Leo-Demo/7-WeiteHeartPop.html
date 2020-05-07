@@ -25,9 +25,7 @@
 </head>
 
 <body>
-    <div id="heart">
-
-    </div>
+    <div id="heart"></div>
 
     <script>
         let heartList = '';
@@ -56,7 +54,6 @@
                 const height = getRandomNum(boxHeight);
                 const cWidth = getRandomNum(1000) - width;
                 const cHeight = getRandomNum(1000) - height;
-                console.log(cWidth, cHeight)
                 document.getElementById(item).animate([
                     { transform: `scale(${getRandomNum(2)})`, left: `0px`, top: `0px` },
                     { transform: `scale(${getRandomNum(2)})`, left: `${boxWidth / 2}px`, top: `${boxHeight / 2}px` },

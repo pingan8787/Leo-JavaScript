@@ -1,3 +1,7 @@
+# 🔥Webpack 插件开发如此简单！
+
+![cover](http://images.pingan8787.com/write-webpack-plugin/webpack-wx-cover.png)
+
 > 本文使用的[**Webpack-Quickly-Starter**](https://github.com/pingan8787/Webpack-Quickly-Starter)快速搭建 Webpack4 本地学习环境。  
 > 建议多阅读 Webpack 文档《[**Writing a Plugin**](https://webpack.js.org/contribute/writing-a-plugin/)》章节，学习开发简单插件。
 
@@ -6,7 +10,7 @@
 
 完整代码存放在：[https://github.com/pingan8787/script-timestamp-webpack-plugin](https://github.com/pingan8787/script-timestamp-webpack-plugin)
 
-![](https://user-gold-cdn.xitu.io/2020/2/24/1707463e4ec11bce?w=800&h=400&f=png&s=30184)
+![](http://images.pingan8787.com/write-webpack-plugin/webpack-plugin.png)
 
 ## 一、背景介绍
 本文灵感源自业务中的经验总结，**不怕神一样的产品，只怕一根筋的开发**。
@@ -27,7 +31,7 @@
 1. 在模版文件中，添加 `script` 标签，执行获取 Webpack 自动添加的 `script` 标签并为其 `src` 值添加时间戳。但事实是还没等你修改完， js 文件已经加载完毕，所以放弃
 1. 需要在 `index.html` 生成之前，修改 js 文件的路径，并添加时间戳。
 
-于是我准备使用第三种方式，在 `index.html` 生成之前完成下面修改：<br />![image.png](https://user-gold-cdn.xitu.io/2020/2/24/170745f867efcd61?w=951&h=328&f=png&s=86717)
+于是我准备使用第三种方式，在 `index.html` 生成之前完成下面修改：<br />![image.png](http://images.pingan8787.com/write-webpack-plugin/script-timestamp-webpack-plugin-result.png)
 
 问题简单，实际还是想试试开发 Webpack Plugin。
 
@@ -93,7 +97,7 @@ module.exports = {
 本文开发的 **自动添加时间戳引用脚本文件（SetScriptTimestampPlugin）** 插件实现的原理：通过 **HtmlWebpackPlugin** 生成 HTML 文件前，将模版文件**预留位置替换成脚本**，脚本中执行自动添加时间戳来引用脚本文件。
 
 ### 3.1 插件运行机制
-![SetScriptTimestampPlugin 运行机制.png](https://user-gold-cdn.xitu.io/2020/2/24/170745f8681eb3b6?w=2244&h=1604&f=png&s=269681)
+![SetScriptTimestampPlugin 运行机制.png](http://images.pingan8787.com/write-webpack-plugin/script-timestamp-webpack-plugin.png)
 
 ### 3.2 初始化插件文件
 新建 `SetScriptTimestampPlugin.js`  文件，并参考官方文档中插件的基本结构，初始化插件代码：
@@ -151,7 +155,7 @@ module.exports = SetScriptTimestampPlugin;
 ### 3.4 添加插件替换入口
 我们原理上是将模版文件中，指定替换入口，再替换成需要执行的脚本。
 
-![image.png](https://user-gold-cdn.xitu.io/2020/2/24/170745f8680672ef?w=947&h=340&f=png&s=83858)
+![image.png](http://images.pingan8787.com/write-webpack-plugin/script-timestamp-webpack-plugin-replace.png)
 
 所以我们在模版文件 `template.html` 中添加 `<!--SetScriptTimestampPlugin inset script-->` 作为标识替换入口：
 
@@ -228,7 +232,7 @@ Sync:
 
 在回调方法中，通过 `htmlPluginData.assets.js` 获取需要通过 `script` 引入的脚本文件名称列表，拷贝一份，并清空原有列表。
 
-![image.png](https://user-gold-cdn.xitu.io/2020/2/24/170745f86a2d7bbe?w=334&h=93&f=png&s=27216)
+![image.png](http://images.pingan8787.com/write-webpack-plugin/webpack-plugin-set-log.png)
 
 3. **编写替换逻辑。**
 
@@ -258,7 +262,7 @@ module.exports = {
 }
 ```
 
-到这一步，我们已经实现需求“当项目托管到 CDN 平台，希望实现项目中的 index.js 不被缓存”。<br />![image.png](https://user-gold-cdn.xitu.io/2020/2/24/170745f86a7fdfd0?w=467&h=291&f=png&s=44616)
+到这一步，我们已经实现需求“当项目托管到 CDN 平台，希望实现项目中的 index.js 不被缓存”。<br />![image.png](http://images.pingan8787.com/write-webpack-plugin/webpack-plugin-set-result.png)
 
 ## 四、案例拓展
 这里以之前 **SetScriptTimestampPlugin** 插件为例子，继续拓展。
@@ -346,6 +350,3 @@ module.exports = {
 |微  信|pingan8787|
 |每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
 |ES小册|js.pingan8787.com|
-
-## 微信公众号
-![bg](https://user-gold-cdn.xitu.io/2020/2/22/1706bb1ea5f680ae?w=885&h=445&f=png&s=80093)  
