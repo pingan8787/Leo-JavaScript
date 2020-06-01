@@ -1,7 +1,7 @@
 在 TypeScript 开发中，tsconfig.json 是个不可或缺的配置文件，它是我们在 TS 项目中最常见的配置文件，那么你真的了解这个文件吗？它里面都有哪些优秀配置？如何配置一个合理的 tsconfig.json 文件？本文将全面带大家一起详细了解 tsconfig.json 的各项配置。<br />
-<br />小弟能力有限，欢迎各位大佬指点~~<br />
 <br />本文将从以下几个方面全面介绍 tsconfig.json 文件：<br />![了不起的 tsconfig.json 指南.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-guide.png)
 <a name="UZ7GF"></a>
+<br />水平有限，欢迎各位大佬指点~~<br />
 ## 一、tsconfig.json 简介
 <a name="bANbi"></a>
 ### 1. 什么是 tsconfig.json
