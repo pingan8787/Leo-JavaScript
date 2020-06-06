@@ -33,8 +33,8 @@
 3. [《【全栈修炼】RESTful架构及实践修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/【全栈修炼】RESTful架构及实践修炼宝典.md)
 4. [《【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/87-【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）.md)
 5. [《【原创】JS自定义事件如此简单！》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/83-【原创】JS自定义事件如此简单！.md)
-6. [【前端知乎】ArrayBuffer对象与Blob对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/3.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91ArrayBuffer%E5%AF%B9%E8%B1%A1%E4%B8%8EBlob%E5%AF%B9%E8%B1%A1.md)
-7. [【前端知乎】File对象、FileList对象和FileReader对象](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/4.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91File%E5%AF%B9%E8%B1%A1%E3%80%81FileList%E5%AF%B9%E8%B1%A1%E5%92%8CFileReader%E5%AF%B9%E8%B1%A1.md)
+6. [《【前端知乎】ArrayBuffer对象与Blob对象》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/3.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91ArrayBuffer%E5%AF%B9%E8%B1%A1%E4%B8%8EBlob%E5%AF%B9%E8%B1%A1.md)
+7. [《【前端知乎】File对象、FileList对象和FileReader对象》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/4.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91File%E5%AF%B9%E8%B1%A1%E3%80%81FileList%E5%AF%B9%E8%B1%A1%E5%92%8CFileReader%E5%AF%B9%E8%B1%A1.md)
 
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
@@ -103,11 +103,17 @@
 1. [《TypeScript 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-TypeScript/guide/README.md)
 
 
-### 十一、📜翻译
+### 十二、📜[学习总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/README.md)
+
+1. [读《你不知道的Blob》总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/guide/读《你不知道的Blob》总结.md)
+2. [读《你不知道的WeakMap》总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/guide/读《你不知道的WeakMap》总结.md)
+
+
+### 十二、📜翻译
 
 1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
 
-### 十二、📜其他
+### 十三、📜其他
 
 1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
 
