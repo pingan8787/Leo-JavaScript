@@ -26,7 +26,7 @@
 
 前端入门的学习资料和计划安排。
 
-其他文章：
+其他原创文章：
 
 1. [《【全栈修炼】CORS和CSRF修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】CORS和CSRF修炼宝典.md)
 2. [《【全栈修炼】OAuth2修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】OAuth2修炼宝典.md)
@@ -51,7 +51,6 @@
 1. [《Angular 入门教程》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/books%E9%A1%B9%E7%9B%AEdemo/README.md)  
 2. [《Angular 官网 demo》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/angualr%E5%AE%98%E7%BD%91demo/README.md)  
 3. [《Angular 知识点整理》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Angular/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/README.md)  
-4. [《Webpack 插件开发》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/Webpack插件开发.md)
 
 ### 四、📜[Cute-React](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-React)
 
@@ -96,6 +95,8 @@
 2. [《Webpack4 入门手册（共 18 章）配套 demo》](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Webpack/introduction/demo)
 
 3. [《Webpack4 基础概念介绍》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/guide/README.md)
+
+4. [《Webpack 插件开发》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Webpack/Webpack插件开发.md)
 
 
 ### 十、📜[Cute-TypeScript](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-TypeScript/README.md)
