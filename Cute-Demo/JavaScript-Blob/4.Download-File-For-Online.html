@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. 从互联网下载数据</title>
+</head>
+<body>
+    <button onclick="download1()">使用 XMLHttpRequest 下载</button>
+    <button onclick="download2()">使用 fetch 下载</button>
+    <img id="pingan">
+    <script>
+        const url = "http://images.pingan8787.com/TinyCompiler/111.png";
+        const pingan = document.querySelector('#pingan');
+        function download1 (){
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.responseType = 'blob';
+            xhr.onload = () => {
+                renderImage(xhr.response);
+            }
+            xhr.send(null);
+        }
+        function download2 (){
+            fetch(url).then(res => {
+                return res.blob();
+            }).then(myBlob => {
+                renderImage(myBlob);
+            })
+        }
+
+        function renderImage (data){
+            let objectURL = URL.createObjectURL(data);
+            pingan.src = objectURL;
+          	// 根据业务需要手动调用 URL.revokeObjectURL(imgUrl)
+        }
+    </script>
+</body>
+</html>

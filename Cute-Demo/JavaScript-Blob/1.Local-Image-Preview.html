@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. 图片本地预览</title>
+</head>
+<body>
+    <h1>1.DataURL方式：</h1>
+    <input type="file" accept="image/*" onchange="selectFileForDataURL(event)">
+    <img id="output1">
+
+    <h1>2.Blob方式：</h1>
+    <input type="file" accept="image/*" onchange="selectFileForBlob(event)">
+    <img id="output2">
+
+    <script>
+        // 1.DataURL方式：
+        async function selectFileForDataURL() {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.querySelector("#output1")
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        //2.Blob方式：
+        async function selectFileForBlob(){
+            const reader = new FileReader();
+            const output = document.querySelector("#output2");
+            const imgUrl = window.URL.createObjectURL(event.target.files[0]);
+            output.src = imgUrl;
+            reader.onload = function(event){
+                window.URL.revokeObjectURL(imgUrl);
+            }
+        }
+    </script>
+</body>
+</html>

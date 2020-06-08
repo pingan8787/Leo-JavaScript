@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 中使用 Blob 和 ArrayBuffer</title>
+</head>
+
+<body>
+    <script>
+        function GET(url, callback) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'arraybuffer'; // or xhr.responseType = "blob";
+            xhr.send();
+
+            xhr.onload = function (e) {
+                if (xhr.status != 200) {
+                    alert("Unexpected status code " + xhr.status + " for " + url);
+                    return false;
+                }
+                callback(new Uint8Array(xhr.response)); // or new Blob([xhr.response]);
+            };
+        }
+    </script>
+</body>
+
+</html>

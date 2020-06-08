@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. 生成 PDF 文档</title>
+</head>
+<body>
+    <h3>客户端生成 PDF 示例</h3>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <script>
+      (function generatePdf() {
+        const doc = new jsPDF();
+        doc.text("Hello semlinker!", 66, 88);
+        const blob = new Blob([doc.output()], { type: "application/pdf" });
+        blob.text().then((blobAsText) => {
+          console.log(blobAsText);
+        });
+      })();
+    </script>
+  </body>
+</html>

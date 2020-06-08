@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. 图片本地预览 + 分片上传</title>
+</head>
+<body>
+    <input type="file" accept="image/*" onchange="selectFile(event)">
+    <button onclick="upload()">上传</button>
+    <img id="output">
+
+    <script>
+        const chunkSize = 10000;
+        const url = "https://httpbin.org/post";
+        async function selectFile(){
+          	// 本地预览
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.querySelector("#output")
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+
+          	// 分片上传
+            await upload(event.target.files[0]);
+        }
+        async function upload(files){
+            const file = files;
+            for(let start = 0; start < file.size; start += chunkSize){
+                const chunk = file.slice(start, start + chunkSize + 1);
+                const fd = new FormData();
+                fd.append("data", chunk);
+                await fetch(url, { method: "post", body: fd }).then((res) =>{
+                    console.log(res)
+                    res.text();
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. 图片本地预览 + 分片上传 + 暂停 + 续传</title>
+</head>
+<body>
+    <input type="file" accept="image/*" onchange="selectFile(event)">
+    <button onclick="upload()">上传</button>
+    <button onclick="pause()">暂停</button>
+    <button onclick="continues()">继续</button>
+    <img id="output" src="" alt="">
+
+    <script>
+        const chunkSize = 30000;
+        let start = 0, curFile, isPause = false;
+        const url = "https://httpbin.org/post";
+        async function selectFile(){
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.querySelector("#output")
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+            curFile = event.target.files[0];
+        }
+        async function upload(){
+            const file = curFile;
+            for(start; start < file.size; start += chunkSize){
+                if(isPause) return;
+                const chunk = file.slice(start, start + chunkSize + 1);
+                const fd = new FormData();
+                fd.append("data", chunk);
+                await fetch(url, { method: "post", body: fd }).then((res) =>{
+                        res.text()
+                    }
+                );
+                if(chunk.size < chunkSize){
+                    uploadSuccess();
+                    return;
+                }
+            }
+        }
+        function pause(){
+            isPause = true;
+        }
+        function continues(){
+            isPause = false;
+            upload();
+        }
+        function uploadSuccess(){
+            isPause = false;
+            start = 0;
+        }
+    </script>
+</body>
+</html>

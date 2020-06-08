@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. 下载文件</title>
+</head>
+<body>
+    <body>
+        <button onclick="download()">Blob 文件下载</button>
+    
+        <script>
+            function download(){
+                const fileName= "Blob文件.txt";
+                const myBlob = new Blob(["一文彻底掌握 Blob Web API"], { type: "text/plain" });
+                downloadFun(fileName, myBlob);
+            }
+            function downloadFun(fileName, blob){
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+                link.remove();
+                URL.revokeObjectURL(link.href);
+            }
+        </script>
+    </body>
+</body>
+</html>
