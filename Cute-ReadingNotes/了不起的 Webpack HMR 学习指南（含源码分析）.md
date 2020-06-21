@@ -1,19 +1,23 @@
-学习时间：2020.06.14<br />学习章节：[《Webpack HMR 原理解析》](https://zhuanlan.zhihu.com/p/30669007)<br />![了不起的 Webpack HMR 学习指南.png](http://images.pingan8787.com/Webpack-HMR/Webpack-HMR-Xmind.png)
+学习时间：2020.06.14
+
+学习章节：[《Webpack HMR 原理解析》](https://zhuanlan.zhihu.com/p/30669007)
+
+![了不起的 Webpack HMR 学习指南.png](http://images.pingan8787.com/Webpack-HMR/Webpack-HMR-Xmind.png)
 
 # 一、HMR 介绍
 Hot Module Replacement（以下简称：HMR 模块热替换）是 Webpack 提供的一个非常有用的功能，**它允许在 JavaScript 运行时更新各种模块，而无需完全刷新**。
 > Hot Module Replacement (or HMR) is one of the most useful features offered by webpack. It allows all kinds of modules to be updated at runtime without the need for a full refresh.
 > --《Hot Module Replacement》
 
+当我们修改代码并保存后，Webpack 将对代码重新打包，HMR 会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。
 
-当我们修改代码并保存后，Webpack 将对代码重新打包，HMR 会在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面。<br />HMR 主要通过以下几种方式，来显著加快开发速度：
+HMR 主要通过以下几种方式，来显著加快开发速度：
 
 - 保留在完全重新加载页面时丢失的应用程序状态；
 - 只更新变更内容，以节省宝贵的开发时间；
 - 调整样式更加快速 - 几乎相当于在浏览器调试器中更改样式。
 
-
-**需要注意**：HMR 不适用于生产环境，这意味着它应当只在开发环境使用。<br />
+**需要注意**：HMR 不适用于生产环境，这意味着它应当只在开发环境使用。
 
 # 二、HMR 使用方式
 在 Webpack 中启用 HMR 功能比较简单：
@@ -57,7 +61,11 @@ module.exports = {
 ```
 
 ## 2. 方式二、使用命令行参数
-另一种是通过添加 `--hot` 参数来实现。添加 `--hot` 参数后，devServer 会告诉 Webpack 自动引入 `HotModuleReplacementPlugin` ，而不需要我们手动引入。<br />另外常常也搭配 `--open` 来自动打开浏览器到页面。<br />这里移除掉前面添加的两个 Plugins ：
+另一种是通过添加 `--hot` 参数来实现。添加 `--hot` 参数后，devServer 会告诉 Webpack 自动引入 `HotModuleReplacementPlugin` ，而不需要我们手动引入。
+
+另外常常也搭配 `--open` 来自动打开浏览器到页面。
+
+这里移除掉前面添加的两个 Plugins ：
 
 ```diff
 // webpack.config.js
@@ -88,7 +96,8 @@ module.exports = {
 
 ## 3. 简单示例
 基于上述配置，我们简单实现一个场景： `index.js` 文件中导入 `hello.js` 模块，当 `hello.js` 模块发生变化时， `index.js` 将更新模块。
-<br />模块代码如下实现：
+
+模块代码如下实现：
 ```javascript
 // hello.js
 export default () => 'hi leo!';
@@ -115,7 +124,9 @@ document.body.appendChild(div);
 ```
 
 ## 4. 实现监听更新
-当我们通过 `HotModuleReplacementPlugin`  插件启用了 HMR，则它的接口将被暴露在全局 `module.hot`  属性下面。通常，可以先检查这个接口是否可访问，然后再开始使用它。<br />举个例子，你可以这样 `accept`  一个更新的模块：
+当我们通过 `HotModuleReplacementPlugin`  插件启用了 HMR，则它的接口将被暴露在全局 `module.hot`  属性下面。通常，可以先检查这个接口是否可访问，然后再开始使用它。
+
+举个例子，你可以这样 `accept`  一个更新的模块：
 ```javascript
 if (module.hot) {
   module.hot.accept('./library.js', function() {
@@ -124,7 +135,10 @@ if (module.hot) {
 }
 ```
 关于 `module.hot` 更多 API ，可以查看官方文档[《Hot Module Replacement API》](https://webpack.js.org/api/hot-module-replacement/) 。
-<br />回到上面示例，我们测试更新模块的功能。<br />这时我们修改 `index.js` 代码，来监听 `hello.js` 模块中的更新：
+
+回到上面示例，我们测试更新模块的功能。
+
+这时我们修改 `index.js` 代码，来监听 `hello.js` 模块中的更新：
 ```diff
 import hello from './hello.js';
 const div = document.createElement('div');
@@ -143,8 +157,10 @@ document.body.appendChild(div);
 - export default () => 'hi leo!';
 + export default () => 'hi leo! hello world';
 ```
-当我们保存代码时，控制台输出 `"现在在更新 hello模块了~"` ，并且页面中 `"hi leo!"` 也更新为 `"hi leo! hello world"` ，证明我们监听到文件更新了。<br />![image.png](http://images.pingan8787.com/Webpack-HMR/Webpack-HMR-demo1.png)<br />
-<br />简单 Webpack HMR 使用方式就介绍到这，更多介绍，还请阅读官方文档[《Hot Module Replacement》](https://webpack.js.org/guides/hot-module-replacement/)。<br />
+当我们保存代码时，控制台输出 `"现在在更新 hello模块了~"` ，并且页面中 `"hi leo!"` 也更新为 `"hi leo! hello world"` ，证明我们监听到文件更新了。
+![image.png](http://images.pingan8787.com/Webpack-HMR/Webpack-HMR-demo1.png)
+
+简单 Webpack HMR 使用方式就介绍到这，更多介绍，还请阅读官方文档[《Hot Module Replacement》](https://webpack.js.org/guides/hot-module-replacement/)。
 
 ## 5. devServer 常用配置和技巧
 ### 5.1 常用配置
@@ -237,8 +253,10 @@ devServer:{
 ```
 
 # 三、HMR 基本原理介绍
-从前面介绍中，我们知道：HMR 主要功能是会**在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面**。<br />那么，Webpack 编译源码所产生的文件变化在编译时，替换模块实现在运行时，两者如何联系起来？<br />
-<br />带着这两个问题，我们先简单看下 HMR 核心工作流程（简化版）：
+从前面介绍中，我们知道：HMR 主要功能是会**在应用程序运行过程中替换、添加或删除模块，而无需重新加载整个页面**。
+那么，Webpack 编译源码所产生的文件变化在编译时，替换模块实现在运行时，两者如何联系起来？
+
+带着这两个问题，我们先简单看下 HMR 核心工作流程（简化版）：
 
 ![HMR 工作流程图.png](http://images.pingan8787.com/Webpack-HMR/Webpack-HMR-Simple-Process.png)
 
@@ -248,10 +266,10 @@ devServer:{
 1. 然后经过 HMR Plugin 处理后，将结果发送到应用程序（Application）的运行时框架（HMR Runtime）；
 1. 最后由 HMR Runtime 将这些发生变化的文件/模块更新（新增/删除或替换）到模块系统中。
 
-
 其中，HMR Runtime 是构建工具在编译时注入的，通过统一的 Module ID 将编译时的文件与运行时的模块对应起来，并且对外提供一系列 API 供应用层框架（如 React）调用。
 
-💖**注意**💖：建议先理解上面这张图的大致流程，在进行后续阅读。放心，我等着大家~[😃](https://emojipedia.org/people/)<br />
+💖**注意**💖：建议先理解上面这张图的大致流程，在进行后续阅读。放心，我等着大家~[😃](https://emojipedia.org/people/)
+
 
 # 四、HMR 完整原理和源码分析
 通过上一节内容，我们大概知道 HMR 简单工作流程，那么或许你现在可能还有很多疑惑：文件更新是什么通知 HMR Plugin？HMR Plugin 怎么发送更新到 HMR Runtime？等等问题。
@@ -267,7 +285,6 @@ devServer:{
 - [**Webpack-dev-server**](https://github.com/webpack/webpack-dev-server) ：一个服务器插件，相当于 express 服务器，启动一个 Web 服务，只适用于开发环境；
 - [**Webpack-dev-middleware**](https://github.com/webpack/webpack-dev-middleware) ：一个 **Webpack-dev-server** 的中间件，作用简单总结为：通过watch mode，监听资源的变更，然后自动打包。
 - [**Webpack-hot-middleware**](https://github.com/webpack-contrib/webpack-hot-middleware) ：结合 Webpack-dev-middleware 使用的中间件，它可以实现浏览器的无刷新更新，也就是 HMR；
-
 
 ![](http://images.pingan8787.com/Webpack-HMR/face1.gif)
 
@@ -327,7 +344,9 @@ context.fs = fs;
 上述代码先判断 `fileSystem` 是否是 `MemoryFileSystem` 的实例，若不是，则用 `MemoryFileSystem` 的实例替换 compiler 之前的 `outputFileSystem`。这样 bundle.js 文件代码就作为一个简单 JavaScript 对象保存在内存中，当浏览器请求 bundle.js 文件时，devServer 就直接去内存中找到上面保存的 JavaScript 对象并返回给浏览器端。
 
 ## 3.监控文件变化，刷新浏览器
-Webpack-dev-server 开始监控文件变化，与第 1 步不同的是，这里并不是监控代码变化重新编译打包。<br />当我们在配置文件中配置了 [`devServer.watchContentBase`](https://webpack.js.org/configuration/dev-server/#devserver-watchcontentbase) 为 `true` ，Webpack-dev-server 会监听配置文件夹中静态文件的变化，发生变化时，通知浏览器端对应用进行**浏览器刷新**，这与 HMR 不一样。
+Webpack-dev-server 开始监控文件变化，与第 1 步不同的是，这里并不是监控代码变化重新编译打包。
+
+当我们在配置文件中配置了 [`devServer.watchContentBase`](https://webpack.js.org/configuration/dev-server/#devserver-watchcontentbase) 为 `true` ，Webpack-dev-server 会监听配置文件夹中静态文件的变化，发生变化时，通知浏览器端对应用进行**浏览器刷新**，这与 HMR 不一样。
 
 ```javascript
 // webpack-dev-server\lib\Server.js
@@ -689,7 +708,13 @@ module.hot.check(true).then(function (updatedModules) {
 本文主要​和大家分享 Webpack 的 HMR 使用和实现原理及源码分析，在源码分析中，通过一张“Webpack HMR 工作原理解析”图让大家对 HMR 整个工作流程有所了解，HMR 本身源码内容较多，许多细节之处本文没有完整写出，需要各位读者自己慢慢阅读和理解源码。
 
 # 参考文章
-1.官方文档[《Hot Module Replacement》](https://webpack.js.org/guides/hot-module-replacement/)<br />2.[《Webpack HMR 原理解析》](https://zhuanlan.zhihu.com/p/30669007)<br />3.[《webpack HMR》](www.ayqy.net/blog/hot-module-replacement/) <br />4.[《配置 dev-server》](https://segmentfault.com/a/1190000020293167) 
+1.官方文档[《Hot Module Replacement》](https://webpack.js.org/guides/hot-module-replacement/)
+
+2.[《Webpack HMR 原理解析》](https://zhuanlan.zhihu.com/p/30669007)
+
+3.[《webpack HMR》](www.ayqy.net/blog/hot-module-replacement/) 
+
+4.[《配置 dev-server》](https://segmentfault.com/a/1190000020293167) 
 
 
 ![bg](http://images.pingan8787.com/2019_07_12guild_page.png)

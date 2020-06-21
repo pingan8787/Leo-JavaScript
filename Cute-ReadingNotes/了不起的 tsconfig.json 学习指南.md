@@ -1,12 +1,17 @@
-在 TypeScript 开发中，tsconfig.json 是个不可或缺的配置文件，它是我们在 TS 项目中最常见的配置文件，那么你真的了解这个文件吗？它里面都有哪些优秀配置？如何配置一个合理的 tsconfig.json 文件？本文将全面带大家一起详细了解 tsconfig.json 的各项配置。<br />
-<br />本文将从以下几个方面全面介绍 tsconfig.json 文件：<br />![了不起的 tsconfig.json 指南.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-guide.png)
-<a name="UZ7GF"></a>
-<br />水平有限，欢迎各位大佬指点~~<br />
+在 TypeScript 开发中，tsconfig.json 是个不可或缺的配置文件，它是我们在 TS 项目中最常见的配置文件，那么你真的了解这个文件吗？它里面都有哪些优秀配置？如何配置一个合理的 tsconfig.json 文件？本文将全面带大家一起详细了解 tsconfig.json 的各项配置。
+
+本文将从以下几个方面全面介绍 tsconfig.json 文件：
+![了不起的 tsconfig.json 指南.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-guide.png)
+
+水平有限，欢迎各位大佬指点~~
+
 ## 一、tsconfig.json 简介
-<a name="bANbi"></a>
 ### 1. 什么是 tsconfig.json
-TypeScript 使用 tsconfig.json 文件作为其配置文件，当一个目录中存在 tsconfig.json 文件，则认为该目录为 TypeScript 项目的根目录。<br />通常 tsconfig.json 文件主要包含两部分内容：**指定待编译文件**和**定义编译选项**。<br />
-<br />从《[TypeScript编译器的配置文件的JSON模式](http://json.schemastore.org/tsconfig)》可知，目前 tsconfig.json 文件有以下几个顶层属性：
+TypeScript 使用 tsconfig.json 文件作为其配置文件，当一个目录中存在 tsconfig.json 文件，则认为该目录为 TypeScript 项目的根目录。
+
+通常 tsconfig.json 文件主要包含两部分内容：**指定待编译文件**和**定义编译选项**。
+
+从《[TypeScript编译器的配置文件的JSON模式](http://json.schemastore.org/tsconfig)》可知，目前 tsconfig.json 文件有以下几个顶层属性：
 
 - compileOnSave
 - compilerOptions
@@ -17,10 +22,8 @@ TypeScript 使用 tsconfig.json 文件作为其配置文件，当一个目录中
 - references
 - typeAcquisition
 
+文章后面会详细介绍一些常用属性配置。
 
-<br />文章后面会详细介绍一些常用属性配置。<br />
-
-<a name="EIEcP"></a>
 ### 2. 为什么使用 tsconfig.json
 通常我们可以使用 `tsc` 命令来编译少量 TypeScript 文件：
 ```bash
@@ -33,12 +36,10 @@ TypeScript 使用 tsconfig.json 文件作为其配置文件，当一个目录中
 */
 $ tsc --outFile leo.js --target es3 --module amd index.ts
 ```
-但如果实际开发的项目，很少是只有单个文件，当我们需要编译整个项目时，就可以使用 tsconfig.json 文件，将需要使用到的配置都写进 tsconfig.json 文件，**这样就不用每次编译都手动输入配置，另外也方便团队协作开发**。<br />
+但如果实际开发的项目，很少是只有单个文件，当我们需要编译整个项目时，就可以使用 tsconfig.json 文件，将需要使用到的配置都写进 tsconfig.json 文件，**这样就不用每次编译都手动输入配置，另外也方便团队协作开发**。
 
-<a name="u7L2g"></a>
 ## 二、使用 tsconfig.json
 目前使用 tsconfig.json 有2种操作：
-<a name="Kshqd"></a>
 ### 1. 初始化 tsconfig.json
 在初始化操作，也有 2 种方式：
 
@@ -46,8 +47,6 @@ $ tsc --outFile leo.js --target es3 --module amd index.ts
 1. 通过 `tsc --init` 初始化 tsconfig.json 文件。
 
 
-
-<a name="7PAhG"></a>
 ### 2. 指定需要编译的目录
 **在不指定输入文件的情况下**执行 `tsc` 命令，默认从当前目录开始编译，编译所有 `.ts` 文件，并且从当前目录开始查找 tsconfig.json 文件，并逐级向上级目录搜索。
 ```bash
@@ -64,14 +63,15 @@ $ tsc
 */
 $ tsc --project src
 ```
-**注意，tsc 的命令行选项具有优先级，会覆盖 tsconfig.json 中的同名选项。**<br />
-<br />更多 tsc 编译选项，可查看[《编译选项》](https://www.tslang.cn/docs/handbook/compiler-options.html)章节。<br />
+**注意，tsc 的命令行选项具有优先级，会覆盖 tsconfig.json 中的同名选项**。
 
-<a name="pn9rO"></a>
+更多 tsc 编译选项，可查看[《编译选项》](https://www.tslang.cn/docs/handbook/compiler-options.html)章节。
+
 ## 三、使用示例
-这个章节，我们将通过本地一个小项目 `learnTsconfig` 来学着实现一个简单配置。<br />当前开发环境：windows / node 10.15.1 / TypeScript3.9<br />
+这个章节，我们将通过本地一个小项目 `learnTsconfig` 来学着实现一个简单配置。
 
-<a name="hqWeO"></a>
+当前开发环境：windows / node 10.15.1 / TypeScript3.9
+
 ### 1. 初始化 learnTsconfig 项目
 执行下面命令：
 ```bash
@@ -97,16 +97,12 @@ console.log(getVersion("1.0.1"))
      └─index.ts
 ```
 
-
-<a name="TNpbL"></a>
 ### 2. 初始化 tsconfig.json 文件
 在 learnTsconfig 根目录执行：
 ```bash
 $ tsc --init
 ```
 
-
-<a name="I03ph"></a>
 ### 3. 修改 tsconfig.json 文件
 我们设置几个常见配置项：
 ```json
@@ -124,9 +120,10 @@ $ tsc --init
   ]
 }
 ```
-其中需要注意一点：<br /> `files` 配置项值是一个**数组**，用来指定了待编译文件，即**入口文件**。<br />当入口文件依赖其他文件时，不需要将被依赖文件也指定到 `files` 中，因为**编译器会自动将所有的依赖文件归纳为编译对象**，即 `index.ts` 依赖 `user.ts` 时，不需要在 `files` 中指定 `user.ts` ， `user.ts` 会自动纳入待编译文件。<br />
+其中需要注意一点：
+`files` 配置项值是一个**数组**，用来指定了待编译文件，即**入口文件**。<br />当入口文件依赖其他文件时，不需要将被依赖文件也指定到 `files` 中，因为**编译器会自动将所有的依赖文件归纳为编译对象**，即 `index.ts` 依赖 `user.ts` 时，不需要在 `files` 中指定 `user.ts` ， `user.ts` 会自动纳入待编译文件。
 
-<a name="5HN4m"></a>
+
 ### 4. 执行编译
 配置完成后，我们可以在命令行执行 `tsc` 命令，执行编译完成后，我们可以得到一个 `index.js` 文件和一个 `index.js.map` 文件，证明我们编译成功，其中 `index.js` 文件内容如下：
 ```javascript
@@ -137,24 +134,22 @@ function getVersion(version) {
 console.log(getVersion("1.0.1"));
 //# sourceMappingURL=index.js.map
 ```
-可以看出，tsconfig.json 中的 `removeComments` 配置生效了，将我们添加的注释代码移除了。<br />
-<br />到这一步，就完成了这个简单的示例，接下来会基于这个示例代码，讲解《七、常见配置示例》。<br />
+可以看出，tsconfig.json 中的 `removeComments` 配置生效了，将我们添加的注释代码移除了。
 
-<a name="IgQ8Z"></a>
+
+到这一步，就完成了这个简单的示例，接下来会基于这个示例代码，讲解《七、常见配置示例》。
+
+
 ## 四、tsconfig.json 文件结构介绍
-<a name="r62H3"></a>
 ### 1. 按顶层属性分类
-在 tsconfig.json 文件中按照**顶层属性**，分为以下几类：<br />![tsconfig.json 文件结构（顶层属性）.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-1.png)
+在 tsconfig.json 文件中按照**顶层属性**，分为以下几类：![tsconfig.json 文件结构（顶层属性）.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-1.png)
 
 ![了不起的 tsconfig.json 指南.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-3.png)
 
-<a name="0vZYp"></a>
 ### 2. 按功能分类
-![tsconfig.json 文件结构（功能）.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-2.png)<br />
+![tsconfig.json 文件结构（功能）.png](http://images.pingan8787.com/tsconfig-json/tsconfig-json-2.png)
 
-<a name="S64EK"></a>
 ## 五、tsconfig.json 配置介绍
-<a name="pq3yO"></a>
 ### 1. compileOnSave
 `compileOnSave` 属性作用是**设置保存文件的时候自动编译，但需要编译器支持**。
 ```json
@@ -163,9 +158,12 @@ console.log(getVersion("1.0.1"));
   "compileOnSave": false,
 }
 ```
-<a name="HWUeW"></a>
 ### 2. compilerOptions
-`compilerOptions` 属性作用是**配置编译选项**。<br />若 `compilerOptions` 属性被忽略，则编译器会使用默认值，可以查看[《官方完整的编译选项列表》](https://www.typescriptlang.org/docs/handbook/compiler-options.html)。<br />编译选项配置非常繁杂，有很多配置，这里只列出常用的配置。
+`compilerOptions` 属性作用是**配置编译选项**。
+
+若 `compilerOptions` 属性被忽略，则编译器会使用默认值，可以查看[《官方完整的编译选项列表》](https://www.typescriptlang.org/docs/handbook/compiler-options.html)。
+
+编译选项配置非常繁杂，有很多配置，这里只列出常用的配置。
 ```json
 {
   // ...
@@ -221,9 +219,10 @@ console.log(getVersion("1.0.1"));
   }
 }
 ```
-<a name="wn91k"></a>
 ### 3. exclude
-`exclude` 属性作用是**指定编译器需要排除的文件或文件夹。**<br />默认排除 `node_modules` 文件夹下文件。
+`exclude` 属性作用是**指定编译器需要排除的文件或文件夹**。
+
+默认排除 `node_modules` 文件夹下文件。
 ```json
 {
 	// ...
@@ -239,10 +238,10 @@ console.log(getVersion("1.0.1"));
 - `**/` 递归匹配任意子目录
 
 
-
-<a name="hzeaX"></a>
 ### 4. extends
-`extends` 属性作用是**引入其他配置文件，继承配置**。<br />默认包含当前目录和子目录下所有 TypeScript 文件。
+`extends` 属性作用是**引入其他配置文件，继承配置**。
+
+默认包含当前目录和子目录下所有 TypeScript 文件。
 ```json
 {
 	// ...
@@ -251,10 +250,10 @@ console.log(getVersion("1.0.1"));
 }
 ```
 
-
-<a name="XOcZH"></a>
 ### 5. files
-`files` 属性作用是**指定需要编译的单个文件列表**。<br />默认包含当前目录和子目录下所有 TypeScript 文件。
+`files` 属性作用是**指定需要编译的单个文件列表**。
+
+默认包含当前目录和子目录下所有 TypeScript 文件。
 ```json
 {
 	// ...
@@ -265,8 +264,6 @@ console.log(getVersion("1.0.1"));
 }
 ```
 
-
-<a name="coAd0"></a>
 ### 6. include
 `include` 属性作用是**指定编译需要编译的文件或目录**。
 ```json
@@ -280,10 +277,9 @@ console.log(getVersion("1.0.1"));
 }
 ```
 
-
-<a name="PonUH"></a>
 ### 7. references
-`references` 属性作用是**指定工程引用依赖。**<br />在项目开发中，有时候我们为了方便将前端项目和后端`node`项目放在同一个目录下开发，两个项目依赖同一个配置文件和通用文件，但我们希望前后端项目进行灵活的分别打包，那么我们可以进行如下配置：
+`references` 属性作用是**指定工程引用依赖。**
+在项目开发中，有时候我们为了方便将前端项目和后端`node`项目放在同一个目录下开发，两个项目依赖同一个配置文件和通用文件，但我们希望前后端项目进行灵活的分别打包，那么我们可以进行如下配置：
 ```json
 {
 	// ...
@@ -293,10 +289,9 @@ console.log(getVersion("1.0.1"));
 }
 ```
 
-
-<a name="9RACD"></a>
 ### 8. typeAcquisition
-`typeAcquisition` 属性作用是**设置自动引入库类型定义文件(.d.ts)相关。**<br />包含 3 个子属性：
+`typeAcquisition` 属性作用是**设置自动引入库类型定义文件(.d.ts)相关。**
+包含 3 个子属性：
 
 - `enable`  : 布尔类型，是否开启自动引入库类型定义文件(.d.ts)，默认为 false；
 - `include`  : 数组类型，允许自动引入的库名，如：["jquery", "lodash"]；
@@ -312,12 +307,9 @@ console.log(getVersion("1.0.1"));
 }
 ```
 
-
-<a name="QqaRt"></a>
 ## 六、常见配置示例
 本部分内容中，我们找了几个实际开发中比较常见的配置，当然，还有很多配置需要自己摸索哟~~
 
-<a name="SzLQ8"></a>
 ### 1. 移除代码中注释
 tsconfig.json：
 ```json
@@ -343,7 +335,6 @@ function getVersion(version) {
 }
 console.log(getVersion("1.0.1"));
 ```
-<a name="m3sdZ"></a>
 ### 2. 开启null、undefined检测
 tsconfig.json：
 ```json
@@ -359,7 +350,7 @@ const leo;
 leo = new Pingan('leo','hello');
 ```
 
-<br />这时候编辑器也会提示错误信息，执行 `tsc` 后，控制台报错：
+这时候编辑器也会提示错误信息，执行 `tsc` 后，控制台报错：
 ```bash
 src/index.ts:9:11 - error TS2304: Cannot find name 'Pingan'.
 
@@ -368,10 +359,10 @@ src/index.ts:9:11 - error TS2304: Cannot find name 'Pingan'.
 Found 1 error.
 ```
 
-
-<a name="2kSjd"></a>
 ### 3. 配置复用
-通过 `extends` 属性实现配置复用，即一个配置文件可以继承另一个文件的配置属性。<br />比如，建立一个基础的配置文件 `configs/base.json` ：
+通过 `extends` 属性实现配置复用，即一个配置文件可以继承另一个文件的配置属性。
+
+比如，建立一个基础的配置文件 `configs/base.json` ：
 ```json
 {
   "compilerOptions": {
@@ -390,9 +381,10 @@ Found 1 error.
   ]
 }
 ```
-<a name="shRlR"></a>
 ### 4. 生成枚举的映射代码
-在默认情况下，使用 `const` 修饰符后，枚举不会生成映射代码。<br />如下，我们可以看出：使用 `const` 修饰符后，编译器不会生成任何 `RequestMethod` 枚举的任何映射代码，在其他地方使用时，内联每个成员的值，节省很大开销。
+在默认情况下，使用 `const` 修饰符后，枚举不会生成映射代码。
+
+如下，我们可以看出：使用 `const` 修饰符后，编译器不会生成任何 `RequestMethod` 枚举的任何映射代码，在其他地方使用时，内联每个成员的值，节省很大开销。
 ```typescript
 const enum RequestMethod {
   Get,
@@ -424,7 +416,7 @@ let methods = [
 }
 ```
 
-<br />最后编译结果变成：
+最后编译结果变成：
 ```javascript
 "use strict";
 var RequestMethod;
@@ -439,7 +431,6 @@ let methods = [
     1 /* Post */
 ];
 ```
-<a name="AxJpb"></a>
 ### 5. 关闭 this 类型注解提示
 通过下面代码编译后会报错：
 ```typescript
@@ -451,24 +442,26 @@ function handleClick(this) {
 }
 ```
 
-<br />报错内容：
+报错内容：
 ```bash
 src/index.ts:10:22 - error TS7006: Parameter 'this' implicitly has an 'any' type.
 10 function handleClick(this) {
 Found 1 error.
 ```
 
-<br />这是因为 `this` 隐式具有 `any` 类型，如果没有指定类型注解，编译器会提示“"this" 隐式具有类型 "any"，因为它没有类型注释。”。<br />
-<br />解决方法有2种：
+这是因为 `this` 隐式具有 `any` 类型，如果没有指定类型注解，编译器会提示“"this" 隐式具有类型 "any"，因为它没有类型注释。”。
+
+解决方法有2种：
 
 1. 指定 this 类型，如本代码中为 `HTMLElement` 类型：
 
-`HTMLElement` 接口表示所有的 HTML 元素。一些HTML元素直接实现了 `HTMLElement` 接口，其它的间接实现`HTMLElement`接口。<br />关于[ HTMLElement ](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement)可查看详细。<br />
+`HTMLElement` 接口表示所有的 HTML 元素。一些HTML元素直接实现了 `HTMLElement` 接口，其它的间接实现`HTMLElement`接口。
+关于[ HTMLElement ](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement)可查看详细。
+
 
 2. 使用 `--noImplicitThis` 配置项： 
 
-
-<br />在 TS2.0 还增加一个新的编译选项： `--noImplicitThis`，表示当 `this` 表达式值为 `any` 类型时生成一个错误信息。我们设置为 `true` 后就能正常编译。
+在 TS2.0 还增加一个新的编译选项： `--noImplicitThis`，表示当 `this` 表达式值为 `any` 类型时生成一个错误信息。我们设置为 `true` 后就能正常编译。
 ```json
 {
   "compilerOptions": {
@@ -476,9 +469,7 @@ Found 1 error.
   }
 }
 ```
-<a name="vPiTf"></a>
 ## 七、Webpack/React 中使用示例
-<a name="9l17W"></a>
 ### 1. 配置编译 ES6 代码，JSX 文件
 创建测试项目 webpack-demo，结构如下：
 ```bash
@@ -536,10 +527,10 @@ module.exports = {
 };
 ```
 
-
-<a name="uSzYa"></a>
 ### 2. 配置 source map
-想要启用 source map，我们必须配置 TypeScript，以将内联的 source map 输出到编译后的 JavaScript 文件中。<br />只需要在 tsconfig.json 中配置 sourceMap 属性：
+想要启用 source map，我们必须配置 TypeScript，以将内联的 source map 输出到编译后的 JavaScript 文件中。
+
+只需要在 tsconfig.json 中配置 sourceMap 属性：
 ```diff
   {
     "compilerOptions": {
@@ -579,15 +570,21 @@ module.exports = {
     }
   };
 ```
-<a name="jIliq"></a>
 ## 八、总结
-本文较全面介绍了 tsconfig.json 文件的知识，从“什么是 tsconfig.js 文件”开始，一步步带领大家全面认识 tsconfig.json 文件。<br />文中通过一个简单 learnTsconfig 项目，让大家知道项目中如何使用 tsconfig.json 文件。在后续文章中，我们将这么多的配置项进行分类学习。最后通过几个常见配置示例，解决我们开发中遇到的几个常见问题。<br />
-<br />当然，本文篇幅有限，无法针对每个属性进行深入介绍，这就需要大家在实际开发中，多去尝试和使用啦~<br />
+本文较全面介绍了 tsconfig.json 文件的知识，从“什么是 tsconfig.js 文件”开始，一步步带领大家全面认识 tsconfig.json 文件。
+文中通过一个简单 learnTsconfig 项目，让大家知道项目中如何使用 tsconfig.json 文件。在后续文章中，我们将这么多的配置项进行分类学习。最后通过几个常见配置示例，解决我们开发中遇到的几个常见问题。
 
-<a name="HIZQm"></a>
+
+当然，本文篇幅有限，无法针对每个属性进行深入介绍，这就需要大家在实际开发中，多去尝试和使用啦~
+
+
 ## 九、学习和参考资料
+1.[《Intro to the TSConfig Reference》](https://www.typescriptlang.org/tsconfig) 
+2.[《tsconfig.json》](https://www.tslang.cn/docs/handbook/tsconfig-json.html) 
+3.[《TypeScript编译器的配置文件的JSON模式》](http://json.schemastore.org/tsconfig)
+4.[《详解TypeScript项目中的tsconfig.json配置》](https://www.jianshu.com/p/0383bbd61a6b) 
+5.[《官方完整的编译选项列表》](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 
-<br />1.[《Intro to the TSConfig Reference》](https://www.typescriptlang.org/tsconfig) <br />2.[《tsconfig.json》](https://www.tslang.cn/docs/handbook/tsconfig-json.html) <br />3.[《TypeScript编译器的配置文件的JSON模式》](http://json.schemastore.org/tsconfig)<br />4.[《详解TypeScript项目中的tsconfig.json配置》](https://www.jianshu.com/p/0383bbd61a6b) <br />5.[《官方完整的编译选项列表》](https://www.typescriptlang.org/docs/handbook/compiler-options.html)<br />
 
 ## 关于我
 |Author|王平安|
