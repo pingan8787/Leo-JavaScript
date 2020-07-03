@@ -4,9 +4,9 @@
 为此我们组建了我们团队内部的“**现代 JavaScript 突击队**”，第一期学习内容为[《现代 JavaScript 教程》](https://zh.javascript.info/)系列，帮助小组成员系统地进行学习巩固，并**让大家养成系统性学习和输出学习总结的学习方式**。
 本文作为我输出的第一部分学习总结，希望作为一份自测清单，帮助大家巩固知识，温故知新。
 这里也下面分享我们学习小组的“押金制度”和“押金记录表”🍀
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/186051/1593578758291-6b8a9706-9797-4d80-ae59-08f74a1ab889.png#align=left&display=inline&height=588&margin=%5Bobject%20Object%5D&name=image.png&originHeight=588&originWidth=789&size=52465&status=done&style=none&width=789)
+![image.png](http://images.pingan8787.com/JavaScript-Base/learn-1.png)
 接下来开始分享自测清单的内容。
-![初中级前端 JavaScript 自测清单.png](https://cdn.nlark.com/yuque/0/2020/png/186051/1593798511134-ede198c3-11ba-4708-948b-019fdd1bd7f9.png#align=left&display=inline&height=4010&margin=%5Bobject%20Object%5D&name=%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%20JavaScript%20%E8%87%AA%E6%B5%8B%E6%B8%85%E5%8D%95.png&originHeight=4010&originWidth=6092&size=1133312&status=done&style=none&width=6092)
+![初中级前端 JavaScript 自测清单.png](http://images.pingan8787.com/JavaScript-Base/learn-xmind-1.png)
 
 # 一、Hello World!
 ## 1. 脚本引入方式
@@ -233,7 +233,7 @@ Boolean("0"); // true
 Boolean(" "); // 空白, 也是 true (任何非空字符串是 true)
 ```
 ## 4. 小结
-![screencapture-www-runoob-com-js-js-type-conversion-html-1591538005755.png](https://cdn.nlark.com/yuque/0/2020/png/186051/1591538162851-0ce1611d-7e9d-4404-ba07-8563c5603d19.png#align=left&display=inline&height=1246&margin=%5Bobject%20Object%5D&name=screencapture-www-runoob-com-js-js-type-conversion-html-1591538005755.png&originHeight=1246&originWidth=840&size=142776&status=done&style=none&width=840)
+![image2.png](http://images.pingan8787.com/JavaScript-Base/learn-2.png)
 # 七、运算符
 ## 1、运算符概念
 常见运算符如加法 `+` 、减法 `-` 、乘法 `*` 和除法 `/` ，举一个例子，来介绍一些概念：
@@ -347,7 +347,7 @@ let num = +text1; //  12 转换为 Number 类型
 // 将数字值 -0 和 +0 视为相等，并认为 Number.NaN 不等于 NaN。
 '1' === 1; // false
 ```
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/186051/1593261180914-b7fc92e8-8e5d-476c-a2e9-1c7a8d63d0cb.png#align=left&display=inline&height=962&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1924&originWidth=1938&size=290723&status=done&style=none&width=969)
+![image.png](http://images.pingan8787.com/JavaScript-Base/learn-3.png)
 （图片来自：[《MDN JavaScript 中的相等性判断》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)）
 - 判断不相等：
 和判断相等一样，也有两种： `!=` / `!==` 。
