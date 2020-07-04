@@ -1,3 +1,12 @@
+最近原创文章🔥：
+- [《了不起的 Webpack HMR 学习指南（含源码分析）》](https://juejin.im/post/5ee8e32a51882543485780d3)
+- [《了不起的 Webpack 构建流程学习指南》](https://juejin.im/post/5eeff398e51d4573e060874d)
+- [《你不知道的 WeakMap》番外篇](https://juejin.im/post/5ee78bb7f265da76f15a0698)
+- [《你不知道的 Blob》番外篇](https://juejin.im/post/5ede5300e51d4578a6798220)
+- [《了不起的 tsconfig.json 指南》](https://juejin.im/post/5ed589a251882542e3022f44)
+- [《200行JS代码，带你实现代码编译器》](https://juejin.im/post/5e802e41e51d4546b659b31b)
+
+--- 
 
 # 前言
 最近与部门老大一起面试了许多前端求职者，其中**想换个学习氛围较好的人占多数**，但良好的学习氛围也是需要一点点营造出来的🌺。
