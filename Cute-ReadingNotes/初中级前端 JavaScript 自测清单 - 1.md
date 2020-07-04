@@ -8,7 +8,7 @@
 
 这里也下面分享我们学习小组的“押金制度”和“押金记录表”🍀
 
-![image.png](http://images.pingan8787.com/JavaScript-Base/learn-1.png)
+![“押金制度”和“押金记录表”](http://images.pingan8787.com/JavaScript-Base/learn-1.png)
 
 接下来开始分享自测清单的内容。
 
@@ -246,7 +246,7 @@ Boolean("0"); // true
 Boolean(" "); // 空白, 也是 true (任何非空字符串是 true)
 ```
 ## 4. 小结
-![image2.png](http://images.pingan8787.com/JavaScript-Base/learn-2.png)
+![类型转换](http://images.pingan8787.com/JavaScript-Base/learn-2.png)
 # 七、运算符
 ## 1、运算符概念
 常见运算符如加法 `+` 、减法 `-` 、乘法 `*` 和除法 `/` ，举一个例子，来介绍一些概念：
@@ -360,7 +360,7 @@ let num = +text1; //  12 转换为 Number 类型
 // 将数字值 -0 和 +0 视为相等，并认为 Number.NaN 不等于 NaN。
 '1' === 1; // false
 ```
-![image.png](http://images.pingan8787.com/JavaScript-Base/learn-3.png)
+![值的比较](http://images.pingan8787.com/JavaScript-Base/learn-3.png)
 （图片来自：[《MDN JavaScript 中的相等性判断》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)）
 - 判断不相等：
 和判断相等一样，也有两种： `!=` / `!==` 。
