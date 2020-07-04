@@ -1,11 +1,17 @@
 
 # 前言
 最近与部门老大一起面试了许多前端求职者，其中**想换个学习氛围较好的人占多数**，但良好的学习氛围也是需要一点点营造出来的🌺。
+
 为此我们组建了我们团队内部的“**现代 JavaScript 突击队**”，第一期学习内容为[《现代 JavaScript 教程》](https://zh.javascript.info/)系列，帮助小组成员系统地进行学习巩固，并**让大家养成系统性学习和输出学习总结的学习方式**。
+
 本文作为我输出的第一部分学习总结，希望作为一份自测清单，帮助大家巩固知识，温故知新。
+
 这里也下面分享我们学习小组的“押金制度”和“押金记录表”🍀
+
 ![image.png](http://images.pingan8787.com/JavaScript-Base/learn-1.png)
+
 接下来开始分享自测清单的内容。
+
 ![初中级前端 JavaScript 自测清单.png](http://images.pingan8787.com/JavaScript-Base/learn-xmind-1.png)
 
 # 一、Hello World!
@@ -22,7 +28,9 @@ JavaScript 脚本引入方式有两种：
 <script src="example-url.js"></script>
 ```
 ### 2.2 type
-`type` ：指定引用脚本的语言，属性值为 MIME 类型，包括`text/javascript`, `text/ecmascript`, `application/javascript`, 和`application/ecmascript`。如果没有定义这个属性，脚本会被视作JavaScript。ES6 新增了属性值 `module` ，代码会被当做 JavaScript 模块。
+`type` ：指定引用脚本的语言，属性值为 MIME 类型，包括`text/javascript`, `text/ecmascript`, `application/javascript`, 和`application/ecmascript`。如果没有定义这个属性，脚本会被视作JavaScript。
+
+ES6 新增了属性值 `module` ，代码会被当做 JavaScript 模块。
 ```html
 <script type="text/javascript"></script>
 ```
@@ -39,11 +47,12 @@ JavaScript 脚本引入方式有两种：
 
 ### 2.4 defer
 `defer`  属性规定是否对脚本执行进行延迟，直到页面加载为止。
-如果您的脚本不会改变文档的内容，可将 defer 属性加入到 <script> 标签中，以便加快处理文档的速度。因为浏览器知道它将能够安全地读取文档的剩余部分而不用执行脚本，它将推迟对脚本的解释，直到文档已经显示给用户为止。
+
+如果您的脚本不会改变文档的内容，可将 defer 属性加入到 `<script>` 标签中，以便加快处理文档的速度。因为浏览器知道它将能够安全地读取文档的剩余部分而不用执行脚本，它将推迟对脚本的解释，直到文档已经显示给用户为止。
 ```html
 <script defer="defer"></script>
 ```
-详细介绍可以阅读[《MDN <script> 章节 》](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)。
+详细介绍可以阅读[《MDN `<script> `章节 》](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script)。
 
 # 二、代码结构
 ## 1. 语句
@@ -51,11 +60,13 @@ JavaScript 脚本引入方式有两种：
 
 ## 2. 分号
 存在分行符时，多数情况下可以省略分号。但不全是，比如：
+
 ```javascript
 alert(3 +
 1
 + 2);
 ```
+
 建议新人最好不要省略分号。
 
 ## 3. 注释
@@ -72,9 +83,11 @@ console.log("leo");
 */
 console.log("leo");
 ```
+
 # 三、现代模式，"use strict"
 ## 1. 作用
 JavaScript 的严格模式是使用受限制的 JavaScript 的一种方式，从而隐式地退出“草率模式”。
+
 `"use strict"` 指令将浏览器引擎转换为“现代”模式，改变一些内建特性的行为。
 
 ## 2. 使用
@@ -1095,3 +1108,15 @@ var p = new Person(); // 定时器一直在执行 p的值一直变化
 
 # 总结
 本文作为《初中级前端 JavaScript 自测清单》第一部分，介绍的内容以常用基础知识为主，并在学习资料中，将知识点结合实际开发中遇到的场景进行展开介绍。希望能帮助大家自测自己的 JavaScript 水平并查缺补漏，温故知新。
+
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+|语雀知识库|[Cute-FrontEnd](https://www.yuque.com/wangpingan/cute-frontend)|
+
+![bg](http://images.pingan8787.com/2019_07_12guild_page.png)  
