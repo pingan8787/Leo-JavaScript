@@ -1,5 +1,4 @@
-
-最近原创文章😊：
+近期原创文章回顾😄
 
 *   [《1.2w字 ｜ 初中级前端 JavaScript 自测清单 - 1》](https://juejin.im/post/5f0023625188252e8c308597)
 *   [《了不起的 Webpack HMR 学习指南（含源码分析）》](https://juejin.im/post/5ee8e32a51882543485780d3)
@@ -23,6 +22,7 @@ export default "hello leo~";
 
 // index.js
 import str from "./main.js";
+console.log(str);
 ```
 
 使用 webpack 打包后输出文件内容如下：
@@ -30,8 +30,8 @@ import str from "./main.js";
 ```javascript
 [
   (function (module, __webpack_exports__, __webpack_require__) {
-    var __WEBPACK_IMPORTED_MODULE_0__util_js__ = __webpack_require__(1);
-    console.log(__WEBPACK_IMPORTED_MODULE_0__util_js__["a"]);
+    var __WEBPACK_IMPORTED_MODULE_0__main_js__ = __webpack_require__(1);
+    console.log(__WEBPACK_IMPORTED_MODULE_0__main_js__["a"]);
   }),
   (function (module, __webpack_exports__, __webpack_require__) {
     __webpack_exports__["a"] = ('hello leo~');
@@ -44,8 +44,8 @@ import str from "./main.js";
 ```javascript
 [
   (function (module, __webpack_exports__, __webpack_require__) {
-    var util = ('hello leo~');
-    console.log(util);
+    var main = ('hello leo~');
+    console.log(main);
   })
 ]
 ```
