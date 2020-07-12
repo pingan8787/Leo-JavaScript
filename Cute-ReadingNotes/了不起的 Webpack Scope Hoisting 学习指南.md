@@ -161,7 +161,10 @@ module.exports = {
 
 输出的日志中 `ModuleConcatenation bailout` 告诉我们哪些文件因为什么原因导致降级处理了。
 
-# 五、参考文章
+# 五、总结
+本文主要和大家一起回顾了 Scope Hoisting 基本概念，使用方式和使用后效果对比，希望大家不要只停留在会用 webpack，也要看看其中一些不常见的知识，比如本文介绍的 Scope Hoisting，它对我们项目优化非常有帮助，但平常又很少会去注意。
+
+# 六、参考文章
 
 - [《通过Scope Hoisting优化Webpack输出》](https://imweb.io/topic/5a43064fa192c3b460fce360) 
 - [《webpack 的 scope hoisting 是什么？》](https://segmentfault.com/a/1190000018220850) 
