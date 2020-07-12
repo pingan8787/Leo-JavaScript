@@ -64,7 +64,7 @@ module.exports = {
 };
 ```
 打包后输出结果（精简后）：
-![](https://images.pingan8787.com/Webpack/Scope-Hoisting/build-result.png)
+![](http://images.pingan8787.com/Webpack/Scope-Hoisting/build-result.png)
 通过分析，我们可以得出以下结论：
 
 - webpack 打包输出打是一个 IIFE（匿名闭包）；
@@ -78,7 +78,7 @@ Scope Hoisting 的实现原理其实很简单：分析出模块之间的依赖�
 
 由于 Scope Hoisting 需要分析出模块之间的依赖关系，因此源码**必须采用 ES6 模块化语句**，不然它将无法生效。 原因和[4-10 使用 TreeShaking](http://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-10%E4%BD%BF%E7%94%A8TreeShaking.html) 中介绍的类似。
 
-![](https://images.pingan8787.com/Webpack/Scope-Hoisting/build-result-comparison.png)
+![](http://images.pingan8787.com/Webpack/Scope-Hoisting/build-result-comparison.png)
 
 # 四、Scope Hoisting 使用方式
 ## 1. 自动启用
@@ -157,7 +157,7 @@ module.exports = {
 
 接着打包测试，可以看到控制台输出下面日志：
 
-![](https://images.pingan8787.com/Webpack/Scope-Hoisting/build-result-log.png)
+![](http://images.pingan8787.com/Webpack/Scope-Hoisting/build-result-log.png)
 
 输出的日志中 `ModuleConcatenation bailout` 告诉我们哪些文件因为什么原因导致降级处理了。
 
