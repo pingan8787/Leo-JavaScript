@@ -168,3 +168,14 @@ module.exports = {
 
 - [《通过Scope Hoisting优化Webpack输出》](https://imweb.io/topic/5a43064fa192c3b460fce360) 
 - [《webpack 的 scope hoisting 是什么？》](https://segmentfault.com/a/1190000018220850) 
+
+|Author|王平安|
+|---|---|
+|E-mail|pingan8787@qq.com|
+|博  客|www.pingan8787.com|
+|微  信|pingan8787|
+|每日文章推荐|https://github.com/pingan8787/Leo_Reading/issues|
+|ES小册|js.pingan8787.com|
+|语雀知识库|[Cute-FrontEnd](https://www.yuque.com/wangpingan/cute-frontend)|
+
+![](http://images.pingan8787.com/2019_07_12guild_page.png)  
