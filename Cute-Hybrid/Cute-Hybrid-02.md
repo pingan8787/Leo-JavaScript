@@ -376,7 +376,7 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
 **2.1 Windows 下载 DebugGap 并配置：**   
 
-在电脑上面下载 Windows 版本的 `DebugGap` 软件包（下载链接：[DebugGap](http://www.debuggap.com/)），下载完成后解压下来。
+在电脑上面下载 Windows 版本的 `DebugGap` 软件包（下载链接：[DebugGap](https://www.debuggap.com/installation.html)），下载完成后解压下来。
 
 安装完成后，运行 `DebugGap` ，开始配置：
 
