@@ -1,5 +1,5 @@
 # 前言
-在[《初中级前端 JavaScript 自测清单 - 1》](https://www.yuque.com/javascript-road/knowledge/msy3wo)部分中，和大家简单过了一遍 JavaScript 的一些基础知识，没看过的朋友可以回顾一下😁
+在[《初中级前端 JavaScript 自测清单 - 1》](https://www.yuque.com/javascript-road/knowledge/msy3wo)部分中，和大家简单过了一遍 JavaScript 基础知识，没看过的朋友可以回顾一下😁
 
 本系列文章是我在我们团队内部的“**现代 JavaScript 突击队**”，第一期学习内容为[《现代 JavaScript 教程》](https://zh.javascript.info/)系列的**第二部分**输出内容，希望这份自测清单，能够帮助大家巩固知识，温故知新。
 
