@@ -383,7 +383,7 @@ console.log(user.name);     // "leo"  ⚠️ 差异！
 console.log(leo.skill.CSS); // 90
 console.log(user.skill.CSS);// 90
 
-// 示例2 数组深拷贝
+// 示例2 数组浅拷贝
 let user = ["leo", "pingan", {name: "pingan8787"}];
 let leo  = user;
 leo[0] = "pingan888";
