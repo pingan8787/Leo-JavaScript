@@ -382,16 +382,6 @@ console.log(leo.name);      // "leo1" ⚠️ 差异！
 console.log(user.name);     // "leo"  ⚠️ 差异！
 console.log(leo.skill.CSS); // 90
 console.log(user.skill.CSS);// 90
-
-// 示例2 数组浅拷贝
-let user = ["leo", "pingan", {name: "pingan8787"}];
-let leo  = user;
-leo[0] = "pingan888";
-leo[2]["name"] = "pingan999";
-console.log(leo[0]);          // "pingan888"  ⚠️ 差异！
-console.log(user[0]);         // "leo"        ⚠️ 差异！
-console.log(leo[2]["name"]);  // "pingan999"
-console.log(user[2]["name"]); // "pingan999"
 ```
 从打印结果可以看出，浅拷贝只是在根属性(对象的第一层级)创建了一个新的对象，但是对于属性的值是对象的话只会拷贝一份相同的内存地址。
 
