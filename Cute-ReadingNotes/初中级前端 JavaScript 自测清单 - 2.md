@@ -1190,7 +1190,7 @@ Reflect.ownKeys(user); // ['age', 'address',Symbol('leo')]
 **用于重复使用一个Symbol值**，接收一个**字符串**作为参数，若存在用此参数作为名称的Symbol值，返回这个Symbol，否则新建并返回以这个参数为名称的Symbol值。
 ```javascript
 let leo = Symbol.for('leo');
-let pingan = Symbol.for('pingan');
+let pingan = Symbol.for('leo');
 leo === pingan;  // true
 ```
 
