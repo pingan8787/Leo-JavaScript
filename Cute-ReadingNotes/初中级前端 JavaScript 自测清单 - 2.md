@@ -178,7 +178,7 @@ user.toString !== undefined;    // true
 ```javascript
 let user = {};
 if(user.name) user.name = "pingan";
-//如果 name 是 undefine, null, false, " ", 0 或 NaN,它将保持不变
+//如果 name 是 undefined, null, false, " ", 0 或 NaN,它将保持不变
 
 user; // {}
 ```
@@ -382,6 +382,17 @@ console.log(leo.name);      // "leo1" ⚠️ 差异！
 console.log(user.name);     // "leo"  ⚠️ 差异！
 console.log(leo.skill.CSS); // 90
 console.log(user.skill.CSS);// 90
+
+
+// 示例2 数组浅拷贝
+let user = ["leo", "pingan", {name: "pingan8787"}];
+let leo  = Object.assign({}, user);
+leo[0] = "pingan888";
+leo[2]["name"] = "pingan999";
+console.log(leo[0]);          // "pingan888"  ⚠️ 差异！
+console.log(user[0]);         // "leo"        ⚠️ 差异！
+console.log(leo[2]["name"]);  // "pingan999"
+console.log(user[2]["name"]); // "pingan999"
 ```
 从打印结果可以看出，浅拷贝只是在根属性(对象的第一层级)创建了一个新的对象，但是对于属性的值是对象的话只会拷贝一份相同的内存地址。
 
@@ -408,7 +419,7 @@ Object.assign(user, null)      === user; // true
 `slice()` 方法返回一个新的数组对象，这一对象是一个由 `begin` 和 `end` 决定的原数组的浅拷贝（包括 `begin`，不包括`end`）。原始数组不会被改变。
 详细介绍，可以阅读文档[《MDN Array slice》](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)。
 ```javascript
-// 示例 数组深拷贝
+// 示例 数组浅拷贝
 let user = ["leo", "pingan", {name: "pingan8787"}];
 let leo  = Array.prototype.slice.call(user);
 leo[0] = "pingan888";
