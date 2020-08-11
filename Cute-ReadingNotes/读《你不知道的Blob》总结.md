@@ -177,6 +177,10 @@ await newBlob.text();
         }
         async function upload(files){
             const file = files;
+            if(!files){
+                alert("请先选择文件！");
+                return;
+            }
             for(let start = 0; start < file.size; start += chunkSize){
                 const chunk = file.slice(start, start + chunkSize + 1);
                 const fd = new FormData();

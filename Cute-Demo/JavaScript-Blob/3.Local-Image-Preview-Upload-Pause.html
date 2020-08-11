@@ -27,6 +27,10 @@
         }
         async function upload(){
             const file = curFile;
+            if(!files){
+                alert("请先选择文件！");
+                return;
+            }
             for(start; start < file.size; start += chunkSize){
                 if(isPause) return;
                 const chunk = file.slice(start, start + chunkSize + 1);
