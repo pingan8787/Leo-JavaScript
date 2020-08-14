@@ -35,6 +35,15 @@
 
 问题简单，实际还是想试试开发 Webpack Plugin。
 
+**注意**：这里还是想再说一下，这里插件的目的是为了给 JS 文件运行时动态增加随机数，即每次访问 `index.html` 时，引入 JS 脚本的 `script` 标签中 `src` 值的 JS 文件名后面都是随机数，如相同 `index.html` 中：
+
+* 第 1 次打开时， `index.html` 引入 JS 脚本的 `script` 标签中 `src` 值为 `./index.js?15234598789`；
+* 第 2 次打开时， `index.html` 引入 JS 脚本的 `script` 标签中 `src` 值为 `./index.js?15234599245`；
+...
+
+每次都将不同。
+
+
 ## 二、基础知识
 Webpack 使用阶段式的构建回调，开发者可以引入它们自己的行为到 Webpack 构建流程中。<br />在开发之前，需要了解以下 Webpack 相关概念：
 
