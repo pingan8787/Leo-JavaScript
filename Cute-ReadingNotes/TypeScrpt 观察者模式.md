@@ -329,5 +329,5 @@ function defineReactive(target, key, val) {
 
 # 参考文章
 1.[《3. 观察者模式》](https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html)
-2.[《TypeScript 设计模式之观察者模式》](semlinker.com/ts-observer-pattern/) 
+2.[《TypeScript 设计模式之观察者模式》](https://www.semlinker.com/ts-observer-pattern/) 
 3.[《JavaScript 设计模式核⼼原理与应⽤实践》](https://juejin.im/book/6844733790204461070)
