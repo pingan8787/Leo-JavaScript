@@ -47,7 +47,7 @@
 这两种场景的过程分别是这样：
 
 ### 1.1 观察者模式
-![观察者模式（微商与顾客）.png](http://images.pingan8787.com/DesignPattern/PubSubPattern/observer-desc)
+![观察者模式（微商与顾客）.png](http://images.pingan8787.com/DesignPattern/PubSubPattern/observer-desc.png)
 **观察者模式**中，消费顾客关注（如加微信好友）自己有兴趣的微商，微商就会私聊发自己在卖的产品给消费顾客。
 这个过程中，消费顾客相当于观察者（Observer），微商相当于观察目标（Subject）。
 
