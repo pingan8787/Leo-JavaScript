@@ -8,6 +8,7 @@
 1. [《初中级前端 JavaScript 自测清单 - 1》](https://juejin.im/post/6846687584710557710)
 2. [《初中级前端 JavaScript 自测清单 - 2》](https://juejin.im/post/6857037330113363982)
 3. [《TypeScript 设计模式之观察者模式》](https://juejin.im/post/6862112623417098248)
+4. [《TypeScript语法总结+项目(Vue.js+TS)实战》](https://juejin.im/post/6861525441786675208)
 
 # 2.发布-订阅模式 2020.08.14
 
