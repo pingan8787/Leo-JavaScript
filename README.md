@@ -28,13 +28,21 @@
 
 其他原创文章：
 
-1. [《【全栈修炼】CORS和CSRF修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】CORS和CSRF修炼宝典.md)
-2. [《【全栈修炼】OAuth2修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】OAuth2修炼宝典.md)
-3. [《【全栈修炼】RESTful架构及实践修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/【全栈修炼】RESTful架构及实践修炼宝典.md)
-4. [《【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/87-【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）.md)
-5. [《【原创】JS自定义事件如此简单！》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/83-【原创】JS自定义事件如此简单！.md)
-6. [《【前端知乎】ArrayBuffer对象与Blob对象》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/3.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91ArrayBuffer%E5%AF%B9%E8%B1%A1%E4%B8%8EBlob%E5%AF%B9%E8%B1%A1.md)
-7. [《【前端知乎】File对象、FileList对象和FileReader对象》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/4.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91File%E5%AF%B9%E8%B1%A1%E3%80%81FileList%E5%AF%B9%E8%B1%A1%E5%92%8CFileReader%E5%AF%B9%E8%B1%A1.md)
+1. [《TypeScript 设计模式之发布-订阅模式》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/TypeScript%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F.md)  
+
+2. [《TypeScript 设计模式之观察者模式》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/TypeScript%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md)
+
+3. [《初中级前端 JavaScript 自测清单 - 1》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%20JavaScript%20%E8%87%AA%E6%B5%8B%E6%B8%85%E5%8D%95%20-%201.md)
+
+4. [《初中级前端 JavaScript 自测清单 - 2》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%20JavaScript%20%E8%87%AA%E6%B5%8B%E6%B8%85%E5%8D%95%20-%202.md)
+
+5. [《了不起的 tsconfig.json 学习指南》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20tsconfig.json%20%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97.md)
+
+6. [《了不起的 Webpack 构建流程学习指南》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20Webpack%20%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97.md)
+
+7. [《了不起的 Webpack Scope Hoisting 学习指南》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20Webpack%20Scope%20Hoisting%20%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97.md)
+
+8. [《了不起的 Webpack HMR 学习指南（含源码分析）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%20Webpack%20HMR%20%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%EF%BC%88%E5%90%AB%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%89.md)
 
 ### 一、📜[Cute-Article](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Article)
 精选前端开发的各类文章，设计基础知识，框架知识，网络协议和面试等文章，目前已更新超过七十多篇。    
@@ -110,13 +118,20 @@
 2. [读《你不知道的WeakMap》总结](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/guide/读《你不知道的WeakMap》总结.md)
 
 
-### 十二、📜翻译
+### 十二、📜基础
 
-1. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
+1. [《【全栈修炼】CORS和CSRF修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】CORS和CSRF修炼宝典.md)
+1. [《【全栈修炼】OAuth2修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-FullStack/【全栈修炼】OAuth2修炼宝典.md)
+1. [《【全栈修炼】RESTful架构及实践修炼宝典》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/【全栈修炼】RESTful架构及实践修炼宝典.md)
+1. [《【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/87-【图文详解】200行JS代码，带你实现代码编译器（人人都能学会）.md)
+1. [《【原创】JS自定义事件如此简单！》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Article/article/83-【原创】JS自定义事件如此简单！.md)
+1. [《【前端知乎】ArrayBuffer对象与Blob对象》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/3.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91ArrayBuffer%E5%AF%B9%E8%B1%A1%E4%B8%8EBlob%E5%AF%B9%E8%B1%A1.md)
+1. [《【前端知乎】File对象、FileList对象和FileReader对象》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-JavaScript/Cute-Tips/4.%E3%80%90%E5%89%8D%E7%AB%AF%E7%9F%A5%E4%B9%8E%E3%80%91File%E5%AF%B9%E8%B1%A1%E3%80%81FileList%E5%AF%B9%E8%B1%A1%E5%92%8CFileReader%E5%AF%B9%E8%B1%A1.md)
 
 ### 十三、📜其他
 
-1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)  
+1. [常见demo片段整理](https://github.com/pingan8787/Leo-JavaScript/blob/master/demo片段/)    
+2. [[译]正确使用sort()方法](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Translate/1.%5B%E8%AF%91%5D%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8sort()%E6%96%B9%E6%B3%95.md)  
 
 |Author|王平安|
 |---|---|
