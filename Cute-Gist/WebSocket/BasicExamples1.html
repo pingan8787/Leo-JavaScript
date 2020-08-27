@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket 发送二进制数据示例</title>
+    <style>
+        .block {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>阿宝哥:WebSocket 发送二进制数据示例</h3>
+    <div style="display: flex;">
+        <div class="block">
+            <p>待发送的数据:<button onclick="send()">发送</button></p> 
+            <textarea id="sendMessage" rows="5" cols="15"></textarea>
+        </div>
+        <div class="block">
+
+            <p>接收的数据:</p>
+            <textarea id="receivedMessage" rows="5" cols="15"></textarea>
+        </div>
+    </div>
+    <script>
+        const sendMsgContainer = document.querySelector("#sendMessage");
+        const receivedMsgContainer = document.querySelector("#receivedMessage");
+        const socket = new WebSocket("ws://echo.websocket.org");
+        // 监听连接成功事件
+        socket.addEventListener("open", function (event) {
+            console.log("连接成功，可以开始通讯");
+        });
+        // 监听消息
+        socket.addEventListener("message", async function (event) {
+            console.log("Message from server ", event.data);
+            const receivedData = event.data;
+            if (receivedData instanceof Blob) {
+                receivedMsgContainer.value = await receivedData.text();
+            } else {
+                receivedMsgContainer.value = receivedData;
+            }
+        });
+        function send() {
+            const message = sendMsgContainer.value;
+            if (socket.readyState !== WebSocket.OPEN) {
+                console.log("连接未建立，还不能发送消息");
+                return;
+            }
+            const blob = new Blob([message], { type: "text/plain" }); 
+            if (message) socket.send(blob); 
+            console.log(`未发送至服务器的字节数:${socket.bufferedAmount}`);
+        }
+    </script>
+</body>
+
+</html>

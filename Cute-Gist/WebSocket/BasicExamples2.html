@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket 发送普通文本示例</title>
+    <style>
+        .block {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>一、阿宝哥: WebSocket 发送普通文本示例</h3>
+    <div style="display: flex;">
+        <div class="block">
+            <p>即将发送的数据:<button onclick="send()">发送</button></p> <textarea id="sendMessage" rows="5"
+                cols="15"></textarea>
+        </div>
+        <div class="block">
+            <p>接收的数据:</p>
+            <textarea id="receivedMessage" rows="5" cols="15"></textarea>
+        </div>
+    </div>
+    <h3>二、平安: WebSocket 发送不同内容</h3>
+    <div>
+        <button onclick="sendOther('Text')">发送UTF-8编码的文本信息</button>
+        <button onclick="sendOther('JSON')">发送UTF-8编码的JSON数据</button>
+        <button onclick="sendOther('ArrayBuffer')">发送二进制ArrayBuffer</button>
+        <button onclick="sendOther('ArrayBufferView')">发送二进制ArrayBufferView</button>
+        <button onclick="sendOther('Blob')">发送二进制Blob</button>
+    </div>
+    <script>
+        const sendMsgContainer = document.querySelector("#sendMessage");
+        const receivedMsgContainer = document.querySelector("#receivedMessage"); const socket = new WebSocket("ws://echo.websocket.org");
+        // 监听连接成功事件
+        socket.addEventListener("open", function (event) {
+            console.log("连接成功，可以开始通讯");
+        });
+        // 监听消息
+        socket.addEventListener("message", function (event) {
+            console.log("Message from server ", event.data);
+            receivedMsgContainer.value = event.data;
+        });
+        function send() {
+            const message = sendMsgContainer.value;
+            if (socket.readyState !== WebSocket.OPEN) {
+                console.log("连接未建立，还不能发送消息");
+                return;
+            }
+            if (message) socket.send(message);
+            console.log("socket:", socket)
+        }
+
+        // 发送其他类型数据
+        function sendOther(type) {
+            let data;
+            switch (type) {
+                case "Text":
+                    data = "Hello Echo Server!";
+                    break;
+
+                case "JSON":
+                    data = JSON.stringify({msg: "pingan8787"});
+                    break;
+
+                case "ArrayBuffer":
+                    data = new ArrayBuffer(128);
+                    break;
+
+                case "ArrayBufferView":
+                    data = new Uint32Array(new ArrayBuffer(128));
+                    break;
+
+                case "Blob":
+                    data = new Blob([new ArrayBuffer(128)]);
+                    break;
+
+            }
+            if (socket.readyState !== WebSocket.OPEN) {
+                console.log("连接未建立，还不能发送消息");
+                return;
+            }
+            console.log(type, data)
+            if (data) socket.send(data);
+        }
+    </script>
+</body>
+
+</html>
