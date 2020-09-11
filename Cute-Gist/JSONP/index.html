@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSONP 演示</title>
+</head>
+
+<body>
+
+    <h1>Leo 演示 JSONP 实现过程</h1>
+    <button id="click">发送请求</button>
+    <script>
+        function jsonp({ url, params, callback }) {
+            return new Promise((resolve, reject) => {
+                // 动态创建 script 标签
+                let script = document.createElement('script');
+                // 将回调函数挂载全局 window
+                window[callback] = data => {
+                    resolve(data);
+                    // 代码执行完成后，删除插入的 script 标签
+                    document.body.removeChild(script);
+                }
+                // 回调请求添加在请求地址上
+                params = { ...params, callback };
+                let arrs = [];
+                for (let key in params) {
+                    arrs.push(`${key}=${params[key]}`);
+                }
+                script.src = `${url}?${arrs.join("&")}`;
+                document.body.appendChild(script);
+            })
+        }
+        function success(data) {
+            console.log("jsonp success:", data)
+        }
+        let btn = document.getElementById("click");
+        btn.addEventListener("click", function(){
+            jsonp({
+                url: "http://localhost:1000/test_jsonp",
+                params: {
+                    name: "leo"
+                },
+                callback: "success"
+            }).then(data => {
+                console.log("jsonp then:", data)
+            })
+        })
+    </script>
+</body>
+
+</html>
