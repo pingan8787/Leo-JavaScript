@@ -182,7 +182,8 @@ span.checked:after {
     min-width: 100px;
     max-width: 300px;
     height: 100px;
-    line-height: 100px;
+    line-height: 30px;
+    word-break: break-word;
     overflow-y: scroll;
     color: #fff;
     text-align: center;
