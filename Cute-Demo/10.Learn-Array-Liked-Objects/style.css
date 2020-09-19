@@ -1,0 +1,193 @@
+body{
+	background: #FFF7DC;
+	margin: 20px;
+	font-family: 'Avenir';
+	color: #333;
+	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #404553;
+	margin: 0;
+}
+
+#app{
+    width: 600px;
+    height: 820px;
+	margin: 0 auto;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 12px 65px rgba(32, 50, 98, .07);
+}
+
+#AppContent{
+    max-width: 460px;
+    margin: 0 auto;
+	background: #fff;
+	padding: 20px 26px;
+	color: #404553;
+}
+
+#MultiSelectApp h3 {
+	font-size: 30px;
+	margin-top: 10px;
+}
+
+input[type="text"]:focus {
+	outline: none;
+}
+
+input[type="text"] {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 16px;
+	font-size: 14px;
+	border: 0;
+	border-bottom: 1px solid #eee;
+}
+input[type="text"]::placeholder {
+	color: #D4D2E1;
+	font-family: 'Avenir';
+	font-weight: 400;
+}
+
+.btn-done {
+	background: #6A65FF;
+	color: #fff;
+	width: 100%;
+	display: block;
+	line-height: 70px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.search-icon {
+	color: #C1BFD3;
+	position: absolute;
+	top: 10px;
+	left: 2px;
+	font-size: 16px;
+}
+
+#InputContent{
+    position:relative;
+}
+
+.user-list {
+	list-style: none;
+	padding: 0;
+    margin-top: 20px;
+    height: 430px;
+    overflow-y: scroll;
+}
+
+.user-list li {
+	padding: 20px;
+    cursor: pointer;
+    position:relative;
+}
+
+.user-list li:hover {
+	background-color: #F9F9F9;
+}
+
+.user-list li img {
+	width: 100%;
+}
+
+.user-image {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.user-list .user-data {
+	padding-top: 2px;
+	margin-left: 56px;
+	position: relative;
+}
+
+.user-list .user-data h4 {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.user-list .user-data span {
+	color: #A7ADBF;
+	font-weight: 500;
+}
+
+.round-checkbox {
+    display: block;
+    position: absolute;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    top: 6px;
+    right: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Create a custom checkbox */
+.round-checkbox span {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+    border: 2px solid #0FCE8F;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.round-checkbox span:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+span.checked:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.round-checkbox span:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #0FCE8F;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+#GlocalToast {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 100px;
+    max-width: 300px;
+    height: 100px;
+    line-height: 100px;
+    overflow-y: scroll;
+    color: #fff;
+    text-align: center;
+    background: rgba(0,0,0,.6);
+    margin: auto;
+    border-radius: 6px;
+    display: none;
+}
