@@ -1,0 +1,30 @@
+{
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./app/app.ts",
+    "custom": "ts-node ./app/customApp.ts",
+    "test3": "ts-node ./app/test3.ts",
+    "quick": "ts-node ./app/quick.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "is-promise": "^4.0.0",
+    "lodash": "^4.17.20",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@overnightjs/core": "^1.7.5",
+    "@types/express": "^4.17.8",
+    "express": "^4.17.1"
+  }
+}
