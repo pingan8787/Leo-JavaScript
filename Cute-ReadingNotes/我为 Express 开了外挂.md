@@ -49,7 +49,8 @@ $ ts-node app.ts
 ```bash
 Example app listening on port 3000!
 ```
-心情愉快，服务跑起来了。接下来 Leo 使用 Express 的路由方法写了其他接口：
+服务跑起来了，心情愉快。
+接下来 Leo 使用 Express 的路由方法写了其他接口：
 ```javascript
 // app.ts
 
@@ -83,7 +84,7 @@ router.get('/user', (req: Request, res: Response) => {res.send('Hello api/user!'
 
 export default router;
 ```
-接着在 app.ts 中使用，由于[`express.Router()` ](http://expressjs.com/zh-cn/4x/api.html#router)是个中间件，所以可以使用 `app.use()` 来使用：
+接着在 app.ts 中使用，由于[`express.Router()` ](http://expressjs.com/zh-cn/4x/api.html#router)是个中间件，因此可以使用 `app.use()` 来使用：
 ```typescript
 // app.ts
 
@@ -150,7 +151,7 @@ leo.say();
 ```
 
 ### 1.4 编译结果
-装饰器实际上非常很简单，编译出来以后，只是个函数，我们接着看。
+装饰器实际上非常简单，编译出来以后，只是个函数，我们接着看。
 这里以《1.3 示例代码》为例，看看它的编译结果：
 ```javascript
 "use strict";
