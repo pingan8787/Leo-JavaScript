@@ -462,7 +462,7 @@ OvernightJS/core 结构设计上还是比较简单，大致如下架构：
 在 OvernightJS/core 中，主要提供两个大类： `Server` 类和  `Decorators` 相关方法。
 其中 `Server` 类中的 `addConterllers` 方法是关键，下一节将详细介绍。哈哈
 
- ## 5. OvernightJS/core 与 Express 关联
+## 5. OvernightJS/core 与 Express 关联
 回顾下 Express ，我们经常通过 `app.use(path, route)` 来定义一个接口：
 ```typescript
 app.use(path, route);
@@ -520,7 +520,7 @@ public addControllers(
 那么**使用 OvernightJS 跟没有使用有什么区别呢？**
 下面我们分别通过 OvernightJS 和 Express 实现相同功能，功能包括：本地启动 4000 端口，支持 `api/users/:id` 接口。
 
- ## 1. OvernightJS 实现
+## 1. OvernightJS 实现
 首先实现入口文件，其中通过实例化 `ServerController` 类，并执行实例化结构的 `start` 方法来启动服务：
 ```typescript
 // customApp.ts
