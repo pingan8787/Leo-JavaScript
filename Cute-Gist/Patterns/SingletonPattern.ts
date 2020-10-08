@@ -17,6 +17,12 @@ class Singleton {
     }
 }
 
-const leo: Single = Singleton.getInstance();
+const leo:  Single = Singleton.getInstance();
+const leo2: Single = Singleton.getInstance();
 console.log("leo:", leo)
 leo.singletonOperation();
+
+console.log(leo == leo2)
+// [LOG]: "leo:",  Singleton: {} 
+// [LOG]: "hello Singleton Patterns!" 
+// [LOG]: true 
