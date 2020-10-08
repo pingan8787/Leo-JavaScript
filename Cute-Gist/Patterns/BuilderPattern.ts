@@ -2,6 +2,9 @@
 // https://refactoringguru.cn/design-patterns/builder/typescript/example
 
 
+/**
+ * DEMO1
+ */
 interface Builder {
     buildPartA(): void;
     buildPartB(): void;
@@ -77,3 +80,40 @@ function clinetCode(director: Director){
 
 const director = new Director();
 clinetCode(director);
+
+
+/**
+ * DEMO2
+ */
+class Car {
+  constructor(
+    public engine: string,
+    public chassis: string, 
+    public body: string
+  ) {}
+}
+
+class CarBuilder {
+  engine!: string;  // 引擎
+  chassis!: string; // 底盘
+  body!: string;    // 车身
+
+  addChassis(chassis: string) {
+    this.chassis = chassis;
+    return this;
+  }
+
+  addEngine(engine: string) {
+    this.engine = engine;
+    return this;
+  }
+
+  addBody(body: string) {
+    this.body = body;
+    return this;
+  }
+
+  build() {
+    return new Car(this.engine, this.chassis, this.body);
+  }
+}
