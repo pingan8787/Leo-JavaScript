@@ -26,6 +26,11 @@
 
 前端入门的学习资料和计划安排。
 
+最新文章：
+* [《我为 Express 开了外挂》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E6%88%91%E4%B8%BA%20Express%20%E5%BC%80%E4%BA%86%E5%A4%96%E6%8C%82.md)
+
+* [《前端如何优雅处理类数组对象？》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E5%89%8D%E7%AB%AF%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%A4%84%E7%90%86%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%EF%BC%9F.md)
+
 其他原创文章：
 
 1. [《TypeScript 设计模式之发布-订阅模式》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/TypeScript%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F.md)  
