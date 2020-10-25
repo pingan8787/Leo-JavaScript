@@ -1,3 +1,5 @@
+// 参考文章：https://blog.csdn.net/kuangshp128/article/details/98489691
+
 // 类装饰器
 function classDecorator(target: any) {
     console.log(target)
