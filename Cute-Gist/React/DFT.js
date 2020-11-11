@@ -1,4 +1,4 @@
-// 广度优先遍历(breadth-first traversal，BFT)
+// 深度优先遍历(depth-first traversal，DFT)
 // https://github.com/pfan123/Articles/issues/62
 
 const createElement = (tagName, props, ...children) => {
@@ -28,23 +28,23 @@ const vnode = createElement(
 
 console.log(vnode)
 
-const wideTraversal = vnode => {
+const deepTraversal = vnode => {
     if(!vnode) {
         throw new Error("Empty Tree!")
     }
     const nodeList = [];
-    const queue = [];
-    queue.push(vnode);
-    while(queue.length !== 0){
-        const node = queue.shift();
+    const stack = [];
+    stack.push(vnode);
+    while(stack.length !== 0){
+        const node = stack.pop();
         nodeList.push(node);
         if(node.children){
-            for(let i = 0; i < node.children.length; i ++){
-                queue.push(node.children[i])
+            for(let i = node.children.length - 1; i >= 0; i --){
+                stack.push(node.children[i])
             }
         }
     }
     return nodeList;
 }
 
-console.log(wideTraversal(vnode));
+console.log(deepTraversal(vnode));
