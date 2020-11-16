@@ -1,4 +1,6 @@
-// Level-4 拓展 DI
+/**
+ * Level-4 拓展 DI
+ */
 
 class Bed {
     constructor(){

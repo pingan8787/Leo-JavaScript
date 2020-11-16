@@ -1,4 +1,9 @@
-// Level-3 使用简单 DI
+/**
+ * Level-3 使用简单 DI
+ * 
+ * 将实例化后子类作为新对象的属性，通过使用主类中的静态属性 use，来注入主类。
+ */
+
 class Bed {
     constructor(){
         console.log("This is a bed!")
