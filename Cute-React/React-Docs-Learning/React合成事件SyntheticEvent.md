@@ -132,9 +132,7 @@ const clickElement = <a href="https://www.pingan8787.com" onClick={handleClick}>
 
 |  | 原生事件 | React 事件 |
 | --- | :---: | :---: |
-| 事件名称命名方式 | 名称全部小写
-（onclick, onblur） | 名称采用小驼峰
- |
+| 事件名称命名方式 | 名称全部小写<br/>（onclick, onblur）| 名称采用小驼峰<br/>（onClick, onBlur）|
 | 事件处理函数语法 | 字符串 | 函数 |
 | 阻止默认行为方式 | 事件返回 `false` | 使用 `e.preventDefault()` 方法 |
 
@@ -248,7 +246,7 @@ export default App;
 
 ```
 
-可以看到输出：
+可以看到输出：   
 ![Synthetic-Event-React16.png](https://images.pingan8787.com/React/Synthetic-Event/Synthetic-Event-React16.png)
 
 在 React 16 及之前的版本，合成事件对象的事件处理函数全部被调用之后，所有属性都会被置为 `null` 。这时，如果我们需要在事件处理函数运行之后获取事件对象的属性，可以使用 React 提供的 `e.persist()` 方法，保留所有属性：
