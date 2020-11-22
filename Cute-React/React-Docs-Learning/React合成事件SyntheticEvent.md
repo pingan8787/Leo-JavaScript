@@ -203,7 +203,7 @@ React 事件：父元素事件监听！
 ![Native-Event-And-Synthetic-Event.png](https://images.pingan8787.com/React/Synthetic-Event/Native-Event-And-Synthetic-Event.png)
 
 
-## 四、合成事件的事件池**
+## 四、合成事件的事件池
 
 ### 1. 事件池介绍
 
