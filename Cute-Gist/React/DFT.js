@@ -26,8 +26,6 @@ const vnode = createElement(
     )
 );
 
-console.log(vnode)
-
 const deepTraversal = vnode => {
     if(!vnode) {
         throw new Error("Empty Tree!")
