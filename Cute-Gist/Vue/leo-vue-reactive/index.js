@@ -20,5 +20,5 @@ const vm = new Vue({
 });
 
 console.log(vm.$data.text)
-// vm.$data.text = 'hello';
+vm.$data.text = '我们必须经常保持旧的记忆和新的希望。';
 console.log(vm.$data.text)
