@@ -198,7 +198,7 @@ Object.defineProperty(obj, prop, descriptor)
 const leo = {};
 Object.defineProperty(leo, 'age', { 
     value: 18,
-    writable: false
+    writable: true
 })
 console.log(leo.age); // 18
 leo.age = 22;
