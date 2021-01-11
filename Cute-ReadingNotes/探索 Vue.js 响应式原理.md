@@ -469,6 +469,12 @@ const vm = new Vue({
 
 console.log(vm.$data.text)
 vm.$data.text = '页面数据更新成功！'; // 模拟数据变化
+/*
+	也可以手动绑定“更新数据”按钮的事件，来手动更新数据
+  document.getElementById('update').addEventListener('click', function(){
+    vm.$data.text = '我们必须经常保持旧的记忆和新的希望。';
+  })
+*/
 console.log(vm.$data.text)
 ```
 
