@@ -584,7 +584,11 @@ class Watcher {
         this.cb = cb;   // cb：表示数据发生改变之后的回调
 
         Dep.target = this; // 全局唯一
+      
+        // 此处通过 this.vm.$data[key] 读取属性值，触发 getter
         this.oldValue = this.vm.$data[key]; // 保存变化的数据作为旧值，后续作判断是否更新
+
+        // 前面 getter 执行完后，执行下面清空
         Dep.target = null;
     }
     
