@@ -288,7 +288,7 @@ Vue.js 响应式原理中，**观察者模式起到非常重要的作用**。其
 
 - `Dep` 被观察者类，提供用来收集观察者（ `addSub` ）方法和通知观察者（ `notify` ）方法；
 - `Watcher` 观察者类，实例化时支持传入回调（ `cb` ）方法，并提供更新（ `update` ）方法；
-- 
+
 ### 2. 实现生成响应式的类
 
 这一步需要实现 `Observer` 类，核心是通过 `Object.defineProperty()` 方法为对象的每个属性设置 getter/setter，目的是**将普通数据转换为响应式数据，从而实现响应式对象**。
@@ -392,7 +392,7 @@ document.querySelector('#update').addEventListener('click', function(){
 
 ![observer-watcher-dep.png](https://images.pingan8787.com/Vue/Reactive/observer-watcher-dep.png)
 
-## 五、Vue.js 响应式实现
+## 五、实现简单 Vue.js 响应式
 
 > 本节代码：[https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Gist/Vue/leo-vue-reactive/](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Gist/Vue/leo-vue-reactive/compile.js)
 
