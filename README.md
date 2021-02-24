@@ -27,6 +27,11 @@
 前端入门的学习资料和计划安排。
 
 最新文章：
+
+* [🔥《探索 React 合成事件》](https://juejin.cn/post/6897911576053940231)
+
+* [🔥《探索 Vue.js 响应式原理》](https://juejin.cn/post/6916276304258007053)
+
 * [《我为 Express 开了外挂》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E6%88%91%E4%B8%BA%20Express%20%E5%BC%80%E4%BA%86%E5%A4%96%E6%8C%82.md)
 
 * [《前端如何优雅处理类数组对象？》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E5%89%8D%E7%AB%AF%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%A4%84%E7%90%86%E7%B1%BB%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%EF%BC%9F.md)
