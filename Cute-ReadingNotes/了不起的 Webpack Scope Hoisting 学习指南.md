@@ -14,7 +14,7 @@ Scope Hoisting 是 webpack3 的新功能，直译为 "**作用域提升**"，它
 
 在 JavaScript 中，还有“变量提升”和“函数提升”，JavaScript 会将变量和函数的声明提升到当前作用域顶部，而“作用域提升”也类似，webpack 将引入到 JS 文件“提升到”它的引入者的顶部。
 
-首先回顾下在没有 Scope Hoisting 时用 webpack 打包下面两个文件：
+首先回顾下没有 Scope Hoisting 时用 webpack 打包下面两个文件：
 
 ```javascript
 // main.js
@@ -50,7 +50,7 @@ console.log(str);
 ]
 ```
 
-对比两种打包方式输出的代码，我们可以看出，启用 Scope Hoisting 后，函数声明变成一个， `main.js` 中定义的内容被直接注入到 `main.js` 对应模块中，这样做的好处：
+对比两种打包方式输出的代码，我们可以看出，启用 Scope Hoisting 后，函数声明变成一个， `main.js` 中定义的内容被直接注入到 `index.js` 对应模块中，这样做的好处：
 
 - **代码体积更小**，因为函数申明语句会产生大量代码，导致包体积增大（模块越多越明显）；
 - 代码在运行时因为创建的函数作用域更少，**内存开销也随之变小**。
@@ -75,13 +75,18 @@ module.exports = {
     },
 };
 ```
+
 打包后输出结果（精简后）：
+
 ![](http://images.pingan8787.com/Webpack/Scope-Hoisting/build-result.png)
 通过分析，我们可以得出以下结论：
 
 - webpack 打包输出打是一个 IIFE（匿名闭包）；
+  
 - `modules`  是一个数组，每一项是一个模块初始化函数；
-- 使用 `__webpack_require()` 来家在模块，返回 `module.exports` ；
+  
+- 使用 `__webpack_require()` 来加载模块，返回 `module.exports` ；
+  
 - 通过 `__webpack_require__(__webpack_require__.s = 0);` 启动程序。
 
 # 三、Scope Hoisting 原理
@@ -95,18 +100,21 @@ Scope Hoisting 的实现原理其实很简单：分析出模块之间的依赖�
 # 四、Scope Hoisting 使用方式
 ## 1. 自动启用
 在 webpack 的 `mode` 设置为 `production` 时，会默认自动启用 Scope Hooting。
+
 ```javascript
 // webpack.config.js
 
 // ...
 module.exports = {
-    // ...
+  // ...
 	mode: "production"
 };
 ```
 
 ## 2. 手动启用
+
 在 webpack 中已经内置 Scope Hoisting ，所以用起来很简单，只需要配置[ModuleConcatenationPlugin](https://webpack.js.org/plugins/module-concatenation-plugin/#root) 插件即可：
+
 ```javascript
 // webpack.config.js
 
