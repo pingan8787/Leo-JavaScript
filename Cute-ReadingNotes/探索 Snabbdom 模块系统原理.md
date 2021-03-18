@@ -90,7 +90,7 @@ patch(oldVNode, vnode)
 vnode = h('div', 'Hello Snabbdom')
 patch(oldVNode, vnode)
 ```
-这里我们可以猜测 `patch()` 函数可以将** VNode** 渲染到页面。更进一步可以理解为，这边第一个执行 `patch()` 函数为**首次渲染**，第二次执行 `patch()` 函数为**更新操作**。
+这里我们可以猜测 `patch()` 函数可以将 VNode 渲染到页面。更进一步可以理解为，这边第一个执行 `patch()` 函数为**首次渲染**，第二次执行 `patch()` 函数为**更新操作**。
 
 ![img-3.png](https://images.pingan8787.com/Vue/Snabbdom/img-3.png)
 
