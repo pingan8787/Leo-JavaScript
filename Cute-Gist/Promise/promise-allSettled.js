@@ -8,14 +8,33 @@
 不支持 IE
 */
 
+// 1. 使用 Promise.all
 const promiseAllSettled = promises => {
     return Promise.all(
-        promises.map(promise => {
-            const p = Promise.resolve(promise);
-            p.then(value => { status: 'fulfilled', value })
-             .catch(reason => { status: 'rejected', reason })
-        })
+        promises.map(promise => Promise.resolve(promise).then(
+            value => {return { status: 'fulfilled', value }},
+            reason => {return { status: 'rejected', reason }}
+        ))
     )
+}
+
+
+// 2. 使用 finally
+const promiseAllSettled = promises => {
+    return new Promise((resolve, reject) => {
+        if (!promises || promises.length === 0) resolve([]);
+        let count = 0, result = [];
+        for(let i = 0; i <= promises.length; i++){
+            const p = Promise.resolve(promises[i]);
+            p.then(value => {
+                result[i] = {status: 'fulfilled', value};
+            })
+            .catch(reason => {
+                result[i] = {status: 'rejected', reason};
+            })
+            .finally(() => ++count === result.length && resolve(result))
+        }
+    })
 }
 
 
