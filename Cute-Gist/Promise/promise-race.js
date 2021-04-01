@@ -8,7 +8,7 @@ const promiseRace = promises => {
         if (!promises || promises.length == 0) resolve('');
         for (let item of promises) {
             const p = Promise.resolve(item);
-            p.then(data => resolve(data))
+            p.then(value => resolve(value))
                 .catch(error => reject(error));
         }
     })

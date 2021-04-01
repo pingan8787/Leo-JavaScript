@@ -12,8 +12,8 @@ const promiseAll = promises => {
         let count = 0, result = [];
         for (let i = 0; i < promises.length; i++) {
             const p = Promise.resolve(promises[i]);
-            p.then(data => {
-                result[i] = data;
+            p.then(value => {
+                result[i] = value;
                 if (++count === promises.length) {
                     resolve(result);
                 }
