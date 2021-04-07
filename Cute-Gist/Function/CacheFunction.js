@@ -14,6 +14,16 @@ const withCache = fn => {
     }
 }
 
+// 精简
+const withCache = fn => {
+    let cache = {};
+    return (...args) => {
+        const key = args.map(JSON.stringify).join('_');
+        const hit = cache[key];
+        return hit || (cache[key] = fn.apply(null, args));
+    }
+}
+
 const withCacheAdd = withCache(add);
 
 const r = withCacheAdd(12, 13);
