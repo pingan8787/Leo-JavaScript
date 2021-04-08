@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓存控制设计</title>
+    <script src="./cache-control.js"></script>
+</head>
+<body>
+    <button onclick="getStorage()">获取存储</button>
+    <button onclick="setStorage()">设置存储（无时效）</button>
+    <button onclick="setStorageExpired()">设置存储（有时效）</button>
+
+    <script>
+        const leoStorage = new LeoStorage();
+        function getStorage (){
+            const res = leoStorage.getItem('leo');
+            console.log(res)
+        }
+        function setStorage (){
+            leoStorage.setItem('leo', {name: "leo", age: 18});
+        }
+        function setStorageExpired (){
+            leoStorage.setItem('leo2', {name: "leo", age: 18}, 3000);
+        }
+    </script>
+    
+</body>
+</html>
