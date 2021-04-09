@@ -1,3 +1,4 @@
+// https://www.cnblogs.com/net-xiejun/p/9660510.html
 const SPLIT_STR = '@';
 const DATA_PROCESS_MAPPING = {
     'number': {
