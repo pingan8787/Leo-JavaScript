@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios 缓存请求数据示例</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.9.6/qs.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  </head>
+  <body>
+    <h3>Axios 缓存请求数据示例</h3>
+    <div>文章链接：<a
+            href="https://mp.weixin.qq.com/s/NfyxtWUzjHh6ucXvBF9B4Q">https://mp.weixin.qq.com/s/NfyxtWUzjHh6ucXvBF9B4Q</a>
+    </div>
+    <button onclick="requestWithCache()">使用缓存</button>
+    <button onclick="requestWithoutCache()">不使用缓存</button>
+    <script>
+      const MemoryCache = {
+        data: {},
+        set(key, value, maxAge) {
+          this.data[key] = {
+            maxAge: maxAge || 0,
+            value,
+            now: Date.now(),
+          };
+        },
+        get(key) {
+          const cachedItem = this.data[key];
+          if (!cachedItem) return null;
+          const isExpired = Date.now() - cachedItem.now > cachedItem.maxAge;
+          isExpired && this.delete(key);
+          return isExpired ? null : cachedItem.value;
+        },
+        delete(key) {
+          return delete this.data[key];
+        },
+        clear() {
+          this.data = {};
+        },
+      };
+
+      function generateReqKey(config) {
+        const { method, url, params, data } = config;
+        return [method, url, Qs.stringify(params), Qs.stringify(data)].join(
+          "&"
+        );
+      }
+
+      function isCacheLike(cache) {
+        return !!(
+          cache.set &&
+          cache.get &&
+          cache.delete &&
+          cache.clear &&
+          typeof cache.get === "function" &&
+          typeof cache.set === "function" &&
+          typeof cache.delete === "function" &&
+          typeof cache.clear === "function"
+        );
+      }
+
+      function cacheAdapterEnhancer(adapter, options) {
+        const {
+          maxAge,
+          enabledByDefault = true,
+          cacheFlag = "cache",
+          defaultCache = MemoryCache,
+        } = options;
+        return (config) => {
+          const { url, method, params, forceUpdate } = config;
+          let useCache =
+            config[cacheFlag] !== undefined && config[cacheFlag] !== null
+              ? config[cacheFlag]
+              : enabledByDefault;
+          if (method === "get" && useCache) {
+            const cache = isCacheLike(useCache) ? useCache : defaultCache;
+            let requestKey = generateReqKey(config);
+            let responsePromise = cache.get(requestKey);
+            if (!responsePromise || forceUpdate) {
+              responsePromise = (async () => {
+                try {
+                  return await adapter(config);
+                } catch (reason) {
+                  cache.delete(requestKey);
+                  throw reason;
+                }
+              })();
+              cache.set(requestKey, responsePromise, maxAge);
+              return responsePromise;
+            }
+            return responsePromise;
+          }
+
+          return adapter(config);
+        };
+      }
+
+      const http = axios.create({
+        baseURL: "https://jsonplaceholder.typicode.com",
+        adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
+          enabledByDefault: false,
+          maxAge: 5000,
+        }),
+      });
+
+      async function requestWithCache() {
+        const response = await http.get("/todos/1", { cache: true });
+        console.dir(response);
+      }
+
+      async function requestWithoutCache() {
+        const response = await http.get("/todos/1", { cache: false });
+        console.dir(response);
+      }
+    </script>
+  </body>
+</html>
+@pingan8787

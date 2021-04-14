@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios 取消重复请求示例</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.9.6/qs.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+    <h3>Axios 取消重复请求示例</h3>
+    <div>文章链接：<a
+            href="https://mp.weixin.qq.com/s/By-iXlONjSZLKFG2Xd7rpg">https://mp.weixin.qq.com/s/By-iXlONjSZLKFG2Xd7rpg</a>
+    </div>
+    <button onclick="sendRequest()">发起请求</button>
+    <script>
+        const pendingRequest = new Map();
+
+        function generateReqKey(config) {
+            const { method, url, params, data } = config;
+            return [method, url, Qs.stringify(params), Qs.stringify(data)].join(
+                "&"
+            );
+        }
+
+        function addPendingRequest(config) {
+            const requestKey = generateReqKey(config);
+            config.cancelToken =
+                config.cancelToken ||
+                new axios.CancelToken((cancel) => {
+                    if (!pendingRequest.has(requestKey)) {
+                        pendingRequest.set(requestKey, cancel);
+                    }
+                });
+        }
+
+        function removePendingRequest(config) {
+            const requestKey = generateReqKey(config);
+            if (pendingRequest.has(requestKey)) {
+                const cancel = pendingRequest.get(requestKey);
+                cancel(requestKey);
+                pendingRequest.delete(requestKey);
+            }
+        }
+
+        axios.interceptors.request.use(
+            function (config) {
+                removePendingRequest(config); // 检查是否存在重复请求，若存在则取消已发的请求
+                addPendingRequest(config); // 把当前请求添加到pendingRequest对象中
+                return config;
+            },
+            (error) => {
+                return Promise.reject(error);
+            }
+        );
+
+        axios.interceptors.response.use(
+            (response) => {
+                removePendingRequest(response.config); // 从pendingRequest对象中移除请求
+                return response;
+            },
+            (error) => {
+                removePendingRequest(error.config || {}); // 从pendingRequest对象中移除请求
+                if (axios.isCancel(error)) {
+                    console.log("已取消的重复请求：" + error.message);
+                } else {
+                    // 添加异常处理
+                }
+                return Promise.reject(error);
+            }
+        );
+
+        async function sendRequest() {
+            console.dir(pendingRequest);
+            const response = await axios.get(
+                "https://jsonplaceholder.typicode.com/todos/1"
+                //   "https://localhost:3000/todos/1"
+            );
+            console.log(response.data);
+        }
+    </script>
+</body>
+
+</html>
