@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>多线程下载示例</title>
+    <script src="multi-thread-download.js"></script>
+</head>
+
+<body>
+    <p>
+        下载地址：<input type="text" id="fileUrl" value="https://exe-res.exexm.com/kl_161795494885351" />
+    </p>
+    <div>
+        <h3>普通下载</h3>
+        <button onclick="directDownload()">普通下载</button>
+    </div>
+    <div>
+        <h3>多线程下载</h3>
+        <button onclick="multiThreadedDownload()">多线程下载</button>
+    </div>
+    <script>
+        const url = document.querySelector("#fileUrl").value;
+        function directDownload() {
+            console.log("普通下载开始: " + +new Date());
+            download({
+                url,
+                poolLimit: 1,
+            }).then((buffers) => {
+                console.log("普通下载结束: " + +new Date());
+                saveAs({ buffers, name: "我的压缩包", mime: "application/zip" });
+            });
+        }
+
+        function multiThreadedDownload() {
+            console.log("多线程下载开始: " + +new Date());
+            download({
+                url,
+                chunkSize: 10 * 1024 * 1024,
+                poolLimit: 6,
+            }).then((buffers) => {
+                console.log("多线程下载结束: " + +new Date());
+                saveAs({ buffers, name: "我的压缩包", mime: "application/zip" });
+            });
+        }
+    </script>
+</body>
+
+</html>
