@@ -1,0 +1,15 @@
+/* 夜间模式样式 */
+@media (prefers-color-scheme: light) {
+    body{
+      background-color: #f9bc61;
+      color: #000;
+    }
+  }
+  
+  @media (prefers-color-scheme: no-preference) {
+    body{
+      background-color: #f9bc61;
+      color: #000;
+    }
+  }
+  
