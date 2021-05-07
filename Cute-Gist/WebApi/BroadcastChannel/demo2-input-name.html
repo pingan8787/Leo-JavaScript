@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>示例2：动态设置文本内容</title>
+</head>
+<body>
+    <h3>你好：<span id="name"></span></h3>
+    <input type="text" oninput="change(event)">
+    <script>
+        const name = document.getElementById("name");
+        const broadcast = new BroadcastChannel('hello_leo');
+        broadcast.onmessage = function(ev){
+            name.innerText = ev.data
+        }
+        function change(e){
+            broadcast.postMessage(e.target.value)
+        }
+    </script>
+</body>
+</html>
