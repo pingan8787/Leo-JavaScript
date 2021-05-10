@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服务器在线解压Zip</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+    <style>
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Safari 3.1+ */
+            -moz-user-select: none;
+            /* Firefox 2+ */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+        }
+
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::before {
+            -ms-transform: rotate(90deg);
+            /* IE 9 */
+            -webkit-transform: rotate(90deg);
+            /* Safari */
+            '
+transform: rotate(90deg);
+        }
+
+        .indent {
+            text-indent: 1em;
+        }
+
+        #fileList>li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <label>请输入ZIP文件名：</label>
+        <input type="text" id="fileName" value="kl_161828427993677" />
+    </p>
+    <button id="unzipBtn" onclick="unzipOnline()">在线解压</button>
+    <p id="status"></p>
+    <ul id="fileList"></ul>
+    <script>
+        const fileList = document.querySelector("#fileList");
+        const fileNameEle = document.querySelector("#fileName");
+        const request = axios.create({
+            baseURL: "http://localhost:3000/",
+            timeout: 5000,
+        });
+
+        async function unzipOnline() {
+            const fileName = fileNameEle.value;
+            if (!fileName) return;
+            const response = await request.get(`unzip/${fileName}`);
+            if (response.data && response.data.status === "success") {
+                const entries = response.data.entries;
+                let items = "";
+                entries.forEach((zipEntry) => {
+                    items += `<li class=${zipEntry.dir ? "caret" : "indent"}>${zipEntry.name
+                        }</li>`;
+                });
+                fileList.innerHTML = items;
+            }
+        }
+
+        async function previewZipFile(path = "minivue-master/img/structure.png") {
+            const fileName = fileNameEle.value;
+            const response = await request.get(
+                `unzip/${fileName}/entry?path=${path}`
+            );
+            if (response.data && response.data.status === "success") {
+                const { entryData } = response.data;
+                const entryBuffer = toArrayBuffer(entryData.data);
+                const blob = new Blob([entryBuffer]);
+                // 使用URL.createObjectURL或blob.text()读取文件信息
+            }
+        }
+
+        function toArrayBuffer(buf) {
+            let ab = new ArrayBuffer(buf.length);
+            let view = new Uint8Array(ab);
+            for (let i = 0; i < buf.length; ++i) {
+                view[i] = buf[i];
+            }
+            return ab;
+        }
+    </script>
+</body>
+
+</html>

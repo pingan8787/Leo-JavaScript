@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>浏览器在线解压ZIP</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+    <style>
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Safari 3.1+ */
+            -moz-user-select: none;
+            /* Firefox 2+ */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+        }
+
+        .caret::before {
+            content: "\25B6";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::before {
+            -ms-transform: rotate(90deg);
+            /* IE 9 */
+            -webkit-transform: rotate(90deg);
+            /* Safari */
+            transform: rotate(90deg);
+        }
+
+        .indent {
+            text-indent: 1em;
+        }
+
+        #fileList>li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <label>请输入ZIP文件的线上地址：</label>
+        <input type="text" id="zipUrl" />
+    </p>
+    <button id="unzipBtn" onclick="unzipOnline()">在线解压</button>
+    <p id="status"></p>
+    <ul id="fileList"></ul>
+    <script>
+        class ExeJSZip {
+            // 用于获取url地址对应的文件内容
+            getBinaryContent(url, progressFn = () => { }) {
+                return new Promise((resolve, reject) => {
+                    if (typeof url !== "string" || !/https?:/.test(url))
+                        reject(new Error("url 参数不合法"));
+                    JSZipUtils.getBinaryContent(url, {
+                        // JSZipUtils来自于jszip-utils这个库
+                        progress: progressFn,
+                        callback: (err, data) => {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                resolve(data);
+                            }
+                        },
+                    });
+                });
+            }
+
+            // 遍历Zip文件
+            async iterateZipFile(data, iterationFn) {
+                if (typeof iterationFn !== "function") {
+                    throw new Error("iterationFn 不是函数类型");
+                }
+                let zip;
+                try {
+                    zip = await JSZip.loadAsync(data); // JSZip来自于jszip这个库
+                    zip.forEach(iterationFn);
+                    return zip;
+                } catch (error) {
+                    throw new error();
+                }
+            }
+        }
+    </script>
+    <script>
+        const zipUrlEle = document.querySelector("#zipUrl");
+        const statusEle = document.querySelector("#status");
+        const fileList = document.querySelector("#fileList");
+        const exeJSZip = new ExeJSZip();
+
+        async function unzipOnline() {
+            fileList.innerHTML = "";
+            statusEle.innerText = "开始下载文件...";
+            const data = await exeJSZip.getBinaryContent(
+                zipUrlEle.value,
+                handleProgress
+            );
+            let items = "";
+            await exeJSZip.iterateZipFile(data, (relativePath, zipEntry) => {
+                items += `<li class=${zipEntry.dir ? "caret" : "indent"}>${zipEntry.name
+                    }</li>`;
+            });
+            statusEle.innerText = "ZIP文件解压成功";
+            fileList.innerHTML = items;
+        }
+
+        function handleProgress(progressData) {
+            const { percent, loaded, total } = progressData;
+            if (loaded === total) {
+                statusEle.innerText = "文件已下载，努力解压中";
+            }
+        }
+    </script>
+</body>
+
+</html>
