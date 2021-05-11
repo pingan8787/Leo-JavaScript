@@ -1,0 +1,30 @@
+<button id="compressbtn">图片压缩</button>
+<div style="display: flex;">
+   <div style="flex: 33.3%;">
+      <p>预览容器</p>
+      <img id="previewContainer" width="230" height="230"
+         style="border: 2px dashed blue;" />
+   </div>
+   <div style="flex: 33.3%;">
+      <p>Canvas容器</p>
+      <canvas id="canvas" width="230" height="230"
+         style="border: 2px dashed grey;">
+      </canvas>
+   </div>
+   <div style="flex: 33.3%;">
+      <p>压缩预览容器</p>
+      <img id="compressPrevContainer" width="230" height="230"
+         style="border: 2px dashed green;" />
+   </div>
+</div>
+
+<script>
+   const compressbtn = document.querySelector("#compressbtn");
+   const compressImage = document.querySelector("#compressPrevContainer");
+   compressbtn.addEventListener("click", compress);
+  
+   function compress(quality = 80, mimeType = "image/webp") {
+     const imageDataURL = canvas.toDataURL(mimeType, quality / 100);
+     compressImage.src = imageDataURL;
+   }
+</script>
