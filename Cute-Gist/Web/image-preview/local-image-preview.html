@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>图片本地预览示例</title>
+</head>
+
+<body>
+  <h3>阿宝哥：图片本地预览示例</h3>
+  <input type="file" accept="image/*" onchange="loadFile(event)" />
+
+  <input type="file" accept="image/*" onchange="loadFileAsArrayBuffer(event)" />
+
+  <img id="previewContainer" />
+
+  <script>
+    const loadFile = function (event) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const output = document.querySelector("#previewContainer");
+        output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    };
+
+
+    const arrayBufferToBase64 = function (buffer) {
+      let binary = '';
+      let bytes = new Uint8Array(buffer);
+      let len = bytes.byteLength;
+      for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return window.btoa(binary);
+    }
+    const loadFileAsArrayBuffer = function (event) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const output = document.querySelector("#previewContainer");
+        output.src = 'data:image/jpeg;base64,' + arrayBufferToBase64(reader.result);
+      };
+      reader.readAsArrayBuffer(event.target.files[0]);
+    };
+  </script>
+</body>
+
+</html>
