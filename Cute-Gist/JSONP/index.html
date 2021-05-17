@@ -11,6 +11,12 @@
 
     <h1>Leo 演示 JSONP 实现过程</h1>
     <button id="click">发送请求</button>
+    <hr>
+    <h2>介绍</h2>
+    <div>JSONP: JSON With Padding，是一种解决跨域问题而提出的方案。</div>
+    <div>优点：很简单的实现跨域。</div>
+    <div>缺点：只能发送 get 请求，并且 url 有长度限制。</div>
+    <div>原理：由于浏览器同源策略的影响，不允许跨域的请求，而 script 标签是一种特例，它的 scr 属性可以访问跨域的 JS，利用该特性，服务端可以不用再返回 json 格式的数据，而是返回 content-type 为 text/javascript 的结果即可。</div>
     <script>
         function jsonp({ url, params, callback }) {
             return new Promise((resolve, reject) => {
