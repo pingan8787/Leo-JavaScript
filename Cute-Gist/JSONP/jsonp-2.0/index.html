@@ -24,9 +24,9 @@
         * @param {data} Object 查询参数对象
         * @param {options} Object 请求配置对象
         * 
-        * {options.callbackName} string 回调函数名称
-        * {options.success} Function 成功回调
-        * {options.error} Function 失败回调
+        * @param {options.callbackName} string 回调函数名称
+        * @param {options.success} Function 成功回调
+        * @param {options.error} Function 失败回调
         */
         function jsonp ({url, data = {}, options = {}}){
             const parseUrl = (curUrl, curData) => {
