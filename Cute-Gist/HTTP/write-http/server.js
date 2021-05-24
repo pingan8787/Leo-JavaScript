@@ -1,4 +1,5 @@
 const net = require("net");
+const {HttpParser} = require('./utils/HTTPParser');
 const port = 8080;
 const sever = net.createServer(connection => {
   connection.on("end", () => {
@@ -7,7 +8,9 @@ const sever = net.createServer(connection => {
   connection.on("data", data => {
     console.log("服务端：收到客户端发送数据为");
     console.log("----------");
-    console.log(data.toString());
+
+    const parseData = HttpParser(data.toString());
+    console.log(parseData);
     console.log("----------");
   });
   connection.write("返回响应结果");
