@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "module": "commonjs",
+      "baseUrl": ".",
+      "rootDir": ".",
+      "noImplicitAny": true,
+      "allowJs": true
+    },
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  }
