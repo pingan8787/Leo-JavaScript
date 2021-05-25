@@ -12,8 +12,8 @@ const sever = net.createServer(connection => {
     const parseData = HttpParser(data.toString());
     console.log(parseData);
     console.log("----------");
+    connection.write("返回响应结果");
   });
-  connection.write("返回响应结果");
 });
 sever.listen(port, () => {
   console.log("开始监听端口:" + port);

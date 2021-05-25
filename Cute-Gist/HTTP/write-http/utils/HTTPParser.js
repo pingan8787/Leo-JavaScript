@@ -1,6 +1,7 @@
 const HttpParser = message => {
     if(!message) return {};
     const messages = message.split("\r\n"); // 区分 header 和 body
+    console.log(messages)
     const result = {
         head : messages[0],
         header : messages.slice(1, -2),
@@ -28,8 +29,8 @@ const parseHeaders = (headers = []) => {
     return result;
 }
 
-const parseBody = (body = '') => {
-    return {body}
+const parseBody = (body = ['']) => {
+    return {body: body[0]}
 }
 
 module.exports = {
