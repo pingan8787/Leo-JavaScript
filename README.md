@@ -20,6 +20,9 @@
 
 2. [个人阅读书架：《Leo_Reading》](https://github.com/pingan8787/Leo_Reading/issues/26)：将每日阅读的文章整理在这里面，已经持续将近两年。
 
+
+[![Stargazers over time](https://starchart.cc/pingan8787/Leo-JavaScript.svg)](https://starchart.cc/pingan8787/Leo-JavaScript)
+
 ## 💌仓库目录
 
 ### 零、📜[Cute-Frontend](https://github.com/pingan8787/Leo-JavaScript/tree/master/Cute-Frontend)
