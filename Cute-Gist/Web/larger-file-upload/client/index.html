@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>大文件并发上传示例（阿宝哥）</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"></script>
+  </head>
+  <body>
+    <input type="file" id="uploadFile" />
+    <button id="submit" onclick="uploadFile()">上传文件</button>
+    <script>
+      const uploadFileEle = document.querySelector("#uploadFile");
+
+      const request = axios.create({
+        baseURL: "http://localhost:3000/upload",
+        timeout: 10000,
+      });
+
+      function calcFileMD5(file) {
+        return new Promise((resolve, reject) => {
+          let chunkSize = 2097152, // 2M
+            chunks = Math.ceil(file.size / chunkSize),
+            currentChunk = 0,
+            spark = new SparkMD5.ArrayBuffer(),
+            fileReader = new FileReader();
+
+          fileReader.onload = (e) => {
+            spark.append(e.target.result);
+            currentChunk++;
+            if (currentChunk < chunks) {
+              loadNext();
+            } else {
+              resolve(spark.end());
+            }
+          };
+
+          fileReader.onerror = (e) => {
+            reject(fileReader.error);
+            reader.abort();
+          };
+
+          function loadNext() {
+            let start = currentChunk * chunkSize,
+              end =
+                start + chunkSize >= file.size ? file.size : start + chunkSize;
+            fileReader.readAsArrayBuffer(file.slice(start, end));
+          }
+          loadNext();
+        });
+      }
+
+      function checkFileExist(url, name, md5) {
+        return request
+          .get(url, {
+            params: {
+              name,
+              md5,
+            },
+          })
+          .then((response) => response.data);
+      }
+
+      async function asyncPool(poolLimit, array, iteratorFn) {
+        const ret = [];
+        const executing = [];
+        for (const item of array) {
+          const p = Promise.resolve().then(() => iteratorFn(item, array));
+          ret.push(p);
+
+          if (poolLimit <= array.length) {
+            const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+            executing.push(e);
+            if (executing.length >= poolLimit) {
+              await Promise.race(executing);
+            }
+          }
+        }
+        return Promise.all(ret);
+      }
+
+      async function uploadFile() {
+        if (!uploadFileEle.files.length) return;
+        const file = uploadFileEle.files[0]; // 获取待上传的文件
+        const fileMd5 = await calcFileMD5(file); // 计算文件的MD5
+        const fileStatus = await checkFileExist(
+          // 判断文件是否已存在
+          "/exists",
+          file.name,
+          fileMd5
+        );
+        if (fileStatus.data && fileStatus.data.isExists) {
+          alert("文件已上传[秒传]");
+          return;
+        } else {
+          await upload({
+            url: "/single",
+            file,
+            fileMd5,
+            fileSize: file.size,
+            chunkSize: 1 * 1024 * 1024,
+            chunkIds: fileStatus.data.chunkIds,
+            poolLimit: 3,
+          });
+        }
+        await concatFiles("/concatFiles", file.name, fileMd5);
+      }
+
+      function upload({
+        url,
+        file,
+        fileMd5,
+        fileSize,
+        chunkSize,
+        chunkIds,
+        poolLimit = 1,
+      }) {
+        const chunks =
+          typeof chunkSize === "number" ? Math.ceil(fileSize / chunkSize) : 1;
+        return asyncPool(poolLimit, [...new Array(chunks).keys()], (i) => {
+          if (chunkIds.indexOf(i + "") !== -1) {
+            // 已上传的分块直接跳过
+            return Promise.resolve();
+          }
+          let start = i * chunkSize;
+          let end = i + 1 == chunks ? fileSize : (i + 1) * chunkSize;
+          const chunk = file.slice(start, end);
+          return uploadChunk({
+            url,
+            chunk,
+            chunkIndex: i,
+            fileMd5,
+            fileName: file.name,
+          });
+        });
+      }
+
+      function uploadChunk({ url, chunk, chunkIndex, fileMd5, fileName }) {
+        let formData = new FormData();
+        formData.set("file", chunk, fileMd5 + "-" + chunkIndex);
+        formData.set("name", fileName);
+        formData.set("timestamp", Date.now());
+        return request.post(url, formData);
+      }
+
+      function concatFiles(url, name, md5) {
+        return request.get(url, {
+          params: {
+            name,
+            md5,
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
