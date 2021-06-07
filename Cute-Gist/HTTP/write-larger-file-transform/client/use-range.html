@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大文件范围请求示例（阿宝哥）</title>
+  </head>
+  <body>
+    <h3>大文件范围请求示例（阿宝哥）</h3>
+    <div id="msgList"></div>
+    <script>
+      const msgList = document.querySelector("#msgList");
+      function getBinaryContent(url, start, end, responseType = "arraybuffer") {
+        return new Promise((resolve, reject) => {
+          try {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.setRequestHeader("range", `bytes=${start}-${end}`);
+            xhr.responseType = responseType;
+            xhr.onload = function () {
+              resolve(xhr.response);
+            };
+            xhr.send();
+          } catch (err) {
+            reject(new Error(err));
+          }
+        });
+      }
+
+      getBinaryContent(
+        "http://localhost:3000/big-file.txt",
+        0, 100, "text"
+      ).then((text) => {
+        msgList.append(`${text}`);
+      });
+    </script>
+  </body>
+</html>
