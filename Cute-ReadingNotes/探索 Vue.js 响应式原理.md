@@ -184,8 +184,8 @@ Object.defineProperty(obj, prop, descriptor)
 
 - 入参说明：
 
-`obj` ：要定义属性的**源对象**；
-`prop` ：要定义或修改的**属性名称**或 **Symbol**；
+`obj` ：要定义属性的**源对象**；  
+`prop` ：要定义或修改的**属性名称**或 **Symbol**；  
 `descriptor` ：要定义或修改的**属性描述符**，包括 `configurable`、`enumerable`、`value`、`writable`、`get`、`set`，具体的可以去参阅[文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/definePropertyhttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)；
 
 - 出参说明：
