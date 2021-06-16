@@ -11,32 +11,49 @@
     <script src="./utils/index.js"></script>
     <!--
         一个实战作业，要求实现一个本地选择/拖拽图片上传的功能：
-        1、支持多张图片上传
-        2、支持上传进度显示
+        1、支持多张图片上传 👍
+        2、支持上传进度显示 👍
         3、支持图片本地预览
         注意事项：需要考虑图片类型、图片大小校验、拖拽效果
     -->
+    <style>
+        #previewContainer img {
+            width: 300px;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
-    <input type="file" multiple id="selectUpload" >
+    <input type="file" multiple id="selectUpload" onchange="changeFile(event)">
     <button id="submit" onclick="uploadFile()">开始上传</button>
-    <div class="progress-container">
-        当前上传文件进度：<span id="progress-number">-</span>%，总耗时：<span id="progress-time">-</span>毫秒。
+    <div id="progressContainer">
+        当前上传文件进度：<span id="progressNumber">-</span>%，总耗时：<span id="progressTime">-</span>毫秒。
+    </div>
+
+    <div id="previewContainer">
+        <!-- 动态创建 img 标签，因为存在多张图片的情况 -->
     </div>
 
     <script>
         const uploadEle = document.querySelector("#selectUpload");
+        const previewContainer = document.querySelector("#previewContainer");
         const request = axios.create({
             baseURL: "http://localhost:3000/upload/",
             timeout: 10000,
             xsrfCookieName: 'LEO-XSRF-TOKEN',
             xsrfHeaderName: 'LEO-X-XSRF-TOKEN',
             onUploadProgress: uploadProgress,
-            onDownloadProgress: function (progressEvent) {
-                // 对原生进度事件的处理
-            },
+            onDownloadProgress: downloadProgress
         });
+
+        const changeFile = async (event) => {
+            const files = event.target.files;
+            console.log("---", files)
+            for (let item of files) {
+                item && await createPreviewItem(previewContainer, item);
+            }
+        }
 
         const uploadFile = async () => {
             try {
