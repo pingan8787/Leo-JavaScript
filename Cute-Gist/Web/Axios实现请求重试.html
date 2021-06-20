@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+    <button id="submit" onclick="uploadFile()">上传文件</button>
+
+    <script>
+        axios.interceptors.response.use(null, (err) => {
+            let config = err.config;
+            if (!config || !config.retryTimes) return Promise.reject(err);
+            const { __retryCount = 0, retryDelay = 300, retryTimes } = config;
+            // 在请求对象上设置重试次数
+            config.__retryCount = __retryCount;
+            // 判断是否超过了重试次数
+            if (__retryCount >= retryTimes) {
+                return Promise.reject(err);
+            }
+            // 增加重试次数
+            config.__retryCount++;
+            // 延时处理
+            const delay = new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, retryDelay);
+            });
+            // 重新发起请求
+            return delay.then(function () {
+                return axios(config);
+            });
+        });
+
+        function retryAdapterEnhancer(adapter, options) {
+            const { times = 0, delay = 300 } = options;
+
+            return async (config) => {
+                const { retryTimes = times, retryDelay = delay } = config;
+                let __retryCount = 0;
+                const request = async () => {
+                    try {
+                        return await adapter(config);
+                    } catch (err) {
+                        // 判断是否进行重试
+                        if (!retryTimes || __retryCount >= retryTimes) {
+                            return Promise.reject(err);
+                        }
+                        __retryCount++; // 增加重试次数
+                        // 延时处理
+                        const delay = new Promise((resolve) => {
+                            setTimeout(() => {
+                                resolve();
+                            }, retryDelay);
+                        });
+                        // 重新发起请求
+                        return delay.then(() => {
+                            return request();
+                        });
+                    }
+                };
+                return request();
+            };
+        }
+
+        const request = axios.create({
+            baseURL: "http://localhost:3000/",
+            timeout: 10000,
+            adapter: retryAdapterEnhancer(axios.defaults.adapter, {
+                delay: 1000,
+            }),
+        });
+
+        const uploadFile = () => {
+            request.get("/upload/single", { retryTimes: 2 });
+        }
+
+    </script>
+</body>
+
+</html>
