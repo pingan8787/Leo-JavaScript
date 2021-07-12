@@ -1,0 +1,18 @@
+{
+  "name": "writeWebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node miniWebpack.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/parser": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/traverse": "^7.14.7"
+  }
+}
