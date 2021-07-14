@@ -5,6 +5,8 @@ const traverse = require("@babel/traverse").default;
 // 由于 traverse 采用的 ES Module 导出，我们通过 require 引入的话就加个 .default
 const babel = require("@babel/core");
 const { relative } = require('path');
+const miniWebpack = require('./mini-webpack.config');
+
 
 let moduleId = 0;
 const createAssets = filename => {
@@ -85,6 +87,11 @@ const bundle = graph => {
 
 }
 
-const graph = createGraph('./src/index.js');
-const result = bundle(graph);
-eval(result);
+const run = () => {
+    const { entry, output } = miniWebpack;
+    const graph = createGraph(entry);
+    const result = bundle(graph);
+    fs.writeFileSync(output, result);
+}
+
+run();
