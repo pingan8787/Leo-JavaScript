@@ -10,6 +10,7 @@ export const interceptor = {
 export const runInterceptors = instance => {
     log('[runInterceptors]', instance);
 
+    if(!instance) return;
     // 设置请求拦截器
     for (const key in request) {
         instance.interceptors.request
