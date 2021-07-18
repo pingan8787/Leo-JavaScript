@@ -286,7 +286,56 @@ const send = async () => {
 
 可以看到我们开发的请求拦截器已经生效。
 
-## 四、项目总结和思考
+## 四、Taro 中使用
+由于 [Taro](https://taro-docs.jd.com/) 中已经提供了 [Taro.request](https://taro-docs.jd.com/taro/docs/2.x/apis/network/request/request) 方法作为请求方法，我们可以不需要使用 axios 发请求。
+
+基于上面代码进行改造，也很简单，只需要更改 2 个地方：
+### 1. 修改封装请求的方法
+
+主要是更换 axios 为 Taro.request 方法，并使用 addInterceptor  方法导入拦截器：
+
+```js
+// src/request/index.js
+
+import Taro from "@tarojs/taro";
+import { runInterceptors } from './interceptors/index';
+
+Taro.addInterceptor(runInterceptors);
+
+export const request = Taro.request;
+export const requestTask = Taro.RequestTask; // 看需求，是否需要
+export const addInterceptor = Taro.addInterceptor; // 看需求，是否需要
+```
+
+### 2. 修改拦截器调度器
+由于 axios 和 `Taro.request` 添加拦截器的方法不同，所以也需要进行更换：
+
+```js
+import request from './interceptors/request';
+import response from './interceptors/response';
+
+export const interceptor = {
+    request,
+    response
+};
+
+export const getInterceptor = (chain = {}) => {
+  // 设置请求拦截器
+  let requestParams = chain.requestParams;
+  for (const key in request) {
+    requestParams = request[key](requestParams);
+  }
+
+  // 设置响应拦截器
+  let responseObject = chain.proceed(requestParams);
+  for (const key in response) {
+    responseObject = responseObject.then(res => response[key](res));
+  }
+  return responseObject;
+};
+```
+具体 API 可以看 [Taro.request](https://taro-docs.jd.com/taro/docs/2.x/apis/network/request/request) 文档，这里不过多介绍。
+## 五、项目总结和思考
 
 这次重构主要是按照已有业务进行重构，因此即使是重构后的请求层，仍然还有很多可以优化的点，目前我想到有这些，也算是我的一个 TODO LIST 了：
 
@@ -327,7 +376,7 @@ const send = async () => {
 - 可插拔的拦截器调度；
 - 考虑参考 Tapable 插件机制；
 
-## 五、本文总结
+## 六、本文总结
 
 本文通过一次简单的项目重构总结出一个请求层拦截器调度方案，目的是为了实现所有**拦截器职责单一**、方便维护，并**统一维护**和**自动调度**，大大降低实际业务的拦截器开发上手难度。
 
