@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setInterceptors } from './interceptors/index';
+import { runInterceptors } from './interceptors/index';
 
 export const requestConfig = {
     // baseURL: "http://localhost:3000/",
@@ -8,6 +8,6 @@ export const requestConfig = {
 
 let request = axios.create(requestConfig);
 
-request = setInterceptors(request);
+request = runInterceptors(request);
 
 export default request;

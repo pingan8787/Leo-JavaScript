@@ -7,8 +7,8 @@ export const interceptor = {
     response
 };
 
-export const setInterceptors = instance => {
-    log('[setInterceptors]', instance);
+export const runInterceptors = instance => {
+    log('[runInterceptors]', instance);
 
     // 设置请求拦截器
     for (const key in request) {
