@@ -23,7 +23,7 @@ const createAssets = filename => {
             dependencies.push(node.source.value);
         }
     })
-
+    
     // 4.将 ast 转换为浏览器可运行代码
     const { code } = babel.transformFromAstSync(ast, null, {
         presets: ['@babel/preset-env']

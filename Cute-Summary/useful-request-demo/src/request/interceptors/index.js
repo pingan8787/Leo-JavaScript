@@ -14,13 +14,13 @@ export const runInterceptors = instance => {
     // 设置请求拦截器
     for (const key in request) {
         instance.interceptors.request
-            .use(config => request[key](config));
+            .use(request[key]);
     }
 
     // 设置响应拦截器
     for (const key in response) {
         instance.interceptors.response
-            .use(result => response[key](result));
+            .use(response[key]);
     }
 
     return instance;
