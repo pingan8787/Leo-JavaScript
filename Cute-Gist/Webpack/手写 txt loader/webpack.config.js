@@ -12,12 +12,24 @@ module.exports = {
         rules: [
             {
                 test: /\.txt$/,
-                use:[
-                    path.resolve('./txt-loader/txt-md5-loader.js'),
-                    path.resolve('./txt-loader/txt-replace-loader.js'),
-                    path.resolve('./txt-loader/txt-token-loader.js'),
+                use: [
+                    'txt-md5-loader',
+                    {
+                        loader: 'txt-replace-loader',
+                        options: {
+                            tags: '+',
+                            name: '++'
+                        }
+                    },
+                    'txt-token-loader',
                 ]
             }
-        ]
-    }
+        ],
+    },
+    resolveLoader: {
+        modules: [
+            path.resolve(__dirname, "node_modules"),
+            path.resolve(__dirname, "txt-loader"),
+        ],
+    },
 };
