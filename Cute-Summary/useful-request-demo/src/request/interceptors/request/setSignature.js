@@ -18,4 +18,11 @@ const setSignature = options => {
   return options;
 };
 
-export default setSignature;
+const setError = error => {
+
+}
+
+export default {
+  success: setSignature,
+  error: setError
+};

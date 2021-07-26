@@ -9,19 +9,18 @@ export const interceptor = {
 
 export const runInterceptors = instance => {
     log('[runInterceptors]', instance);
-
-    if(!instance) return;
+    
     // 设置请求拦截器
     for (const key in request) {
-        instance.interceptors.request
-            .use(request[key]);
+      const { success, error } = request[key];
+      axios.interceptors.request.use(success, error);
     }
-
+  
     // 设置响应拦截器
     for (const key in response) {
-        instance.interceptors.response
-            .use(response[key]);
+      const { success, error } = response[key];
+      axios.interceptors.response.use(success, error);
     }
-
-    return instance;
+  
+    return axios;
 }

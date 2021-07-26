@@ -12,4 +12,11 @@ const setInvalid = result => {
   return result;
 };
 
-export default setInvalid;
+const setFail = error => {
+
+}
+
+export default {
+  success: setInvalid,
+  error: setError
+};

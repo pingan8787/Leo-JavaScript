@@ -25,4 +25,11 @@ const setSecurityInformation = options => {
   return options;
 };
 
-export default setSecurityInformation;
+const setError = error => {
+
+}
+
+export default {
+  success: setSecurityInformation,
+  error: setError
+};

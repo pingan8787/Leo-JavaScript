@@ -15,4 +15,11 @@ const setLoading = options => {
   return options;
 };
 
-export default setLoading;
+const setError = error => {
+
+}
+
+export default {
+  success: setLoading,
+  error: setError
+};

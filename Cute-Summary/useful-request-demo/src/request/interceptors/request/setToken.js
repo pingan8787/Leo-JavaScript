@@ -16,4 +16,11 @@ const setToken = options => {
   return options;
 };
 
-export default setToken;
+const setError = error => {
+
+}
+
+export default {
+  success: setToken,
+  error: setError
+};

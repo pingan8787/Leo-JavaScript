@@ -14,4 +14,11 @@ const setLoading = result => {
   return result;
 };
 
-export default setLoading;
+const setLoading = error => {
+
+}
+
+export default {
+  success: setInvalid,
+  error: setError
+};

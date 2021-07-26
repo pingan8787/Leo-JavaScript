@@ -14,4 +14,11 @@ const setResult = result => {
   return result;
 };
 
-export default setResult;
+const setLoading = error => {
+
+}
+
+export default {
+  success: setResult,
+  error: setError
+};
