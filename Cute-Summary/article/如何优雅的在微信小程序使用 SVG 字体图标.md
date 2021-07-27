@@ -56,7 +56,7 @@
 
 这两种图标在使用上都非常方便，那大家是不是会好奇，我们写本文的目的？
 
-原因是，**微信小程序上不支持 SVG 字体图标！😔 而多色图标，是需要借助 SVG 标签来实现。**
+原因是，**微信小程序上不支持 SVG 字体图标！😔 而多色图标，是需要借助 SVG 标签来实现**。
 
 于是我在[小程序文档](https://developers.weixin.qq.com/miniprogram/dev/component/image.html)找了好久，也只看到了 `<Image>` 组件能够使用 SVG，介绍如下：
 
@@ -253,17 +253,17 @@ yarn add taro-iconfont-cli --dev
 # Npm
 npm install taro-iconfont-cli --save-dev
 ```
-需要注意的是，如果使用的是 Taro 2.x，请安装 **`**taro-iconfont-cli@2.1.0**`**，并阅读旧版的[README.md](https://github.com/iconfont-cli/taro-iconfont-cli/blob/v2.1.0/README.md)。
+需要注意的是，如果使用的是 Taro 2.x，请安装 **`taro-iconfont-cli@2.1.0`**，并阅读旧版的[README.md](https://github.com/iconfont-cli/taro-iconfont-cli/blob/v2.1.0/README.md)。
 
 ### 步骤二：生成配置文件
-通过命令生成 iconfont.json 配置文件：
+通过命令生成 `iconfont.json` 配置文件：
 ```bash
 npx iconfont-init
 
 # 可传入配置输出路径
 # npx iconfont-init --output iconfont.json
 ```
-此时项目根目录会生成一个`iconfont.json`的文件，内容如下：
+此时项目根目录会生成一个 `iconfont.json` 的文件，内容如下：
 ```json
 {
   "symbol_url": "请参考README.md，复制 http://iconfont.cn 官网提供的JS链接",
@@ -281,7 +281,7 @@ npx iconfont-init
 ![](https://images.pingan8787.com/image/svg-icon/17.png)
 
 ### 步骤三：生成 Taro 标准组件
-通过命令，生成 Taro 标准组件：
+通过 `npx iconfont-taro` 命令，生成 Taro 标准组件：
 ```bash
 npx iconfont-taro
 
@@ -328,11 +328,11 @@ import IconFont from '@components/Iconfont/index';
 
 1. 字体大小设置问题
 
-由于通过这种方式导出的图标，是个单独组件，使用时如果需要设置图标大小，需要通过设置其 `width`和`height`属性进行设置。
+由于通过这种方式导出的图标，是个单独组件，使用时如果需要设置图标大小，需要通过设置其 `width` 和 `height` 属性进行设置。
 
 ![](https://images.pingan8787.com/image/svg-icon/20.png)
 
-通过 `font-size`属性无法设置字体图标的大小。
+通过 `font-size` 属性无法设置字体图标的大小。
 ## 五、方案对比和选择
 这次只尝试了这两种方案，都能顺利完成需求。如果大家有其他方案，欢迎一起评论区讨论~
 
@@ -343,10 +343,10 @@ import IconFont from '@components/Iconfont/index';
 先看看对比结果：
 
 |  | **手动转换图标文件** | **借助 taro-iconfont-cli 库实现** |
-| --- | --- | --- |
-| **生成难易程度** | 复杂 | 简单 |
-| **使用难易程度** | 简单 | 简单 |
-| **资源占用程度** | 27kb | 420kb（项目未打包前） |
+| --- | :---:| :---: |
+| **生成难易程度** | <span style="color: red;">复杂</span> | <span style="color: green;">简单</span> |
+| **使用难易程度** | <span style="color: green;">简单</span> | <span style="color: green;">简单</span> |
+| **资源占用程度** | <span style="color: green;">27kb</span> | <span style="color: red;">420kb（项目未打包前）</span> |
 
 分析每个项目：
 ### 1. 对比生成难易程度
