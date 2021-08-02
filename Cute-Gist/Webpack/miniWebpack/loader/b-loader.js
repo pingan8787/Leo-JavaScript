@@ -1,4 +1,5 @@
 module.exports = source => {
     console.log('module B')
-    return source;
+    source = source + "---world---"
+    return "module.exports = " + source;
 }

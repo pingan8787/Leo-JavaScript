@@ -7,7 +7,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.js$/,
                 use: [
                     path.resolve('./loader/a-loader'),
                     path.resolve('./loader/b-loader'),

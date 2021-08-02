@@ -20,44 +20,9 @@
                 function (require, module, exports){
                     "use strict";
 
-var _info = _interopRequireDefault(require("./info.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-console.log(_info["default"]);
-                },
-                {"./info.js":1}
-            ],
-        
-            1: [
-                function (require, module, exports){
-                    "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _const = require("./const.js");
-
-var _default = {
-  msg: 'hello ' + _const.NAME
-};
-exports["default"] = _default;
-                },
-                {"./const.js":2}
-            ],
-        
-            2: [
-                function (require, module, exports){
-                    "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.NAME = void 0;
-var NAME = "平安";
-exports.NAME = NAME;
+module.exports = // import info from "./info.js";
+// console.log(info);
+console.log(123); //---hello------world---
                 },
                 {}
             ],
