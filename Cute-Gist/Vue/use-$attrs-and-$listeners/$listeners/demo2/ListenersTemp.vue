@@ -4,7 +4,10 @@
     <button @click="emitFn">
       触发事件1
     </button>
-    <ListenersTemp2 v-bind="$attrs" v-on="$listeners"></ListenersTemp2>
+    <ListenersTemp2 
+      v-on="$listeners"
+    >
+    </ListenersTemp2>
   </div>
 </template>
 

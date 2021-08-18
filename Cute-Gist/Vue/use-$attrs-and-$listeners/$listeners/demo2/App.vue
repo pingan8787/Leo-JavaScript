@@ -1,6 +1,7 @@
 <template>
 <ListenersTemp 
   v-on:listener1="getListeners1"
+
   v-on:listener2="getListeners2"
 >
 </ListenersTemp>
@@ -19,10 +20,10 @@ export default {
   components: { ListenersTemp },
   methods:{
     getListeners1(){
-      console.log('--getListeners--1--', this.text)
+      console.log('--1--', this.text)
     },
     getListeners2(){
-      console.log('--getListeners--2--', this.text)
+      console.log('--2--', this.text)
     }
   }
 }
