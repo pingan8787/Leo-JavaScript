@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const BizTypeEnums = {
+            TrainingDetail: 32, // 培训班详情
+            TrainingSignUp: 33, // 培训班签到
+        };
+
+        const detailData = {
+            "code": 200,
+            "is_allow_insert": true,
+            "is_allow_register": false,
+            "detailData": {
+                "function_type": 1,
+                "info": {
+                    "id": "PX-0001-0418",
+                    "datetime": "2020-08-14 00:00 — 2020-11-30 00:00",
+                    "is_finish": true,
+                    "is_notice": false,
+                    "is_allow_register": false,
+                    "is_allow_insert": true,
+                    "is_member": false
+                }
+            },
+            "introData": {
+                "has_teacher": false
+            }
+        }
+        const powerData = {
+            code: 200,
+            data: {
+                apps_info_list: [{ linkedmeKey: 'aaaaa' }],
+                isSysUser: 0,
+                bussinessData: { time: '2021120801' },
+                bizType: BizTypeEnums.TrainingDetail
+            }
+        }
+
+        const handle1 = () => console.log('处理插班')
+        const handle2 = () => console.log('提示当前不支持插班')
+        const handle3 = () => console.log('处理签到')
+        const handle4 = () => console.log('提示注册')
+        const handle5 = () => console.log('正常显示')
+        const handle6 = () => console.log('处理插班和签到')
+
+        const stateArray = [
+            {
+                desc: '处理插班',
+                power: ({detailData, powerData}) => 
+                    powerData.bizType === BizTypeEnums.TrainingDetail
+                    && !detailData.info.is_member 
+                    && detailData.info.is_allow_insert,
+                handle: handle1
+            },
+            {
+                desc: '提示当前不支持插班',
+                power: ({detailData, powerData}) => 
+                    (
+                        /* 插班情况的“不支持插班” */
+                        powerData.bizType === BizTypeEnums.TrainingDetail 
+                        && !detailData.info.is_member 
+                        && !detailData.info.is_allow_insert
+                    )
+                    ||
+                    (
+                        /* 签到情况的“不支持插班” */
+                        powerData.bizType === BizTypeEnums.TrainingSignUp 
+                        && !detailData.info.is_member
+                        && detailData.info.is_allow_insert
+                    ),
+                handle: handle2
+            },
+            {
+                desc: '处理签到',
+                power: ({detailData, powerData}) => 
+                    powerData.bizType === BizTypeEnums.TrainingSignUp 
+                    && detailData.info.is_member,
+                handle: handle3
+            },
+            {
+                desc: '正常显示',
+                power: ({detailData, powerData}) => 
+                    powerData.bizType === BizTypeEnums.TrainingDetail 
+                    && detailData.info.is_member,
+                handle: handle5
+            },
+            {
+                desc: '处理插班和签到',
+                power: ({detailData, powerData}) => 
+                    powerData.bizType === BizTypeEnums.TrainingSignUp 
+                    && !detailData.info.is_member
+                    && detailData.info.is_allow_insert,
+                handle: handle6
+            }
+        ]
+
+        const generateState = source => {
+            /*
+             * 这边使用数组遍历，是考虑到会有多个状态满足，需要执行
+            */
+            stateArray.forEach(state => {
+                const { desc, power, handle } = state;
+                power(source) && handle();
+            });
+        }
+
+        const result = generateState({
+            detailData: detailData.detailData,
+            powerData: powerData.data
+        });
+    </script>
+</body>
+
+</html>

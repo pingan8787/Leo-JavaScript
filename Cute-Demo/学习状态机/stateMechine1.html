@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const BizTypeEnums = {
+            TrainingDetail: 32, // 培训班详情
+            TrainingSignUp: 33, // 培训班签到
+        };
+
+        const detailData = {
+            "code": 200,
+            "is_allow_insert": true,
+            "is_allow_register": false,
+            "detailData": {
+                "function_type": 1,
+                "info": {
+                    "id": "PX-0001-0418",
+                    "datetime": "2020-08-14 00:00 — 2020-11-30 00:00",
+                    "is_finish": true,
+                    "is_notice": false,
+                    "is_allow_register": false,
+                    "is_allow_insert": true,
+                    "is_member": false
+                }
+            },
+            "introData": {
+                "has_teacher": false
+            }
+        }
+        const powerData = {
+            code: 200,
+            data: {
+                apps_info_list: [{ linkedmeKey: 'aaaaa' }],
+                isSysUser: 0,
+                bussinessData: { time: '2021120801' },
+                bizType: 32
+            }
+        }
+
+        const handle1 = () => console.log('处理插班')
+        const handle2 = () => console.log('提示当前不支持插班')
+        const handle3 = () => console.log('处理签到')
+        const handle4 = () => console.log('提示注册')
+        const handle5 = () => console.log('正常显示')
+        const handle6 = () => console.log('处理插班和签到')
+
+        const STATES = {
+            HANDLE1: '是否是签到',
+            HANDLE2: '是否是插班',
+            HANDLE3: '是否是项目组人员',
+            HANDLE4: '是否允许插班',
+            HANDLE5: '发起签到请求',
+            HANDLE6: '发起插班请求',
+            HANDLE7: '正常显示页面',
+            HANDLE8: '提示无法插班',
+            HANDLE9: '结束',
+        }
+
+        const stateMap = [
+            [STATES.HANDLE1, data => {
+                // do something
+                return data.powerData.bizType === BizTypeEnums.TrainingSignUp
+                    ? STATES.HANDLE3
+                    : STATES.HANDLE2
+            } ],
+            [STATES.HANDLE2, data => {
+                // do something
+                return data.powerData.bizType === BizTypeEnums.TrainingDetail
+                    ? STATES.HANDLE3
+                    : STATES.HANDLE9
+            } ],
+            [STATES.HANDLE3, data => {
+                // do something
+                return data.detailData.is_member
+                    ? (data.powerData.bizType === BizTypeEnums.TrainingSignUp ? STATES.HANDLE5 : STATES.HANDLE7)
+                    : STATES.HANDLE4
+            } ],
+            [STATES.HANDLE4, data => {
+                // do something
+                return data.detailData.is_allow_insert
+                    ? STATES.HANDLE6
+                    : STATES.HANDLE8
+            } ],
+        ].reduce((map, [key, value]) => {
+            map.set(key, value);
+            return map;
+        }, new Map())
+
+        const stateMachine = (data, initState) => {
+            let state = initState;
+            while(state){
+                const current = stateMap.get(state);
+                state = current ? current(data) : null;
+                console.log('[newState]', state)
+            }
+        }
+
+        stateMachine(
+            {
+                detailData: detailData.detailData,
+                powerData: powerData.data
+            },
+            STATES.HANDLE1
+        );
+
+    </script>
+</body>
+
+</html>
