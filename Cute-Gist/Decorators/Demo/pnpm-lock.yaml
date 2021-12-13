@@ -1,0 +1,13 @@
+lockfileVersion: 5.3
+
+specifiers:
+  reflect-metadata: ^0.1.13
+
+devDependencies:
+  reflect-metadata: 0.1.13
+
+packages:
+
+  /reflect-metadata/0.1.13:
+    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
+    dev: true
