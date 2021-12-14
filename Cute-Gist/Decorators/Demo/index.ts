@@ -1,4 +1,9 @@
 /**
+ * 学习资料：
+ * https://juejin.cn/post/6844904182843965453
+ */
+
+/**
  * 1. 类装饰器
  * declare type ClassDecorator = <TFunction extends Function>(
  *   target: TFunction
