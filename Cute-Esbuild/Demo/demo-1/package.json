@@ -1,0 +1,21 @@
+{
+  "name": "demo-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build1": "esbuild demo1.jsx --bundle --outfile=demo1.js",
+    "build2": "esbuild demo2.js --bundle --outfile=demo2-1.js --loader:.js=jsx",
+    "build3": "node demo3.js",
+    "build4": "esbuild demo4.jsx --bundle --outfile=demo4.js --minify --sourcemap --target=chrome58,firefox57,safari11,edge16",
+    "build5": "esbuild demo5.js --bundle --outfile=demo5-1.js --platform=node --target=node10.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.14.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
