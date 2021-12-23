@@ -4,7 +4,7 @@
 
 本文将带大家回顾 [Web Components](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components) 核心 API，并从 0 到 1 实现一个基于 Web Components API 开发的业务组件库。
 ​
-> 最终效果：[https://blog.pingan8787.com/exe-components/demo.html](https://blog.pingan8787.com/exe-components/demo.html)
+> 最终效果：[https://blog.pingan8787.com/exe-components/demo.html](https://blog.pingan8787.com/exe-components/demo.html)  
 > 仓库地址：[https://github.com/pingan8787/Learn-Web-Components](https://github.com/pingan8787/Learn-Web-Components)
 
 ## 一、回顾 Web Components
@@ -21,7 +21,7 @@ Web Components 由 3 个核心 API 组成：
 
 > 另外，还有 HTML imports，但目前已废弃，所以不具体介绍，其作用是用来控制组件的依赖加载。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640182946815-e5f6eb8e-ccab-4a1e-a509-145a165da072.png#clientId=ud1fa7408-3cf2-4&from=paste&height=400&id=ub24ef287&margin=%5Bobject%20Object%5D&name=image.png&originHeight=800&originWidth=1440&originalType=binary&ratio=1&size=273344&status=done&style=none&taskId=u0e5aa6f1-4938-467a-8afb-1eee890ecdb&width=720)
+![image](http://images.pingan8787.com/blog/web-components/ia_300000037.webp)
 ​
 ### 2. 入门示例
 
@@ -84,7 +84,7 @@ customElements.define('custom-element-start', CustomElementStart)
 导入组件后，跟使用普通 HTML 标签一样直接使用自定义组件 `<custom-element-start></custom-element-start>`。
 
 随后浏览器访问 `index.html` 可以看到下面内容：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640184692263-0c67f2f5-8289-4793-bf4f-62996c0ca015.png#clientId=ud1fa7408-3cf2-4&from=paste&height=317&id=u80381831&margin=%5Bobject%20Object%5D&name=image.png&originHeight=634&originWidth=1330&originalType=binary&ratio=1&size=78049&status=done&style=none&taskId=u9b432022-fe68-42a4-b8d1-fcdcbb7ffe2&width=665)
+![image](http://images.pingan8787.com/blog/web-components/ia_300000038.webp)
 
 ### 3. 兼容性介绍
 
@@ -95,7 +95,7 @@ customElements.define('custom-element-start', CustomElementStart)
 > - Edge正在开发一个实现。
 
 关于兼容性，可以看下图：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1638197844816-0f3f853a-c5ff-489f-8409-b3861cbd2ffe.png#clientId=ub454e772-d418-4&from=paste&height=362&id=ub9cacba7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=517&originWidth=1091&originalType=binary&ratio=1&size=41722&status=done&style=none&taskId=u7f82dc72-f7fc-457a-8274-42941d23bd2&width=764.5)
+![image](http://images.pingan8787.com/blog/web-components/ia_300000039.webp)
 图片来源：[https://www.webcomponents.org/](https://www.webcomponents.org/)
 
 这个网站里面，有很多关于 Web Components 的优秀项目可以学习。
@@ -108,7 +108,7 @@ customElements.define('custom-element-start', CustomElementStart)
 - [使用 shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
 - [使用 templates and slots](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_templates_and_slots)
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640185044772-6d0e6b1d-0dff-4934-ac8d-11297972b952.png#clientId=ud1fa7408-3cf2-4&from=paste&height=360&id=u75e5777f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=720&originWidth=1280&originalType=binary&ratio=1&size=189753&status=done&style=none&taskId=u40ebc710-88e3-490e-bb9b-e23ec920154&width=640)
+![image](http://images.pingan8787.com/blog/web-components/ia_300000040.webp)
 
 ## 二、EXE-Components 组件库分析设计
 
@@ -126,7 +126,7 @@ customElements.define('custom-element-start', CustomElementStart)
 ​
 
 详细可以看下图：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640185209275-60f971c4-23ea-49d5-814e-00907597e053.png#clientId=ud1fa7408-3cf2-4&from=paste&height=693&id=uec938792&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1386&originWidth=1532&originalType=binary&ratio=1&size=460290&status=done&style=none&taskId=ud69a24ac-1750-42e3-80a2-ca30cff9e70&width=766)
+![image](http://images.pingan8787.com/blog/web-components/ia_300000041.webp)
 
 接下来我们会基于上图进行 EXE-Components 组件库设计和开发。
 ​
@@ -149,7 +149,9 @@ customElements.define('custom-element-start', CustomElementStart)
 ### 3. 组件库组件设计
 
 这边我们主要设计 `exe-avatar` 、`exe-button` 和 `exe-user-avatar`三个组件，前两个为简单组件，后一个为复杂组件，其内部使用了前两个组件进行组合。这边先定义这三个组件支持的属性：
-![EXE-Components 组件库.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640186627647-00af73e1-834e-46d4-ab5f-88d00601cbeb.png#clientId=ud1fa7408-3cf2-4&from=ui&id=u5201764b&margin=%5Bobject%20Object%5D&name=EXE-Components%20%E7%BB%84%E4%BB%B6%E5%BA%93.png&originHeight=1200&originWidth=2370&originalType=binary&ratio=1&size=286253&status=done&style=none&taskId=u82a4d538-0648-49d0-be41-a8a3514098a)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000042.webp)
+
 > 这边属性命名看着会比较复杂，大家可以按照自己和团队的习惯进行命名。
 
 这样我们思路就清晰很多，实现对应组件即可。
@@ -157,7 +159,9 @@ customElements.define('custom-element-start', CustomElementStart)
 ## 三、EXE-Components 组件库准备工作
 
 本文示例最终将对实现的组件进行**组合使用**，实现下面「**用户列表**」效果：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640186045088-0debaa0d-c0df-4689-8c58-1b5a81cdffa1.png#clientId=ud1fa7408-3cf2-4&from=paste&height=440&id=yMoVz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=880&originWidth=1056&originalType=binary&ratio=1&size=187157&status=done&style=none&taskId=u4fbda1aa-ea93-4303-a995-87618816486&width=528)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000043.webp)
+
 体验地址：[https://blog.pingan8787.com/exe-components/demo.html](https://blog.pingan8787.com/exe-components/demo.html)
 
 ### 1. 统一开发规范
@@ -166,11 +170,13 @@ customElements.define('custom-element-start', CustomElementStart)
 
 1. 目录规范
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640187041774-85d4dd08-bfb9-483d-bd9b-5b9f399e55f6.png#clientId=ud1fa7408-3cf2-4&from=paste&height=638&id=u04111bed&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1276&originWidth=1546&originalType=binary&ratio=1&size=242345&status=done&style=none&taskId=u59cd4101-b60f-4fcd-aef1-43d59fce3ac&width=773)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000044.webp)
 
 2. 定义组件规范
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640187273799-cf5c88bf-4757-4653-b13e-5257725208f1.png#clientId=ud1fa7408-3cf2-4&from=paste&height=218&id=ud1c5352c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=436&originWidth=1488&originalType=binary&ratio=1&size=61801&status=done&style=none&taskId=uff44f719-f674-4560-b39d-17c1119c92d&width=744)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000045.webp)
 
 3. 组件开发模版
 
@@ -261,7 +267,9 @@ npm install --global rollup http-server
 ### 1. 组件库入口文件配置
 
 前面 `package.json` 文件中配置的 `"build"` 命令，会使用根目录下 `index.js` 作为入口文件，并且为了方便 components 通用基础组件和 modules 通用复杂组件的引入，我们创建 3 个 `index.js`，创建后目录结构如下：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640189464556-139b019e-c1c4-4a15-aab3-b7e26e4c275f.png#clientId=ud1fa7408-3cf2-4&from=paste&height=316&id=u02324730&margin=%5Bobject%20Object%5D&name=image.png&originHeight=632&originWidth=1124&originalType=binary&ratio=1&size=84391&status=done&style=none&taskId=ud02bfb69-e24e-449b-9418-f3e34cda37c&width=562)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000046.webp)
+
 三个入口文件内容分别如下：
 
 ```javascript
@@ -411,10 +419,12 @@ export default config => {
 ```
 
 最终实现效果如下：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640189685173-db2b8e6e-4fc8-4d94-baa1-c330e790b759.png#clientId=ud1fa7408-3cf2-4&from=paste&height=368&id=u69eb33f6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=736&originWidth=3112&originalType=binary&ratio=1&size=235547&status=done&style=none&taskId=ud799a6ab-5457-4c7b-b5a9-7ed6df5cdd3&width=1556)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000047.webp)
 
 开发完第一个组件，我们可以简单总结一下创建和使用组件的步骤：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640193005996-37b7ae75-828c-49e9-9335-9fd9c1c8495f.png#clientId=ud1fa7408-3cf2-4&from=paste&height=504&id=u6ed9c213&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1126&originWidth=1936&originalType=binary&ratio=1&size=144378&status=done&style=none&taskId=u5f566ad0-0eb7-41ee-9364-4f0152efcda&width=867)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000048.webp)
 
 ### 4. 开发 exe-button 组件
 
@@ -564,7 +574,8 @@ export default config => {
 ```
 
 最终效果如下：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640191057430-9690f199-32c1-4082-af7f-2815177ae93b.png#clientId=ud1fa7408-3cf2-4&from=paste&height=344&id=uc68854db&margin=%5Bobject%20Object%5D&name=image.png&originHeight=688&originWidth=2998&originalType=binary&ratio=1&size=243622&status=done&style=none&taskId=u011f0fcc-bd56-4bee-8d56-b0186231e42&width=1499)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000049.webp)
 
 ### 5. 开发 exe-user-avatar 组件
 
@@ -725,13 +736,14 @@ export default config => {
 ```
 
 最终效果如下：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640191146489-c325d11f-7f3a-4b1e-81b2-7e1c71b624e0.png#clientId=ud1fa7408-3cf2-4&from=paste&height=706&id=XZeXq&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1412&originWidth=1990&originalType=binary&ratio=1&size=363357&status=done&style=none&taskId=uc57ba1e2-93dc-45fc-9eb6-85cde3ece01&width=995)
+
+![image](http://images.pingan8787.com/blog/web-components/ia_300000050.webp)
 
 ### 6. 实现一个用户列表业务
 
 接下来我们通过一个实际业务，来看看我们组件的效果：
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/186051/1640191996587-8e0e835d-7b2a-4c4e-8b9d-625b50acd113.png#clientId=ud1fa7408-3cf2-4&from=paste&height=376&id=u599ac9da&margin=%5Bobject%20Object%5D&name=image.png&originHeight=752&originWidth=1030&originalType=binary&ratio=1&size=173107&status=done&style=none&taskId=ua8b39df9-d6c0-4b7f-a67f-7506931e7ab&width=515)
+![image](http://images.pingan8787.com/blog/web-components/ia_300000051.webp)
 其实实现也很简单，根据给定数据，然后循环使用组件即可，假设有以下用户数据：
 
 ```javascript
