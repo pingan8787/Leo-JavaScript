@@ -21,7 +21,7 @@ Web Components 由 3 个核心 API 组成：
 
 > 另外，还有 HTML imports，但目前已废弃，所以不具体介绍，其作用是用来控制组件的依赖加载。
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000037.webp)
+![image](http://images.pingan8787.com/web-components-1/image0.jpg)
 ​
 ### 2. 入门示例
 
@@ -84,7 +84,7 @@ customElements.define('custom-element-start', CustomElementStart)
 导入组件后，跟使用普通 HTML 标签一样直接使用自定义组件 `<custom-element-start></custom-element-start>`。
 
 随后浏览器访问 `index.html` 可以看到下面内容：
-![image](http://images.pingan8787.com/blog/web-components/ia_300000038.webp)
+![image](http://images.pingan8787.com/web-components-1/image1.jpg)
 
 ### 3. 兼容性介绍
 
@@ -95,7 +95,7 @@ customElements.define('custom-element-start', CustomElementStart)
 > - Edge正在开发一个实现。
 
 关于兼容性，可以看下图：
-![image](http://images.pingan8787.com/blog/web-components/ia_300000039.webp)
+![image](http://images.pingan8787.com/web-components-1/image2.jpg)
 图片来源：[https://www.webcomponents.org/](https://www.webcomponents.org/)
 
 这个网站里面，有很多关于 Web Components 的优秀项目可以学习。
@@ -108,7 +108,7 @@ customElements.define('custom-element-start', CustomElementStart)
 - [使用 shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
 - [使用 templates and slots](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_templates_and_slots)
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000040.webp)
+![image](http://images.pingan8787.com/web-components-1/image3.jpg)
 
 ## 二、EXE-Components 组件库分析设计
 
@@ -126,7 +126,8 @@ customElements.define('custom-element-start', CustomElementStart)
 ​
 
 详细可以看下图：
-![image](http://images.pingan8787.com/blog/web-components/ia_300000041.webp)
+
+![image](http://images.pingan8787.com/web-components-1/image4.jpg)
 
 接下来我们会基于上图进行 EXE-Components 组件库设计和开发。
 ​
@@ -150,7 +151,7 @@ customElements.define('custom-element-start', CustomElementStart)
 
 这边我们主要设计 `exe-avatar` 、`exe-button` 和 `exe-user-avatar`三个组件，前两个为简单组件，后一个为复杂组件，其内部使用了前两个组件进行组合。这边先定义这三个组件支持的属性：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000042.webp)
+![image](http://images.pingan8787.com/web-components-1/xmind.jpg)
 
 > 这边属性命名看着会比较复杂，大家可以按照自己和团队的习惯进行命名。
 
@@ -160,7 +161,8 @@ customElements.define('custom-element-start', CustomElementStart)
 
 本文示例最终将对实现的组件进行**组合使用**，实现下面「**用户列表**」效果：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000043.webp)
+
+![image](http://images.pingan8787.com/web-components-1/image5.jpg)
 
 体验地址：[https://blog.pingan8787.com/exe-components/demo.html](https://blog.pingan8787.com/exe-components/demo.html)
 
@@ -170,13 +172,11 @@ customElements.define('custom-element-start', CustomElementStart)
 
 1. 目录规范
 
-
-![image](http://images.pingan8787.com/blog/web-components/ia_300000044.webp)
+![image](http://images.pingan8787.com/web-components-1/image6.jpg)
 
 2. 定义组件规范
 
-
-![image](http://images.pingan8787.com/blog/web-components/ia_300000045.webp)
+![image](http://images.pingan8787.com/web-components-1/image7.jpg)
 
 3. 组件开发模版
 
@@ -268,7 +268,7 @@ npm install --global rollup http-server
 
 前面 `package.json` 文件中配置的 `"build"` 命令，会使用根目录下 `index.js` 作为入口文件，并且为了方便 components 通用基础组件和 modules 通用复杂组件的引入，我们创建 3 个 `index.js`，创建后目录结构如下：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000046.webp)
+![image](http://images.pingan8787.com/web-components-1/image8.jpg)
 
 三个入口文件内容分别如下：
 
@@ -420,11 +420,11 @@ export default config => {
 
 最终实现效果如下：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000047.webp)
+![image](http://images.pingan8787.com/web-components-1/image9.jpg)
 
 开发完第一个组件，我们可以简单总结一下创建和使用组件的步骤：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000048.webp)
+![image](http://images.pingan8787.com/web-components-1/image10.jpg)
 
 ### 4. 开发 exe-button 组件
 
@@ -575,7 +575,7 @@ export default config => {
 
 最终效果如下：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000049.webp)
+![image](http://images.pingan8787.com/web-components-1/image11.jpg)
 
 ### 5. 开发 exe-user-avatar 组件
 
@@ -737,13 +737,13 @@ export default config => {
 
 最终效果如下：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000050.webp)
+![image](http://images.pingan8787.com/web-components-1/image12.jpg)
 
 ### 6. 实现一个用户列表业务
 
 接下来我们通过一个实际业务，来看看我们组件的效果：
 
-![image](http://images.pingan8787.com/blog/web-components/ia_300000051.webp)
+![image](http://images.pingan8787.com/web-components-1/image13.jpg)
 其实实现也很简单，根据给定数据，然后循环使用组件即可，假设有以下用户数据：
 
 ```javascript
