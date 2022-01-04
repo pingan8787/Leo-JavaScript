@@ -1,0 +1,10 @@
+{
+  "name": "leo-no-shebang-txt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.txt",
+  "bin": "./src/index.txt",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
