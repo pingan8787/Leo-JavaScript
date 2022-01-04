@@ -1,6 +1,8 @@
 ## 💌仓库介绍
 **Cute系列**更新一些系列文章和框架demo，作为自己学习结果的输出，喜欢的朋友欢迎 👉star。  
 
+![Alt](https://repobeats.axiom.co/api/embed/49323b3ea4ed3112670140da5bfda9d14be06591.svg "Repobeats analytics image")
+
 ### 关于作者
 [![博客](http://images.pingan8787.com/icon_my1.png)](http://www.pingan8787.com)
 [![语雀](http://images.pingan8787.com/assets/icon_26_yuque.png)](https://www.yuque.com/wangpingan/cute-frontend)
@@ -31,9 +33,23 @@
 
 最新文章：
 
-* [🔥《探索 React 合成事件》](https://juejin.cn/post/6897911576053940231)
+* [🔥 1.2w字 | 从 0 到 1 上手 Web Components 业务组件库开发](https://juejin.cn/post/7044899239876362253)
 
-* [🔥《探索 Vue.js 响应式原理》](https://juejin.cn/post/6916276304258007053)
+* [🔥 200 行 TypeScript 代码实现一个高效缓存库](https://juejin.cn/post/7025388732802924557)
+
+* [🔥 图解算法 | LeetCode第 70 题爬楼梯问题](https://juejin.cn/post/6993096471792844813)
+
+* [🔥 如何优雅的在微信小程序使用 SVG 字体图标](https://juejin.cn/post/6989620511579832328)
+
+* [🔥 如何优雅的管理 HTTP 请求和响应拦截器？](https://juejin.cn/post/6986455896708612110)
+
+* [5个 Chrome 调试混合应用的技巧](https://juejin.cn/post/6955081218723414029)
+
+* [探索 Snabbdom 模块系统原理](https://juejin.cn/post/6941009454376681479)
+
+* [《探索 React 合成事件》](https://juejin.cn/post/6897911576053940231)
+
+* [《探索 Vue.js 响应式原理》](https://juejin.cn/post/6916276304258007053)
 
 * [《我为 Express 开了外挂》](https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-ReadingNotes/%E6%88%91%E4%B8%BA%20Express%20%E5%BC%80%E4%BA%86%E5%A4%96%E6%8C%82.md)
 
