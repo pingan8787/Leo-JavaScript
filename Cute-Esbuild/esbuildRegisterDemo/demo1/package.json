@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "ts": "node -r esbuild-register index.ts",
-    "test": "node -r ./register.js index.ts"
+    "test": "node -r ./register.js index.ts",
+    "leo": "node -r ./register.js index.leo"
   },
   "keywords": [],
   "author": "",

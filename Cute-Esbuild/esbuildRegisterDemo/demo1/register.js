@@ -12,7 +12,7 @@ const { register } = require('esbuild-register/dist/node')
 //     hookMatcher?(fileName: string): boolean
 //   }
 const { unregister } = register({
-    
+    extensions: ['.leo']
 })
 
 // Unregister the require hook if you don't need it anymore
