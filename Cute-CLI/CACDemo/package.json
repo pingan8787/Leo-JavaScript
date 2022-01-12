@@ -1,15 +1,22 @@
 {
   "name": "CACDemo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "t1": "node examples/basic-usage.js build --env.foo foo --env.bar bar",
+    "t2": "node examples/help.js -h ",
+    "t3": "node examples/specific-options.js --type=leo rm"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cac": "^6.7.12"
-  }
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "devDependencies": {},
+  "description": ""
 }

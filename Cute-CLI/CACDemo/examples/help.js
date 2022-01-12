@@ -1,4 +1,4 @@
-const cli = require('cac')()
+const cli = require('cac')('LEO-CLI')
 
 cli.option('--type [type]', 'Choose a project type', {
   default: 'node',
@@ -17,4 +17,4 @@ cli.version('0.0.0')
 
 const parsed = cli.parse()
 
-console.log(JSON.stringify(parsed, null, 2))
+// console.log(JSON.stringify(parsed, null, 2))
