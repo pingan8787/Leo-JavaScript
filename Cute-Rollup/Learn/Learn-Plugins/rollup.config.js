@@ -1,5 +1,5 @@
-import TestHooks from './test-hooks';
-import myExample from './test-hooks-2';
+let graph = require("rollup-plugin-graph");
+let graphOptions = {prune: true};
 
 export default {
   input: 'src/index.js',
@@ -9,7 +9,6 @@ export default {
     name: 'index'
   },
   plugins: [
-    // TestHooks(),
-    myExample(),
+    graph(graphOptions)
   ]
 }

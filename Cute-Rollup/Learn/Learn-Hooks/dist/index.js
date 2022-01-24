@@ -1,5 +1,8 @@
 'use strict';
 
-var javascript__base64_xasdf_ = "This is virtual!";
+var test = "This is virtual!";
 
-module.exports = javascript__base64_xasdf_;
+console.log('[test]', test);
+
+const Hello = 'hello world!';
+console.log(Hello);

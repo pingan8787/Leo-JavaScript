@@ -1,0 +1,17 @@
+{
+  "name": "Learn-Plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup --config ./rollup.config.js",
+    "dot": "rollup -c | dot -Tpng > graph.png"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphviz": "^0.0.9",
+    "rollup-plugin-graph": "^2.0.0"
+  }
+}

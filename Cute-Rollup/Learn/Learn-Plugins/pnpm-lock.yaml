@@ -1,0 +1,27 @@
+lockfileVersion: 5.3
+
+specifiers:
+  graphviz: ^0.0.9
+  rollup-plugin-graph: ^2.0.0
+
+dependencies:
+  graphviz: 0.0.9
+  rollup-plugin-graph: 2.0.0
+
+packages:
+
+  /graphviz/0.0.9:
+    resolution: {integrity: sha512-SmoY2pOtcikmMCqCSy2NO1YsRfu9OO0wpTlOYW++giGjfX1a6gax/m1Fo8IdUd0/3H15cTOfR1SMKwohj4LKsg==}
+    engines: {node: '>=0.6.8'}
+    dependencies:
+      temp: 0.4.0
+    dev: false
+
+  /rollup-plugin-graph/2.0.0:
+    resolution: {integrity: sha512-0onCt3IIH8pQCQ0PAIH1aeXc0zMm29x+yviSjobkloVav2TK7gBRNZjhL9x/40sc4YAmLIpwnwPZLvuZ7u5q8A==}
+    dev: false
+
+  /temp/0.4.0:
+    resolution: {integrity: sha1-ZxrWPVe+D+nXKUZks/xABjZnimA=}
+    engines: {'0': node >=0.4.0}
+    dev: false
