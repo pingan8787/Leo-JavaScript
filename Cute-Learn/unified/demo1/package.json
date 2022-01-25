@@ -1,0 +1,23 @@
+{
+  "name": "demo1",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "rehype-document": "^6.0.1",
+    "rehype-format": "^4.0.1",
+    "rehype-stringify": "^9.0.2",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.1",
+    "vfile-reporter": "^7.0.3",
+    "vite": "^2.7.2"
+  }
+}
