@@ -1,0 +1,13 @@
+{
+  "name": "require",
+  "version": "1.0.0",
+  "description": "",
+  "main": "math.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "register": "node -r ./register.js index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
