@@ -10,11 +10,11 @@
 
 本文会从 Vue 源码(版本号：3.0.11)中使用的 Feature Flags 进行构建的过程开始介绍，然后通过简单示例进行学习，最后介绍 rollup、webpack 和 Vite 中的实现。
 ​
-
+> 本文代码地址：https://github.com/pingan8787/Leo-JavaScript/blob/master/Cute-Vue/Source/FeatureFlags/
 ## 一、什么是 Feature Flags
 > Feature Flag(又名 Feature Toggle、Flip等)是一种允许控制线上功能开启或者关闭的方式，通常会采取配置文件的方式来控制。
 
-> ​[http://fex.baidu.com/blog/2014/07/feature-flag/](http://fex.baidu.com/blog/2014/07/feature-flag/)
+> ​http://fex.baidu.com/blog/2014/07/feature-flag/
 
 可以理解为在代码中添加一个开关，当开关开启，则逻辑会执行下去，否则不会执行，通常代码表现形式为 `if`语句，举个简单示例：
 ```javascript
@@ -47,7 +47,7 @@ export function defaultOnWarn(msg: CompilerError) {
 
 ### 2.2 如何定义特性标志
 上面只是带大家看了下源码中如何使用，那么接下来看看`__DEV__`这些特性标志是如何定义的。
-Vue3 中使用了 `[@rollup/replace](https://github.com/rollup/plugins/tree/master/packages/replace)`依赖，实现构建时，替换文件中目标字符串内容，比如构建开发环境的包的过程中，将 `__DEV__`替换为 `true`。
+Vue3 中使用了 [@rollup/replace](https://github.com/rollup/plugins/tree/master/packages/replace) 依赖，实现构建时，替换文件中目标字符串内容，比如构建开发环境的包的过程中，将 `__DEV__`替换为 `true`。
 还是以上面示例代码为例介绍：
 ```javascript
 // 本地开发环境 __DEV__ 为 true，经过 @rollup/replace 依赖打包后如下：
@@ -84,7 +84,7 @@ featureFlags();
 我们需要实现的目标是：当 `__DEV__`变量的值为 `true` 时，打包后的 `index.js` 将不包含 `__DEV__ && console.log(name)`这一行代码。
 那么开始看看如何实现：
 ### 3.1 rollup 实现
-在 rollup 中，需要使用`[@rollup/replace](https://github.com/rollup/plugins/tree/master/packages/replace)`包实现构建时替换文本，我们先安装它：
+在 rollup 中，需要使用 [@rollup/replace](https://github.com/rollup/plugins/tree/master/packages/replace) 包实现构建时替换文本，我们先安装它：
 ```bash
 npm install @rollup/plugin-replace --save-dev
 ```
@@ -165,7 +165,7 @@ console.warn("pingan8787");
 ​
 
 ### 3.3 Vite 实现
-Vite 默认也是支持自定义全局变量，实现该功能，可以看文档`[define](https://github.com/vitejs/vite/blob/a4133c073e640b17276b2de6e91a6857bdf382e1/src/node/config.ts#L72-L76)`[ option](https://github.com/vitejs/vite/blob/a4133c073e640b17276b2de6e91a6857bdf382e1/src/node/config.ts#L72-L76)。
+Vite 默认也是支持自定义全局变量，实现该功能，可以看文档 [define option](https://github.com/vitejs/vite/blob/a4133c073e640b17276b2de6e91a6857bdf382e1/src/node/config.ts#L72-L76)。
 通过 `pnpm create vite`创建一个简单 Vite 项目，并删除多余内容，并在 `main.js`中加入我们的测试代码：
 ```javascript
 import { createApp } from 'vue'
@@ -205,7 +205,8 @@ export default defineConfig({
 到这里我们就使用 rollup、webpack 和 Vite 分别实现了一遍 Feature Flags 了。
 
 ## 四、总结
-本文通过简单例子和 Vue3 源码，与大家介绍了 Feature Flags 的概念和简单的实现，最后分别使用 rollup、webpack 和 Vite 分别实现了一遍 Feature Flags 。
+本文通过简单例子和 Vue3 源码，与大家介绍了 Feature Flags 的概念和简单的实现，最后分别使用 rollup、webpack 和 Vite 分别实现了一遍 Feature Flags。
+
 在实际业务开发中，我们可以通过设计各种 Feature Flags，让代码能够更好的进行 Tree Shaking。
 
 ## 参考文章
