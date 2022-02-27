@@ -1,0 +1,16 @@
+{
+  "name": "rollup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-replace": "^4.0.0",
+    "rollup": "^2.68.0"
+  }
+}

@@ -1,0 +1,1 @@
+(()=>{const n="pingan8787";console.warn(n),__DEV__&&console.log(n)})();
