@@ -202,6 +202,15 @@ export default defineConfig({
 
 ![image.png](./assets/featureFlags2.png)
 
+### 3.4 注意
+
+如果遇到编辑器提示 `__DEV__` 变量不存在的情况，可以新建一个类型声明文件来解决，比如新建一个 `global.d.ts` 文件来定义，内容如下：
+
+```ts
+// Global compile-time constants
+declare var __DEV__: boolean
+```
+
 到这里我们就使用 rollup、webpack 和 Vite 分别实现了一遍 Feature Flags 了。
 
 ## 四、总结
