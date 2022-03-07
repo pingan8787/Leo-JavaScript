@@ -224,7 +224,7 @@ export function h (sel: any, b?: any, c?: any): VNode{
 
 ### 1. Modules 介绍
 
-Snabbdom 模块系统是 Snabbdom 提供的一套**可拓展**、**可灵活组合**的模块系统，用来为 Snabbdom 提供操作 VNode 时的各种模块支持，如我们组建需要处理 style 则引入对应的 styleModule，需要处理事件，则引入 eventListenersModule 既可，这样就达到灵活组合，可以支持按需引入的效果。
+Snabbdom 模块系统是 Snabbdom 提供的一套**可拓展**、**可灵活组合**的模块系统，用来为 Snabbdom 提供操作 VNode 时的各种模块支持，如我们组件需要处理 style 则引入对应的 styleModule，需要处理事件，则引入 eventListenersModule 既可，这样就达到灵活组合，可以支持按需引入的效果。
 
 Snabbdom 模块系统的特点可以概括为：支持按需引入、独立管理、职责单一、方便组合复用、可维护性强。
 
