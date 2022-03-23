@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="counter">
+        <input v-model="searchText" />
+        <p>搜索的内容：{{searchText}}</p>
+    </div>
+    <script>
+        const Counter = {
+            data() {
+                return {
+                    searchText: 'pingan8787'
+                }
+            },
+
+            methods: {
+            }
+        }
+
+        Vue.createApp(Counter).mount('#counter')
+
+    </script>
+</body>
+
+</html>
