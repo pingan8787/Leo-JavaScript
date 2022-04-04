@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动穿透与滚动溢出</title>
+    <style>
+        body {
+            padding: 60px;
+            height: 150vh;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: red;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+        }
+
+        .popup {
+            display: none;
+            /* touch-action: none; */
+        }
+
+        .popup-mask {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .popup-body {
+            position: fixed;
+            z-index: 999;
+            padding: 0 50px 40px;
+            background-color: #fff;
+        }
+
+        .popup-bottom {
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .header {
+            font-size: 18px;
+            text-align: center;
+            line-height: 3;
+            background-color: blanchedalmond;
+        }
+
+        .content {
+            max-height: 40vh;
+            background-color: greenyellow;
+            overflow: auto;
+            /* overscroll-behavior: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">点击出现弹窗</div>
+    <div class="page-content">这个页面很高哦</div>
+
+    <div class="popup">
+        <div class="popup-mask"></div>
+        <div class="popup-body popup-bottom">
+            <div class="header">我是标题</div>
+            <div class="content"></div>
+        </div>
+    </div>
+
+    <script>
+        const pageContent = document.querySelector('.page-content')
+        const scrollBox = document.querySelector('.content')
+        const btn = document.querySelector('.btn')
+        const popup = document.querySelector('.popup')
+        const mask = document.querySelector('.popup-mask')
+
+        for (let i = 0; i < 30; i++) {
+            const child = document.createElement('div')
+            child.textContent = '这个页面很高哦'
+            pageContent.appendChild(child)
+        }
+
+        for (let i = 0; i < 30; i++) {
+            const child = document.createElement('div')
+            child.textContent = i
+            scrollBox.appendChild(child)
+        }
+
+        btn.addEventListener('click', () => {
+            popup.style.display = 'block'
+        })
+
+        mask.addEventListener('click', () => {
+            popup.style.display = 'none'
+        })
+
+        /**花祁, 7 months ago: • Add files via upload
+         * 滚动穿透
+         */
+        popup.addEventListener('touchmove', (e) => {
+            e.preventDefault()
+        })
+
+        scrollBox.addEventListener('touchmove', (e) => {
+            e.stopPropagation()
+        })
+
+        /**
+         * 滚动溢出
+         */
+        let initialPageY = 0
+
+        scrollBox.addEventListener('touchstart', (e) => {
+            initialPageY = e.changedTouches[0].pageY
+        })
+
+        scrollBox.addEventListener('touchmove', (e) => {
+            const deltaY = e.changedTouches[0].pageY - initialPageY
+            
+            // 禁止向上滚动溢出
+            if (e.cancelable && deltaY > 0 && scrollBox.scrollTop <= 0) {
+                e.preventDefault()
+            }
+
+            // 禁止向下滚动溢出
+            if (
+                e.cancelable &&
+                deltaY < 0 && 
+                scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight
+            ) {
+                e.preventDefault()
+            }
+        })
+    </script>
+</body>
+
+</html>
