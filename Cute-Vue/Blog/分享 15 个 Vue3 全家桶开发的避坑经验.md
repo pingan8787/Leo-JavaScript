@@ -32,7 +32,7 @@
 
 由于我使用都是 `script-srtup`模式，所以都是直接使用 Vue3.x 的生命周期函数：
 
-```vue
+```html
 // A.vue
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
@@ -51,12 +51,12 @@ onMounted(() => {
 
 > 文档地址：[https://v3.cn.vuejs.org/api/sfc-script-setup.html#defineexpose](https://v3.cn.vuejs.org/api/sfc-script-setup.html#defineexpose)
 
-这里主要介绍父组件去获取子组件内部定义的变量，关于父子组件通信，可以看文档介绍比较详细：
+这里主要介绍父组件如何去获取子组件内部定义的变量，关于父子组件通信，可以看文档介绍比较详细：
 [https://v3.cn.vuejs.org/guide/component-basics.html](https://v3.cn.vuejs.org/guide/component-basics.html)
 
 我们可以使用**全局编译器宏**的`defineExpose`宏，将子组件中需要暴露给父组件获取的参数，通过 `{key: vlaue}`方式作为参数即可，父组件通过模版 ref 方式获取子组件实例，就能获取到对应值：
 
-```vue
+```html
 // 子组件
 <script setup>
     let name = ref("pingan8787")
@@ -85,7 +85,7 @@ onMounted(() => {
 前面介绍 script-setup 模式提供的 4 个**全局编译器宏**，还没有详细介绍，这一节介绍 `defineProps`和 `withDefaults`。
 使用 `defineProps`宏可以用来定义组件的入参，使用如下：
 
-```vue
+```html
 <script setup lang="ts">
 let props = defineProps<{
     schema: AttrsValueObject;
@@ -94,10 +94,10 @@ let props = defineProps<{
 </script>
 ```
 
-这里只定义`props`属性中的 `schema`和 `modelValue`两个属性的类型， `defineProps` 的这种声明的不足之处在于，它没有提供设置 props 默认值的方式，但是默认值呢？
+这里只定义`props`属性中的 `schema`和 `modelValue`两个属性的类型， `defineProps` 的这种声明的不足之处在于，它没有提供设置 props 默认值的方式。
 其实我们可以通过 [withDefaults](https://v3.cn.vuejs.org/api/sfc-script-setup.html#%E4%BD%BF%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%97%B6%E7%9A%84%E9%BB%98%E8%AE%A4-props-%E5%80%BC) 这个宏来实现：
 
-```vue
+```html
 <script setup lang="ts">
 let props = withDefaults(
   defineProps<{
@@ -133,7 +133,7 @@ app.config.globalProperties.$eventBus = eventBus;
 
 使用时需要先通过 vue 提供的 `getCurrentInstance`方法获取实例对象：
 
-```vue
+```html
 // A.vue
 
 <script setup lang="ts">
@@ -158,7 +158,7 @@ onMounted(() => {
 
 - Vue2.x
 
-```vue
+```html
 <ChildComponent v-model="pageTitle" />
 
 <!-- 是以下的简写: -->
@@ -169,7 +169,7 @@ onMounted(() => {
 
 - Vue3.x
 
-```vue
+```html
 <ChildComponent v-model="pageTitle" />
 
 <!-- 是以下的简写: -->
@@ -179,7 +179,7 @@ onMounted(() => {
 
 `script-setup`模式下就不能使用 `this.$emit`去派发更新事件，毕竟没有 `this`，这时候需要使用前面有介绍到的 [defineProps](https://v3.cn.vuejs.org/api/sfc-script-setup.html#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4)、[defineEmits](https://v3.cn.vuejs.org/api/sfc-script-setup.html#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4) 两个宏来实现：
 
-```vue
+```html
 // 子组件 child.vue
 // 文档：https://v3.cn.vuejs.org/api/sfc-script-setup.html#defineprops-%E5%92%8C-defineemits
 <script setup lang="ts">
@@ -214,7 +214,7 @@ watch(curValue, (newVal, oldVal) => {
 
 父组件使用的时候就很简单：
 
-```vue
+```html
 // 父组件 father.vue
 
 <script setup lang="ts">
@@ -391,7 +391,7 @@ export default defineConfig({
 
 当我们需要使用 scss 配置的主题变量（如 `$primary`）、mixin方法（如 `@mixin lines`）等时，如：
 
-```vue
+```html
 <script setup lang="ts">
 </script>
 <template>
@@ -448,7 +448,7 @@ export default defineConfig({
 
 由于在 `script-setup`模式下，没有 `this`可以使用，就不能直接通过 `this.$router`或 `this.$route`来获取路由参数和跳转路由。
 当我们需要获取路由参数时，就可以使用 `vue-router`提供的 `useRoute`方法来获取，使用如下：
-```vue
+```html
 // A.vue
 
 <script setup lang="ts">
@@ -484,7 +484,7 @@ router.push({
 
 当我们解构出 store 的变量后，再修改 store 上该变量的值，视图没有更新：
 
-```vue
+```html
 // A.vue
 <script setup lang="ts">
 import componentStore from "@/store/component";
@@ -505,7 +505,7 @@ const changeName = () => {
 这时候点击按钮触发 `changeName`事件后，视图上的 `name` 并没有变化。这是因为 store 是个 reactive 对象，当进行解构后，会破坏它的响应性。所以我们不能直接进行解构。
 这种情况就可以使用 Pinia 提供 `storeToRefs`工具方法，使用起来也很简单，只需要将需要解构的对象通过 `storeToRefs`方法包裹，其他逻辑不变：
 
-```vue
+```html
 // A.vue
 <script setup lang="ts">
 import componentStore from "@/store/component";
