@@ -124,7 +124,7 @@ of course, if you want to return an `{}` object, you can just put `{}` it inside
 
 ```javascript
 let f2 = () => ({});
-f2(); // -> undefined
+f2(); // -> {}
 ```
 
 ### 4. Can the function be executed using backquotes?
