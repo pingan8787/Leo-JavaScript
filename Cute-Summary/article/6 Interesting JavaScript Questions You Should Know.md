@@ -1,6 +1,6 @@
 As the primary development language for front-end developers, JavaScript itself has a relatively simple syntax and a well-developed ecosystem, which is gaining more and more influence in the community.
 
-In our development process using JavaScript, we often encounter all kinds of strange problems that make us feel headache.
+In our development process using JavaScript, we often encounter all kinds of strange problems that make us feel headaches.
 
 I have compiled 6 common and interesting questions to share with you.
 
@@ -38,7 +38,7 @@ In addition, if an exception is thrown, the statement in the `finally` clause is
 
 ❓ Problem
 
-What does the next three lines of code return?
+What do the next three lines of code return?
 
 ```javascript
 typeof [];
@@ -223,7 +223,7 @@ Write them in the console. They will return the value defined in the last object
 
 💡 Answer
 
-When inspecting each `{}`, they returns undefined. If you inspect `{foo: 'bar'}{}`, you will find `{foo: 'bar'}` is `'bar'`.
+When inspecting each `{}`, they return undefined. If you inspect `{foo: 'bar'}{}`, you will find `{foo: 'bar'}` is `'bar'`.
 
 There are two meanings for `{}`: an object or a block. For example, the `{}` in `() => {}` means block. So we need to use `() => ({})` to return an object.
 
@@ -240,3 +240,6 @@ Surprisingly, it behaviors the same! You can guess here that `{foo: 'bar'}{}` is
 Welcome to follow me, I will share more useful content😄 ~
 
 Happy coding! ❤️
+
+%[https://medium.com/@Chris1993]
+%[https://dev.to/chris1993]

@@ -13,17 +13,17 @@ The `reactive` method is used to create a reactive object. It takes an object/ar
 Test with **object** and **array** as parameters:
 
 ```typescript
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
-let reactiveObj = reactive({ name : 'Chris1993' });
+let reactiveObj = reactive({ name: "Chris1993" });
 let setReactiveObj = () => {
-  reactiveObj.name = 'Hello Chris1993';
-}
+  reactiveObj.name = "Hello Chris1993";
+};
 
-let reactiveArr = reactive(['a', 'b', 'c', 'd']);
+let reactiveArr = reactive(["a", "b", "c", "d"]);
 let setReactiveArr = () => {
-  reactiveArr[1] = 'Hello Chris1993';
-}
+  reactiveArr[1] = "Hello Chris1993";
+};
 ```
 
 Template content:
@@ -32,11 +32,11 @@ Template content:
 <template>
   <h2>Vue3 reactive API Base</h2>
   <div>
-    Object:{{reactiveObj.name}} 
+    Object:{{reactiveObj.name}}
     <span @click="setReactiveObj">Update</span>
   </div>
   <div>
-    Array:{{reactiveArr}} 
+    Array:{{reactiveArr}}
     <span @click="setReactiveArr">Update</span>
   </div>
 </template>
@@ -59,16 +59,16 @@ When the value of `ref` is read and modified in JS/TS, you need to use `.value` 
 Test with **string** and **object** as parameters:
 
 ```typescript
-import { ref } from 'vue'
+import { ref } from "vue";
 
-let refValue = ref('Chris1993');
+let refValue = ref("Chris1993");
 let setRefValue = () => {
-  refValue.value = 'Hello Chris1993';
-}
-let refObj = ref({ name : 'Chris1993' });
+  refValue.value = "Hello Chris1993";
+};
+let refObj = ref({ name: "Chris1993" });
 let setRefObj = () => {
-  refObj.value.name = 'Hello Chris1993';
-}
+  refObj.value.name = "Hello Chris1993";
+};
 ```
 
 Template content:
@@ -77,7 +77,7 @@ Template content:
 <template>
   <h2>Vue3 ref API Base</h2>
   <div>
-    String:{{refValue}} 
+    String:{{refValue}}
     <span @click="setRefValue">Update</span>
   </div>
   <div>
@@ -102,19 +102,19 @@ The answer is **yes**, `reactive` is implemented based on [ES2015 Proxy API](htt
 Test with **object** and **array** as parameters:
 
 ```typescript
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
 let reactiveDeepObj = reactive({
-  user: {name : 'Chris1993'}
+  user: { name: "Chris1993" },
 });
 let setReactiveDeepObj = () => {
-  reactiveDeepObj.user.name = 'Hello Chris1993';
-}
+  reactiveDeepObj.user.name = "Hello Chris1993";
+};
 
-let reactiveDeepArr = reactive(['a', ['a1', 'a2', 'a3'], 'c', 'd']);
+let reactiveDeepArr = reactive(["a", ["a1", "a2", "a3"], "c", "d"]);
 let setReactiveDeepArr = () => {
-  reactiveDeepArr[1][1] = 'Hello Chris1993';
-}
+  reactiveDeepArr[1][1] = "Hello Chris1993";
+};
 ```
 
 Template content:
@@ -148,7 +148,7 @@ The answer is **not equal** because `reactive` is implemented based on [ES2015 P
 Test code:
 
 ```typescript
-let reactiveSource = { name: 'Chris1993' };
+let reactiveSource = { name: "Chris1993" };
 let reactiveData = reactive(reactiveSource);
 
 console.log(reactiveSource === reactiveData);
@@ -166,24 +166,24 @@ console.log(reactiveData);
 When using TypeScript to write ref / reactive parameter types, you can implement specific types according to the ref / reactive interface type:
 
 ```typescript
-function ref<T>(value: T): Ref<T>
+function ref<T>(value: T): Ref<T>;
 
-function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
+function reactive<T extends object>(target: T): UnwrapNestedRefs<T>;
 ```
 
 Modify the previous example code:
 
 ```typescript
-import { ref } from 'vue'
+import { ref } from "vue";
 
-let refValue = ref<string>('Chris1993');
+let refValue = ref<string>("Chris1993");
 
 let setRefValue = () => {
-  refValue.value = 'Hello Chris1993'; // ok!
+  refValue.value = "Hello Chris1993"; // ok!
   refValue.value = 1993; // error!
-}
+};
 
-let reactiveValue = reactive<{name: string}>({name: 'Chris1993'});
+let reactiveValue = reactive<{ name: string }>({ name: "Chris1993" });
 ```
 
 ## 6. What about ref values as reactive parameters?
@@ -193,23 +193,23 @@ What happens when we already have a `ref` object and need to use it in a `reacti
 Suppose:
 
 ```typescript
-let name = ref('Chris1993');
-let nameReactive = reactive({name})
+let name = ref("Chris1993");
+let nameReactive = reactive({ name });
 ```
 
 We can also do this:
 
 ```typescript
-let name = ref('Chris1993');
-let nameReactive = reactive({name})
+let name = ref("Chris1993");
+let nameReactive = reactive({ name });
 console.log(name.value === nameReactive.name); // true
 
-name.value = 'Hello Chris1993';
-console.log(name.value);        // Hello Chris1993
+name.value = "Hello Chris1993";
+console.log(name.value); // Hello Chris1993
 console.log(nameReactive.name); // Hello Chris1993
 
-nameReactive.name = 'Hi Chris1993';
-console.log(name.value);        // Hi Chris1993
+nameReactive.name = "Hi Chris1993";
+console.log(name.value); // Hi Chris1993
 console.log(nameReactive.name); // Hi Chris1993
 ```
 
@@ -218,11 +218,11 @@ This is because `reactive` will unpack all deep `refs` and keep `ref` reactive.
 When `ref` is assigned to a `reactive` property by assignment, `ref` is also automatically unpacked:
 
 ```typescript
-let name = ref('Chris1993');
-let nameReactive = reactive({})
+let name = ref("Chris1993");
+let nameReactive = reactive({});
 nameReactive.name = name;
 
-console.log(name.value);        // Chris1993
+console.log(name.value); // Chris1993
 console.log(nameReactive.name); // Chris1993
 console.log(name.value === nameReactive.name); // true
 ```
@@ -240,3 +240,13 @@ To briefly summarize:
 - `reactive` attribute value can be `ref` value;
 
 The next article will share the mastery with you, and you are welcome to look forward to it.
+
+2. react-hot-toast https://github.com/timolins/react-hot-toast 5.5k https://react-hot-toast.com/
+3. notistack https://notistack.com/examples 3k https://notistack.com/getting-started
+4. react-notification-system http://igorprado.github.io/react-notification-system/ 2.4k https://github.com/igorprado/react-notification-system
+5. react-toast-notifications https://github.com/jossmac/react-toast-notifications 2.2k
+6. reapop https://louisbarranqueiro.github.io/reapop/ 1.3k https://louisbarranqueiro.github.io/reapop/
+7. react-notifications-component https://github.com/teodosii/react-notifications-component 1.2k https://teodosii.github.io/react-notifications-component/
+8. CogoToast https://github.com/Cogoport/cogo-toast 659 https://cogoport.github.io/cogo-toast/
+9. notiflix https://openbase.com/js/notiflix 382 https://github.com/notiflix/Notiflix
+10. react-local-toast https://github.com/OlegWock/react-local-toast 113 https://react-local-toast.netlify.app/
