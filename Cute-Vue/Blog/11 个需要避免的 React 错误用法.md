@@ -216,17 +216,32 @@ useEffect(() => {
 
 ### 问题描述
 
-我们在类组件中，经常使用 `componentDidMount()` 生命周期方法去清理一些副作用，比如定时器、事件监听等。
+我们在类组件中，经常使用 `componentWillUnmount()` 生命周期方法去清理一些副作用，比如定时器、事件监听等。
 
 ### 解决方法
 
-可以为 `useEffect()`的副作用函数设置返回函数，该函数类似 `componentDidMount()` 生命周期方法的作用：
+可以为 `useEffect()`的副作用函数设置返回函数，该函数类似 `componentWillUnmount()` 生命周期方法的作用：
 
 ```jsx
 useEffect(() => {
   // Other Code
   return () => clearInterval(id);
 }, [name, age]);
+```
+
+另外，当需要实现`componentWillUnmount` 生命周期函数的效果时，可以在 `useEffect()`函数返回一个函数即可，该函数会在组件卸载时执行：
+
+```jsx
+export default function App() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setCount(count + 1);
+    return () => {
+      console.log("[组件已卸载]");
+    };
+  }, []);
+  return <div className="App">{count}</div>;
+}
 ```
 
 ### 文档介绍

@@ -42,6 +42,8 @@ const listItems = numbers.map((number, index) => <li key={index}>{number}</li>);
 
 `key` helps React identify which elements have changed, such as been added or removed. So we need to set a unique `key` value for each element in the array.
 
+For the value of `key`, it is best to set it to a unique value. In the above example, `index` is used as the value of `key`. Officially, it is not recommended. The order of the list will change, and there is no unique value or a last resort. In this case, performance will be degraded.
+
 ### Documentation
 
 [React - Basic List Component](https://reactjs.org/docs/lists-and-keys.html#basic-list-component)
@@ -217,11 +219,11 @@ useEffect(() => {
 
 ### Problem
 
-In class components, we use the `componentDidMount()` lifecycle method to clean up some side effects, such as timers, event listeners, etc.
+In class components, we use the `componentWillUnmount()` lifecycle method to clean up some side effects, such as timers, event listeners, etc.
 
 ### Solutions
 
-A return function can be set for the side effect function of `useEffect()`, which is similar to the role of the `componentDidMount()` lifecycle method:
+A return function can be set for the side effect function of `useEffect()`, which is similar to the role of the `componentWillUnmount()` lifecycle method:
 
 ```jsx
 useEffect(() => {
