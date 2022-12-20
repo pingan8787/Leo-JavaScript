@@ -1,6 +1,6 @@
-在我们使用 React 开发项目时，使用最多的应该都是组件，组件又分为**函数组件**和**类组件**，我们可以这么定义：
+When we use React to develop projects, the most used components should be components, and components are divided into **Functional Components** and **Class Components**, we can define it as follows:
 
-- 定义函数组件
+- define Functional Components
 
 ```JS
 function Welcome(props) {
@@ -8,9 +8,9 @@ function Welcome(props) {
 }
 ```
 
-- 定义类组件
+- define Class Components
 
-```JSX
+```TSX
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
@@ -18,29 +18,29 @@ class Welcome extends React.Component {
 }
 ```
 
-这篇文章我会和大家介绍使用 TypeScript 定义函数式组件的 4 种方法，还有几个使用过程中需要注意的问题。
+In this article, I will introduce 4 ways to use TypeScript to define Functional Components, and there are several issues that need to be paid attention to during the use.
 
-## 如何使用 TypeScript 定义函数式组件
+## How to define Functional Components with TypeScript
 
-函数式组件通常接受一个 `props` 参数，返回一个 JSX 元素或者 `null`。
+Functional Components usually take a `props` parameter and return a JSX element or `null`.
 
-当我们需要使用 TypeScript 去定义一个函数式组件时，我们有 4 种方式，4 种方式各有各的优缺点，看具体情况使用。
+When we need to use TypeScript to define a Functional Component, we have 4 ways, each of which has its own advantages and disadvantages, depending on the specific situation.
 
-### 1. 使用 React.FC
+### 1. Using React.FC
 
-由于 React 不是使用 TypeScript 开发的，使用的是社区开发的 `@type/react` 包提供的类型，里面有一个通用类型 `FC` ，允许我们为函数组件添加类型。
+Since React is not developed with TypeScript, it uses types provided by the community developed `@type/react` package, which has a generic type `FC` that allows us to add types to functional components.
 
-```JSX
+```TSX
 type FCProps = { text: string };
-// React.FunctionComponent 的简写
+
 const FCComponent: React.FC<FCProps> = ({ text = "" }) => <div>{text}</div>;
 ```
 
-这里的 `React.FC` 是 `React.FunctionComponent` 的简写。
+Here `React.FC` is shorthand for `React.FunctionComponent`.
 
-当组件包含子元素，TypeScript 会提示警告：
+When a component contains child elements, TypeScript will prompt a warning:
 
-```JSX
+```TSX
 type FCProps = { text: string };
 const FCComponent: React.FC<FCProps> = ({ text = "" }) => <div>{text}</div>;
 
@@ -55,23 +55,23 @@ function App() {
 }
 ```
 
-提示警告内容：
+Prompt warning content:
 
 ```
 Type '{ children: string; text: string; }' is not assignable to type 'IntrinsicAttributes & FCProps'.
   Property 'children' does not exist on type 'IntrinsicAttributes & FCProps'.
 ```
 
-现在不推荐使用这个了，具体讨论可以看这两个链接：
+This is now deprecated. For specific discussions, see these two links:
 
 - [Remove React.FC from Typescript template #8177](https://github.com/facebook/create-react-app/pull/8177)；
 - [《TypeScript + React: Why I don't use React.FC》](https://fettblog.eu/typescript-react-why-i-dont-use-react-fc/)。
 
-### 2. 使用 JSX.Element
+### 2. Using JSX.Element
 
-使用 `JSX.Element` 类型作为函数式组件的返回值类型，当组件的返回值不是 `JSX.Element` 类型时，TypeScript 就会提示错误。
+Use the `JSX.Element` type as the return value type of a Functional Component. When the return value of the component is not a `JSX.Element` type, TypeScript will prompt an error.
 
-```JSX
+```TSX
 type FCProps = { text: string };
 const ElementComponent = ({ text }: FCProps): JSX.Element => <div>{text}</div>;
 function App() {
@@ -83,11 +83,11 @@ function App() {
 }
 ```
 
-### 3. 直接定义完整类型
+### 3. Define the full type directly
 
-由于 `React` 组件包含子元素时，会隐式传递一个 `children` 属性，导致定义的参数类型出错，因此我们可以直接定义一个完整的参数接口，包含了 `children` 属性的类型：
+Since the `React` component contains a child element, it will implicitly pass a `children` attribute, resulting in an error in the defined parameter type, so we can directly define a complete parameter interface, including the type of the `children` attribute:
 
-```JSX
+```TSX
 type FCProps = { text: string; children?: any };
 const FCComponent: React.FC<FCProps> = ({ text = "" }) => <div>{text}</div>;
 
@@ -102,18 +102,18 @@ function App() {
 }
 ```
 
-### 4. 使用 React.PropsWithChildren
+### 4. Using React.PropsWithChildren
 
-第 3 种方法每次都要手动写一个 `children` 属性类型比较麻烦，这时候我们就可以使用 `React.PropsWithChildren` 类型，它本身封装了 `children` 的类型声明：
+The third method is more troublesome to manually write a `children` property type each time, then we can use the `React.PropsWithChildren` type, which itself encapsulates the `children` type declaration:
 
 ```TypeScript
 // react/index.d.ts
 type PropsWithChildren<P> = P & { children?: ReactNode };
 ```
 
-因此，使用 `React.PropsWithChildren` 类型定义函数式组件，就不用去处理 `children` 的类型了：
+So, use the `React.PropsWithChildren` type to define Functional Components without having to deal with the type of `children`:
 
-```JSX
+```TSX
 type IProps = React.PropsWithChildren<{ text: string }>;
 const PropsComponent = ({ text }: IProps) => <div>{text}</div>;
 function App() {
@@ -127,13 +127,13 @@ function App() {
 }
 ```
 
-## 使用过程需要注意的点
+## Points to note during use
 
-### 1. 函数式组件返回值不能是布尔值
+### 1. Functional Components cannot return boolean values
 
-当我们在函数式组件内使用**条件语句**时，如果返回的是非 JSX 元素或者非 null 的值，React 将会报错：
+When we use a conditional statement inside a Functional Component, React will throw an error if it returns a non-JSX element or a non-null value:
 
-```JSX
+```TSX
 const ConditionComponent = ({ useRender = false }) =>
   useRender ? <span>Render ConditionComponent</span> : false;// ❌
 
@@ -150,9 +150,9 @@ function App() {
 }
 ```
 
-正确的处理方式，应该是让函数式组件返回一个有效的 JSX 元素或者 null:
+The correct way to do it is to have the functional component return a valid JSX element or null:
 
-```JSX
+```TSX
 const ConditionComponent = ({ useRender = false }) =>
   useRender ? <span>Render ConditionComponent</span> : <span>error</span>;// ✅
 
@@ -163,18 +163,18 @@ const ConditionComponent = ({ useRender = false }) =>
 
 ```
 
-当然你也不能这样写，当属性 `useRender` 为 `true` 时，也会出错：
+Of course, you can't write it like this, when the property `useRender` is `false`, it will also error:
 
-```JSX
+```TSX
 const ConditionComponent = ({ useRender = false }) =>
   useRender && <span>Render ConditionComponent</span>;// ❌
 ```
 
-### 2. 无法为组件使用 Array.fill() 填充
+### 2. Unable to use Array.fill() to fill components
 
-当我们的组件直接返回 `Array.fill()` 的结果时，TypeScript 会提示错误。
+TypeScript throws an error when our component returns the result of `Array.fill()` directly.
 
-```JSX
+```TSX
 const ArrayComponent = () => Array(3).fill(<span>Chris1993</span>); // ❌
 
 function App() {
@@ -186,7 +186,7 @@ function App() {
 }
 ```
 
-提示下面内容：
+Prompt the following:
 
 ```
 'ArrayComponent' cannot be used as a JSX component.
@@ -194,20 +194,20 @@ function App() {
     Type 'any[]' is missing the following properties from type 'ReactElement<any, any>': type, props, key
 ```
 
-为了解决这个问题，我们可以定义函数的返回值类型：
+To solve this problem, we can define the return type of the function:
 
-```JSX
+```TSX
 const ArrayComponent = () =>
   Array(3).fill(<span>Chris1993</span>) as any as JSX.Element; // ✅
 ```
 
-### 3. 支持使用泛型来创建组件
+### 3. Support Generic Components
 
-在使用 TypeScript 开发 React 函数式组件的时候，也可以使用泛型进行约束，声明一个泛型组件（Generic Components），这样可以让我们的组件更加灵活。
+When using TypeScript to develop React Functional Components, you can also use generics to constrain and declare a Generic Components, which can make our components more flexible.
 
-可以这样使用：
+It can be used like this:
 
-```JSX
+```TSX
 interface GenericProps<T> {
   content: T;
 }
@@ -228,9 +228,9 @@ function App() {
 }
 ```
 
-在 [Generic Components](https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase#generic-components) 章节中介绍到更高级的使用方式：
+More advanced usage is described in the [Generic Components](https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase#generic-components) chapter:
 
-```JSX
+```TSX
 interface Props<T> {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
@@ -264,7 +264,7 @@ function App() {
 }
 ```
 
-## 参考资料
+## References
 
 - [React](https://reactjs.org/)
 - [React TypeScript Cheatsheets](https://react-typescript-cheatsheet.netlify.app/)
