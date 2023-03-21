@@ -1,5 +1,3 @@
-React 18 Component Optimization: Make Your Application Faster and Smoother
-
 React 18 is the latest version of the React library, introducing new features and performance improvements to further enhance the performance and user experience of React applications. However, when developing with React 18, it is still necessary to pay attention to performance issues to ensure the smoothness and responsiveness of the application. This article will introduce how to keep React 18 components pure, avoid unnecessary re-rendering and performance waste.
 
 ## 1. Component Separation
