@@ -9,7 +9,6 @@ The official article [Announcing TypeScript 5.1 Beta](https://devblogs.microsoft
 
 For those who want to try it out, a quick install of the latest beta is available via npm at
 
-Translated with www.DeepL.com/Translator (free version)
 
 ```shell
 npm install -D typescript@beta
