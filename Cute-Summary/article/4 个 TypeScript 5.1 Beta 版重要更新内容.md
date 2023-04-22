@@ -1,6 +1,6 @@
 TypeScript 5.1 在 5.0 发布后不久就发布了测试版，但测试版不代表最终正式版。
 
-官方原文  [Announcing TypeScript 5.1 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-1-beta/) 中提供了完整的更新内容，以下是我梳理的 TypeScript 5.1 主要更新内容：
+官方原文 [Announcing TypeScript 5.1 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-1-beta/) 中提供了完整的更新内容，以下是我梳理的 TypeScript 5.1 主要更新内容：
 
 1. 改进了函数返回值类型 `undefined` 的类型推断
 2. `Getter` 和 `Setter` 现在支持设置不同的类型
@@ -19,24 +19,24 @@ npm install -D typescript@beta
 
 ```js
 // no return
-const test = () => {}
-test();  // undefined
+const test = () => {};
+test(); // undefined
 ```
 
 在早期版本的 TypeScript 中，只有返回值类型为 `void` 和 `any` 的函数可以没有 `return` 语句，即使你清楚这个函数返回值是 `undefined`，你也需要至少有一个 `return` 语句。
 
 ```typescript
 //  ✅ return 'void'
-const t1 = () => {}
+const t1 = () => {};
 
 //  ✅ 'void' doesn't need a return statement
-const t2 = (): void => {}
+const t2 = (): void => {};
 
 // ✅  'any' doesn't need a return statement
-const t3 = (): any => {}
+const t3 = (): any => {};
 
 // ❌ A function whose declared type is neither 'void' nor 'any' must return a value.
-const t4 = (): undefined => {}
+const t4 = (): undefined => {};
 ```
 
 当你希望函数返回 `undefined`，你可以有 2 种方式：
@@ -49,24 +49,24 @@ const t4 = (): undefined => {}
 declare function fun(f: () => undefined): undefined;
 
 // ❌ Argument of type '() => void' is not assignable to parameter of type '() => undefined'.
-fun(() => {})
+fun(() => {});
 
 // ❌ A function whose declared type is neither 'void' nor 'any' must return a value.
-fun((): undefined => {})
+fun((): undefined => {});
 
 // ❌ Argument of type '() => void' is not assignable to parameter of type '() => undefined'.
 fun(() => {
-    return;
-})
-
-// ✅ 
-fun(() => {
-    return undefined;
+  return;
 });
 
-// ✅ 
+// ✅
+fun(() => {
+  return undefined;
+});
+
+// ✅
 fun((): undefined => {
-    return;
+  return;
 });
 ```
 
@@ -74,10 +74,10 @@ fun((): undefined => {
 
 ```typescript
 // ✅ TypeScript 5.1!
-const f1 = (): undefined => {}
+const f1 = (): undefined => {};
 
 // ✅ TypeScript 5.1!
-f2((): undefined => {})
+f2((): undefined => {});
 ```
 
 ## 2. Getter 和 Setter 支持设置不同类型
