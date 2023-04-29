@@ -282,6 +282,6 @@ A **scope slot** (also known as a **named slot**) can pass data from a parent co
 
 By using `v-slot`, we can specify the name and content of the scope slots in the template and avoid confusion of the components.
 
-## Wrap-up
+## Summary
 
 We hope the 10 optimization tips presented in this article will help readers better understand Vue.js and build more efficient and reliable web applications.
