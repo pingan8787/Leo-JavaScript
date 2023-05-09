@@ -14,22 +14,22 @@ The basic way to use the Broadcast Channel API is very simple. We just need to c
 
 ```javascript
 // Create a broadcast channel named "my_channel"
-const myChannel = new BroadcastChannel("my_channel").
+const myChannel = new BroadcastChannel("my_channel");
 
 // send a message to this channel
-myChannel.postMessage("Hello world!").
+myChannel.postMessage("Hello world!");
 ```
 
 Then listen to that channel in other windows to receive messages from that channel. The following is a simple example:
 
 ```javascript
 // listen to a broadcast channel named "my_channel"
-const myChannel = new BroadcastChannel("my_channel").
+const myChannel = new BroadcastChannel("my_channel");
 
 // Listen to the channel and handle messages
 myChannel.onmessage = function (event) {
-  console.log(event.data).
-}.
+  console.log(event.data);
+};
 ```
 
 The BroadcastChannel instance also provides some other methods and events, such as the `close()` method and the `close` event. The full documentation can be found at [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel).
@@ -41,24 +41,24 @@ The following is an example of passing data using `ArrayBuffer` and `Transferabl
 
 ```javascript
 // Create a broadcast channel named "my_channel"
-const myChannel = new BroadcastChannel("my_channel").
+const myChannel = new BroadcastChannel("my_channel");
 
 // Create an ArrayBuffer containing the data you want to send
-const buffer = new ArrayBuffer(1024).
+const buffer = new ArrayBuffer(1024);
 
 // Send a message containing the ArrayBuffer to the channel
-myChannel.postMessage(buffer, [buffer]).
+myChannel.postMessage(buffer, [buffer]);
 ```
 
 Then receive the message in another window and get the `ArrayBuffer` from the `MessageEvent.data` property:
 
 ```javascript
 // Listen to the broadcast channel named "my_channel"
-const myChannel = new BroadcastChannel("my_channel").
+const myChannel = new BroadcastChannel("my_channel")
 
 // Listen to the channel and handle messages
 myChannel.onmessage = function (event) {
-  const buffer = event.data.
+  const buffer = event.data
   // ...
 }.
 ```
