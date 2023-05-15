@@ -11,7 +11,7 @@ Beacon API 的主要作用是**异步地发送数据**，因此在一些需要�
 
 ## 2. 如何使用 Beacon API
 
-使用 Beacon API 非常简单，只需要调用 `[navigator.sendBeacon()](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)` 方法即可。该方法语法如下：
+使用 Beacon API 非常简单，只需要调用 [navigator.sendBeacon()](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) 方法即可。该方法语法如下：
 
 ```javascript
 navigator.sendBeacon(url);
