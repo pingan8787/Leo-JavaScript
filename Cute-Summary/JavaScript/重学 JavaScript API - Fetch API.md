@@ -158,10 +158,10 @@ fetch("https://api.example.com/data", {
 
 以下是 Fetch API 在常见现代浏览器中的兼容性情况：
 
-- Chrome：支持所有版本，包括最新的 Chrome 浏览器。
-- Firefox：支持所有版本，包括最新的 Firefox 浏览器。
-- Safari：支持 Safari 10 及更高版本。
-- Edge：支持 Edge 14 及更高版本。
+- Chrome 40+ ✅
+- Firefox 39+ ✅
+- Safari 10.1+ ✅
+- Edge 14+ ✅
 
 对于 Internet Explorer（IE），Fetch API 在 IE11 及更早版本中不受支持。
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/186051/1683790715624-df7d81ea-4769-49fd-a552-a62ca10f0f86.png#averageHue=%23dbcbb7&clientId=u1e887976-1464-4&from=paste&height=474&id=u5d1c8ef5&originHeight=474&originWidth=1443&originalType=binary&ratio=1&rotation=0&showTitle=false&size=80281&status=done&style=none&taskId=u8dc7fe57-6eb5-42f9-871e-6d952059f4d&title=&width=1443)

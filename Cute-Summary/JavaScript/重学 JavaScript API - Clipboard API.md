@@ -169,7 +169,7 @@ Clipboard API 的缺点包括：
 
 ## 🍭 6. 总结
 
-Clipboard API 是一组 JavaScript API，用于在浏览器中操作剪贴板。通过 Clipboard API，开发者可以将文本、图片和其他数据复制到剪贴板，也可以从剪贴板中读取数据，实现复制、剪切和粘贴等功能。
+Clipboard API 用于在浏览器中操作剪贴板。通过 Clipboard API，开发者可以将文本、图片和其他数据复制到剪贴板，也可以从剪贴板中读取数据，实现复制、剪切和粘贴等功能。
 在实际应用中，Clipboard API 可以广泛应用于各种 Web 应用程序中，例如文本编辑器、图像编辑器、网页等。然而，Clipboard API 的兼容性存在一定的问题，需要开发者进行兼容性处理。
 为了更好地使用 Clipboard API，开发者需要注意以下事项：
 
