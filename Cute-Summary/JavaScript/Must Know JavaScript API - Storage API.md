@@ -132,13 +132,13 @@ const passwordInput = document.getElementById("password");
 saveBtn.addEventListener("click", () => {
   localStorage.setItem("username", usernameInput.value);
   localStorage.setItem("password", passwordInput.value);
-}).
+});
 
 // Load the form data
 loadBtn.addEventListener("click", () => {
   usernameInput.value = localStorage.getItem("username");
   passwordInput.value = localStorage.getItem("password");
-}).
+});
 ```
 
 ### 3.5 Remembering user login status
@@ -147,10 +147,10 @@ The Web Storage API can be used to remember the user's login status so that the 
 
 ```javascript
 // Store the user's login status to local storage after a successful login
-localStorage.setItem("isLoggedIn", "true").
+localStorage.setItem("isLoggedIn", "true");
 
 // Check if the login status exists in the local storage
-const isLoggedIn = localStorage.getItem("isLoggedIn").
+const isLoggedIn = localStorage.getItem("isLoggedIn");
 
 // Perform the appropriate action based on the logged in status
 if (isLoggedIn === "true") {
@@ -162,7 +162,7 @@ if (isLoggedIn === "true") {
 }
 ```
 
-In the above example, when the user logs in successfully, we set the login status to 'true' and store it in the local store. Each time the user accesses the site, we get the login status from the local store and perform the appropriate actions based on the login status.
+In this example, when the user logs in successfully, we set the login status to 'true' and store it in the local store. Each time the user accesses the site, we get the login status from the local store and perform the appropriate actions based on the login status.
 
 ## 📋 4. Compatibility and advantages and disadvantages
 
