@@ -11,7 +11,7 @@ Welcome to the **Must Know JavaScript API** series, this series will learn the *
 
 The WebSockets API provides a mechanism to establish a persistent connection between the client and the server, making the transfer of real-time data much easier and more efficient.
 
-## 🏝 1. 1. What is WebSockets API
+## 🏝 1. What is WebSockets API
 
 ### 1.1 Introduction
 
