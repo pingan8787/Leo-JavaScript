@@ -51,11 +51,11 @@ const changeUserReadonly = () => {
 
 <template>
   <div class="ProvideInject">
-    <div>根组件</div>
-    <button @click="changeUser">更新user</button>
-    <button @click="changeUserRef">更新userRef</button>
-    <button @click="changeUserReactive">更新userReactive</button>
-    <button @click="changeUserReadonly">更新userReadonly</button>
+    <div>Root Component</div>
+    <button @click="changeUser">Update user</button>
+    <button @click="changeUserRef">Update userRef</button>
+    <button @click="changeUserReactive">Update userReactive</button>
+    <button @click="changeUserReadonly">Update userReadonly</button>
     <div>user： {{ user.name }} / {{ user.age }}</div>
     <div>userRef： {{ userRef.name }} / {{ userRef.age }}</div>
     <div>userReactive： {{ userReactive.name }} / {{ userReactive.age }}</div>

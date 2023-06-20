@@ -29,10 +29,10 @@ const changeUserReadonly = () => {
 
 <template>
   <div class="Child2">
-    <div>子组件 2</div>
-    <button @click="changeUserRef">更新userRef</button>
-    <button @click="changeUserReactive">更新userReactive</button>
-    <button @click="changeUserReadonly">更新userReadonly</button>
+    <div>Child Component 2</div>
+    <button @click="changeUserRef">Update userRef</button>
+    <button @click="changeUserReactive">Update userReactive</button>
+    <button @click="changeUserReadonly">Update userReadonly</button>
     <div>name： {{ name }}</div>
     <div>age： {{ age }}</div>
     <div>user： {{ user.name }} / {{ user.age }}</div>

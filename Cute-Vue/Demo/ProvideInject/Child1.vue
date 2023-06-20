@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, ref, reactive, readonly } from 'vue'
+import { inject, ref, reactive, readonly, provide } from 'vue'
 import Child2 from './Child2.vue'
 import { symbolNumberKey, symbolStringKey } from './key'
 
@@ -11,6 +11,7 @@ const userReactive = inject('userReactive', reactive({ name: '', age: 22 }))
 const userReadonly = inject('userReadonly', readonly({ name: '', age: 22 }))
 const symbolNumber = inject(symbolNumberKey)
 const symbolString = inject(symbolStringKey)
+provide('name', 'Child1 Provide')
 
 const changeUserRef = () => {
   userRef.value.name = 'Child1 Ref Chris'
@@ -30,10 +31,10 @@ const changeUserReadonly = () => {
 
 <template>
   <div class="Child1">
-    <div>子组件 1</div>
-    <button @click="changeUserRef">更新userRef</button>
-    <button @click="changeUserReactive">更新userReactive</button>
-    <button @click="changeUserReadonly">更新userReadonly</button>
+    <div>Child Component 1</div>
+    <button @click="changeUserRef">Update userRef</button>
+    <button @click="changeUserReactive">Update userReactive</button>
+    <button @click="changeUserReadonly">Update userReadonly</button>
     <div>name： {{ name }}</div>
     <div>age： {{ age }}</div>
     <div>user： {{ user.name }} / {{ user.age }}</div>
