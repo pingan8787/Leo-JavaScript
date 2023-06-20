@@ -497,4 +497,4 @@ Vue Mastery is an excellent online education platform for Vue.js, and their Vue 
 
 This article starts with the basics of directives, introduces the use of built-in and Custom directive in Vue.js, and illustrates the role and usage of directives through practical application scenarios and examples.
 
-> If you like to learn JavaScript, you can follow me on [Medium](https://medium.com/@Chris1993) or [Twitter](https://twitter.com/Chris1993Coding) to read more about JavaScript!
+> If you like to this article, you can follow me on [Medium](https://medium.com/@Chris1993) or [Twitter](https://twitter.com/Chris1993Coding) to read more!
