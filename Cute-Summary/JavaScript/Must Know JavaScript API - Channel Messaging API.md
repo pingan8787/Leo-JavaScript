@@ -160,7 +160,7 @@ The Channel Messaging API has the following advantages and some limitations:
 - **Limited communication scope**: The Channel Messaging API can only communicate between the same source or trusted sources, limiting its application to cross-domain communication.
 - **Inter-window dependencies**: In multi-window communication, the order of creation and closure between windows may lead to communication failures or unpredictable results.
 
-### 4.3 工具推荐
+### 4.3 Tool Recommendations
 
 - [DevTools](https://github.com/ChromeDevTools/devtools-frontend)：2.7K ⭐ The Chrome DevTools UI
 - [Comlink](https://github.com/GoogleChromeLabs/comlink)：9.7K ⭐ Comlink makes WebWorkers enjoyable.
