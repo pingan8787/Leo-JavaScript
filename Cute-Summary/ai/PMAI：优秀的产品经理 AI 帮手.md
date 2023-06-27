@@ -25,7 +25,7 @@ PMAI 的主要功能包括：
 
 PMAI 的使用非常简单。想要开始使用，只需点击右上角的“登录”按钮。登录后，就可以在首页轻松找到所需功能，开始使用：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/186051/1687786292155-d4ad0f20-225f-4fde-b80b-648c48d13855.png#averageHue=%231f1e2d&clientId=u20ba56d2-3b47-4&from=paste&height=1782&id=xmhzS&originHeight=1782&originWidth=3572&originalType=binary&ratio=1&rotation=0&showTitle=false&size=818592&status=done&style=none&taskId=u2e6d083a-ccf1-493e-8611-5de2b0e84d6&title=&width=3572)
-接下来看下的 Chris 体验过程。
+接下来看下 Chris 体验过程。
 
 ## 三、核心功能
 
@@ -105,7 +105,7 @@ Chris 依然使用前面生成的 PRD 文档，可以看到生成出来的测试
 
 目前 PMAI 收费情况如下：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/186051/1687789969269-9b75a70f-5069-4a52-998d-73073c3f62c6.png#averageHue=%23252535&clientId=u9c6b3584-4f99-4&from=paste&height=543&id=u9f85fc37&originHeight=1282&originWidth=1230&originalType=binary&ratio=1&rotation=0&showTitle=false&size=368104&status=done&style=none&taskId=ub2531158-cbf3-4e7c-ad86-1cc75cdffea&title=&width=521)
-如果打算付费办会员的话，也可以通过邀请好友注册的方式，获取免费的会员，目前奖励规则如下：
+如果打算不付费办会员的话，也可以通过邀请好友注册的方式，获取免费的会员，目前奖励规则如下：
 
 > 邀请好友，双方各得 7 天会员
 
