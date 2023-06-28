@@ -13,7 +13,8 @@
 <body>
 
     <div id="counter">
-        <input v-model="searchText" v-focus />
+        <input v-model="searchText" />
+        <!-- v-focus -->
         <p>搜索的内容：{{searchText}}</p>
     </div>
     <script>
@@ -23,19 +24,9 @@
                     searchText: 'pingan8787'
                 }
             },
-
-            methods: {
-            }
         }
 
         const app = Vue.createApp(Counter);
-
-        app.directive('focus', {
-            mounted(el) {
-                el.focus();
-            }
-        })
-
         app.mount('#counter')
 
     </script>
