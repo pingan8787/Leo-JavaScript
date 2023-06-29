@@ -289,7 +289,7 @@ You can find details at [caniuse.com](https://caniuse.com/?search=Drag%20and%20D
 
 ### 4.2 Pros and Cons
 
-The Drag and Drop API API has the following advantages and disadvantages:
+The Drag and Drop API has the following advantages and disadvantages:
 Pros:
 
 - Provides intuitive and flexible Drag and Drop API functionality to improve user experience.
