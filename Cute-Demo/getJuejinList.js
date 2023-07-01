@@ -16,7 +16,7 @@ const getList = () => {
       });
     });
   }
-    return listData;
+  return listData;
 }
 
 
@@ -25,7 +25,7 @@ const toMarkdown = (list) => {
   let result = '';
   if (list.length > 0) {
     list.forEach((item) => {
-      result += `[${item.title}]('https://juejin.cn${item.href}') 🏷 ${item?.tags?.join(',')}\n`;
+      result += `[${item.title}](https://juejin.cn${item.href}) 🏷 ${item?.tags?.join(',')}\n`;
     });
   }
   return result;

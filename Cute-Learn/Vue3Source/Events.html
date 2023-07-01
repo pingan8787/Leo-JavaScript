@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="counter">
+        <child @hello="sayHello"></child>
+    </div>
+    <script>
+        const Demo = {
+            methods: {
+                sayHello() {
+                    console.log('Hello Chris!')
+                }
+            }
+        }
+
+        const app = Vue.createApp(Demo);
+        app.component('child', {
+            emits: ['hello'],
+            template: `<button @click="$emit('hello')">搜索</button>`
+        })
+        app.mount('#counter')
+
+    </script>
+</body>
+
+</html>
