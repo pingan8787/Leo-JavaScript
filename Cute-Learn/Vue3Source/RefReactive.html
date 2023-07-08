@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="counter">
+        <div>{{a}}</div>
+    </div>
+    <script>
+
+        const { reactive, toRefs } = Vue
+
+        const a = reactive({ user: 'Chris' })
+        const man = reactive({
+            name: "Chris",
+            skill: "Vue 3"
+        })
+        const { name, skill } = toRefs(man)
+        console.log(name, skill); // Ref<"Chris"> Ref<"Vue 3">
+        man.name = 'Chris1993'
+        console.log(name, skill); // Ref<"Chris1993">  Ref<"Vue 3">
+        const Demo = {
+            methods: {
+            }
+        }
+
+        const app = Vue.createApp(Demo);
+        app.mount('#counter')
+
+    </script>
+</body>
+
+</html>
