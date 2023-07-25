@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./vue.global.js"></script>
+    <style>
+        div {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-right: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App">
+
+        <div>
+            <h3>未使用 KeepAlive</h3>
+            <div>
+                <button @click="change1('child1')">切换 1</button>
+                <button @click="change1('child2')">切换 2</button>
+            </div>
+            <component :is="cur1"></component>
+        </div>
+        <hr />
+        <div>
+            <h3>使用 KeepAlive</h3>
+            <div>
+                <button @click="change2('child1')">切换 1</button>
+                <button @click="change2('child2')">切换 2</button>
+            </div>
+            <keep-alive>
+                <component :is="cur2"></component>
+            </keep-alive>
+        </div>
+    </div>
+    <script>
+        const Demo = {
+            data() {
+                return {
+                    cur1: 'child1',
+                    cur2: 'child1',
+                }
+            },
+            methods: {
+                change1(val) {
+                    this.cur1 = val;
+                },
+                change2(val) {
+                    this.cur2 = val;
+                }
+            }
+        }
+
+        const app = Vue.createApp(Demo);
+        app.component('child1', {
+            emits: ['hello'],
+            data() {
+                return {
+                    text: '你好,前端自习课1'
+                }
+            },
+            template: `组件 1：<input v-model='text' />`
+        })
+        app.component('child2', {
+            emits: ['hello'],
+            data() {
+                return {
+                    text: '你好,前端自习课2'
+                }
+            },
+            template: `组件 2：<input v-model='text' />`
+        })
+        app.mount('#App')
+
+    </script>
+</body>
+
+</html>
