@@ -1,0 +1,16 @@
+{
+  "name": "ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "wangpingan",
+  "license": "ISC",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "markdown-pdf": "^11.0.0"
+  }
+}
