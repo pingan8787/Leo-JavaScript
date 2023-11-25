@@ -1,0 +1,1392 @@
+{
+    "热门推荐": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Midjourney.png",
+            "title": "Midjourney",
+            "desc": "目前最强的AI绘画工具",
+            "url": "https://www.midjourney.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-ChatGPT.png",
+            "title": "ChatGPT",
+            "desc": "地表最强AI聊天机器人",
+            "url": "https://chat.openai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-sd.jpg",
+            "title": "Stable Diffusion",
+            "desc": "最强开源AI绘画工具",
+            "url": "https://github.com/Stability-AI/stablediffusion"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-NijiJourney.png",
+            "title": "NijiJourney",
+            "desc": "MJ出品！面向二次元风格，内容细致拿捏专业到位",
+            "url": "https://nijijourney.com/zh/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/11/ai-nav-qm.jpg",
+            "title": "千面AI模特",
+            "desc": "免费AI电商工具！一键换脸、商品换色，每月送积分",
+            "url": "https://aiqianmian.com/?r_co=uisdc"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-HuggingFace.png",
+            "title": "HuggingFace",
+            "desc": "下载开源的SD模型",
+            "url": "https://huggingface.co/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/08/nav-cs-aiuisdc.jpg",
+            "title": "AI自学网",
+            "desc": "推荐！专业全面的AI人工智能学习平台，你关注的AI知识，都在这里",
+            "url": "https://ai.uisdc.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-gg-chushou.png",
+            "title": "触手AI",
+            "desc": "登录即用的国产AI绘图平台，免费无限量出图，支持模型自训练",
+            "url": "http://douchu.ai/login?inviteCode=352204&channel=channel_invite"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-saas.png",
+            "title": "SaaS AI Tools",
+            "desc": "推荐！超多AI人工智能工具",
+            "url": "https://saasaitools.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-notion.jpg",
+            "title": "Notion AI",
+            "desc": "AI写作神器！比你想得更多！写得更快",
+            "url": "https://www.notion.so/product/ai"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/08/nav-ai-Runway.jpg",
+            "title": "Runway",
+            "desc": "最强的AI视频内容生成工具",
+            "url": "https://runwayml.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-uxgears.jpg",
+            "title": "UX Gears",
+            "desc": "为全宇宙创作者和创始人提供最佳AIGC资源！加速加速再加速",
+            "url": "https://www.uxgears.com/"
+        }
+    ],
+    "AI绘画": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Midjourney.png",
+            "title": "Midjourney",
+            "desc": "目前最强的AI绘画工具",
+            "url": "https://www.midjourney.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-stable.png",
+            "title": "Stable Diffusion",
+            "desc": "最强开源AI绘画工具",
+            "url": "https://github.com/Stability-AI/stablediffusion"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-wxyg.png",
+            "title": "文心一格",
+            "desc": "百度出品的AI绘画工具",
+            "url": "https://yige.baidu.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/10/ai-nav-mizheliai.jpg",
+            "title": "米啫喱AI绘画",
+            "desc": "免费好用！登陆即用的中文MJ生图工具",
+            "url": "https://www.mizheliai.com/?from=uisdc"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Civitai.png",
+            "title": "Civitai",
+            "desc": "AI艺术共享平台！海量SD开源模型",
+            "url": "https://civitai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-NijiJourney.png",
+            "title": "NijiJourney",
+            "desc": "MJ出品！面向二次元风格，内容细致拿捏专业到位",
+            "url": "https://nijijourney.com/zh/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Dreamlike.png",
+            "title": "Dreamlike.art",
+            "desc": "效果惊人！内置5种模型的AI图像生成器",
+            "url": "https://dreamlike.art/create"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-NightCafe.png",
+            "title": "NightCafe",
+            "desc": "用AI生成惊艳的艺术品",
+            "url": "https://creator.nightcafe.studio/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-DALLE2.png",
+            "title": "DALL·E2",
+            "desc": "OpenAI出品的绘画工具",
+            "url": "https://openai.com/research/dall-e"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-HuggingFace.png",
+            "title": "Hugging Face",
+            "desc": "下载开源的SD模型",
+            "url": "https://huggingface.co/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Tiamat.png",
+            "title": "Tiamat",
+            "desc": "国内自研的AI作画系统！内测中",
+            "url": "https://www.tiamat.world/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Dreamup.png",
+            "title": "Dreamup",
+            "desc": "知名站点Deviantart发布的AI绘画工具",
+            "url": "https://www.dreamup.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/8231689835444_.pic_.jpg",
+            "title": "堆友AI创作神器",
+            "desc": "推荐！Alibaba Design出品，AIGC行业大咖力荐的免费AI绘画神器和分享社区",
+            "url": "https://d.design/ai?from=ysaidh"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Lexica.png",
+            "title": "Lexica",
+            "desc": "AI图像生成+SD提示词",
+            "url": "https://lexica.art/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-ScribbleDiffusion.png",
+            "title": "Scribble Diffusion",
+            "desc": "有趣！将鼠绘草图变成精美照片",
+            "url": "https://scribblediffusion.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Leonardo.png",
+            "title": "Leonardo",
+            "desc": "AI绘图社区！训练自己的游戏资产模型",
+            "url": "https://leonardo.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-DreamStudio.png",
+            "title": "DreamStudio",
+            "desc": "SD兄弟产品！AI 图像生成器",
+            "url": "https://beta.dreamstudio.ai/dream"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-wujie.png",
+            "title": "无界AI",
+            "desc": "人人都是艺术家！一站式AI创作交流分享",
+            "url": "https://www.wujie.ai/register"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-firefly.png",
+            "title": "Adobel Firefly",
+            "desc": "Adobe旗下的创意生成模型，数字创意行业新宠",
+            "url": "https://firefly.adobe.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-canva.png",
+            "title": "CanvaAi",
+            "desc": "Canva的免费AI绘画工具",
+            "url": "https://clipdrop.co/stable-diffusion"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-NVIDIA-Canvas.png",
+            "title": "NVIDIA Canvas",
+            "desc": "用AI将简单的勾勒转化成逼真的图像",
+            "url": "https://www.nvidia.cn/studio/canvas/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-bing.png",
+            "title": "Bing Image Creator",
+            "desc": "基于Dalle的AI绘画工具，Edge的侧边栏可直接使用",
+            "url": "https://cn.bing.com/create"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-illostration.png",
+            "title": "illostration",
+            "desc": "推荐！几秒内创建不同风格插图",
+            "url": "https://www.illostration.com/"
+        }
+    ],
+    "AI聊天": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-ChatGPT.png",
+            "title": "ChatGPT",
+            "desc": "地表最强AI聊天机器人",
+            "url": "https://chat.openai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Anthropi.png",
+            "title": "Anthropic",
+            "desc": "Anthropic发布的与ChatGPT竞争的聊天机器人",
+            "url": "https://www.anthropic.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-wxyy.png",
+            "title": "文心一言",
+            "desc": "百度全新知识增强大语言模型！国产聊天机器人",
+            "url": "https://yiyan.baidu.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-OpenCat.png",
+            "title": "OpenCat",
+            "desc": "在苹果手表上用ChatGPT",
+            "url": "https://apps.apple.com/us/app/opencat/id6445999201"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Perplexity.png",
+            "title": "Perplexity",
+            "desc": "智能总结并展示信息源",
+            "url": "https://www.perplexity.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-newbing.png",
+            "title": "NewBing",
+            "desc": "Bing版ChatGPT聊天机器人，微软新搜索引擎",
+            "url": "https://www.bing.com/new"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-autogpt.png",
+            "title": "Auto-GPT",
+            "desc": "自主实现目标的AI模型，能够生成连续且连贯的文本",
+            "url": "https://github.com/Significant-Gravitas/Auto-GPT"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-agentgpt.png",
+            "title": "AgentGPT",
+            "desc": "革命性的AI平台！具有UI界面的Auto-GPT",
+            "url": "https://agentgpt.reworkd.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-colossalai.png",
+            "title": "ColossalChat",
+            "desc": "免费开源的AI聊天机器人",
+            "url": "https://chat.colossalai.org/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-tongyi.png",
+            "title": "通义千问",
+            "desc": "阿里巴巴的AI对话机器人",
+            "url": "https://tongyi.aliyun.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-YOU.png",
+            "title": "YOU",
+            "desc": "人工智能搜索聊天机器人",
+            "url": "https://you.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-bard.png",
+            "title": "Google Bard",
+            "desc": "媲美ChatGPT，最新的谷歌AI对话模型",
+            "url": "https://bard.google.com/"
+        }
+    ],
+    "AI提示词": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-PromptHero.png",
+            "title": "PromptHero",
+            "desc": "推荐！最受欢迎的AI提示词网站",
+            "url": "https://prompthero.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-AI-PromptHunt.png",
+            "title": "Prompt Hunt",
+            "desc": "按主题分类的SD提示词",
+            "url": "https://www.prompthunt.com/explore"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-PromptBase.png",
+            "title": "PromptBase",
+            "desc": "AI提示词交易网站",
+            "url": "https://promptbase.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Noonshot.png",
+            "title": "MJ Prompt Tool",
+            "desc": "MJ提示词创造助手",
+            "url": "https://prompt.noonshot.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Learning.png",
+            "title": "Learning Prompt",
+            "desc": "ChatGPT提示词中文指南",
+            "url": "https://learningprompt.wiki/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-PromptoMania.png",
+            "title": "PromptoMania",
+            "desc": "MJ和SD提示词生成器",
+            "url": "https://promptomania.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-ClickPrompt.png",
+            "title": "ClickPrompt",
+            "desc": "一款专为 Prompt 编写者设计的工具",
+            "url": "https://www.clickprompt.org/zh-CN/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-LIB.png",
+            "title": "LIB.KALOS.ART",
+            "desc": "艺术风格流派参考库",
+            "url": "https://lib.kalos.art/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Visual.png",
+            "title": "Visual Prompt Builder",
+            "desc": "涨姿势系列！设计/绘画风格参考",
+            "url": "https://tools.saxifrage.xyz/prompt"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-PublicPrompts.png",
+            "title": "PublicPrompts",
+            "desc": "AI绘画模型+风格参考",
+            "url": "https://publicprompts.art/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-CLIP.png",
+            "title": "CLIP Interrogator",
+            "desc": "反向学习！从图片反推AI关键词",
+            "url": "https://replicate.com/pharmapsychotic/clip-interrogator"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Ordinary.png",
+            "title": "Ordinary Prompts",
+            "desc": "有趣ChatGPT提示词",
+            "url": "https://www.ordinarypeopleprompts.com/"
+        }
+    ],
+    "AI图像处理": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Booltool.png",
+            "title": "Booltool",
+            "desc": "多合一AI图像处理网站，快速进行编辑修整",
+            "url": "https://booltool.boolv.tech/home"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-arc.png",
+            "title": "Arc Lab",
+            "desc": "腾讯出品的图片处理工具",
+            "url": "https://arc.tencent.com/zh/ai-demos/faceRestoration"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-PicWish.png",
+            "title": "PicWish",
+            "desc": "推荐！专业的AI抠图修图，支持格式转化",
+            "url": "https://picwish.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Waifulabs.png",
+            "title": "WaifuLabs",
+            "desc": "一键生成动漫二次元头像",
+            "url": "https://waifulabs.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Change.png",
+            "title": "Change Style AI",
+            "desc": "人工智能多风格肖像生成器！能够AI生成30种照片",
+            "url": "https://changestyleai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-upscayl.png",
+            "title": "Upscayl",
+            "desc": "模糊图片秒变超清！开源免费 AI 图片无损放大工具",
+            "url": "https://www.upscayl.org/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Palette.png",
+            "title": "Palette",
+            "desc": "用AI为黑白照片着色",
+            "url": "https://palette.fm/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Restorephoto.png",
+            "title": "Restorephoto",
+            "desc": "用AI修复旧的人像照片",
+            "url": "https://www.restorephotos.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-meitu.png",
+            "title": "美图AI开放平台",
+            "desc": "美图推出的AI人脸图像处理平台",
+            "url": "https://ai.meitu.com/index/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-magicstudio.png",
+            "title": "MagicStudio",
+            "desc": "图片处理必备效率神器！为你的图片提供神奇魔法",
+            "url": "https://magicstudio.com/zh"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-CGFaces.png",
+            "title": "CG Faces",
+            "desc": "免费的 AI 人像生成图片素材网站",
+            "url": "https://cgfaces.com/en"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-mtyx.png",
+            "title": "美图云修",
+            "desc": "商业级AI影像处理工具",
+            "url": "https://yunxiu.meitu.com/home/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-hama.png",
+            "title": "Hama",
+            "desc": "使用轻松！一键无痕抹除画面内容",
+            "url": "https://www.hama.app/zh"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-bgsub.png",
+            "title": "BgSub",
+            "desc": "超实用！消除或替换图像背景的AI工具",
+            "url": "https://bgsub.cn/webapp/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-vectorizer.png",
+            "title": "Vectorizer",
+            "desc": "免费使用！一键将位图转为矢量图",
+            "url": "https://vectorizer.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-restorephotos.png",
+            "title": "RestorePhotos",
+            "desc": "效果惊艳的AI修复面容模糊的照片",
+            "url": "https://www.restorephotos.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-jpghd.png",
+            "title": "jpgHD",
+            "desc": "一键修复，让您的老照片变新照片",
+            "url": "https://jpghd.com/zh"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-Bigjpg.png",
+            "title": "Bigjpg",
+            "desc": "AI图片在线无损放大",
+            "url": "https://bigjpg.com/"
+        }
+    ],
+    "UI设计": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-GalileoAI.png",
+            "title": "Galileo AI",
+            "desc": "AI生成可编辑的UI界面",
+            "url": "https://www.usegalileo.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Uizard.png",
+            "title": "Uizard",
+            "desc": "设计界 ChatGPT！利用AI生成多屏的UI界面",
+            "url": "https://uizard.io/autodesigner/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Superflow.png",
+            "title": "Superflow",
+            "desc": "AI辅助高效网站协作设计",
+            "url": "https://www.usesuperflow.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Noya.png",
+            "title": "Noya",
+            "desc": "让线框图变成高保真设计",
+            "url": "https://www.noya.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Digram.png",
+            "title": "Digram",
+            "desc": "让Figma更好用的AI神器",
+            "url": "https://diagram.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Appicons.png",
+            "title": "Appicons AI",
+            "desc": "AI生成精致的App图标",
+            "url": "https://appicons.ai/"
+        }
+    ],
+    "3D设计": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Skybox.png",
+            "title": "Text to Skybox",
+            "desc": "推荐！AI生成360°无缝环境贴图",
+            "url": "https://skybox.blockadelabs.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-poly.png",
+            "title": "Poly",
+            "desc": "根据文本生成3D材质",
+            "url": "https://withpoly.com/browse/textures"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Ponzu.png",
+            "title": "Ponzu",
+            "desc": "AI生成3D无缝贴图纹理",
+            "url": "https://www.ponzu.gg/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Sloyd.png",
+            "title": "Sloyd",
+            "desc": "快速生成3D游戏资产",
+            "url": "https://www.sloyd.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Plasmo.png",
+            "title": "Plasmo",
+            "desc": "将草图转为3D模型",
+            "url": "https://www.plasmo.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Cascadeur.png",
+            "title": "Cascadeur",
+            "desc": "AI辅助制作3D关键帧动画",
+            "url": "https://cascadeur.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Luma.png",
+            "title": "Luma Labs",
+            "desc": "推荐！将视频转为游戏资产",
+            "url": "https://lumalabs.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-KAEDIM.png",
+            "title": "KAEDIM",
+            "desc": "帮你迅速生成3D模型及纹理",
+            "url": "https://www.kaedim3d.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Plask.png",
+            "title": "Plask",
+            "desc": "AI捕捉运动！帮你制作流畅的3D动画",
+            "url": "https://plask.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-DreamFusion.png",
+            "title": "DreamFusion",
+            "desc": "谷歌推出的文本转3D模型",
+            "url": "https://dreamfusion3d.github.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-GET3D.png",
+            "title": "GET3D",
+            "desc": "Nvidia的2D转3D模型",
+            "url": "https://nv-tlabs.github.io/GET3D/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-3DFY.png",
+            "title": "3DFY AI",
+            "desc": "AI创建大规模高质量的3D资产",
+            "url": "https://3dfy.ai/"
+        }
+    ],
+    "平面设计": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-package.png",
+            "title": "PLUG AI",
+            "desc": "AI辅助包装设计！并对包装方案生成分析评估",
+            "url": "https://hp.package-ai.jp/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Huemint.png",
+            "title": "Huemint",
+            "desc": "推荐！用AI自定义和谐配色",
+            "url": "https://huemint.com/brand-intersection/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Looka.png",
+            "title": "Looka",
+            "desc": "AI辅助logo和品牌设计",
+            "url": "https://looka.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-bxz.png",
+            "title": "标小智",
+            "desc": "超过500万用户的AI智能logo设计神器",
+            "url": "https://www.logosc.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-DaftArt.png",
+            "title": "Daft Art",
+            "desc": "AI专辑封面图片生成器",
+            "url": "https://www.daftart.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-ToneRow.png",
+            "title": "Palette",
+            "desc": "生成整套UI调色板",
+            "url": "https://palette.tone-row.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-vectorizer.png",
+            "title": "Vectorize",
+            "desc": "超好用！快速将位图转换为矢量图",
+            "url": "https://vectorizer.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-microsoftdesign.png",
+            "title": "Microsoft Designer",
+            "desc": "微软推出的AI平面设计工具，实现快速完成设计加工",
+            "url": "https://designer.microsoft.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-brandmark.png",
+            "title": "BrandMark",
+            "desc": "最先进的人工智能Logo设计工具",
+            "url": "https://brandmark.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-aicolors.png",
+            "title": "AIcolors",
+            "desc": "推荐！根据文本生成调色板，提供配色案例参考",
+            "url": "https://aicolors.co/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-getimg.png",
+            "title": "Getimg",
+            "desc": "多功能AI图片编辑工具，让文字变成吸睛的视觉图像",
+            "url": "https://getimg.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-imgcreator.png",
+            "title": "ImgCreator",
+            "desc": "超赞的多合一AI设计工具，超强的背景生成、海报生成能力",
+            "url": "https://imgcreator.ai/"
+        }
+    ],
+    "AI智能写作": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-getgetai.png",
+            "title": "字语未来",
+            "desc": "用AI创造更有价值的信息，定义新一代智能办公平台",
+            "url": "https://getgetai.com/workstation?from=youshe"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-notion.jpg",
+            "title": "Notion AI",
+            "desc": "AI写作神器！比你想得更多！写得更快",
+            "url": "https://www.notion.so/product/ai"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-writesonic.png",
+            "title": "Writesonic",
+            "desc": "写作+搜索+绘画三位一体",
+            "url": "https://writesonic.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-jasper-1.png",
+            "title": "Jasper AI",
+            "desc": "适合企业的Ai营销写手",
+            "url": "https://www.jasper.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Copyai.png",
+            "title": "Copy AI",
+            "desc": "AI社交营销文案写作助手",
+            "url": "https://www.copy.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-editgpt.png",
+            "title": "editGPT",
+            "desc": "让ChatGPT修改英语文章",
+            "url": "https://www.editgpt.app/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2022/11/nav-wantquotes.png",
+            "title": "据意查句",
+            "desc": "清华出品！AI 神器让你的文案立马变高级",
+            "url": "https://wantquotes.net/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-xiezuocat.png",
+            "title": "秘塔写作猫",
+            "desc": "基于GPT的中文写作工具",
+            "url": "https://www.xiezuocat.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-magickpen.png",
+            "title": "MagicPen",
+            "desc": "在线AI英语写作助手",
+            "url": "https://magickpen.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Novelistai.png",
+            "title": "Novelist AI",
+            "desc": "AI辅助你创建自己的小说",
+            "url": "https://novelistai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-jenni.png",
+            "title": "jenni",
+            "desc": "面向作家的AI协作助手",
+            "url": "https://jenni.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-effidit.png",
+            "title": "Effidit写作助手",
+            "desc": "腾讯AI Lab开发的AI写作助手，轻松高效完成写作",
+            "url": "https://effidit.qq.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-bearly.png",
+            "title": "Bearly",
+            "desc": "英文阅读写作效率提高10倍",
+            "url": "https://bearly.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-aigaixie.png",
+            "title": "爱改写",
+            "desc": "科研工作者的AI文字生产力工具",
+            "url": "https://www.aigaixie.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-quillbot.png",
+            "title": "QuillBot",
+            "desc": "AI助力英文写作优化，与你一起创建最佳释义",
+            "url": "https://quillbot.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-chuangyi.png",
+            "title": "悉语",
+            "desc": "一键生成营销文案！电商场景悉数覆盖",
+            "url": "https://chuangyi.taobao.com/pages/aiCopy"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-rytr.png",
+            "title": "Rytr",
+            "desc": "多合一英文AI写作助手，小成本创建高质量内容",
+            "url": "https://rytr.me/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-writingo.png",
+            "title": "火山写作",
+            "desc": "字节的AI英语写作工具，高效提升英文表达",
+            "url": "https://www.writingo.net/home"
+        }
+    ],
+    "AI音视频": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Runway.png",
+            "title": "Runway",
+            "desc": "最强的AI视频内容生成工具",
+            "url": "https://runwayml.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-tianyin.png",
+            "title": "网易天音",
+            "desc": "网易出品！一站式AI编曲渲染导出，零基础写歌",
+            "url": "https://tianyin.163.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Wonder.png",
+            "title": "Wonder Studio",
+            "desc": "真人表演自动转换为CG",
+            "url": "https://wonderdynamics.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Movio.png",
+            "title": "Movio",
+            "desc": "AI生成真人营销视频",
+            "url": "https://www.movio.la/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-BibiGPT.png",
+            "title": "BibiGPT",
+            "desc": "一键总结B站音视频内容",
+            "url": "https://b.jimmylv.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-beatbot.png",
+            "title": "BeatBot",
+            "desc": "Splash的AI音乐生成器",
+            "url": "https://beatbot.fm/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-genmo.png",
+            "title": "Genmo",
+            "desc": "更具创造性！使用文本指令编辑图像和视频",
+            "url": "https://www.genmo.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-mubert.png",
+            "title": "Mubert",
+            "desc": "1分钟内生成AI背景音乐",
+            "url": "https://mubert.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2020/07/sdcnav-ulikecam.png",
+            "title": "剪映专业版",
+            "desc": "强大的国产剪辑工具！支持AI智能生成字幕和配音",
+            "url": "https://www.capcut.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-play.png",
+            "title": "Play",
+            "desc": "根据文本生成多种逼真的语音",
+            "url": "https://play.ht/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Soundraw.png",
+            "title": "Soundraw",
+            "desc": "用AI制作免费的音乐",
+            "url": "https://soundraw.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-fliki.png",
+            "title": "Fliki",
+            "desc": "高效帮用户创建视频，具有文本转语音功能",
+            "url": "https://fliki.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-uberduck.png",
+            "title": "uberduck",
+            "desc": "开源的AI语音生成平台",
+            "url": "https://uberduck.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-zenvideo.png",
+            "title": "腾讯智影",
+            "desc": "腾讯出品！功能超多的一站式云端智能视频创作工具",
+            "url": "https://zenvideo.qq.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-d-id.png",
+            "title": "D-ID",
+            "desc": "面向未来！AI真人视频创作工具",
+            "url": "https://www.d-id.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-unscreen.png",
+            "title": "Unscreen",
+            "desc": "推荐！智能AI去除视频背景在线神器",
+            "url": "https://www.unscreen.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-audo.png",
+            "title": "Audo Studio",
+            "desc": "听起来很棒！AI一键清除音频背景杂音",
+            "url": "https://audo.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/04/nav-ai-clipchamp.png",
+            "title": "Clipchamp",
+            "desc": "将文本转为视频旁白！几分钟即可创建导出视频",
+            "url": "https://clipchamp.com/zh-hans/"
+        }
+    ],
+    "AI学习": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-udacity.png",
+            "title": "Udacity AI学院",
+            "desc": "推荐！Udacity推出的School of AI，从入门到高级",
+            "url": "https://www.udacity.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-kaggle.png",
+            "title": "kaggle",
+            "desc": "热门！机器学习和数据科学社区平台",
+            "url": "https://www.kaggle.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-mlforbeginners.png",
+            "title": "ML For Beginners",
+            "desc": "Microsoft提供关于机器学习的课程",
+            "url": "https://microsoft.github.io/ML-For-Beginners/#/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-deeplearning.png",
+            "title": "Deeplearning",
+            "desc": "深度学习和人工智能学习平台",
+            "url": "https://www.deeplearning.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Coursera.png",
+            "title": "Coursera",
+            "desc": "知名MOOC平台，众多人工智能和机器学习课程",
+            "url": "https://www.coursera.org/collections/best-machine-learning-ai"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-fastai.png",
+            "title": "Fast AI",
+            "desc": "免费开源的深度学习和AI学习网站",
+            "url": "https://www.fast.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-google.png",
+            "title": "Google AI",
+            "desc": "推荐！Google AI学习平台",
+            "url": "https://ai.google/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-brilliant.png",
+            "title": "神经网络入门",
+            "desc": "Brilliant推出的深入研究神经网络课程",
+            "url": "https://brilliant.org/courses/intro-neural-networks/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-aliyun.png",
+            "title": "阿里云AI学习路线",
+            "desc": "阿里云推出的人工智能学习路线",
+            "url": "https://developer.aliyun.com/learning/roadmap/ai"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-elementsofai.png",
+            "title": "Elements of AI",
+            "desc": "免费！大规模的开放式在线课程",
+            "url": "https://www.elementsofai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-aidaxue.png",
+            "title": "AI大课堂",
+            "desc": "推荐！科大讯飞推出的AI大学堂",
+            "url": "https://www.aidaxue.com/"
+        }
+    ],
+    "AI办公": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Copilot.png",
+            "title": "Microsoft 365 Copilot",
+            "desc": "暂未开放！内置GPT-4的微软Office",
+            "url": "https://blogs.microsoft.com/blog/2023/03/16/introducing-microsoft-365-copilot-your-copilot-for-work/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Tome.png",
+            "title": "Tome",
+            "desc": "先进的AI智能PPT制作工具",
+            "url": "https://tome.app/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-glimmerai.png",
+            "title": "Glimmer Ai",
+            "desc": "热门！基于GPT-3和DALL·E2的AI PPT知名工具",
+            "url": "https://glimmerai.tech/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-pandagpt.png",
+            "title": "PandaGPT",
+            "desc": "上传文档！即可用对话的方式让 AI 总结文档重点",
+            "url": "https://www.pandagpt.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-wordai.png",
+            "title": "WordAi",
+            "desc": "10倍速AI内容输出！创建读者喜爱的优质内容",
+            "url": "https://wordai.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-timelyapp.png",
+            "title": "Timely",
+            "desc": "一款AI时间管理工具！可以帮助你更有效地管理时间",
+            "url": "https://timelyapp.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-kubiao.png",
+            "title": "酷表ChatExcel",
+            "desc": "北大团队研发的通过聊天来操作表格的AI工具",
+            "url": "https://chatexcel.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Taskade.png",
+            "title": "Taskade",
+            "desc": "高颜值AI大纲和思维导图生成，统一您的工作流程",
+            "url": "https://www.taskade.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-rossum.png",
+            "title": "Rossum.ai",
+            "desc": "深受企业信赖，强大易用的AI智能文档处理平台",
+            "url": "https://rossum.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-otter.png",
+            "title": "Otter AI",
+            "desc": "写笔记和总结会议的速度提高 30 倍",
+            "url": "https://otter.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-noty.png",
+            "title": "Noty AI",
+            "desc": "推荐！ChatGPT驱动的AI会议转录工具",
+            "url": "https://noty.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-zapier.png",
+            "title": "Zapier AI",
+            "desc": "赞！Zapier推出的AI自动化集成功能",
+            "url": "https://zapier.com/ai"
+        }
+    ],
+    "AI翻译": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-deeplfanyi.png",
+            "title": "Deepl翻译器",
+            "desc": "集合深度学习、神经网络算等先进技术的新一代AI翻译神器",
+            "url": "https://www.deepl.com/translator"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-bingfanyi.png",
+            "title": "必应翻译",
+            "desc": "内置微软自研的翻译词库，对流行词以及生僻词精准进行翻译",
+            "url": "https://cn.bing.com/translator/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-transmartfanyi.png",
+            "title": "TranSmart",
+            "desc": "腾讯AI Lab研发的AI辅助翻译产品，满足用户快速翻译的需求",
+            "url": "https://transmart.qq.com/zh-CN/index"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-ydfanyi.png",
+            "title": "有道翻译",
+            "desc": "网易旗下深受用户喜欢的口碑型学习工具产品",
+            "url": "https://fanyi.youdao.com/index.html#/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-alifanyi.png",
+            "title": "阿里翻译",
+            "desc": "阿里巴巴达摩院推出的多领域多语种的在线机器翻译",
+            "url": "https://translate.alibaba.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-hsfanyi.png",
+            "title": "火山翻译",
+            "desc": "推荐！字节旗下支持超过100种语种的免费在线翻译",
+            "url": "https://translate.volcengine.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-googlefanyi.png",
+            "title": "Google翻译",
+            "desc": "Google免费提供上100种语言智能即时翻译工具",
+            "url": "https://translate.google.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-xunfeifanyi.png",
+            "title": "讯飞智能翻译",
+            "desc": "科大讯飞推出的人工智能翻译平台",
+            "url": "https://fanyi.xfyun.cn/console/trans/text"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-baidufanyi.png",
+            "title": "百度翻译",
+            "desc": "提供即时免费200+语言翻译服务",
+            "url": "https://fanyi.baidu.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-cyfanyi.png",
+            "title": "彩云小译",
+            "desc": "推荐！兼具“你边说，我边译”的字字幕翻译功能",
+            "url": "https://fanyi.caiyunapp.com/#/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-sougoufanyi.png",
+            "title": "搜狗翻译",
+            "desc": "支持中、英、法、日等50多种语言之间的互译功能",
+            "url": "https://fanyi.sogou.com/text"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-jinshanfanyi.png",
+            "title": "金山快译",
+            "desc": "金山旗下多场景的翻译服务",
+            "url": "https://kuaiyi.wps.cn/txt-translate"
+        }
+    ],
+    "AI编程开发": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-GitHubCopilot.png",
+            "title": "GitHub Copilot",
+            "desc": "热门！GitHub AI编程工具",
+            "url": "https://github.com/features/copilot"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Cursor.png",
+            "title": "Cursor",
+            "desc": "基于GPT的代码生成工具",
+            "url": "https://www.cursor.so/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-codeium.png",
+            "title": "Codeium",
+            "desc": "超过40种语言的免费代码加速工具",
+            "url": "https://codeium.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-CodiumAI.png",
+            "title": "CodiumAI",
+            "desc": "超实用的技术编程句子补全工具",
+            "url": "https://www.codium.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-JamGPT.png",
+            "title": "JamGPT",
+            "desc": "AI Debug调试助手，快速找到解决方案",
+            "url": "https://jam.dev/jamgpt"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Hocoos.png",
+            "title": "Hocoos",
+            "desc": "推荐！无代码AI智能在线快速创建网站",
+            "url": "https://hocoos.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-askcodi.png",
+            "title": "AskCodi",
+            "desc": "AskCodi上可以帮助你完成任何编码工作",
+            "url": "https://www.askcodi.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Fronty.png",
+            "title": "Fronty",
+            "desc": "支持图像到 HTML CSS 转换器",
+            "url": "https://fronty.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Mutable.png",
+            "title": "Mutable AI",
+            "desc": "一款更全面的 GitHub Copilot 替代品",
+            "url": "https://mutable.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Warp.png",
+            "title": "Warp",
+            "desc": "内置AI命令搜索！21世纪的终端工具",
+            "url": "https://www.warp.dev/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-Fig.png",
+            "title": "Fig",
+            "desc": "内置AI终端命令自动补全，新一代命令行工具",
+            "url": "https://fig.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-MarsX.png",
+            "title": "MarsX",
+            "desc": "使用无代码和零编码技能开始构建微应用程序",
+            "url": "https://www.marsx.dev/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-theculturedao.jpg",
+            "title": "Theculturedao",
+            "desc": "技术优势！快速打造 AI的迪士尼漫画、游戏、电影和 Gepetto",
+            "url": "https://www.theculturedao.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-ludo.jpg",
+            "title": "Ludo AI",
+            "desc": "推荐！快速帮助游戏开发者进行创造过程",
+            "url": "https://ludo.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-aidungeon.jpg",
+            "title": "AI Dungeon",
+            "desc": "拥有更流畅的体验，更快的模型，堪比免费版本的Steam平台",
+            "url": "https://play.aidungeon.io/main/home"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-charisma.jpg",
+            "title": "Charisma",
+            "desc": "轻松连接到 Unreal Engine、Unity、移动设备和 metaverses",
+            "url": "https://charisma.ai/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-hiddendoor.jpg",
+            "title": "Hidden Door",
+            "desc": "热门！小说作品生成在线社交角色扮演游戏",
+            "url": "https://www.hiddendoor.co/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/06/nav-ai-latitude.jpg",
+            "title": "Latitude",
+            "desc": "Latitude将成为人们访问人工智能驱动体验的唯一场所",
+            "url": "https://latitude.io/"
+        }
+    ],
+    "AI研究机构": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-zky.png",
+            "title": "中科院",
+            "desc": "国家最高学术机构",
+            "url": "http://www.ia.cas.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-beida.png",
+            "title": "北大人工智能研究院",
+            "desc": "中国最早开展人工智能研究的大学，国家重点实验室之一",
+            "url": "http://www.ai.pku.edu.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-qinghua.png",
+            "title": "清华人工智能研究院",
+            "desc": "清华大学成立的研究机构",
+            "url": "https://ml.cs.tsinghua.edu.cn/thuai/#/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-fudan.png",
+            "title": "复旦人工智能研究院",
+            "desc": "人工智能创新与产业研究院",
+            "url": "https://ai3.fudan.edu.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-jiaoda.png",
+            "title": "交大人工智能研究院",
+            "desc": "教育部重点实验室建设项目",
+            "url": "https://ai.sjtu.edu.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-tong.png",
+            "title": "北京通用人工智能研究院",
+            "desc": "科技部支持的非营利性新型研发机构",
+            "url": "https://www.mybigai.ac.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-tengxun.png",
+            "title": "腾讯AI实验室",
+            "desc": "共同打造产学研用一体的AI生态",
+            "url": "https://ai.tencent.com/ailab/zh/index"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-damo.png",
+            "title": "达摩院",
+            "desc": "阿里巴巴旗下研究院",
+            "url": "https://damo.alibaba.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-baai.png",
+            "title": "北京智源人工智能研究院",
+            "desc": "系统型创新驱动的研究院",
+            "url": "https://www.baai.ac.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-360.png",
+            "title": "360智脑",
+            "desc": "研发业界领先技术",
+            "url": "https://ai.360.cn/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-fuxi.png",
+            "title": "网易伏羲",
+            "desc": "网易机器人aPaaS和PaaS平台",
+            "url": "https://fuxi.163.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/05/nav-ai-huawei.png",
+            "title": "HiAI",
+            "desc": "华为人工智能技术开放平台",
+            "url": "https://developer.huawei.com/consumer/cn/hiai/"
+        }
+    ],
+    "AIGC达人": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Simon.png",
+            "title": "Simon的白日梦",
+            "desc": "AI/建筑/艺术跨领域研究者，互联网科技博主",
+            "url": "https://weibo.com/u/1948301550"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-awen.png",
+            "title": "Simon_阿文",
+            "desc": "微博知名AI研究大V，专注AI神器推荐",
+            "url": "https://weibo.com/u/1757693565"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/08/ai-nav-xiahuasheng.jpeg",
+            "title": "夏花生",
+            "desc": "AI设计神器推荐官，优设年度之星",
+            "url": "https://www.uisdc.com/u/165152/publish/all"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-muyao.png",
+            "title": "木遥",
+            "desc": "微博上勤于分享AIGC知识的大V",
+            "url": "https://weibo.com/u/1644684112"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-xp.png",
+            "title": "宝玉xp",
+            "desc": "AIGC达人，前微软Asp.Net最有价值专家",
+            "url": "https://weibo.com/u/1727858283"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Hyacinth.png",
+            "title": "海辛Hyacinth",
+            "desc": "AIGC 爱好者，实验电影导演",
+            "url": "https://weibo.com/u/1309158107"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-hlwnxs.jpg",
+            "title": "互联网的那点事",
+            "desc": "微博知名大V！AIGC观察家",
+            "url": "https://weibo.com/u/1627825392"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-lj.jpg",
+            "title": "Barret李靖",
+            "desc": "来自阿里巴巴的AIGC探索者",
+            "url": "https://weibo.com/u/1812166904"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-lzw.jpg",
+            "title": "量子位",
+            "desc": "关注人工智能&前沿科技",
+            "url": "https://weibo.com/u/6105753431"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-lqmt.jpg",
+            "title": "刘群",
+            "desc": "中国科学院计算技术研究所研究员，机器翻译领域专家",
+            "url": "https://weibo.com/u/1917491813"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-dkcyr.jpg",
+            "title": "陈怡然-杜克大学",
+            "desc": "杜克大学电子与计算机工程系教授，计算进化智能中心主任",
+            "url": "https://weibo.com/2199733231"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/07/nav-ai-daybreak.jpg",
+            "title": "拉面daybreak",
+            "desc": "AIGC探索者，插画师、玩具设计师",
+            "url": "https://weibo.com/u/1646432771"
+        }
+    ],
+    "探索更多": [
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-OpenGPT.png",
+            "title": "OpenGPT",
+            "desc": "海量的 ChatGPT 应用！能在几秒钟创建自己的小工具",
+            "url": "https://open-gpt.app/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Synthesia.png",
+            "title": "Synthesia",
+            "desc": "鹅妹嘤！创建你自己的AI头像和声音",
+            "url": "https://www.synthesia.io/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-github.png",
+            "title": "Github Copilot",
+            "desc": "Github的AI代码生成工具",
+            "url": "https://github.com/features/copilot"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-tabnine.png",
+            "title": "Tabnine",
+            "desc": "AI代码编写助手",
+            "url": "https://www.tabnine.com/"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-help.png",
+            "title": "AI帮个忙",
+            "desc": "20个实用多功能AI小帮手",
+            "url": "https://aibang.run/?refId=uisdc"
+        },
+        {
+            "logo": "https://image.uisdc.com/wp-content/uploads/2023/03/nav-ai-Media.png",
+            "title": "Media",
+            "desc": "AI智能优化您的媒体文件！便携式多功能在线AI工具",
+            "url": "https://www.media.io/"
+        }
+    ]
+}
