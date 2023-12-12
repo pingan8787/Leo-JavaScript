@@ -6,7 +6,7 @@
 
 ## 一、工具介绍 🛠️
 
-Visual Electric 是一款为创意人士和设计师打造的高质量 AI 图像创作工具， 能够轻松把你的想象和创意转化为高品质的图像。
+Visual Electric 是一款为创意人士和设计师打造的高质量 AI 图像创作工具， 能够轻松把你的想象和创意转化为高品质的图像。  
 Visual Electric 界面简洁明了，易于上手，同时提供了丰富的个性化定制功能，相比其他 AI 绘图工具，Visual Electric 更懂得满足你的创作需求。
 
 ![](https://files.mdnice.com/user/5763/417af954-d563-4e47-bc76-d1bb0825439b.png)
@@ -23,7 +23,7 @@ Visual Electric 的图片生成能力基于**Stable Diffusion**，提示词建�
 
 ## 三、核心功能 🔍
 
-Visual Electric 上手起来非常简单，并且还提供了一些其他功能，接下来一起和 Chris 看看：
+Visual Electric 还提供了一些其他功能，接下来一起和 Chris 看看：
 
 ### 1.多种风格的图片创作
 
