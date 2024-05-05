@@ -1,8 +1,8 @@
 今天 Chris 给大家推荐的工具是 Latent Box，一款聚焦于 AI、创意和艺术领域的精选合集的导航站，快来一起看看吧。
 
-> 🌟 工具名称：Latent Box
-> 🌐 使用环境：需要梯子 🪜
-> 🔗 工具地址：[https://latentbox.com/zh](https://latentbox.com/zh)
+> 🌟 工具名称：Latent Box  
+> 🌐 使用环境：需要梯子 🪜  
+> 🔗 工具地址：[https://latentbox.com/zh](https://latentbox.com/zh)  
 > 📦 GitHub 仓库： [https://github.com/latentcat/latentbox](https://github.com/latentcat/latentbox)
 
 ## 一、工具介绍 🛠️
