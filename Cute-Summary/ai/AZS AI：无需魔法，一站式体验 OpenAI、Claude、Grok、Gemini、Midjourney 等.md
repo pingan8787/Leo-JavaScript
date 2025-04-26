@@ -1,62 +1,87 @@
 > 🌟 工具名称：AZS AI
 >
 > 🔗 工具地址：[https://www.azs.ai/](https://www.azs.ai/)
->
+
+作为一名 AI 博主，Chris 需要整理文档、搜索资料以及制作文章插图和封面，因此对 AI 大模型工具和 AI 绘图工具需求较大。但主流平台在国内访问和支付都不方便。
+
+AZS AI 的出现，让 Chris 能在国内轻松使用 ChatGPT、Claude、Grok 等主流 AI 大模型工具，以及热门 AI 绘图工具 Midjourney，工作效率大幅提升。接下来，让我们一起了解 AZS AI。
 
 ## 一、工具介绍 🛠️
-AZS AI 是一个集成多种主流 AI 模型的镜像网站，涵盖了 OpenAI、Claude、Grok、Gemini、DeepSeek 等知名 AI 模型。为国内用户提供了无需额外工具即可直接访问这些 AI 模型的便利。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745242687890-600b300a-7ab3-4b3e-8844-a3c78dba79ce.png)所有镜像站点均为 1:1 官方站点，用户可以使用 AZS AI 连接直接登录，享受与官网一致的功能体验，且所有聊天记录均保存在对应账号中。
+AZS AI 是一个集成多种主流 AI 模型的平台，它将 OpenAI、Claude、Grok、Gemini、DeepSeek 等知名 AI 模型汇聚在一起，为国内用户提供了极为便捷的访问体验。无需借助任何额外工具，你就可以轻松使用这些强大的 AI 模型。
+
+![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745242687890-600b300a-7ab3-4b3e-8844-a3c78dba79ce.png)
+
+这个平台的镜像站点完全按照官方站点 1:1 构建，就像内置了一个科学上网工具一样。你可以直接使用 AZS AI 登录，体验与官网一致的功能，所有聊天记录也会安全地保存在你的账号中。
 
 ## 二、使用介绍 🚀
+
+接下来，和 Chris 一起看看如何使用 AZS AI，提高大家的学习、工作效率。
+
 ### 1.购买激活码
-AZS AI 需要购买激活码才能使用，大家可以通过访问  [https://www.azs.ai/goods](https://www.azs.ai/goods)  购买页面，购买所需的激活码。
+
+AZS AI 需要购买激活码才能使用。你可以通过访问 [https://www.azs.ai/goods](https://www.azs.ai/goods) 购买页面购买所需的激活码。
 
 ### 2.使用激活码
-购买激活码后，可以在 [https://www.azs.ai/list](https://www.azs.ai/list) 激活页面 输入激活码，完成激活并开始使用。
+
+购买激活码后，接下来前往 [https://www.azs.ai/list](https://www.azs.ai/list) 激活页面，在页面中输入你刚刚购买的激活码，点击“激活”按钮，就可以开始使用你的 AZS AI，解锁所有功能。
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745243507293-c89245a5-0655-43d0-a660-cb1b2e6c41c3.png)
 
 ### 3.选择连接
-在激活后，可以选择想要使用的 AI 模型。在底下连接卡片中，点击右下角的“**连接**”按钮即可开始使用。   
+
+在激活后，可以选择想要使用的 AI 模型。在底下连接卡片中，点击右下角的“**连接**”按钮即可开始使用。
 
 需要注意的是，每个卡片左侧的数字表示当前连接的使用次数，建议选择使用次数较少的连接以获得更好的体验。
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745243393214-2f45ae75-3d97-45b7-b96d-63109c0843a7.png)
 
-### 4.开始使用AI模型
-完成连接后，将自动跳转到对应的 AI 站点。例如，Chris 打开了 ChatGPT 的对话页面，并可以使用各种 AI 模型。
+### 4.开始使用 AI 模型
+
+点击“连接”后，你会自动跳转到对应的 AI 站点。比如，当你选择 ChatGPT 时，就会直接进入 ChatGPT 的对话页面。
+
+这里 Chris 使用了最新的 ChatGPT o4-mini 模型进行对话，总结的内容还是非常靠谱的。对于 Chris 来说，无论是撰写文章、整理资料，还是生成图像，AZS AI 都能轻松满足你的需求。
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745243234931-fb3eec0a-c18a-41e4-abd3-adb32c855839.png)
-
-比如 Chris 使用最新的 ChatGPT o4-mini 模型进行对话，总结的内容还是挺靠谱的：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745243928032-e00ae789-d4db-4df6-9d55-af3678925a19.png)
 
 ### 5.管理激活码
+
 关于激活码的购买、绑定、续费以及跨设备登录等操作，都可以通过头像的下拉菜单进行管理。
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745244166676-cae25a23-44b0-4c1a-af3c-b3f88d7fa50a.png)
 
-如果在使用过程中遇到任何问题，您可以查阅 [https://docs.azs.ai/](https://docs.azs.ai/) 官方文档 获取帮助。
+如果你在使用过程中遇到任何问题，可以查阅 [https://docs.azs.ai/](https://docs.azs.ai/) 官方文档，那里有详细的解答和指导。官方文档涵盖了从基础操作到高级功能的全方位内容，无论是新手还是资深用户，都能从中找到有用的信息。
 
-## 三、其他AI工具
-除了前面 Chris 演示的 ChatGPT，大家还可以在顶部菜单选择其他 AI 工具。
+## 三、其他使用场景
 
-![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745243393214-2f45ae75-3d97-45b7-b96d-63109c0843a7.png)
+### 1.使用 ChatGPT 生成吉卜力风格图片
 
-### 1.Claude
-支持 Claude 3.7 Sonnet 和 Claude 3.5 Haiku 模型。
+最近，ChatGPT 4o 模型生成吉卜力风格图片的功能火爆全网，而 AZS AI 为用户提供了轻松上手的平台，比如 Chris 就将 C 罗的图片转换成吉卜力风格，效果令人眼前一亮。你也可以在 AZS AI 上自由发挥想象力，无论是将偶像照片变成动漫风，还是将日常场景绘成奇幻画卷，都能轻松实现。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745246151609-91cb7d1e-56a7-4166-891c-26ab8ad8ddc4.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745249335640-0d53974c-9567-459d-b1fb-679a2812e42d.png)
 
-### 2.Grok
-支持 Grok3、Grok2 模型。
+![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745250750512-1f0017d7-6c3f-4e63-804b-db186b8383e8.png)
 
-![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745246280287-e462247e-5247-46ec-8e39-1d2c7d624ace.png)
+### 2.使用 Claude 制作个人博客
 
-### 3.Midjourney
-AZS AI 还支持 Midjourney，完全镜像官网，体验与官网完全一样：
+Chris 在“AI 工具派”中分享了很多实用 AI 工具，但这些内容散落在各处，缺乏统一的展示平台。于是 Chris 尝试使用 Claude 打造一个专属的个人博客，将过往的文章内容整理后发送给 Claude，借助 Claude 3.7 Sonnet 的智能文本生成能力，快速制作一个界面美观、功能齐全的博客。
 
-![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745246503842-57325b29-74f6-4ca5-a170-f441da6f87e4.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745249886512-efcb7184-6cbd-40d9-bcc3-b44fad38d2ce.png)
 
+只需要一句提示词，Claude 就能全自动从页面布局到内容排版，到最终生成的博客不仅界面美观、功能齐全，还完美地展现了 Chris 的创意和个性，大家可以试试看。
+
+![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745250454788-f9763963-fadd-43e1-acc8-7db92a8c45af.png)
+
+### 3.使用 Midjourney 制作创意图片
+
+如果你是创意灵感爆棚的小伙伴，AZS AI 上的 Midjourney 绝对值得一试。只需简单输入文字，它就能生成各种风格独特、创意十足的图片，无论是梦幻插画还是未来场景，都能轻松呈现。
+
+Midjourney 功能强大，不仅能激发灵感，还能让创意瞬间落地。
+
+![](https://cdn.nlark.com/yuque/0/2025/png/186051/1745250077733-9a72f642-0862-468b-8247-2b9d7e89acb0.png)
+
+## 四、总结
+
+AZS AI 是一个集成多种主流 AI 模型的平台，为国内用户提供了便捷的访问体验，无论是 ChatGPT、Claude 还是 Midjourney，都能轻松上手。它不仅提升了工作效率，还激发了创意灵感，是 AI 爱好者和专业人士的得力助手。
